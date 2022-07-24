@@ -1,0 +1,12 @@
+{
+    "build": { "dockerfile": "Dockerfile" },
+    "extensions": [
+        "hashicorp.terraform",
+        "golang.Go"
+    ],
+    "mounts": [
+        "source=${localEnv:HOME}/.kube,target=/root/.kube,type=bind",
+        // "source=${localEnv:HOME}/.cache/pre-commit,target=/root/.cache/pre-commit,type=bind",
+        "source=${localEnv:HOME}/.terraform.d/plugins,target=/root/.terraform.d/plugins,type=bind",
+    ]
+}

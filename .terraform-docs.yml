@@ -1,0 +1,22 @@
+content: |-
+  {{ .Header }}
+
+  ## Usage
+
+  ```hcl
+  {{ include "examples/complete/complete.tf.docs" }}
+  ```
+
+  Please see the [complete example](examples/complete) for more information.
+
+  {{ .Requirements }}
+
+  {{ .Providers }}
+
+  {{ .Modules }}
+
+  {{ .Resources }}
+
+  {{ .Inputs }}
+
+  {{ .Outputs }}
