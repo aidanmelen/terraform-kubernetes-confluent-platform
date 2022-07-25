@@ -1,4 +1,6 @@
-# confluent_platform
+# confluent_operator
+
+Deploy the confluent operator.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
@@ -7,7 +9,6 @@
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.14.8 |
 | <a name="requirement_helm"></a> [helm](#requirement\_helm) | >= 2.0.0 |
-| <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | >= 2.12.1 |
 
 ## Providers
 
@@ -17,7 +18,7 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_confluent_platform"></a> [confluent\_platform](#module\_confluent\_platform) | ../../../ | n/a |
+| <a name="module_confluent_operator"></a> [confluent\_operator](#module\_confluent\_operator) | ../../modules/confluent_operator | n/a |
 
 ## Resources
 
@@ -33,5 +34,8 @@ No resources.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_namespace"></a> [namespace](#output\_namespace) | The namespace for the confluent platform. |
+| <a name="output_app_version"></a> [app\_version](#output\_app\_version) | The CFK version. |
+| <a name="output_chart_version"></a> [chart\_version](#output\_chart\_version) | The CFK version. |
+| <a name="output_confluent_platform_version_compatibilities"></a> [confluent\_platform\_version\_compatibilities](#output\_confluent\_platform\_version\_compatibilities) | The following describes the version compatibilities among Confluent Platform and Confluent for Kubernetes (CFK). |
+| <a name="output_latest_confluent_platform_version_compatibilities"></a> [latest\_confluent\_platform\_version\_compatibilities](#output\_latest\_confluent\_platform\_version\_compatibilities) | The following describes the latest version compatibile among Confluent Platform and Confluent for Kubernetes (CFK). |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

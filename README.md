@@ -7,7 +7,7 @@ A Terraform workspace for running [Confluent for Kubernetes (CFK)](https://docs.
 
 Please see the [confluent-kubernetes-examples](https://github.com/confluentinc/confluent-kubernetes-examples) Github repository for more CFK examples.
 
-## Prerequisites
+<!-- ## Prerequisites
 
 The confluent operator CRDs can be added from the commandline with
 
@@ -24,7 +24,7 @@ terraform init
 terraform apply
 ```
 
-Please see [Deploy Applications with the Helm Provider](https://learn.hashicorp.com/tutorials/terraform/helm-provider?in=terraform/use-case) and [Confluent's prerequisites documentation](https://docs.confluent.io/operator/current/co-quickstart.html#prerequisites) for more information.
+Please see [Deploy Applications with the Helm Provider](https://learn.hashicorp.com/tutorials/terraform/helm-provider?in=terraform/use-case) and [Confluent's prerequisites documentation](https://docs.confluent.io/operator/current/co-quickstart.html#prerequisites) for more information. -->
 
 ## Example
 
@@ -42,7 +42,7 @@ module "confluent_platform" {
 }
 ```
 
-## Known Issues
+<!-- ## Known Issues
 
 The confluent operator CRDs must be released on the kubernetes cluster before the confluent platform can be applied. Failure to due so will result in the following error:
 
@@ -50,7 +50,19 @@ The confluent operator CRDs must be released on the kubernetes cluster before th
 Error: Failed to determine GroupVersionResource for manifest
 ```
 
-This can be avoided by following the [Prerequisites](README.md#Prerequisites)/
+This can be avoided by following the [Prerequisites](README.md#Prerequisites). -->
+
+## Tests
+
+1. Install [Terraform](https://www.terraform.io/) and make sure it's on your `PATH`.
+2. Install [Golang](https://golang.org/) and make sure this code is checked out into your `GOPATH`.
+3. `cd test`
+4. `go test terraform_confluent_platform_test.go -v`
+
+Or
+
+1. `make install`
+2. `make tests`
 
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
@@ -69,7 +81,6 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_confluent_operator"></a> [confluent\_operator](#module\_confluent\_operator) | ./modules/confuent_operator | n/a |
 | <a name="module_connect"></a> [connect](#module\_connect) | ./modules/connect | n/a |
 | <a name="module_control_center"></a> [control\_center](#module\_control\_center) | ./modules/control_center | n/a |
 | <a name="module_kafka"></a> [kafka](#module\_kafka) | ./modules/kafka | n/a |
@@ -86,20 +97,19 @@ No resources.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_connect_spec"></a> [connect\_spec](#input\_connect\_spec) | The Connect spec. | `any` | <pre>{<br>  "dependencies": {<br>    "kafka": {<br>      "bootstrapEndpoint": "kafka:9071"<br>    }<br>  },<br>  "image": {<br>    "application": "confluentinc/cp-server-connect:7.0.1",<br>    "init": "confluentinc/confluent-init-container:2.2.0-1"<br>  },<br>  "replicas": 1<br>}</pre> | no |
-| <a name="input_control_center_spec"></a> [control\_center\_spec](#input\_control\_center\_spec) | The ControlCenter spec. | `any` | <pre>{<br>  "dataVolumeCapacity": "10Gi",<br>  "dependencies": {<br>    "connect": [<br>      {<br>        "name": "connect",<br>        "url": "http://connect.confluent.svc.cluster.local:8083"<br>      }<br>    ],<br>    "ksqldb": [<br>      {<br>        "name": "ksqldb",<br>        "url": "http://ksqldb.confluent.svc.cluster.local:8088"<br>      }<br>    ],<br>    "schemaRegistry": {<br>      "url": "http://schemaregistry.confluent.svc.cluster.local:8081"<br>    }<br>  },<br>  "image": {<br>    "application": "confluentinc/cp-enterprise-control-center:7.0.1",<br>    "init": "confluentinc/confluent-init-container:2.2.0-1"<br>  },<br>  "replicas": 1<br>}</pre> | no |
-| <a name="input_kafka_rest_proxy_spec"></a> [kafka\_rest\_proxy\_spec](#input\_kafka\_rest\_proxy\_spec) | The KafkaRestProxy spec. | `any` | <pre>{<br>  "dependencies": {<br>    "schemaRegistry": {<br>      "url": "http://schemaregistry.confluent.svc.cluster.local:8081"<br>    }<br>  },<br>  "image": {<br>    "application": "confluentinc/cp-kafka-rest:7.0.1",<br>    "init": "confluentinc/confluent-init-container:2.2.0-1"<br>  },<br>  "replicas": 1<br>}</pre> | no |
-| <a name="input_kafka_spec"></a> [kafka\_spec](#input\_kafka\_spec) | The Kafka spec. | `any` | <pre>{<br>  "dataVolumeCapacity": "10Gi",<br>  "image": {<br>    "application": "confluentinc/cp-server:7.0.1",<br>    "init": "confluentinc/confluent-init-container:2.2.0-1"<br>  },<br>  "metricReporter": {<br>    "enabled": true<br>  },<br>  "replicas": 3<br>}</pre> | no |
-| <a name="input_ksqldb_spec"></a> [ksqldb\_spec](#input\_ksqldb\_spec) | The KsqlDB spec. | `any` | <pre>{<br>  "dataVolumeCapacity": "10Gi",<br>  "image": {<br>    "application": "confluentinc/cp-ksqldb-server:7.0.1",<br>    "init": "confluentinc/confluent-init-container:2.2.0-1"<br>  },<br>  "replicas": 1<br>}</pre> | no |
-| <a name="input_namespace"></a> [namespace](#input\_namespace) | The namespace to install the release into. | `string` | `"confluent"` | no |
-| <a name="input_schema_registry_spec"></a> [schema\_registry\_spec](#input\_schema\_registry\_spec) | The SchemaRegistry spec. | `any` | <pre>{<br>  "image": {<br>    "application": "confluentinc/cp-schema-registry:7.0.1",<br>    "init": "confluentinc/confluent-init-container:2.2.0-1"<br>  },<br>  "replicas": 3<br>}</pre> | no |
-| <a name="input_zookeeper_spec"></a> [zookeeper\_spec](#input\_zookeeper\_spec) | The Zookeeper spec. | `any` | <pre>{<br>  "dataVolumeCapacity": "10Gi",<br>  "image": {<br>    "application": "confluentinc/cp-zookeeper:7.0.1",<br>    "init": "confluentinc/confluent-init-container:2.2.0-1"<br>  },<br>  "logVolumeCapacity": "10Gi",<br>  "replicas": 3<br>}</pre> | no |
+| <a name="input_connect_spec"></a> [connect\_spec](#input\_connect\_spec) | The Connect spec. | `any` | <pre>{<br>  "dependencies": {<br>    "kafka": {<br>      "bootstrapEndpoint": "kafka:9071"<br>    }<br>  },<br>  "image": {<br>    "application": "confluentinc/cp-server-connect:7.2.0",<br>    "init": "confluentinc/confluent-init-container:2.4.0"<br>  },<br>  "replicas": 1<br>}</pre> | no |
+| <a name="input_control_center_spec"></a> [control\_center\_spec](#input\_control\_center\_spec) | The ControlCenter spec. | `any` | <pre>{<br>  "dataVolumeCapacity": "10Gi",<br>  "dependencies": {<br>    "connect": [<br>      {<br>        "name": "connect",<br>        "url": "http://connect.confluent.svc.cluster.local:8083"<br>      }<br>    ],<br>    "ksqldb": [<br>      {<br>        "name": "ksqldb",<br>        "url": "http://ksqldb.confluent.svc.cluster.local:8088"<br>      }<br>    ],<br>    "schemaRegistry": {<br>      "url": "http://schemaregistry.confluent.svc.cluster.local:8081"<br>    }<br>  },<br>  "image": {<br>    "application": "confluentinc/cp-enterprise-control-center:7.2.0",<br>    "init": "confluentinc/confluent-init-container:2.4.0"<br>  },<br>  "replicas": 1<br>}</pre> | no |
+| <a name="input_kafka_rest_proxy_spec"></a> [kafka\_rest\_proxy\_spec](#input\_kafka\_rest\_proxy\_spec) | The KafkaRestProxy spec. | `any` | <pre>{<br>  "dependencies": {<br>    "schemaRegistry": {<br>      "url": "http://schemaregistry.confluent.svc.cluster.local:8081"<br>    }<br>  },<br>  "image": {<br>    "application": "confluentinc/cp-kafka-rest:7.2.0",<br>    "init": "confluentinc/confluent-init-container:2.4.0"<br>  },<br>  "replicas": 1<br>}</pre> | no |
+| <a name="input_kafka_spec"></a> [kafka\_spec](#input\_kafka\_spec) | The Kafka spec. | `any` | <pre>{<br>  "dataVolumeCapacity": "10Gi",<br>  "image": {<br>    "application": "confluentinc/cp-server:7.2.0",<br>    "init": "confluentinc/confluent-init-container:2.4.0"<br>  },<br>  "metricReporter": {<br>    "enabled": true<br>  },<br>  "replicas": 3<br>}</pre> | no |
+| <a name="input_ksqldb_spec"></a> [ksqldb\_spec](#input\_ksqldb\_spec) | The KsqlDB spec. | `any` | <pre>{<br>  "dataVolumeCapacity": "10Gi",<br>  "image": {<br>    "application": "confluentinc/cp-ksqldb-server:7.2.0",<br>    "init": "confluentinc/confluent-init-container:2.4.0"<br>  },<br>  "replicas": 1<br>}</pre> | no |
+| <a name="input_namespace"></a> [namespace](#input\_namespace) | The namespace to replease the confluent platform into. | `string` | `"confluent"` | no |
+| <a name="input_schema_registry_spec"></a> [schema\_registry\_spec](#input\_schema\_registry\_spec) | The SchemaRegistry spec. | `any` | <pre>{<br>  "image": {<br>    "application": "confluentinc/cp-schema-registry:7.2.0",<br>    "init": "confluentinc/confluent-init-container:2.4.0"<br>  },<br>  "replicas": 3<br>}</pre> | no |
+| <a name="input_zookeeper_spec"></a> [zookeeper\_spec](#input\_zookeeper\_spec) | The Zookeeper spec. | `any` | <pre>{<br>  "dataVolumeCapacity": "10Gi",<br>  "image": {<br>    "application": "confluentinc/cp-zookeeper:7.2.0",<br>    "init": "confluentinc/confluent-init-container:2.4.0"<br>  },<br>  "logVolumeCapacity": "10Gi",<br>  "replicas": 3<br>}</pre> | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| <a name="output_confluent_operator"></a> [confluent\_operator](#output\_confluent\_operator) | The Confluent Operator CFK component. |
 | <a name="output_connect"></a> [connect](#output\_connect) | The Connect CFK component. |
 | <a name="output_control_center"></a> [control\_center](#output\_control\_center) | The ControlCenter CFK component. |
 | <a name="output_kafka"></a> [kafka](#output\_kafka) | The Kafka CFK component. |

@@ -10,8 +10,8 @@ variable "zookeeper_spec" {
   default = {
     "dataVolumeCapacity" = "10Gi"
     "image" = {
-      "application" = "confluentinc/cp-zookeeper:7.0.1"
-      "init"        = "confluentinc/confluent-init-container:2.2.0-1"
+      "application" = "confluentinc/cp-zookeeper:7.2.0"
+      "init"        = "confluentinc/confluent-init-container:2.4.0"
     }
     "logVolumeCapacity" = "10Gi"
     "replicas"          = 3
@@ -24,8 +24,8 @@ variable "kafka_spec" {
   default = {
     "dataVolumeCapacity" = "10Gi"
     "image" = {
-      "application" = "confluentinc/cp-server:7.0.1"
-      "init"        = "confluentinc/confluent-init-container:2.2.0-1"
+      "application" = "confluentinc/cp-server:7.2.0"
+      "init"        = "confluentinc/confluent-init-container:2.4.0"
     }
     "metricReporter" = {
       "enabled" = true
@@ -44,8 +44,8 @@ variable "connect_spec" {
       }
     }
     "image" = {
-      "application" = "confluentinc/cp-server-connect:7.0.1"
-      "init"        = "confluentinc/confluent-init-container:2.2.0-1"
+      "application" = "confluentinc/cp-server-connect:7.2.0"
+      "init"        = "confluentinc/confluent-init-container:2.4.0"
     }
     "replicas" = 1
   }
@@ -57,8 +57,8 @@ variable "ksqldb_spec" {
   default = {
     "dataVolumeCapacity" = "10Gi"
     "image" = {
-      "application" = "confluentinc/cp-ksqldb-server:7.0.1"
-      "init"        = "confluentinc/confluent-init-container:2.2.0-1"
+      "application" = "confluentinc/cp-ksqldb-server:7.2.0"
+      "init"        = "confluentinc/confluent-init-container:2.4.0"
     }
     "replicas" = 1
   }
@@ -87,8 +87,8 @@ variable "control_center_spec" {
       }
     }
     "image" = {
-      "application" = "confluentinc/cp-enterprise-control-center:7.0.1"
-      "init"        = "confluentinc/confluent-init-container:2.2.0-1"
+      "application" = "confluentinc/cp-enterprise-control-center:7.2.0"
+      "init"        = "confluentinc/confluent-init-container:2.4.0"
     }
     "replicas" = 1
   }
@@ -99,8 +99,8 @@ variable "schema_registry_spec" {
   description = "The SchemaRegistry spec."
   default = {
     "image" = {
-      "application" = "confluentinc/cp-schema-registry:7.0.1"
-      "init"        = "confluentinc/confluent-init-container:2.2.0-1"
+      "application" = "confluentinc/cp-schema-registry:7.2.0"
+      "init"        = "confluentinc/confluent-init-container:2.4.0"
     }
     "replicas" = 3
   }
@@ -116,8 +116,8 @@ variable "kafka_rest_proxy_spec" {
       }
     }
     "image" = {
-      "application" = "confluentinc/cp-kafka-rest:7.0.1"
-      "init"        = "confluentinc/confluent-init-container:2.2.0-1"
+      "application" = "confluentinc/cp-kafka-rest:7.2.0"
+      "init"        = "confluentinc/confluent-init-container:2.4.0"
     }
     "replicas" = 1
   }

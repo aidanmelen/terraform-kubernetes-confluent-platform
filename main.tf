@@ -1,7 +1,7 @@
 module "zookeeper" {
-  source     = "./modules/zookeeper"
-  namespace  = var.namespace
-  spec       = var.zookeeper_spec
+  source    = "./modules/zookeeper"
+  namespace = var.namespace
+  spec      = var.zookeeper_spec
 }
 
 module "kafka" {

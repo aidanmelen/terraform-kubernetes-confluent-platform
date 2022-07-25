@@ -29,8 +29,8 @@ variable "spec" {
   description = "The kubernetes spec for the CFK component."
   default = {
     "image" = {
-      "application" = "confluentinc/cp-schema-registry:7.0.1"
-      "init"        = "confluentinc/confluent-init-container:2.2.0-1"
+      "application" = "confluentinc/cp-schema-registry:7.2.0"
+      "init"        = "confluentinc/confluent-init-container:2.4.0"
     }
     "replicas" = 3
   }

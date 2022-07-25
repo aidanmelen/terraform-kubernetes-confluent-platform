@@ -3,12 +3,12 @@ output "helm_release" {
   value       = helm_release.confluent_operator
 }
 
-output "confluent_platform_versions_interoperability" {
+output "confluent_platform_version_compatibilities" {
   description = "The following describes the version compatibilities among Confluent Platform and Confluent for Kubernetes (CFK)."
-  value       = local.confluent_platform_versions_interoperability
+  value       = local.confluent_platform_version_compatibilities
 }
 
-output "latest_confluent_platform_version_interoperability" {
+output "latest_confluent_platform_version_compatibilities" {
   description = "The following describes the latest version compatibile among Confluent Platform and Confluent for Kubernetes (CFK)."
-  value       = local.latest_confluent_platform_version_interoperability
+  value       = local.latest_confluent_platform_version_compatibilities
 }

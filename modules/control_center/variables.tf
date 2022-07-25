@@ -47,8 +47,8 @@ variable "spec" {
       }
     }
     "image" = {
-      "application" = "confluentinc/cp-enterprise-control-center:7.0.1"
-      "init"        = "confluentinc/confluent-init-container:2.2.0-1"
+      "application" = "confluentinc/cp-enterprise-control-center:7.2.0"
+      "init"        = "confluentinc/confluent-init-container:2.4.0"
     }
     "replicas" = 1
   }
@@ -57,13 +57,13 @@ variable "spec" {
 variable "create_timeout" {
   type        = string
   description = "The create timeout."
-  default     = "10m"
+  default     = "20m"
 }
 
 variable "update_timeout" {
   type        = string
   description = "The update timeout."
-  default     = "10m"
+  default     = "20m"
 }
 
 variable "delete_timeout" {

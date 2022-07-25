@@ -5,7 +5,7 @@ SHELL := /bin/bash
 .PHONY: help all
 
 help: ## This help.
-	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
+	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "\033[36m%-25s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
 .DEFAULT_GOAL := help
 
@@ -18,11 +18,12 @@ run: ## Run docker dev container
 install: ## Install project
 	# terraform
 	terraform init
-	cd examples/complete && terraform init
+	cd examples/confluent_operator && terraform init
+	cd examples/quickstart_deploy/confluent_platform && terraform init
 
 	# terratest
 	go get github.com/gruntwork-io/terratest/modules/terraform
-	go mod init test/terraform_complete_test.go
+	go mod init test/terraform_confluent_operator_test.go
 
 	# pre-commit
 	git init
@@ -34,17 +35,29 @@ lint:  ## Lint with pre-commit
 	pre-commit run
 	git add -A
 
-tests: test-complete ## Test with Terratest
+lint-all:  ## Lint with pre-commit
+	git add -A
+	pre-commit run --all-files
+	git add -A
 
-test-complete: ## Test Complete Example
-	go test test/terraform_complete_test.go -timeout 45m -v |& tee test/terraform_complete_test.log
+tests: test-confluent-operator test-confluent-platform ## Test with Terratest
+
+test-confluent-operator: ## Test confluent-operator Example
+	go test test/terraform_confluent_operator_test.go -timeout 5m -v |& tee test/terraform_confluent_operator_test.log
+
+test-confluent-platform: ## Test confluent-platform Example
+	go test test/terraform_confluent_platform_test.go -timeout 30m -v |& tee test/terraform_confluent_platform_test.log
 
 clean: ## Clean project
 	@rm -f .terraform.lock.hcl
-	@rm -f examples/complete/.terraform.lock.hcl
+	@rm -f examples/quickstart_deploy/confluent_platform/.terraform.lock.hcl
+	@rm -f examples/confluent_operator/.terraform.lock.hcl
 
-	@rm -rf .terraform
-	@rm -rf examples/complete/.terraform
+	@rm -rf .terraform*
+	@rm -rf examples/quickstart_deploy/confluent_platform/.terraform
+	@rm -rf examples/confluent_operator/.terraform
 
 	@rm -f go.mod
 	@rm -f go.sum
+	@rm -f test/go.mod
+	@rm -f test/go.sum

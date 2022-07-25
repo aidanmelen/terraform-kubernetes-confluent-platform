@@ -12,4 +12,4 @@ Create examples:
 - [quickstart_deploy/confluent_platform_singlenode](https://github.com/confluentinc/confluent-kubernetes-examples/blob/master/quickstart-deploy/confluent-platform-singlenode.yaml)
 - [security/production-secure-deploy](https://github.com/confluentinc/confluent-kubernetes-examples/tree/master/security/production-secure-deploy)
 - [schemas](https://github.com/confluentinc/confluent-kubernetes-examples/tree/master/schemas)
-- [connectors](https://github.com/confluentinc/confluent-kubernetes-examples/tree/master/connector)
+- [connectors](https://github.com/confluentinc/confluent-kubernetes-examples/tree/master/connector) https://github.com/confluentinc/confluent-kubernetes-examples/blob/master/hybrid/ccloud-connect-confluent-hub/kafka-connect.yaml#L2-L19
