@@ -1,3 +1,5 @@
+<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+
 [![Pre-Commit](https://github.com/aidanmelen/terraform-kubernetes-confluent/actions/workflows/pre-commit.yaml/badge.svg)](https://github.com/aidanmelen/terraform-kubernetes-confluent/actions/workflows/pre-commit.yaml)
 [![cookiecutter-tf-module](https://img.shields.io/badge/cookiecutter--tf--module-enabled-brightgreen)](https://github.com/aidanmelen/cookiecutter-tf-module)
 
@@ -5,36 +7,17 @@
 
 A Terraform workspace for running [Confluent for Kubernetes (CFK)](https://docs.confluent.io/operator/current/overview.html).
 
-<!-- ## Prerequisites
-
-The confluent operator CRDs can be added from the commandline with
-
-```
-helm repo add confluentinc https://packages.confluent.io/helm
-helm repo update
-```
-
-or with the [confluent_operator sub-module](./modules/confluent_operator).
-
-```
-cd ./examples/confluent_operator
-terraform init
-terraform apply
-```
-
-Please see [Deploy Applications with the Helm Provider](https://learn.hashicorp.com/tutorials/terraform/helm-provider?in=terraform/use-case) and [Confluent's prerequisites documentation](https://docs.confluent.io/operator/current/co-quickstart.html#prerequisites) for more information. -->
-
 ## Example
 
 ### Confluent Operator
 
 ```hcl
 module "confluent_operator" {
-  source           = "terraform-confluent-for-kubernetes/modules/confluent_operator"
-  name             = "confluent-operator"
-  namespace        = "confluent"
-  create_namespace = true
-  chart_version    = "0.517.12"
+source           = "terraform-confluent-for-kubernetes/modules/confluent_operator"
+name             = "confluent-operator"
+namespace        = "confluent"
+create_namespace = true
+chart_version    = "0.517.12"
 }
 ```
 
@@ -42,18 +25,18 @@ module "confluent_operator" {
 
 ```hcl
 module "confluent_platform" {
-  source    = "terraform-confluent-for-kubernetes"
-  namespace = "confluent"
+source    = "terraform-confluent-for-kubernetes"
+namespace = "confluent"
 
-  /*
-  zookeeper_spec        = { ... }
-  kafka_spec            = { ... }
-  connect_spec          = { ... }
-  ksqldb_spec           = { ... }
-  control_center_spec   = { ... }
-  schema_registry_spec  = { ... }
-  kafka_rest_proxy_spec = { ... }
-  */
+/*
+zookeeper_spec        = { ... }
+kafka_spec            = { ... }
+connect_spec          = { ... }
+ksqldb_spec           = { ... }
+control_center_spec   = { ... }
+schema_registry_spec  = { ... }
+kafka_rest_proxy_spec = { ... }
+*/
 }
 ```
 
@@ -131,19 +114,15 @@ test-confluent-operator   Test confluent-operator Example
 test-confluent-platform   Test confluent-platform Example
 clean                     Clean project
 ```
-
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.14.8 |
 | <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | >= 2.12.1 |
-
 ## Providers
 
 No providers.
-
 ## Modules
 
 | Name | Source | Version |
@@ -155,11 +134,9 @@ No providers.
 | <a name="module_ksqldb"></a> [ksqldb](#module\_ksqldb) | ./modules/ksqldb | n/a |
 | <a name="module_schema_registry"></a> [schema\_registry](#module\_schema\_registry) | ./modules/schema_registry | n/a |
 | <a name="module_zookeeper"></a> [zookeeper](#module\_zookeeper) | ./modules/zookeeper | n/a |
-
 ## Resources
 
 No resources.
-
 ## Inputs
 
 | Name | Description | Type | Default | Required |
@@ -172,7 +149,6 @@ No resources.
 | <a name="input_namespace"></a> [namespace](#input\_namespace) | The namespace to replease the confluent platform into. | `string` | `"confluent"` | no |
 | <a name="input_schema_registry_spec"></a> [schema\_registry\_spec](#input\_schema\_registry\_spec) | The SchemaRegistry spec. | `any` | <pre>{<br>  "image": {<br>    "application": "confluentinc/cp-schema-registry:7.2.0",<br>    "init": "confluentinc/confluent-init-container:2.4.0"<br>  },<br>  "replicas": 3<br>}</pre> | no |
 | <a name="input_zookeeper_spec"></a> [zookeeper\_spec](#input\_zookeeper\_spec) | The Zookeeper spec. | `any` | <pre>{<br>  "dataVolumeCapacity": "10Gi",<br>  "image": {<br>    "application": "confluentinc/cp-zookeeper:7.2.0",<br>    "init": "confluentinc/confluent-init-container:2.4.0"<br>  },<br>  "logVolumeCapacity": "10Gi",<br>  "replicas": 3<br>}</pre> | no |
-
 ## Outputs
 
 | Name | Description |
