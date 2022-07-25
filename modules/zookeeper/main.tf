@@ -14,6 +14,12 @@ resource "kubernetes_manifest" "zookeeper" {
     "spec" = var.spec
   }
 
+  wait {
+    fields = {
+      rollout = true
+    }
+  }
+
   timeouts {
     create = var.create_timeout
     update = var.update_timeout

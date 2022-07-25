@@ -14,6 +14,12 @@ resource "kubernetes_manifest" "schema_registry" {
     "spec" = var.spec
   }
 
+  wait {
+    fields = {
+      rollout = true
+    }
+  }
+
   timeouts {
     create = var.create_timeout
     update = var.update_timeout

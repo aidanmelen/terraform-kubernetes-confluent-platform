@@ -18,6 +18,12 @@ resource "kubernetes_manifest" "kafka_topic" {
     }
   }
 
+  wait {
+    fields = {
+      rollout = true
+    }
+  }
+
   timeouts {
     create = var.create_timeout
     update = var.update_timeout
