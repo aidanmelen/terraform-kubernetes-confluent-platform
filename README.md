@@ -1,5 +1,3 @@
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
-
 [![Pre-Commit](https://github.com/aidanmelen/terraform-kubernetes-confluent/actions/workflows/pre-commit.yaml/badge.svg)](https://github.com/aidanmelen/terraform-kubernetes-confluent/actions/workflows/pre-commit.yaml)
 [![cookiecutter-tf-module](https://img.shields.io/badge/cookiecutter--tf--module-enabled-brightgreen)](https://github.com/aidanmelen/cookiecutter-tf-module)
 
@@ -7,36 +5,41 @@
 
 A Terraform workspace for running [Confluent for Kubernetes (CFK)](https://docs.confluent.io/operator/current/overview.html).
 
+<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+
+
 ## Example
 
 ### Confluent Operator
 
 ```hcl
+# terraform_confluent_for_kubernetes/examples/confluent_operator/main.tf
 module "confluent_operator" {
-source           = "terraform-confluent-for-kubernetes/modules/confluent_operator"
-name             = "confluent-operator"
-namespace        = "confluent"
-create_namespace = true
-chart_version    = "0.517.12"
+  source           = "../../modules/confluent_operator"
+  name             = "confluent-operator"
+  namespace        = "confluent"
+  create_namespace = true
+  chart_version    = "0.517.12"
 }
 ```
 
 ### Confluent Platform
 
 ```hcl
+# terraform_confluent_for_kubernetes/examples/quickstart_deploy/confluent_platform/main.tf
 module "confluent_platform" {
-source    = "terraform-confluent-for-kubernetes"
-namespace = "confluent"
+  source    = "../../../"
+  namespace = "confluent"
 
-/*
-zookeeper_spec        = { ... }
-kafka_spec            = { ... }
-connect_spec          = { ... }
-ksqldb_spec           = { ... }
-control_center_spec   = { ... }
-schema_registry_spec  = { ... }
-kafka_rest_proxy_spec = { ... }
-*/
+  /*
+  zookeeper_spec        = { ... }
+  kafka_spec            = { ... }
+  connect_spec          = { ... }
+  ksqldb_spec           = { ... }
+  control_center_spec   = { ... }
+  schema_registry_spec  = { ... }
+  kafka_rest_proxy_spec = { ... }
+  */
 }
 ```
 

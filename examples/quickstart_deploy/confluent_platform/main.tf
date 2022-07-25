@@ -1,7 +1,7 @@
-# terraform_confluent_for_kubernetes/examples/quickstart_deploy/confluent_platform
+# terraform_confluent_for_kubernetes/examples/quickstart_deploy/confluent_platform/main.tf
 module "confluent_platform" {
   source    = "../../../"
-  namespace = var.namespace
+  namespace = "confluent"
 
   /*
   zookeeper_spec        = { ... }

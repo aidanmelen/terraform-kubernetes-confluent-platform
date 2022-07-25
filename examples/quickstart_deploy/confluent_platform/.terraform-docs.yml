@@ -1,0 +1,16 @@
+content: |-
+  {{ .Header }}
+  ## Example
+
+  ### Confluent Platform
+
+  ```hcl
+  {{ include "./main.tf" }}
+  ```
+
+  {{ .Requirements }}
+  {{ .Providers }}
+  {{ .Modules }}
+  {{ .Resources }}
+  {{ .Inputs }}
+  {{ .Outputs }}

@@ -1,35 +1,44 @@
-# confluent_operator
+# terraform-confluent-for-kubernetes/confluent_operator
 
-Deploy the confluent operator.
+Deploy the Confluent Operator.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+
+## Example
+
+### Confluent Operator
+
+```hcl
+# terraform_confluent_for_kubernetes/examples/confluent_operator/main.tf
+module "confluent_operator" {
+  source           = "../../modules/confluent_operator"
+  name             = "confluent-operator"
+  namespace        = "confluent"
+  create_namespace = true
+  chart_version    = "0.517.12"
+}
+```
+
 ## Requirements
 
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.14.8 |
 | <a name="requirement_helm"></a> [helm](#requirement\_helm) | >= 2.0.0 |
-
 ## Providers
 
 No providers.
-
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
 | <a name="module_confluent_operator"></a> [confluent\_operator](#module\_confluent\_operator) | ../../modules/confluent_operator | n/a |
-
 ## Resources
 
 No resources.
-
 ## Inputs
 
-| Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
-| <a name="input_namespace"></a> [namespace](#input\_namespace) | The kubernetes namespace for the CFK platform. | `string` | `"confluent"` | no |
-
+No inputs.
 ## Outputs
 
 | Name | Description |

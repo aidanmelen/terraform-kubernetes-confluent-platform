@@ -1,6 +1,6 @@
 output "namespace" {
   description = "The namespace for the confluent platform."
-  value       = var.namespace
+  value       = module.confluent_platform.kafka.component.manifest.metadata[0].namespace
 }
 
 output "confluent_platform" {
