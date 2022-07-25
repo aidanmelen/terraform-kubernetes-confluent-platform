@@ -40,13 +40,13 @@ module "confluent_platform" {
 
 ## Known Issues
 
-The confluent operator CRDs must be released on the kubernetes cluster before the CFK platform can be applied. Failure to due so will result in the following error:
+The confluent operator CRDs must be released on the kubernetes cluster before the confluent platform can be applied. Failure to due so will result in the following error:
 
 ```
 Error: Failed to determine GroupVersionResource for manifest
 ```
 
-This can be avoided by following [Confluent's prerequisites documentation](https://docs.confluent.io/operator/current/co-quickstart.html#prerequisites).
+This can be avoided by following the [Prerequisites](README.md#Prerequisites)
 
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
