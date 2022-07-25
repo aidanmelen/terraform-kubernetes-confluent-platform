@@ -9,11 +9,11 @@ output "chart_version" {
 }
 
 output "confluent_platform_version_compatibilities" {
-  description = "The following describes the version compatibilities among Confluent Platform and Confluent for Kubernetes (CFK)."
+  description = "The version compatibilities among Confluent Platform and Confluent for Kubernetes (CFK)."
   value       = module.confluent_operator.confluent_platform_version_compatibilities
 }
 
 output "latest_confluent_platform_version_compatibilities" {
-  description = "The following describes the latest version compatibile among Confluent Platform and Confluent for Kubernetes (CFK)."
+  description = "The latest version compatibile among Confluent Platform and Confluent for Kubernetes (CFK)."
   value       = module.confluent_operator.latest_confluent_platform_version_compatibilities
 }
