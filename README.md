@@ -5,8 +5,6 @@
 
 A Terraform workspace for running [Confluent for Kubernetes (CFK)](https://docs.confluent.io/operator/current/overview.html).
 
-Please see the [confluent-kubernetes-examples](https://github.com/confluentinc/confluent-kubernetes-examples) Github repository for more CFK examples.
-
 <!-- ## Prerequisites
 
 The confluent operator CRDs can be added from the commandline with
@@ -28,39 +26,63 @@ Please see [Deploy Applications with the Helm Provider](https://learn.hashicorp.
 
 ## Example
 
-Create a namespace, release the CFK operator, and deploy the confluent platform.
+### Confluent Operator
+
+```hcl
+module "confluent_operator" {
+  source    = "terraform-confluent-for-kubernetes/modules/confluent_operator"
+  namespace        = var.namespace
+  create_namespace = true
+  chart_version    = "0.517.12"
+}
+```
+
+### Confluent Platform
 
 ```hcl
 module "confluent_platform" {
-  source    = "terraform-confluent-for-kubernetes/modules/confluent_operator"
-  namespace = var.namespace
-}
-
-module "confluent_platform" {
-  source    = "terraform-confluent-for-kubernetes"
-  namespace = module.confluent_platform.helm_release.metadata[0].namespace
+  source = "terraform-confluent-for-kubernetes"
 }
 ```
 
-<!-- ## Known Issues
+## Usage
 
-The confluent operator CRDs must be released on the kubernetes cluster before the confluent platform can be applied. Failure to due so will result in the following error:
+The Confluent Platform must be deployed in two separate Terraform runs similiar to the [Deploy Applications with the Helm Provider](https://learn.hashicorp.com/tutorials/terraform/helm-provider?in=terraform/use-case) tutorial.
+
+1. Create the `confluent` namespace and release the `confluent-operator`:
+
+```bash
+cd examples/confluent_operator
+terraform init
+terraform apply
+```
+
+Alternatively the confluent operator CRDs can be added from the commandline with:
 
 ```
-Error: Failed to determine GroupVersionResource for manifest
+helm repo add confluentinc https://packages.confluent.io/helm
+helm repo update
 ```
 
-This can be avoided by following the [Prerequisites](README.md#Prerequisites). -->
+2. Deploy the Confluent Platform:
+
+```bash
+cd examples/quickstart_deploy/confluent_platform
+terraform init
+terraform apply
+```
 
 ## Tests
 
 1. Install [Terraform](https://www.terraform.io/) and make sure it's on your `PATH`.
 2. Install [Golang](https://golang.org/) and make sure this code is checked out into your `GOPATH`.
-3. `cd test`
-4. `go test terraform_confluent_platform_test.go -v`
+3. `go get github.com/gruntwork-io/terratest/modules/terraform
+4. `go mod init test/terraform_confluent_operator_test.go`
+5. `cd test`
+6. `go test terraform_confluent_operator_test.go -v`
+7. `go test terraform_confluent_platform_test.go -v`
 
-Or
-
+Or with the [Makefile](./Makefile)
 1. `make install`
 2. `make tests`
 
