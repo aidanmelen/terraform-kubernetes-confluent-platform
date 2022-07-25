@@ -15,7 +15,9 @@ resource "kubernetes_manifest" "connect" {
   }
 
   wait {
-    rollout = true
+    fields = {
+      "status.phase" = "RUNNING"
+    }
   }
 
   timeouts {

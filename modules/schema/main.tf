@@ -30,7 +30,9 @@ resource "kubernetes_manifest" "schema" {
   }
 
   wait {
-    rollout = true
+    fields = {
+      "status.phase" = "RUNNING"
+    }
   }
 
   timeouts {

@@ -10,9 +10,9 @@ variable "namespace" {
   default     = "confluent"
 }
 
-variable "should_create_namespace" {
+variable "create_namespace" {
   type        = bool
-  description = "Whether or not to create a kubernetes namespace."
+  description = "Create the namespace if it does not yet exist."
   default     = false
 }
 
@@ -26,6 +26,12 @@ variable "chart" {
   type        = string
   description = "Chart name to be installed. The chart name can be local path, a URL to a chart, or the name of the chart if `repository` is specified. It is also possible to use the `<repository>/<chart>` format here if you are running Terraform on a system that the repository has been added to with `helm repo add` but this is not recommended."
   default     = "confluent-for-kubernetes"
+}
+
+variable "chart_version" {
+  type        = string
+  description = "Specify the exact chart version to install. If this is not specified, the latest version is installed."
+  default     = "0.517.12"
 }
 
 variable "wait_for_jobs" {

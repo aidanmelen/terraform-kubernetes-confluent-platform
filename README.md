@@ -6,7 +6,48 @@
 
 A Terraform workspace for running [Confluent for Kubernetes (CFK)](https://docs.confluent.io/operator/current/overview.html).
 
-Please see [confluent-kubernetes-examples](https://github.com/confluentinc/confluent-kubernetes-examples) Github repository for more CFK examples.
+Please see the [confluent-kubernetes-examples](https://github.com/confluentinc/confluent-kubernetes-examples) Github repository for more CFK examples.
+
+## Prerequisites
+
+The confluent operator CRDs can be added from the commandline with
+
+```
+helm repo add confluentinc https://packages.confluent.io/helm
+helm repo update
+```
+
+or with the [confluent_operator sub-module](./modules/confluent_operator).
+
+```
+cd ./examples/confluent_operator
+terraform init
+terraform apply
+```
+
+Please see [Deploy Applications with the Helm Provider](https://learn.hashicorp.com/tutorials/terraform/helm-provider?in=terraform/use-case) and [Confluent's prerequisites documentation](https://docs.confluent.io/operator/current/co-quickstart.html#prerequisites) for more information.
+
+## Example
+
+Create a namespace, release the CFK operator, and deploy the confluent platform.
+
+```hcl
+module "confluent_platform" {
+  source    = "terraform-confluent-for-kubernetes"
+  namespace = var.namespace
+}
+```
+
+## Known Issues
+
+The confluent operator CRDs must be released on the kubernetes cluster before the CFK platform can be applied. Failure to due so will result in the following error:
+
+```
+Error: Failed to determine GroupVersionResource for manifest
+```
+
+This can be avoided by following [Confluent's prerequisites documentation](https://docs.confluent.io/operator/current/co-quickstart.html#prerequisites).
+
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
@@ -66,4 +107,4 @@ No resources.
 
 ## License
 
-Apache 2 Licensed. See [LICENSE](https://github.com/aidanmelen/terraform-aws-eks-auth/tree/master/LICENSE) for full details.
+Apache 2 Licensed. See [LICENSE](./LICENSE) for full details.

@@ -15,7 +15,9 @@ resource "kubernetes_manifest" "control_center" {
   }
 
   wait {
-    rollout = true
+    fields = {
+      "status.phase" = "RUNNING"
+    }
   }
 
   timeouts {

@@ -1,3 +1,5 @@
+- added create bool logic for optional components
+
 Implement the remaining sub-modules:
 - cluster_link
 - confluent_cluster_role_binding
@@ -11,6 +13,3 @@ Create examples:
 - [security/production-secure-deploy](https://github.com/confluentinc/confluent-kubernetes-examples/tree/master/security/production-secure-deploy)
 - [schemas](https://github.com/confluentinc/confluent-kubernetes-examples/tree/master/schemas)
 - [connectors](https://github.com/confluentinc/confluent-kubernetes-examples/tree/master/connector)
-
-# Bug:
-- fix operator and component dependency issues. might need two separate runs.
