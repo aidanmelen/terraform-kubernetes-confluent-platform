@@ -1,4 +1,4 @@
-[![Pre-Commit](https://github.com/aidanmelen/terraform-kubernetes-confluent/actions/workflows/pre-commit.yaml/badge.svg)](https://github.com/aidanmelen/terraform-kubernetes-confluent/actions/workflows/pre-commit.yaml)
+[![Pre-Commit](https://github.com/aidanmelen/terraform-confluent-for-kubernetes/actions/workflows/pre-commit.yaml/badge.svg)](https://github.com/aidanmelen/terraform-confluent-for-kubernetes/actions/workflows/pre-commit.yaml)
 [![cookiecutter-tf-module](https://img.shields.io/badge/cookiecutter--tf--module-enabled-brightgreen)](https://github.com/aidanmelen/cookiecutter-tf-module)
 
 # terraform-confluent-for-kubernetes
