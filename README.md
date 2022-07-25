@@ -32,8 +32,13 @@ Create a namespace, release the CFK operator, and deploy the confluent platform.
 
 ```hcl
 module "confluent_platform" {
-  source    = "terraform-confluent-for-kubernetes"
+  source    = "terraform-confluent-for-kubernetes/modules/confluent_operator"
   namespace = var.namespace
+}
+
+module "confluent_platform" {
+  source    = "terraform-confluent-for-kubernetes"
+  namespace = module.confluent_platform.helm_release.metadata[0].namespace
 }
 ```
 

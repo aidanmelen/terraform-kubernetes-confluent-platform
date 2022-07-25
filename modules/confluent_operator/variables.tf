@@ -6,7 +6,7 @@ variable "name" {
 
 variable "namespace" {
   type        = string
-  description = "The namespace to install the release into."
+  description = "The namespace to release the confluent operator into."
   default     = "confluent"
 }
 

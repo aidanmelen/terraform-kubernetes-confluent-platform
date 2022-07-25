@@ -1,6 +1,6 @@
 variable "namespace" {
   type        = string
-  description = "The namespace to install the release into."
+  description = "The namespace to replease the confluent platform into."
   default     = "confluent"
 }
 
