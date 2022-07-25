@@ -45,7 +45,7 @@ module "confluent_platform" {
 
 ## Usage
 
-The Confluent for Kubernetes (CFK) Custom Resource Definitions (CRDs) must be released on the kubernetes cluster before the `terraform-confluent-for-kubernetes` module is run. The CFK CRDs can be released manually sing the `helm` commandline tool.
+The Confluent for Kubernetes (CFK) Custom Resource Definitions (CRDs) must be released on the kubernetes cluster before the `terraform-confluent-for-kubernetes` module is run. The CFK CRDs can be released manually with the `helm` commandline tool.
 
 ```
 helm repo add confluentinc https://packages.confluent.io/helm
@@ -56,7 +56,7 @@ helm repo update
 
 Otherwise, the Confluent Operator and Confluent Platform can be deployed using Terraform. This deployment will require two separate Terraform workspace runs similiar to the [Deploy Applications with the Helm Provider](https://learn.hashicorp.com/tutorials/terraform/helm-provider?in=terraform/use-case) tutorial. For example:
 
-1. Apply the `confluent` namespace and release Confluent Operator into it:
+1. Apply the `confluent` namespace and release the Confluent Operator into it:
 
 ```bash
 cd examples/confluent_operator
@@ -81,7 +81,7 @@ cd examples/quickstart_deploy/confluent_platform
 terraform destroy
 ```
 
-2. Uninstall the Confluent Operator and destroy `confluent` namespace:
+2. Uninstall the Confluent Operator and destroy the `confluent` namespace:
 
 ```bash
 cd examples/confluent_operator

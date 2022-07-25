@@ -1,4 +1,5 @@
-- added create bool logic for optional components
+- add create bool logic for optional components
+- add support for annotations
 
 Implement the remaining sub-modules:
 - cluster_link
