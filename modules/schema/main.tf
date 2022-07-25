@@ -23,7 +23,7 @@ resource "kubernetes_manifest" "schema" {
     )
     "spec" = {
       "data" = {
-        "configRef" = "${var.name}-config"
+        "configRef" = kubernetes_config_map_v1.schema_config.metadata[0].name
         "format"    = var.format
       }
     }
