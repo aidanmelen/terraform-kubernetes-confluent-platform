@@ -1,6 +1,5 @@
 [![Pre-Commit](https://github.com/aidanmelen/terraform-kubernetes-confluent/actions/workflows/pre-commit.yaml/badge.svg)](https://github.com/aidanmelen/terraform-kubernetes-confluent/actions/workflows/pre-commit.yaml)
 [![cookiecutter-tf-module](https://img.shields.io/badge/cookiecutter--tf--module-enabled-brightgreen)](https://github.com/aidanmelen/cookiecutter-tf-module)
-[![StandWithUkraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/badges/StandWithUkraine.svg)](https://github.com/vshymanskyy/StandWithUkraine/blob/main/docs/README.md)
 
 # terraform-confluent-for-kubernetes
 
@@ -46,7 +45,7 @@ The confluent operator CRDs must be released on the kubernetes cluster before th
 Error: Failed to determine GroupVersionResource for manifest
 ```
 
-This can be avoided by following the [Prerequisites](README.md#Prerequisites)
+This can be avoided by following the [Prerequisites](README.md#Prerequisites)/
 
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
