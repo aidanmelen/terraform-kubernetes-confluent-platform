@@ -59,7 +59,14 @@ module "confluent_platform" {
 
 ## Usage
 
-The Confluent Platform must be deployed in two separate Terraform runs similiar to the [Deploy Applications with the Helm Provider](https://learn.hashicorp.com/tutorials/terraform/helm-provider?in=terraform/use-case) tutorial.
+The Confluent for Kubernetes (CFK) Custom Resource Definitions (CRDs) must be released on the kubernetes cluster before the `terraform-confluent-for-kubernetes` module is run. The CFK CRDs can be released using the `helm` commandline tool.
+
+```
+helm repo add confluentinc https://packages.confluent.io/helm
+helm repo update
+```
+
+The Confluent Operator and Confluent Platform can be deployed using Terraform but that will require two separate runs similiar to the [Deploy Applications with the Helm Provider](https://learn.hashicorp.com/tutorials/terraform/helm-provider?in=terraform/use-case) tutorial. For example:
 
 1. Create the `confluent` namespace and release the `confluent-operator`:
 
@@ -67,13 +74,6 @@ The Confluent Platform must be deployed in two separate Terraform runs similiar 
 cd examples/confluent_operator
 terraform init
 terraform apply
-```
-
-Alternatively the confluent operator CRDs can be added from the commandline with:
-
-```
-helm repo add confluentinc https://packages.confluent.io/helm
-helm repo update
 ```
 
 2. Deploy the Confluent Platform:
@@ -98,6 +98,20 @@ Or with the [Makefile](./Makefile)
 1. `make install`
 2. `make tests`
 
+## Makefile Targets
+
+```
+help                      This help.
+build                     Build docker dev container
+run                       Run docker dev container
+install                   Install project
+lint                      Lint with pre-commit
+lint-all                  Lint with pre-commit
+tests                     Test with Terratest
+test-confluent-operator   Test confluent-operator Example
+test-confluent-platform   Test confluent-platform Example
+clean                     Clean project
+```
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
