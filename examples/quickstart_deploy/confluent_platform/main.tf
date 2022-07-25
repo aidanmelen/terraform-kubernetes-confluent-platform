@@ -1,52 +1,33 @@
-module "confluent_operator" {
-  source                  = "../../../modules/confuent_operator"
-  namespace               = var.namespace
-  should_create_namespace = true
+terraform {
+  required_version = ">= 0.14.8"
+
+  required_providers {
+    helm = {
+      source  = "hashicorp/helm"
+      version = ">= 2.0.0"
+    }
+
+    kubernetes = {
+      source  = "hashicorp/kubernetes"
+      version = ">= 2.12.1"
+    }
+  }
 }
 
-module "zookeeper" {
-  source     = "../../../modules/zookeeper"
-  namespace  = module.confluent_operator.helm_release.namespace
-  depends_on = [module.confluent_operator]
+provider "kubernetes" {
+  config_path    = "~/.kube/config"
+  config_context = "docker-desktop"
 }
 
-module "kafka" {
-  source     = "../../../modules/kafka"
-  namespace  = module.confluent_operator.helm_release.namespace
-  depends_on = [module.zookeeper]
+provider "helm" {
+  kubernetes {
+    config_path    = "~/.kube/config"
+    config_context = "docker-desktop"
+  }
 }
 
-module "connect" {
-  source     = "../../../modules/connect"
-  namespace  = module.confluent_operator.helm_release.namespace
-  depends_on = [module.kafka]
-}
-
-module "ksqldb" {
-  source     = "../../../modules/ksqldb"
-  namespace  = module.confluent_operator.helm_release.namespace
-  depends_on = [module.kafka]
-}
-
-module "control_center" {
-  source     = "../../../modules/control_center"
-  namespace  = module.confluent_operator.helm_release.namespace
-  depends_on = [
-    module.kafka,
-    module.schema_registry,
-    module.connect,
-    module.ksqldb
-  ]
-}
-
-module "schema_registry" {
-  source     = "../../../modules/schema_registry"
-  namespace  = module.confluent_operator.helm_release.namespace
-  depends_on = [module.kafka]
-}
-
-module "kafka_rest_proxy" {
-  source     = "../../../modules/kafka_rest_proxy"
-  namespace  = module.confluent_operator.helm_release.namespace
-  depends_on = [module.kafka]
+# terraform_confluent_for_kubernetes/examples/quickstart_deploy/confluent_platform
+module "confluent_platform" {
+  source    = "../../../"
+  namespace = var.namespace
 }

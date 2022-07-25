@@ -15,9 +15,7 @@ resource "kubernetes_manifest" "kafka" {
   }
 
   wait {
-    fields = {
-      rollout = true
-    }
+    rollout = true
   }
 
   timeouts {

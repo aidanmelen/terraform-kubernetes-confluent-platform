@@ -15,9 +15,7 @@ resource "kubernetes_manifest" "zookeeper" {
   }
 
   wait {
-    fields = {
-      rollout = true
-    }
+    rollout = true
   }
 
   timeouts {

@@ -15,9 +15,7 @@ resource "kubernetes_manifest" "control_center" {
   }
 
   wait {
-    fields = {
-      rollout = true
-    }
+    rollout = true
   }
 
   timeouts {

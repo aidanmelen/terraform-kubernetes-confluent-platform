@@ -15,9 +15,7 @@ resource "kubernetes_manifest" "schema_registry" {
   }
 
   wait {
-    fields = {
-      rollout = true
-    }
+    rollout = true
   }
 
   timeouts {

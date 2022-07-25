@@ -15,9 +15,7 @@ resource "kubernetes_manifest" "kafka_rest_proxy" {
   }
 
   wait {
-    fields = {
-      rollout = true
-    }
+    rollout = true
   }
 
   timeouts {

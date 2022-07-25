@@ -15,9 +15,7 @@ resource "kubernetes_manifest" "ksqldb" {
   }
 
   wait {
-    fields = {
-      rollout = true
-    }
+    rollout = true
   }
 
   timeouts {
