@@ -4,10 +4,10 @@ content: |-
   ## Usage
 
   ```hcl
-  {{ include "examples/complete/complete.tf.docs" }}
+  {{ include "examples/quickstart_deploy/.confluent_platform.tf.docs" }}
   ```
 
-  Please see the [complete example](examples/complete) for more information.
+  Please see the [confluent_platform example](examples/quickstart_deploy/confluent_platform) for more information.
 
   {{ .Requirements }}
 
