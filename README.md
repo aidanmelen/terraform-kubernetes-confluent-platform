@@ -30,8 +30,9 @@ Please see [Deploy Applications with the Helm Provider](https://learn.hashicorp.
 
 ```hcl
 module "confluent_operator" {
-  source    = "terraform-confluent-for-kubernetes/modules/confluent_operator"
-  namespace        = var.namespace
+  source           = "terraform-confluent-for-kubernetes/modules/confluent_operator"
+  name             = "confluent-operator"
+  namespace        = "confluent"
   create_namespace = true
   chart_version    = "0.517.12"
 }
@@ -41,7 +42,18 @@ module "confluent_operator" {
 
 ```hcl
 module "confluent_platform" {
-  source = "terraform-confluent-for-kubernetes"
+  source    = "terraform-confluent-for-kubernetes"
+  namespace = "confluent"
+
+  /*
+  zookeeper_spec        = { ... }
+  kafka_spec            = { ... }
+  connect_spec          = { ... }
+  ksqldb_spec           = { ... }
+  control_center_spec   = { ... }
+  schema_registry_spec  = { ... }
+  kafka_rest_proxy_spec = { ... }
+  */
 }
 ```
 
