@@ -1,6 +1,6 @@
 module "confluent_platform" {
-  # source    = "terraform-kubernetes-confluent-platform/examples//quickstart_deploy/confluent_platform"
-  source    = "../../../"
+  # source    = "terraform-kubernetes-confluent-platform/examples//confluent_platform"
+  source    = "../../"
   namespace = "confluent"
 
   /*

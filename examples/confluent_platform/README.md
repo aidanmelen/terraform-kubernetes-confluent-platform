@@ -1,4 +1,4 @@
-# terraform-kubernetes-confluent-platform/quickstart_deploy/confluent_platform
+# terraform-kubernetes-confluent-platform/confluent_platform
 
 Deploy the Confluent Platform. Similiar to the [confluent-for-kubernetes-examples/quickstart-deploy/confluent-platform.yaml)](https://github.com/confluentinc/confluent-kubernetes-examples/blob/master/quickstart-deploy/confluent-platform.yaml)
 
@@ -10,8 +10,8 @@ Deploy the Confluent Platform. Similiar to the [confluent-for-kubernetes-example
 
 ```hcl
 module "confluent_platform" {
-  # source    = "terraform-kubernetes-confluent-platform/examples//quickstart_deploy/confluent_platform"
-  source    = "../../../"
+  # source    = "terraform-kubernetes-confluent-platform/examples//confluent_platform"
+  source    = "../../"
   namespace = "confluent"
 
   /*
@@ -40,7 +40,7 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_confluent_platform"></a> [confluent\_platform](#module\_confluent\_platform) | ../../../ | n/a |
+| <a name="module_confluent_platform"></a> [confluent\_platform](#module\_confluent\_platform) | ../../ | n/a |
 ## Resources
 
 No resources.

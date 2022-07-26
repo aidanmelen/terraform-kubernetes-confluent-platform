@@ -27,8 +27,8 @@ module "confluent_operator" {
 
 ```hcl
 module "confluent_platform" {
-  # source    = "terraform-kubernetes-confluent-platform/examples//quickstart_deploy/confluent_platform"
-  source    = "../../../"
+  # source    = "terraform-kubernetes-confluent-platform/examples//confluent_platform"
+  source    = "../../"
   namespace = "confluent"
 
   /*
@@ -67,7 +67,7 @@ terraform apply
 2. Apply the Confluent Platform:
 
 ```bash
-cd examples/quickstart_deploy/confluent_platform
+cd examples/confluent_platform
 terraform init
 terraform apply
 ```
@@ -77,7 +77,7 @@ terraform apply
 1. Destroy the Confluent Platform:
 
 ```bash
-cd examples/quickstart_deploy/confluent_platform
+cd examples/confluent_platform
 terraform destroy
 ```
 

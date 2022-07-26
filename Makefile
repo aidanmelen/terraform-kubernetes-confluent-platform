@@ -19,8 +19,8 @@ install: ## Install project
 	# terraform
 	terraform init
 	cd examples/confluent_operator && terraform init
-	cd examples/quickstart_deploy/confluent_platform && terraform init
-	cd examples/quickstart_deploy/confluent_platform_singlenode && terraform init
+	cd examples/confluent_platform && terraform init
+	cd examples/confluent_platform_singlenode && terraform init
 
 	# terratest
 	go get github.com/gruntwork-io/terratest/modules/terraform
@@ -54,13 +54,13 @@ test-confluent-platform-singlenode: ## Test confluent_platform_singlenode Exampl
 
 clean: ## Clean project
 	@rm -f .terraform.lock.hcl
-	@rm -f examples/quickstart_deploy/confluent_platform/.terraform.lock.hcl
-	@rm -f examples/quickstart_deploy/confluent_platform_singlenode/.terraform.lock.hcl
+	@rm -f examples/confluent_platform/.terraform.lock.hcl
+	@rm -f examples/confluent_platform_singlenode/.terraform.lock.hcl
 	@rm -f examples/confluent_operator/.terraform.lock.hcl
 
 	@rm -rf .terraform*
-	@rm -rf examples/quickstart_deploy/confluent_platform/.terraform
-	@rm -rf examples/quickstart_deploy/confluent_platform_singlenode/.terraform
+	@rm -rf examples/confluent_platform/.terraform
+	@rm -rf examples/confluent_platform_singlenode/.terraform
 	@rm -rf examples/confluent_operator/.terraform
 
 	@rm -f go.mod

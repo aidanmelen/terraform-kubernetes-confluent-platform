@@ -10,7 +10,7 @@ import (
 func TestTerraformConfluentPlatformSinglenodeExample(t *testing.T) {
 	terraformOptions := &terraform.Options{
 		// website::tag::1:: Set the path to the Terraform code that will be tested.
-		TerraformDir: "../examples/quickstart_deploy/confluent_platform_singlenode",
+		TerraformDir: "../examples/confluent_platform_singlenode",
 
 		// Disable colors in Terraform commands so its easier to parse stdout/stderr
 		NoColor: true,

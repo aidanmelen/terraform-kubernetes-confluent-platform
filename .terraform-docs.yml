@@ -12,7 +12,7 @@ content: |-
   ### Confluent Platform
 
   ```hcl
-  {{ include "examples/quickstart_deploy/confluent_platform/main.tf" }}
+  {{ include "examples/confluent_platform/main.tf" }}
   ```
 
   ## Usage
@@ -39,7 +39,7 @@ content: |-
   2. Apply the Confluent Platform:
 
   ```bash
-  cd examples/quickstart_deploy/confluent_platform
+  cd examples/confluent_platform
   terraform init
   terraform apply
   ```
@@ -49,7 +49,7 @@ content: |-
   1. Destroy the Confluent Platform:
 
   ```bash
-  cd examples/quickstart_deploy/confluent_platform
+  cd examples/confluent_platform
   terraform destroy
   ```
 
