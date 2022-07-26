@@ -9,8 +9,8 @@ Deploy the Confluent Platform. Similiar to the [confluent-for-kubernetes-example
 ### Confluent Platform
 
 ```hcl
-# terraform_confluent_for_kubernetes/examples/quickstart_deploy/confluent_platform/main.tf
 module "confluent_platform" {
+  # source    = "terraform-kubernetes-confluent-platform/examples//quickstart_deploy/confluent_platform"
   source    = "../../../"
   namespace = "confluent"
 

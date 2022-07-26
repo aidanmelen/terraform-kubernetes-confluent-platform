@@ -1,5 +1,5 @@
-# terraform_confluent_for_kubernetes/examples/confluent_operator/main.tf
 module "confluent_operator" {
+  # source    = "terraform-kubernetes-confluent-platform/examples//confluent_operator"
   source           = "../../modules/confluent_operator"
   name             = "confluent-operator"
   namespace        = "confluent"

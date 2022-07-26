@@ -13,8 +13,8 @@ A Terraform workspace for running [Confluent for Kubernetes (CFK)](https://docs.
 ### Confluent Operator
 
 ```hcl
-# terraform_confluent_for_kubernetes/examples/confluent_operator/main.tf
 module "confluent_operator" {
+  # source    = "terraform-kubernetes-confluent-platform/examples//confluent_operator"
   source           = "../../modules/confluent_operator"
   name             = "confluent-operator"
   namespace        = "confluent"
@@ -26,8 +26,8 @@ module "confluent_operator" {
 ### Confluent Platform
 
 ```hcl
-# terraform_confluent_for_kubernetes/examples/quickstart_deploy/confluent_platform/main.tf
 module "confluent_platform" {
+  # source    = "terraform-kubernetes-confluent-platform/examples//quickstart_deploy/confluent_platform"
   source    = "../../../"
   namespace = "confluent"
 
