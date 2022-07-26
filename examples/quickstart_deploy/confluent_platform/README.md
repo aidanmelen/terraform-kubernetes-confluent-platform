@@ -51,7 +51,6 @@ No inputs.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_confluent_platform"></a> [confluent\_platform](#output\_confluent\_platform) | The confluent platform outputs. |
 | <a name="output_connect"></a> [connect](#output\_connect) | The Connect CFK manifest. |
 | <a name="output_control_center"></a> [control\_center](#output\_control\_center) | The ControlCenter CFK manifest. |
 | <a name="output_kafka"></a> [kafka](#output\_kafka) | The Kafka CFK manifest. |

@@ -1,11 +1,6 @@
 output "namespace" {
   description = "The namespace for the confluent platform."
-  value       = module.confluent_platform.kafka.component.manifest.metadata[0].namespace
-}
-
-output "confluent_platform" {
-  description = "The confluent platform outputs."
-  value       = module.confluent_platform
+  value       = module.confluent_platform.kafka.component.manifest.metadata.namespace
 }
 
 output "zookeeper" {
