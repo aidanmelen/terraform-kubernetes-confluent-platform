@@ -1,4 +1,4 @@
-# terraform-confluent-for-kubernetes/quickstart_deploy/confluent_platform
+# terraform-kubernetes-confluent-platform/quickstart_deploy/confluent_platform
 
 Deploy the Confluent Platform. Similiar to the [confluent-for-kubernetes-examples/quickstart-deploy/confluent-platform.yaml)](https://github.com/confluentinc/confluent-kubernetes-examples/blob/master/quickstart-deploy/confluent-platform.yaml)
 

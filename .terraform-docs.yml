@@ -17,7 +17,7 @@ content: |-
 
   ## Usage
 
-  The Confluent for Kubernetes (CFK) Custom Resource Definitions (CRDs) must be released on the kubernetes cluster before the `terraform-confluent-for-kubernetes` module is run. The CFK CRDs can be released manually sing the `helm` commandline tool.
+  The Confluent for Kubernetes (CFK) Custom Resource Definitions (CRDs) must be released on the kubernetes cluster before the `terraform-kubernetes-confluent-platform` module is run. The CFK CRDs can be released manually sing the `helm` commandline tool.
 
   ```
   helm repo add confluentinc https://packages.confluent.io/helm

@@ -1,7 +1,7 @@
-[![Pre-Commit](https://github.com/aidanmelen/terraform-confluent-for-kubernetes/actions/workflows/pre-commit.yaml/badge.svg)](https://github.com/aidanmelen/terraform-confluent-for-kubernetes/actions/workflows/pre-commit.yaml)
+[![Pre-Commit](https://github.com/aidanmelen/terraform-kubernetes-confluent-platform/actions/workflows/pre-commit.yaml/badge.svg)](https://github.com/aidanmelen/terraform-kubernetes-confluent-platform/actions/workflows/pre-commit.yaml)
 [![cookiecutter-tf-module](https://img.shields.io/badge/cookiecutter--tf--module-enabled-brightgreen)](https://github.com/aidanmelen/cookiecutter-tf-module)
 
-# terraform-confluent-for-kubernetes
+# terraform-kubernetes-confluent-platform
 
 A Terraform workspace for running [Confluent for Kubernetes (CFK)](https://docs.confluent.io/operator/current/overview.html).
 
@@ -45,7 +45,7 @@ module "confluent_platform" {
 
 ## Usage
 
-The Confluent for Kubernetes (CFK) Custom Resource Definitions (CRDs) must be released on the kubernetes cluster before the `terraform-confluent-for-kubernetes` module is run. The CFK CRDs can be released manually sing the `helm` commandline tool.
+The Confluent for Kubernetes (CFK) Custom Resource Definitions (CRDs) must be released on the kubernetes cluster before the `terraform-kubernetes-confluent-platform` module is run. The CFK CRDs can be released manually sing the `helm` commandline tool.
 
 ```
 helm repo add confluentinc https://packages.confluent.io/helm

@@ -1,4 +1,4 @@
-# terraform-confluent-for-kubernetes/confluent_operator
+# terraform-kubernetes-confluent-platform/confluent_operator
 
 Deploy the Confluent Operator.
 
