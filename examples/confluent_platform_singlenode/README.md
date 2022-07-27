@@ -1,4 +1,4 @@
-# terraform-kubernetes-confluent-platform/confluent_platform_singlenode
+# confluent_platform_singlenode
 
 Deploy the Confluent Platform Single Node. Similiar to the [confluent-for-kubernetes-examples/quickstart-deploy/confluent-platform-singlenode.yaml)](https://github.com/confluentinc/confluent-kubernetes-examples/blob/master/quickstart-deploy/confluent-platform-singlenode.yaml)
 
@@ -63,9 +63,9 @@ spec:
   replicas: 1
   configOverrides:
     server:
-      - config.storage.replication.factor=1
-      - offset.storage.replication.factor=1
-      - status.storage.replication.factor=1
+      - "config.storage.replication.factor=1"
+      - "offset.storage.replication.factor=1"
+      - "status.storage.replication.factor=1"
   podTemplate:
     resources:
       requests:
@@ -112,12 +112,12 @@ spec:
   replicas: 1
   configOverrides:
     server:
-      - confluent.controlcenter.command.topic.replication=1
-      - confluent.controlcenter.replication.factor=1
-      - confluent.metrics.reporter.topic.replicas=1
-      - confluent.metrics.topic.replication=1
-      - confluent.monitoring.interceptor.topic.replication=1
-      - confluent.controlcenter.internal.topics.replication=1
+      - "confluent.controlcenter.command.topic.replication=1"
+      - "confluent.controlcenter.replication.factor=1"
+      - "confluent.metrics.reporter.topic.replicas=1"
+      - "confluent.metrics.topic.replication=1"
+      - "confluent.monitoring.interceptor.topic.replication=1"
+      - "confluent.controlcenter.internal.topics.replication=1"
   externalAccess:
     type: loadBalancer
     loadBalancer:

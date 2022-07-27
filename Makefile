@@ -47,10 +47,14 @@ test-confluent-operator: ## Test confluent_operator Example
 	go test test/terraform_confluent_operator_test.go -timeout 5m -v |& tee test/terraform_confluent_operator_test.log
 
 test-confluent-platform: ## Test confluent_platform Example
-	go test test/terraform_confluent_platform_test.go -timeout 30m -v |& tee test/terraform_confluent_platform_test.log
+	cd examples/confluent_operator && terraform init && terraform apply --auto-approve
+	go test test/terraform_confluent_platform_test.go -timeout 1h -v |& tee test/terraform_confluent_platform_test.log
+	cd examples/confluent_operator && terraform init && terraform destroy --auto-approve
 
 test-confluent-platform-singlenode: ## Test confluent_platform_singlenode Example
+	cd examples/confluent_operator && terraform init && terraform apply --auto-approve
 	go test test/terraform_confluent_platform_singlenode_test.go -timeout 20m -v |& tee test/terraform_confluent_platform_singlenode_test.log
+	cd examples/confluent_operator && terraform init && terraform destroy --auto-approve
 
 clean: ## Clean project
 	@rm -f .terraform.lock.hcl

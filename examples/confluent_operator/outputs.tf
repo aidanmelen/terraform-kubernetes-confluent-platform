@@ -13,7 +13,7 @@ output "confluent_platform_version_compatibilities" {
   value       = module.confluent_operator.confluent_platform_version_compatibilities
 }
 
-output "latest_confluent_platform_version_compatibilities" {
+output "latest_confluent_platform_version_compatibility" {
   description = "The latest version compatibile among Confluent Platform and Confluent for Kubernetes (CFK)."
-  value       = module.confluent_operator.latest_confluent_platform_version_compatibilities
+  value       = module.confluent_operator.latest_confluent_platform_version_compatibility
 }

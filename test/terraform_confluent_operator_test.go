@@ -29,7 +29,7 @@ func TestTerraformConfluentOperatorExample(t *testing.T) {
 
 	expectedAppVersion := "2.4.0"
 	expectedChartVersion := "0.517.12"
-	expectedConfluentPlatformVersionCompatibilities := []string([]string{"7.1", "7.2"})
+	expectedConfluentPlatformVersionCompatibilities := []string([]string{"7.1.0", "7.2.0"})
 
 	assert.Equal(t, expectedAppVersion, actualAppVersion, "Map %q should match %q", expectedAppVersion, actualAppVersion)
 	assert.Equal(t, expectedChartVersion, actualChartVersion, "Map %q should match %q", expectedChartVersion, actualChartVersion)

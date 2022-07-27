@@ -52,9 +52,9 @@ spec:
   replicas: 1
   configOverrides:
     server:
-      - config.storage.replication.factor=1
-      - offset.storage.replication.factor=1
-      - status.storage.replication.factor=1
+      - "config.storage.replication.factor=1"
+      - "offset.storage.replication.factor=1"
+      - "status.storage.replication.factor=1"
   podTemplate:
     resources:
       requests:
@@ -101,12 +101,12 @@ spec:
   replicas: 1
   configOverrides:
     server:
-      - confluent.controlcenter.command.topic.replication=1
-      - confluent.controlcenter.replication.factor=1
-      - confluent.metrics.reporter.topic.replicas=1
-      - confluent.metrics.topic.replication=1
-      - confluent.monitoring.interceptor.topic.replication=1
-      - confluent.controlcenter.internal.topics.replication=1
+      - "confluent.controlcenter.command.topic.replication=1"
+      - "confluent.controlcenter.replication.factor=1"
+      - "confluent.metrics.reporter.topic.replicas=1"
+      - "confluent.metrics.topic.replication=1"
+      - "confluent.monitoring.interceptor.topic.replication=1"
+      - "confluent.controlcenter.internal.topics.replication=1"
   externalAccess:
     type: loadBalancer
     loadBalancer:

@@ -207,7 +207,7 @@ clean                     Clean project
 | <a name="output_kafka_manifest"></a> [kafka\_manifest](#output\_kafka\_manifest) | The Kafka manifest. |
 | <a name="output_kafkarestproxy_manifest"></a> [kafkarestproxy\_manifest](#output\_kafkarestproxy\_manifest) | The KafkaRestProxy manifest. |
 | <a name="output_ksqldb_manifest"></a> [ksqldb\_manifest](#output\_ksqldb\_manifest) | The KsqlDB manifest. |
-| <a name="output_latest_confluent_platform_version_compatibilities"></a> [latest\_confluent\_platform\_version\_compatibilities](#output\_latest\_confluent\_platform\_version\_compatibilities) | The latest version compatibile among Confluent Platform and Confluent for Kubernetes (CFK). |
+| <a name="output_latest_confluent_platform_version_compatibility"></a> [latest\_confluent\_platform\_version\_compatibility](#output\_latest\_confluent\_platform\_version\_compatibility) | The latest version compatibile among Confluent Platform and Confluent for Kubernetes (CFK). |
 | <a name="output_namespace"></a> [namespace](#output\_namespace) | The namespace for the Confluent Platform. |
 | <a name="output_schemaregistry_manifest"></a> [schemaregistry\_manifest](#output\_schemaregistry\_manifest) | The SchemaRegistry manifest. |
 | <a name="output_zookeeper_manifest"></a> [zookeeper\_manifest](#output\_zookeeper\_manifest) | The Zookeeper manifest. |

@@ -1,10 +1,11 @@
 data "helm_template" "confluent_for_kubernetes" {
-  name         = "confluent-for-kubernetes-crds"
-  namespace    = local.namespace
-  chart        = var.chart
-  version      = var.chart_version
-  repository   = var.repository
-  include_crds = true
+  name             = "confluent-for-kubernetes-crds"
+  namespace        = local.namespace
+  create_namespace = false
+  chart            = var.chart
+  version          = var.chart_version
+  repository       = var.repository
+  include_crds     = true
 }
 
 resource "kubernetes_manifest" "crds" {

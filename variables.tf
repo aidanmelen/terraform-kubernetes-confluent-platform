@@ -1,13 +1,13 @@
-variable "namespace" {
-  type        = string
-  description = "The namespace to release the Confluent Operator and Confluent Platform into."
-  default     = "confluent"
-}
-
 variable "create_namespace" {
   type        = bool
   description = "Create the namespace if it does not yet exist."
   default     = false
+}
+
+variable "namespace" {
+  type        = string
+  description = "The namespace to release the Confluent Operator and Confluent Platform into."
+  default     = "confluent"
 }
 
 variable "namespace_annotations" {

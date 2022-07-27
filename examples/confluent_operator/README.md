@@ -1,4 +1,4 @@
-# terraform-kubernetes-confluent-platform/confluent_operator
+# confluent_operator
 
 Deploy the Confluent Operator.
 
@@ -60,5 +60,5 @@ No inputs.
 | <a name="output_app_version"></a> [app\_version](#output\_app\_version) | The CFK version. |
 | <a name="output_chart_version"></a> [chart\_version](#output\_chart\_version) | The CFK version. |
 | <a name="output_confluent_platform_version_compatibilities"></a> [confluent\_platform\_version\_compatibilities](#output\_confluent\_platform\_version\_compatibilities) | The version compatibilities among Confluent Platform and Confluent for Kubernetes (CFK). |
-| <a name="output_latest_confluent_platform_version_compatibilities"></a> [latest\_confluent\_platform\_version\_compatibilities](#output\_latest\_confluent\_platform\_version\_compatibilities) | The latest version compatibile among Confluent Platform and Confluent for Kubernetes (CFK). |
+| <a name="output_latest_confluent_platform_version_compatibility"></a> [latest\_confluent\_platform\_version\_compatibility](#output\_latest\_confluent\_platform\_version\_compatibility) | The latest version compatibile among Confluent Platform and Confluent for Kubernetes (CFK). |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
