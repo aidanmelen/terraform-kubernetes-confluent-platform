@@ -574,8 +574,8 @@ TestTerraformConfluentPlatformExample 2022-07-25T21:18:57Z logger.go:66:        
 TestTerraformConfluentPlatformExample 2022-07-25T21:18:57Z logger.go:66:         }
 TestTerraformConfluentPlatformExample 2022-07-25T21:18:57Z logger.go:66:     }
 TestTerraformConfluentPlatformExample 2022-07-25T21:18:57Z logger.go:66:
-TestTerraformConfluentPlatformExample 2022-07-25T21:18:57Z logger.go:66:   # module.confluent_platform.module.control_center.kubernetes_manifest.control_center will be created
-TestTerraformConfluentPlatformExample 2022-07-25T21:18:57Z logger.go:66:   + resource "kubernetes_manifest" "control_center" {
+TestTerraformConfluentPlatformExample 2022-07-25T21:18:57Z logger.go:66:   # module.confluent_platform.module.controlcenter.kubernetes_manifest.controlcenter will be created
+TestTerraformConfluentPlatformExample 2022-07-25T21:18:57Z logger.go:66:   + resource "kubernetes_manifest" "controlcenter" {
 TestTerraformConfluentPlatformExample 2022-07-25T21:18:57Z logger.go:66:       + computed_fields = [
 TestTerraformConfluentPlatformExample 2022-07-25T21:18:57Z logger.go:66:           + "metadata.finalizers",
 TestTerraformConfluentPlatformExample 2022-07-25T21:18:57Z logger.go:66:         ]
@@ -1754,8 +1754,8 @@ TestTerraformConfluentPlatformExample 2022-07-25T21:18:57Z logger.go:66:        
 TestTerraformConfluentPlatformExample 2022-07-25T21:18:57Z logger.go:66:         }
 TestTerraformConfluentPlatformExample 2022-07-25T21:18:57Z logger.go:66:     }
 TestTerraformConfluentPlatformExample 2022-07-25T21:18:57Z logger.go:66:
-TestTerraformConfluentPlatformExample 2022-07-25T21:18:57Z logger.go:66:   # module.confluent_platform.module.kafka_rest_proxy.kubernetes_manifest.kafka_rest_proxy will be created
-TestTerraformConfluentPlatformExample 2022-07-25T21:18:57Z logger.go:66:   + resource "kubernetes_manifest" "kafka_rest_proxy" {
+TestTerraformConfluentPlatformExample 2022-07-25T21:18:57Z logger.go:66:   # module.confluent_platform.module.kafkarestproxy.kubernetes_manifest.kafkarestproxy will be created
+TestTerraformConfluentPlatformExample 2022-07-25T21:18:57Z logger.go:66:   + resource "kubernetes_manifest" "kafkarestproxy" {
 TestTerraformConfluentPlatformExample 2022-07-25T21:18:57Z logger.go:66:       + computed_fields = [
 TestTerraformConfluentPlatformExample 2022-07-25T21:18:57Z logger.go:66:           + "metadata.finalizers",
 TestTerraformConfluentPlatformExample 2022-07-25T21:18:57Z logger.go:66:         ]
@@ -2625,8 +2625,8 @@ TestTerraformConfluentPlatformExample 2022-07-25T21:18:57Z logger.go:66:        
 TestTerraformConfluentPlatformExample 2022-07-25T21:18:57Z logger.go:66:         }
 TestTerraformConfluentPlatformExample 2022-07-25T21:18:57Z logger.go:66:     }
 TestTerraformConfluentPlatformExample 2022-07-25T21:18:57Z logger.go:66:
-TestTerraformConfluentPlatformExample 2022-07-25T21:18:57Z logger.go:66:   # module.confluent_platform.module.schema_registry.kubernetes_manifest.schema_registry will be created
-TestTerraformConfluentPlatformExample 2022-07-25T21:18:57Z logger.go:66:   + resource "kubernetes_manifest" "schema_registry" {
+TestTerraformConfluentPlatformExample 2022-07-25T21:18:57Z logger.go:66:   # module.confluent_platform.module.schemaregistry.kubernetes_manifest.schemaregistry will be created
+TestTerraformConfluentPlatformExample 2022-07-25T21:18:57Z logger.go:66:   + resource "kubernetes_manifest" "schemaregistry" {
 TestTerraformConfluentPlatformExample 2022-07-25T21:18:57Z logger.go:66:       + computed_fields = [
 TestTerraformConfluentPlatformExample 2022-07-25T21:18:57Z logger.go:66:           + "metadata.finalizers",
 TestTerraformConfluentPlatformExample 2022-07-25T21:18:57Z logger.go:66:         ]
@@ -3763,7 +3763,7 @@ TestTerraformConfluentPlatformExample 2022-07-25T21:18:58Z logger.go:66:        
 TestTerraformConfluentPlatformExample 2022-07-25T21:18:58Z logger.go:66:               + wait_for        = null
 TestTerraformConfluentPlatformExample 2022-07-25T21:18:58Z logger.go:66:             }
 TestTerraformConfluentPlatformExample 2022-07-25T21:18:58Z logger.go:66:         }
-TestTerraformConfluentPlatformExample 2022-07-25T21:18:58Z logger.go:66:       + control_center   = {
+TestTerraformConfluentPlatformExample 2022-07-25T21:18:58Z logger.go:66:       + controlcenter   = {
 TestTerraformConfluentPlatformExample 2022-07-25T21:18:58Z logger.go:66:           + component = {
 TestTerraformConfluentPlatformExample 2022-07-25T21:18:58Z logger.go:66:               + computed_fields = [
 TestTerraformConfluentPlatformExample 2022-07-25T21:18:58Z logger.go:66:                   + "metadata.finalizers",
@@ -4955,7 +4955,7 @@ TestTerraformConfluentPlatformExample 2022-07-25T21:18:58Z logger.go:66:        
 TestTerraformConfluentPlatformExample 2022-07-25T21:18:58Z logger.go:66:               + wait_for        = null
 TestTerraformConfluentPlatformExample 2022-07-25T21:18:58Z logger.go:66:             }
 TestTerraformConfluentPlatformExample 2022-07-25T21:18:58Z logger.go:66:         }
-TestTerraformConfluentPlatformExample 2022-07-25T21:18:58Z logger.go:66:       + kafka_rest_proxy = {
+TestTerraformConfluentPlatformExample 2022-07-25T21:18:58Z logger.go:66:       + kafkarestproxy = {
 TestTerraformConfluentPlatformExample 2022-07-25T21:18:58Z logger.go:66:           + component = {
 TestTerraformConfluentPlatformExample 2022-07-25T21:18:58Z logger.go:66:               + computed_fields = [
 TestTerraformConfluentPlatformExample 2022-07-25T21:18:58Z logger.go:66:                   + "metadata.finalizers",
@@ -5838,7 +5838,7 @@ TestTerraformConfluentPlatformExample 2022-07-25T21:18:58Z logger.go:66:        
 TestTerraformConfluentPlatformExample 2022-07-25T21:18:58Z logger.go:66:               + wait_for        = null
 TestTerraformConfluentPlatformExample 2022-07-25T21:18:58Z logger.go:66:             }
 TestTerraformConfluentPlatformExample 2022-07-25T21:18:58Z logger.go:66:         }
-TestTerraformConfluentPlatformExample 2022-07-25T21:18:58Z logger.go:66:       + schema_registry  = {
+TestTerraformConfluentPlatformExample 2022-07-25T21:18:58Z logger.go:66:       + schemaregistry  = {
 TestTerraformConfluentPlatformExample 2022-07-25T21:18:58Z logger.go:66:           + component = {
 TestTerraformConfluentPlatformExample 2022-07-25T21:18:58Z logger.go:66:               + computed_fields = [
 TestTerraformConfluentPlatformExample 2022-07-25T21:18:58Z logger.go:66:                   + "metadata.finalizers",
@@ -6446,49 +6446,49 @@ TestTerraformConfluentPlatformExample 2022-07-25T21:20:07Z logger.go:66: module.
 TestTerraformConfluentPlatformExample 2022-07-25T21:20:17Z logger.go:66: module.confluent_platform.module.kafka.kubernetes_manifest.kafka: Still creating... [30s elapsed]
 TestTerraformConfluentPlatformExample 2022-07-25T21:20:27Z logger.go:66: module.confluent_platform.module.kafka.kubernetes_manifest.kafka: Still creating... [40s elapsed]
 TestTerraformConfluentPlatformExample 2022-07-25T21:20:31Z logger.go:66: module.confluent_platform.module.kafka.kubernetes_manifest.kafka: Creation complete after 44s
-TestTerraformConfluentPlatformExample 2022-07-25T21:20:32Z logger.go:66: module.confluent_platform.module.schema_registry.kubernetes_manifest.schema_registry: Creating...
+TestTerraformConfluentPlatformExample 2022-07-25T21:20:32Z logger.go:66: module.confluent_platform.module.schemaregistry.kubernetes_manifest.schemaregistry: Creating...
 TestTerraformConfluentPlatformExample 2022-07-25T21:20:32Z logger.go:66: module.confluent_platform.module.connect.kubernetes_manifest.connect: Creating...
-TestTerraformConfluentPlatformExample 2022-07-25T21:20:32Z logger.go:66: module.confluent_platform.module.kafka_rest_proxy.kubernetes_manifest.kafka_rest_proxy: Creating...
+TestTerraformConfluentPlatformExample 2022-07-25T21:20:32Z logger.go:66: module.confluent_platform.module.kafkarestproxy.kubernetes_manifest.kafkarestproxy: Creating...
 TestTerraformConfluentPlatformExample 2022-07-25T21:20:32Z logger.go:66: module.confluent_platform.module.ksqldb.kubernetes_manifest.ksqldb: Creating...
-TestTerraformConfluentPlatformExample 2022-07-25T21:20:42Z logger.go:66: module.confluent_platform.module.schema_registry.kubernetes_manifest.schema_registry: Still creating... [10s elapsed]
+TestTerraformConfluentPlatformExample 2022-07-25T21:20:42Z logger.go:66: module.confluent_platform.module.schemaregistry.kubernetes_manifest.schemaregistry: Still creating... [10s elapsed]
 TestTerraformConfluentPlatformExample 2022-07-25T21:20:42Z logger.go:66: module.confluent_platform.module.connect.kubernetes_manifest.connect: Still creating... [10s elapsed]
-TestTerraformConfluentPlatformExample 2022-07-25T21:20:42Z logger.go:66: module.confluent_platform.module.kafka_rest_proxy.kubernetes_manifest.kafka_rest_proxy: Still creating... [10s elapsed]
+TestTerraformConfluentPlatformExample 2022-07-25T21:20:42Z logger.go:66: module.confluent_platform.module.kafkarestproxy.kubernetes_manifest.kafkarestproxy: Still creating... [10s elapsed]
 TestTerraformConfluentPlatformExample 2022-07-25T21:20:42Z logger.go:66: module.confluent_platform.module.ksqldb.kubernetes_manifest.ksqldb: Still creating... [10s elapsed]
-TestTerraformConfluentPlatformExample 2022-07-25T21:20:52Z logger.go:66: module.confluent_platform.module.schema_registry.kubernetes_manifest.schema_registry: Still creating... [20s elapsed]
+TestTerraformConfluentPlatformExample 2022-07-25T21:20:52Z logger.go:66: module.confluent_platform.module.schemaregistry.kubernetes_manifest.schemaregistry: Still creating... [20s elapsed]
 TestTerraformConfluentPlatformExample 2022-07-25T21:20:52Z logger.go:66: module.confluent_platform.module.connect.kubernetes_manifest.connect: Still creating... [20s elapsed]
-TestTerraformConfluentPlatformExample 2022-07-25T21:20:52Z logger.go:66: module.confluent_platform.module.kafka_rest_proxy.kubernetes_manifest.kafka_rest_proxy: Still creating... [20s elapsed]
+TestTerraformConfluentPlatformExample 2022-07-25T21:20:52Z logger.go:66: module.confluent_platform.module.kafkarestproxy.kubernetes_manifest.kafkarestproxy: Still creating... [20s elapsed]
 TestTerraformConfluentPlatformExample 2022-07-25T21:20:52Z logger.go:66: module.confluent_platform.module.ksqldb.kubernetes_manifest.ksqldb: Still creating... [20s elapsed]
-TestTerraformConfluentPlatformExample 2022-07-25T21:21:02Z logger.go:66: module.confluent_platform.module.schema_registry.kubernetes_manifest.schema_registry: Still creating... [30s elapsed]
+TestTerraformConfluentPlatformExample 2022-07-25T21:21:02Z logger.go:66: module.confluent_platform.module.schemaregistry.kubernetes_manifest.schemaregistry: Still creating... [30s elapsed]
 TestTerraformConfluentPlatformExample 2022-07-25T21:21:02Z logger.go:66: module.confluent_platform.module.connect.kubernetes_manifest.connect: Still creating... [30s elapsed]
-TestTerraformConfluentPlatformExample 2022-07-25T21:21:02Z logger.go:66: module.confluent_platform.module.kafka_rest_proxy.kubernetes_manifest.kafka_rest_proxy: Still creating... [30s elapsed]
+TestTerraformConfluentPlatformExample 2022-07-25T21:21:02Z logger.go:66: module.confluent_platform.module.kafkarestproxy.kubernetes_manifest.kafkarestproxy: Still creating... [30s elapsed]
 TestTerraformConfluentPlatformExample 2022-07-25T21:21:02Z logger.go:66: module.confluent_platform.module.ksqldb.kubernetes_manifest.ksqldb: Still creating... [30s elapsed]
-TestTerraformConfluentPlatformExample 2022-07-25T21:21:12Z logger.go:66: module.confluent_platform.module.schema_registry.kubernetes_manifest.schema_registry: Still creating... [40s elapsed]
+TestTerraformConfluentPlatformExample 2022-07-25T21:21:12Z logger.go:66: module.confluent_platform.module.schemaregistry.kubernetes_manifest.schemaregistry: Still creating... [40s elapsed]
 TestTerraformConfluentPlatformExample 2022-07-25T21:21:12Z logger.go:66: module.confluent_platform.module.connect.kubernetes_manifest.connect: Still creating... [40s elapsed]
-TestTerraformConfluentPlatformExample 2022-07-25T21:21:12Z logger.go:66: module.confluent_platform.module.kafka_rest_proxy.kubernetes_manifest.kafka_rest_proxy: Still creating... [40s elapsed]
+TestTerraformConfluentPlatformExample 2022-07-25T21:21:12Z logger.go:66: module.confluent_platform.module.kafkarestproxy.kubernetes_manifest.kafkarestproxy: Still creating... [40s elapsed]
 TestTerraformConfluentPlatformExample 2022-07-25T21:21:12Z logger.go:66: module.confluent_platform.module.ksqldb.kubernetes_manifest.ksqldb: Still creating... [40s elapsed]
-TestTerraformConfluentPlatformExample 2022-07-25T21:21:22Z logger.go:66: module.confluent_platform.module.schema_registry.kubernetes_manifest.schema_registry: Still creating... [50s elapsed]
+TestTerraformConfluentPlatformExample 2022-07-25T21:21:22Z logger.go:66: module.confluent_platform.module.schemaregistry.kubernetes_manifest.schemaregistry: Still creating... [50s elapsed]
 TestTerraformConfluentPlatformExample 2022-07-25T21:21:22Z logger.go:66: module.confluent_platform.module.connect.kubernetes_manifest.connect: Still creating... [50s elapsed]
-TestTerraformConfluentPlatformExample 2022-07-25T21:21:22Z logger.go:66: module.confluent_platform.module.kafka_rest_proxy.kubernetes_manifest.kafka_rest_proxy: Still creating... [50s elapsed]
+TestTerraformConfluentPlatformExample 2022-07-25T21:21:22Z logger.go:66: module.confluent_platform.module.kafkarestproxy.kubernetes_manifest.kafkarestproxy: Still creating... [50s elapsed]
 TestTerraformConfluentPlatformExample 2022-07-25T21:21:22Z logger.go:66: module.confluent_platform.module.ksqldb.kubernetes_manifest.ksqldb: Still creating... [50s elapsed]
-TestTerraformConfluentPlatformExample 2022-07-25T21:21:32Z logger.go:66: module.confluent_platform.module.schema_registry.kubernetes_manifest.schema_registry: Still creating... [1m0s elapsed]
+TestTerraformConfluentPlatformExample 2022-07-25T21:21:32Z logger.go:66: module.confluent_platform.module.schemaregistry.kubernetes_manifest.schemaregistry: Still creating... [1m0s elapsed]
 TestTerraformConfluentPlatformExample 2022-07-25T21:21:32Z logger.go:66: module.confluent_platform.module.connect.kubernetes_manifest.connect: Still creating... [1m0s elapsed]
-TestTerraformConfluentPlatformExample 2022-07-25T21:21:32Z logger.go:66: module.confluent_platform.module.kafka_rest_proxy.kubernetes_manifest.kafka_rest_proxy: Still creating... [1m0s elapsed]
+TestTerraformConfluentPlatformExample 2022-07-25T21:21:32Z logger.go:66: module.confluent_platform.module.kafkarestproxy.kubernetes_manifest.kafkarestproxy: Still creating... [1m0s elapsed]
 TestTerraformConfluentPlatformExample 2022-07-25T21:21:32Z logger.go:66: module.confluent_platform.module.ksqldb.kubernetes_manifest.ksqldb: Still creating... [1m0s elapsed]
-TestTerraformConfluentPlatformExample 2022-07-25T21:21:42Z logger.go:66: module.confluent_platform.module.schema_registry.kubernetes_manifest.schema_registry: Still creating... [1m10s elapsed]
+TestTerraformConfluentPlatformExample 2022-07-25T21:21:42Z logger.go:66: module.confluent_platform.module.schemaregistry.kubernetes_manifest.schemaregistry: Still creating... [1m10s elapsed]
 TestTerraformConfluentPlatformExample 2022-07-25T21:21:42Z logger.go:66: module.confluent_platform.module.connect.kubernetes_manifest.connect: Still creating... [1m10s elapsed]
-TestTerraformConfluentPlatformExample 2022-07-25T21:21:42Z logger.go:66: module.confluent_platform.module.kafka_rest_proxy.kubernetes_manifest.kafka_rest_proxy: Still creating... [1m10s elapsed]
+TestTerraformConfluentPlatformExample 2022-07-25T21:21:42Z logger.go:66: module.confluent_platform.module.kafkarestproxy.kubernetes_manifest.kafkarestproxy: Still creating... [1m10s elapsed]
 TestTerraformConfluentPlatformExample 2022-07-25T21:21:42Z logger.go:66: module.confluent_platform.module.ksqldb.kubernetes_manifest.ksqldb: Still creating... [1m10s elapsed]
-TestTerraformConfluentPlatformExample 2022-07-25T21:21:47Z logger.go:66: module.confluent_platform.module.kafka_rest_proxy.kubernetes_manifest.kafka_rest_proxy: Creation complete after 1m15s
-TestTerraformConfluentPlatformExample 2022-07-25T21:21:52Z logger.go:66: module.confluent_platform.module.schema_registry.kubernetes_manifest.schema_registry: Still creating... [1m20s elapsed]
+TestTerraformConfluentPlatformExample 2022-07-25T21:21:47Z logger.go:66: module.confluent_platform.module.kafkarestproxy.kubernetes_manifest.kafkarestproxy: Creation complete after 1m15s
+TestTerraformConfluentPlatformExample 2022-07-25T21:21:52Z logger.go:66: module.confluent_platform.module.schemaregistry.kubernetes_manifest.schemaregistry: Still creating... [1m20s elapsed]
 TestTerraformConfluentPlatformExample 2022-07-25T21:21:52Z logger.go:66: module.confluent_platform.module.connect.kubernetes_manifest.connect: Still creating... [1m20s elapsed]
 TestTerraformConfluentPlatformExample 2022-07-25T21:21:52Z logger.go:66: module.confluent_platform.module.ksqldb.kubernetes_manifest.ksqldb: Still creating... [1m20s elapsed]
 TestTerraformConfluentPlatformExample 2022-07-25T21:22:02Z logger.go:66: module.confluent_platform.module.ksqldb.kubernetes_manifest.ksqldb: Still creating... [1m31s elapsed]
-TestTerraformConfluentPlatformExample 2022-07-25T21:22:02Z logger.go:66: module.confluent_platform.module.schema_registry.kubernetes_manifest.schema_registry: Still creating... [1m31s elapsed]
+TestTerraformConfluentPlatformExample 2022-07-25T21:22:02Z logger.go:66: module.confluent_platform.module.schemaregistry.kubernetes_manifest.schemaregistry: Still creating... [1m31s elapsed]
 TestTerraformConfluentPlatformExample 2022-07-25T21:22:02Z logger.go:66: module.confluent_platform.module.connect.kubernetes_manifest.connect: Still creating... [1m31s elapsed]
 TestTerraformConfluentPlatformExample 2022-07-25T21:22:12Z logger.go:66: module.confluent_platform.module.connect.kubernetes_manifest.connect: Still creating... [1m41s elapsed]
 TestTerraformConfluentPlatformExample 2022-07-25T21:22:12Z logger.go:66: module.confluent_platform.module.ksqldb.kubernetes_manifest.ksqldb: Still creating... [1m41s elapsed]
-TestTerraformConfluentPlatformExample 2022-07-25T21:22:12Z logger.go:66: module.confluent_platform.module.schema_registry.kubernetes_manifest.schema_registry: Still creating... [1m41s elapsed]
-TestTerraformConfluentPlatformExample 2022-07-25T21:22:18Z logger.go:66: module.confluent_platform.module.schema_registry.kubernetes_manifest.schema_registry: Creation complete after 1m46s
+TestTerraformConfluentPlatformExample 2022-07-25T21:22:12Z logger.go:66: module.confluent_platform.module.schemaregistry.kubernetes_manifest.schemaregistry: Still creating... [1m41s elapsed]
+TestTerraformConfluentPlatformExample 2022-07-25T21:22:18Z logger.go:66: module.confluent_platform.module.schemaregistry.kubernetes_manifest.schemaregistry: Creation complete after 1m46s
 TestTerraformConfluentPlatformExample 2022-07-25T21:22:22Z logger.go:66: module.confluent_platform.module.ksqldb.kubernetes_manifest.ksqldb: Still creating... [1m51s elapsed]
 TestTerraformConfluentPlatformExample 2022-07-25T21:22:22Z logger.go:66: module.confluent_platform.module.connect.kubernetes_manifest.connect: Still creating... [1m51s elapsed]
 TestTerraformConfluentPlatformExample 2022-07-25T21:22:32Z logger.go:66: module.confluent_platform.module.connect.kubernetes_manifest.connect: Still creating... [2m1s elapsed]
@@ -6519,43 +6519,43 @@ TestTerraformConfluentPlatformExample 2022-07-25T21:25:22Z logger.go:66: module.
 TestTerraformConfluentPlatformExample 2022-07-25T21:25:32Z logger.go:66: module.confluent_platform.module.connect.kubernetes_manifest.connect: Still creating... [5m1s elapsed]
 TestTerraformConfluentPlatformExample 2022-07-25T21:25:42Z logger.go:66: module.confluent_platform.module.connect.kubernetes_manifest.connect: Still creating... [5m11s elapsed]
 TestTerraformConfluentPlatformExample 2022-07-25T21:25:46Z logger.go:66: module.confluent_platform.module.connect.kubernetes_manifest.connect: Creation complete after 5m14s
-TestTerraformConfluentPlatformExample 2022-07-25T21:25:50Z logger.go:66: module.confluent_platform.module.control_center.kubernetes_manifest.control_center: Creating...
-TestTerraformConfluentPlatformExample 2022-07-25T21:26:00Z logger.go:66: module.confluent_platform.module.control_center.kubernetes_manifest.control_center: Still creating... [10s elapsed]
-TestTerraformConfluentPlatformExample 2022-07-25T21:26:10Z logger.go:66: module.confluent_platform.module.control_center.kubernetes_manifest.control_center: Still creating... [20s elapsed]
-TestTerraformConfluentPlatformExample 2022-07-25T21:26:20Z logger.go:66: module.confluent_platform.module.control_center.kubernetes_manifest.control_center: Still creating... [30s elapsed]
-TestTerraformConfluentPlatformExample 2022-07-25T21:26:30Z logger.go:66: module.confluent_platform.module.control_center.kubernetes_manifest.control_center: Still creating... [40s elapsed]
-TestTerraformConfluentPlatformExample 2022-07-25T21:26:40Z logger.go:66: module.confluent_platform.module.control_center.kubernetes_manifest.control_center: Still creating... [50s elapsed]
-TestTerraformConfluentPlatformExample 2022-07-25T21:26:50Z logger.go:66: module.confluent_platform.module.control_center.kubernetes_manifest.control_center: Still creating... [1m0s elapsed]
-TestTerraformConfluentPlatformExample 2022-07-25T21:27:00Z logger.go:66: module.confluent_platform.module.control_center.kubernetes_manifest.control_center: Still creating... [1m10s elapsed]
-TestTerraformConfluentPlatformExample 2022-07-25T21:27:10Z logger.go:66: module.confluent_platform.module.control_center.kubernetes_manifest.control_center: Still creating... [1m20s elapsed]
-TestTerraformConfluentPlatformExample 2022-07-25T21:27:20Z logger.go:66: module.confluent_platform.module.control_center.kubernetes_manifest.control_center: Still creating... [1m30s elapsed]
-TestTerraformConfluentPlatformExample 2022-07-25T21:27:30Z logger.go:66: module.confluent_platform.module.control_center.kubernetes_manifest.control_center: Still creating... [1m40s elapsed]
-TestTerraformConfluentPlatformExample 2022-07-25T21:27:40Z logger.go:66: module.confluent_platform.module.control_center.kubernetes_manifest.control_center: Still creating... [1m50s elapsed]
-TestTerraformConfluentPlatformExample 2022-07-25T21:27:51Z logger.go:66: module.confluent_platform.module.control_center.kubernetes_manifest.control_center: Still creating... [2m0s elapsed]
-TestTerraformConfluentPlatformExample 2022-07-25T21:28:00Z logger.go:66: module.confluent_platform.module.control_center.kubernetes_manifest.control_center: Still creating... [2m10s elapsed]
-TestTerraformConfluentPlatformExample 2022-07-25T21:28:10Z logger.go:66: module.confluent_platform.module.control_center.kubernetes_manifest.control_center: Still creating... [2m20s elapsed]
-TestTerraformConfluentPlatformExample 2022-07-25T21:28:20Z logger.go:66: module.confluent_platform.module.control_center.kubernetes_manifest.control_center: Still creating... [2m30s elapsed]
-TestTerraformConfluentPlatformExample 2022-07-25T21:28:30Z logger.go:66: module.confluent_platform.module.control_center.kubernetes_manifest.control_center: Still creating... [2m40s elapsed]
-TestTerraformConfluentPlatformExample 2022-07-25T21:28:40Z logger.go:66: module.confluent_platform.module.control_center.kubernetes_manifest.control_center: Still creating... [2m50s elapsed]
-TestTerraformConfluentPlatformExample 2022-07-25T21:28:50Z logger.go:66: module.confluent_platform.module.control_center.kubernetes_manifest.control_center: Still creating... [3m0s elapsed]
-TestTerraformConfluentPlatformExample 2022-07-25T21:29:00Z logger.go:66: module.confluent_platform.module.control_center.kubernetes_manifest.control_center: Still creating... [3m10s elapsed]
-TestTerraformConfluentPlatformExample 2022-07-25T21:29:10Z logger.go:66: module.confluent_platform.module.control_center.kubernetes_manifest.control_center: Still creating... [3m20s elapsed]
-TestTerraformConfluentPlatformExample 2022-07-25T21:29:20Z logger.go:66: module.confluent_platform.module.control_center.kubernetes_manifest.control_center: Still creating... [3m30s elapsed]
-TestTerraformConfluentPlatformExample 2022-07-25T21:29:30Z logger.go:66: module.confluent_platform.module.control_center.kubernetes_manifest.control_center: Still creating... [3m40s elapsed]
-TestTerraformConfluentPlatformExample 2022-07-25T21:29:40Z logger.go:66: module.confluent_platform.module.control_center.kubernetes_manifest.control_center: Still creating... [3m50s elapsed]
-TestTerraformConfluentPlatformExample 2022-07-25T21:29:50Z logger.go:66: module.confluent_platform.module.control_center.kubernetes_manifest.control_center: Still creating... [4m0s elapsed]
-TestTerraformConfluentPlatformExample 2022-07-25T21:30:00Z logger.go:66: module.confluent_platform.module.control_center.kubernetes_manifest.control_center: Still creating... [4m10s elapsed]
-TestTerraformConfluentPlatformExample 2022-07-25T21:30:10Z logger.go:66: module.confluent_platform.module.control_center.kubernetes_manifest.control_center: Still creating... [4m20s elapsed]
-TestTerraformConfluentPlatformExample 2022-07-25T21:30:20Z logger.go:66: module.confluent_platform.module.control_center.kubernetes_manifest.control_center: Still creating... [4m30s elapsed]
-TestTerraformConfluentPlatformExample 2022-07-25T21:30:30Z logger.go:66: module.confluent_platform.module.control_center.kubernetes_manifest.control_center: Still creating... [4m40s elapsed]
-TestTerraformConfluentPlatformExample 2022-07-25T21:30:40Z logger.go:66: module.confluent_platform.module.control_center.kubernetes_manifest.control_center: Still creating... [4m50s elapsed]
-TestTerraformConfluentPlatformExample 2022-07-25T21:30:50Z logger.go:66: module.confluent_platform.module.control_center.kubernetes_manifest.control_center: Still creating... [5m0s elapsed]
-TestTerraformConfluentPlatformExample 2022-07-25T21:31:00Z logger.go:66: module.confluent_platform.module.control_center.kubernetes_manifest.control_center: Still creating... [5m10s elapsed]
-TestTerraformConfluentPlatformExample 2022-07-25T21:31:10Z logger.go:66: module.confluent_platform.module.control_center.kubernetes_manifest.control_center: Still creating... [5m20s elapsed]
-TestTerraformConfluentPlatformExample 2022-07-25T21:31:20Z logger.go:66: module.confluent_platform.module.control_center.kubernetes_manifest.control_center: Still creating... [5m30s elapsed]
-TestTerraformConfluentPlatformExample 2022-07-25T21:31:30Z logger.go:66: module.confluent_platform.module.control_center.kubernetes_manifest.control_center: Still creating... [5m40s elapsed]
-TestTerraformConfluentPlatformExample 2022-07-25T21:31:40Z logger.go:66: module.confluent_platform.module.control_center.kubernetes_manifest.control_center: Still creating... [5m50s elapsed]
-TestTerraformConfluentPlatformExample 2022-07-25T21:31:49Z logger.go:66: module.confluent_platform.module.control_center.kubernetes_manifest.control_center: Creation complete after 5m58s
+TestTerraformConfluentPlatformExample 2022-07-25T21:25:50Z logger.go:66: module.confluent_platform.module.controlcenter.kubernetes_manifest.controlcenter: Creating...
+TestTerraformConfluentPlatformExample 2022-07-25T21:26:00Z logger.go:66: module.confluent_platform.module.controlcenter.kubernetes_manifest.controlcenter: Still creating... [10s elapsed]
+TestTerraformConfluentPlatformExample 2022-07-25T21:26:10Z logger.go:66: module.confluent_platform.module.controlcenter.kubernetes_manifest.controlcenter: Still creating... [20s elapsed]
+TestTerraformConfluentPlatformExample 2022-07-25T21:26:20Z logger.go:66: module.confluent_platform.module.controlcenter.kubernetes_manifest.controlcenter: Still creating... [30s elapsed]
+TestTerraformConfluentPlatformExample 2022-07-25T21:26:30Z logger.go:66: module.confluent_platform.module.controlcenter.kubernetes_manifest.controlcenter: Still creating... [40s elapsed]
+TestTerraformConfluentPlatformExample 2022-07-25T21:26:40Z logger.go:66: module.confluent_platform.module.controlcenter.kubernetes_manifest.controlcenter: Still creating... [50s elapsed]
+TestTerraformConfluentPlatformExample 2022-07-25T21:26:50Z logger.go:66: module.confluent_platform.module.controlcenter.kubernetes_manifest.controlcenter: Still creating... [1m0s elapsed]
+TestTerraformConfluentPlatformExample 2022-07-25T21:27:00Z logger.go:66: module.confluent_platform.module.controlcenter.kubernetes_manifest.controlcenter: Still creating... [1m10s elapsed]
+TestTerraformConfluentPlatformExample 2022-07-25T21:27:10Z logger.go:66: module.confluent_platform.module.controlcenter.kubernetes_manifest.controlcenter: Still creating... [1m20s elapsed]
+TestTerraformConfluentPlatformExample 2022-07-25T21:27:20Z logger.go:66: module.confluent_platform.module.controlcenter.kubernetes_manifest.controlcenter: Still creating... [1m30s elapsed]
+TestTerraformConfluentPlatformExample 2022-07-25T21:27:30Z logger.go:66: module.confluent_platform.module.controlcenter.kubernetes_manifest.controlcenter: Still creating... [1m40s elapsed]
+TestTerraformConfluentPlatformExample 2022-07-25T21:27:40Z logger.go:66: module.confluent_platform.module.controlcenter.kubernetes_manifest.controlcenter: Still creating... [1m50s elapsed]
+TestTerraformConfluentPlatformExample 2022-07-25T21:27:51Z logger.go:66: module.confluent_platform.module.controlcenter.kubernetes_manifest.controlcenter: Still creating... [2m0s elapsed]
+TestTerraformConfluentPlatformExample 2022-07-25T21:28:00Z logger.go:66: module.confluent_platform.module.controlcenter.kubernetes_manifest.controlcenter: Still creating... [2m10s elapsed]
+TestTerraformConfluentPlatformExample 2022-07-25T21:28:10Z logger.go:66: module.confluent_platform.module.controlcenter.kubernetes_manifest.controlcenter: Still creating... [2m20s elapsed]
+TestTerraformConfluentPlatformExample 2022-07-25T21:28:20Z logger.go:66: module.confluent_platform.module.controlcenter.kubernetes_manifest.controlcenter: Still creating... [2m30s elapsed]
+TestTerraformConfluentPlatformExample 2022-07-25T21:28:30Z logger.go:66: module.confluent_platform.module.controlcenter.kubernetes_manifest.controlcenter: Still creating... [2m40s elapsed]
+TestTerraformConfluentPlatformExample 2022-07-25T21:28:40Z logger.go:66: module.confluent_platform.module.controlcenter.kubernetes_manifest.controlcenter: Still creating... [2m50s elapsed]
+TestTerraformConfluentPlatformExample 2022-07-25T21:28:50Z logger.go:66: module.confluent_platform.module.controlcenter.kubernetes_manifest.controlcenter: Still creating... [3m0s elapsed]
+TestTerraformConfluentPlatformExample 2022-07-25T21:29:00Z logger.go:66: module.confluent_platform.module.controlcenter.kubernetes_manifest.controlcenter: Still creating... [3m10s elapsed]
+TestTerraformConfluentPlatformExample 2022-07-25T21:29:10Z logger.go:66: module.confluent_platform.module.controlcenter.kubernetes_manifest.controlcenter: Still creating... [3m20s elapsed]
+TestTerraformConfluentPlatformExample 2022-07-25T21:29:20Z logger.go:66: module.confluent_platform.module.controlcenter.kubernetes_manifest.controlcenter: Still creating... [3m30s elapsed]
+TestTerraformConfluentPlatformExample 2022-07-25T21:29:30Z logger.go:66: module.confluent_platform.module.controlcenter.kubernetes_manifest.controlcenter: Still creating... [3m40s elapsed]
+TestTerraformConfluentPlatformExample 2022-07-25T21:29:40Z logger.go:66: module.confluent_platform.module.controlcenter.kubernetes_manifest.controlcenter: Still creating... [3m50s elapsed]
+TestTerraformConfluentPlatformExample 2022-07-25T21:29:50Z logger.go:66: module.confluent_platform.module.controlcenter.kubernetes_manifest.controlcenter: Still creating... [4m0s elapsed]
+TestTerraformConfluentPlatformExample 2022-07-25T21:30:00Z logger.go:66: module.confluent_platform.module.controlcenter.kubernetes_manifest.controlcenter: Still creating... [4m10s elapsed]
+TestTerraformConfluentPlatformExample 2022-07-25T21:30:10Z logger.go:66: module.confluent_platform.module.controlcenter.kubernetes_manifest.controlcenter: Still creating... [4m20s elapsed]
+TestTerraformConfluentPlatformExample 2022-07-25T21:30:20Z logger.go:66: module.confluent_platform.module.controlcenter.kubernetes_manifest.controlcenter: Still creating... [4m30s elapsed]
+TestTerraformConfluentPlatformExample 2022-07-25T21:30:30Z logger.go:66: module.confluent_platform.module.controlcenter.kubernetes_manifest.controlcenter: Still creating... [4m40s elapsed]
+TestTerraformConfluentPlatformExample 2022-07-25T21:30:40Z logger.go:66: module.confluent_platform.module.controlcenter.kubernetes_manifest.controlcenter: Still creating... [4m50s elapsed]
+TestTerraformConfluentPlatformExample 2022-07-25T21:30:50Z logger.go:66: module.confluent_platform.module.controlcenter.kubernetes_manifest.controlcenter: Still creating... [5m0s elapsed]
+TestTerraformConfluentPlatformExample 2022-07-25T21:31:00Z logger.go:66: module.confluent_platform.module.controlcenter.kubernetes_manifest.controlcenter: Still creating... [5m10s elapsed]
+TestTerraformConfluentPlatformExample 2022-07-25T21:31:10Z logger.go:66: module.confluent_platform.module.controlcenter.kubernetes_manifest.controlcenter: Still creating... [5m20s elapsed]
+TestTerraformConfluentPlatformExample 2022-07-25T21:31:20Z logger.go:66: module.confluent_platform.module.controlcenter.kubernetes_manifest.controlcenter: Still creating... [5m30s elapsed]
+TestTerraformConfluentPlatformExample 2022-07-25T21:31:30Z logger.go:66: module.confluent_platform.module.controlcenter.kubernetes_manifest.controlcenter: Still creating... [5m40s elapsed]
+TestTerraformConfluentPlatformExample 2022-07-25T21:31:40Z logger.go:66: module.confluent_platform.module.controlcenter.kubernetes_manifest.controlcenter: Still creating... [5m50s elapsed]
+TestTerraformConfluentPlatformExample 2022-07-25T21:31:49Z logger.go:66: module.confluent_platform.module.controlcenter.kubernetes_manifest.controlcenter: Creation complete after 5m58s
 TestTerraformConfluentPlatformExample 2022-07-25T21:31:51Z logger.go:66:
 TestTerraformConfluentPlatformExample 2022-07-25T21:31:51Z logger.go:66: Apply complete! Resources: 7 added, 0 changed, 0 destroyed.
 TestTerraformConfluentPlatformExample 2022-07-25T21:31:51Z logger.go:66:
@@ -7113,7 +7113,7 @@ TestTerraformConfluentPlatformExample 2022-07-25T21:31:52Z logger.go:66:       ]
 TestTerraformConfluentPlatformExample 2022-07-25T21:31:52Z logger.go:66:       "wait_for" = null /* object */
 TestTerraformConfluentPlatformExample 2022-07-25T21:31:52Z logger.go:66:     }
 TestTerraformConfluentPlatformExample 2022-07-25T21:31:52Z logger.go:66:   }
-TestTerraformConfluentPlatformExample 2022-07-25T21:31:52Z logger.go:66:   "control_center" = {
+TestTerraformConfluentPlatformExample 2022-07-25T21:31:52Z logger.go:66:   "controlcenter" = {
 TestTerraformConfluentPlatformExample 2022-07-25T21:31:52Z logger.go:66:     "component" = {
 TestTerraformConfluentPlatformExample 2022-07-25T21:31:52Z logger.go:66:       "computed_fields" = tolist([
 TestTerraformConfluentPlatformExample 2022-07-25T21:31:52Z logger.go:66:         "metadata.finalizers",
@@ -8305,7 +8305,7 @@ TestTerraformConfluentPlatformExample 2022-07-25T21:31:52Z logger.go:66:       ]
 TestTerraformConfluentPlatformExample 2022-07-25T21:31:52Z logger.go:66:       "wait_for" = null /* object */
 TestTerraformConfluentPlatformExample 2022-07-25T21:31:52Z logger.go:66:     }
 TestTerraformConfluentPlatformExample 2022-07-25T21:31:52Z logger.go:66:   }
-TestTerraformConfluentPlatformExample 2022-07-25T21:31:52Z logger.go:66:   "kafka_rest_proxy" = {
+TestTerraformConfluentPlatformExample 2022-07-25T21:31:52Z logger.go:66:   "kafkarestproxy" = {
 TestTerraformConfluentPlatformExample 2022-07-25T21:31:52Z logger.go:66:     "component" = {
 TestTerraformConfluentPlatformExample 2022-07-25T21:31:52Z logger.go:66:       "computed_fields" = tolist([
 TestTerraformConfluentPlatformExample 2022-07-25T21:31:52Z logger.go:66:         "metadata.finalizers",
@@ -9188,7 +9188,7 @@ TestTerraformConfluentPlatformExample 2022-07-25T21:31:52Z logger.go:66:       ]
 TestTerraformConfluentPlatformExample 2022-07-25T21:31:52Z logger.go:66:       "wait_for" = null /* object */
 TestTerraformConfluentPlatformExample 2022-07-25T21:31:52Z logger.go:66:     }
 TestTerraformConfluentPlatformExample 2022-07-25T21:31:52Z logger.go:66:   }
-TestTerraformConfluentPlatformExample 2022-07-25T21:31:52Z logger.go:66:   "schema_registry" = {
+TestTerraformConfluentPlatformExample 2022-07-25T21:31:52Z logger.go:66:   "schemaregistry" = {
 TestTerraformConfluentPlatformExample 2022-07-25T21:31:52Z logger.go:66:     "component" = {
 TestTerraformConfluentPlatformExample 2022-07-25T21:31:52Z logger.go:66:       "computed_fields" = tolist([
 TestTerraformConfluentPlatformExample 2022-07-25T21:31:52Z logger.go:66:         "metadata.finalizers",
@@ -9804,7 +9804,7 @@ TestTerraformConfluentPlatformExample 2022-07-25T21:31:52Z logger.go:66:     }
 TestTerraformConfluentPlatformExample 2022-07-25T21:31:52Z logger.go:66:     "replicas" = 1
 TestTerraformConfluentPlatformExample 2022-07-25T21:31:52Z logger.go:66:   }
 TestTerraformConfluentPlatformExample 2022-07-25T21:31:52Z logger.go:66: }
-TestTerraformConfluentPlatformExample 2022-07-25T21:31:52Z logger.go:66: control_center = {
+TestTerraformConfluentPlatformExample 2022-07-25T21:31:52Z logger.go:66: controlcenter = {
 TestTerraformConfluentPlatformExample 2022-07-25T21:31:52Z logger.go:66:   "apiVersion" = "platform.confluent.io/v1beta1"
 TestTerraformConfluentPlatformExample 2022-07-25T21:31:52Z logger.go:66:   "kind" = "ControlCenter"
 TestTerraformConfluentPlatformExample 2022-07-25T21:31:52Z logger.go:66:   "metadata" = {
@@ -9856,7 +9856,7 @@ TestTerraformConfluentPlatformExample 2022-07-25T21:31:52Z logger.go:66:     }
 TestTerraformConfluentPlatformExample 2022-07-25T21:31:52Z logger.go:66:     "replicas" = 3
 TestTerraformConfluentPlatformExample 2022-07-25T21:31:52Z logger.go:66:   }
 TestTerraformConfluentPlatformExample 2022-07-25T21:31:52Z logger.go:66: }
-TestTerraformConfluentPlatformExample 2022-07-25T21:31:52Z logger.go:66: kafka_rest_proxy = {
+TestTerraformConfluentPlatformExample 2022-07-25T21:31:52Z logger.go:66: kafkarestproxy = {
 TestTerraformConfluentPlatformExample 2022-07-25T21:31:52Z logger.go:66:   "apiVersion" = "platform.confluent.io/v1beta1"
 TestTerraformConfluentPlatformExample 2022-07-25T21:31:52Z logger.go:66:   "kind" = "KafkaRestProxy"
 TestTerraformConfluentPlatformExample 2022-07-25T21:31:52Z logger.go:66:   "metadata" = {
@@ -9893,7 +9893,7 @@ TestTerraformConfluentPlatformExample 2022-07-25T21:31:52Z logger.go:66:     "re
 TestTerraformConfluentPlatformExample 2022-07-25T21:31:52Z logger.go:66:   }
 TestTerraformConfluentPlatformExample 2022-07-25T21:31:52Z logger.go:66: }
 TestTerraformConfluentPlatformExample 2022-07-25T21:31:52Z logger.go:66: namespace = "confluent"
-TestTerraformConfluentPlatformExample 2022-07-25T21:31:52Z logger.go:66: schema_registry = {
+TestTerraformConfluentPlatformExample 2022-07-25T21:31:52Z logger.go:66: schemaregistry = {
 TestTerraformConfluentPlatformExample 2022-07-25T21:31:52Z logger.go:66:   "apiVersion" = "platform.confluent.io/v1beta1"
 TestTerraformConfluentPlatformExample 2022-07-25T21:31:52Z logger.go:66:   "kind" = "SchemaRegistry"
 TestTerraformConfluentPlatformExample 2022-07-25T21:31:52Z logger.go:66:   "metadata" = {
@@ -9937,24 +9937,24 @@ TestTerraformConfluentPlatformExample 2022-07-25T21:31:59Z logger.go:66: {"apiVe
 TestTerraformConfluentPlatformExample 2022-07-25T21:31:59Z retry.go:91: terraform [output -no-color -json ksqldb]
 TestTerraformConfluentPlatformExample 2022-07-25T21:31:59Z logger.go:66: Running command terraform with args [output -no-color -json ksqldb]
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:00Z logger.go:66: {"apiVersion":"platform.confluent.io/v1beta1","kind":"KsqlDB","metadata":{"name":"ksqldb","namespace":"confluent"},"spec":{"dataVolumeCapacity":"10Gi","image":{"application":"confluentinc/cp-ksqldb-server:7.2.0","init":"confluentinc/confluent-init-container:2.4.0"},"replicas":1}}
-TestTerraformConfluentPlatformExample 2022-07-25T21:32:00Z retry.go:91: terraform [output -no-color -json control_center]
-TestTerraformConfluentPlatformExample 2022-07-25T21:32:00Z logger.go:66: Running command terraform with args [output -no-color -json control_center]
+TestTerraformConfluentPlatformExample 2022-07-25T21:32:00Z retry.go:91: terraform [output -no-color -json controlcenter]
+TestTerraformConfluentPlatformExample 2022-07-25T21:32:00Z logger.go:66: Running command terraform with args [output -no-color -json controlcenter]
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:01Z logger.go:66: {"apiVersion":"platform.confluent.io/v1beta1","kind":"ControlCenter","metadata":{"name":"controlcenter","namespace":"confluent"},"spec":{"dataVolumeCapacity":"10Gi","dependencies":{"connect":[{"name":"connect","url":"http://connect.confluent.svc.cluster.local:8083"}],"ksqldb":[{"name":"ksqldb","url":"http://ksqldb.confluent.svc.cluster.local:8088"}],"schemaRegistry":{"url":"http://schemaregistry.confluent.svc.cluster.local:8081"}},"image":{"application":"confluentinc/cp-enterprise-control-center:7.2.0","init":"confluentinc/confluent-init-container:2.4.0"},"replicas":1}}
-TestTerraformConfluentPlatformExample 2022-07-25T21:32:01Z retry.go:91: terraform [output -no-color -json schema_registry]
-TestTerraformConfluentPlatformExample 2022-07-25T21:32:01Z logger.go:66: Running command terraform with args [output -no-color -json schema_registry]
+TestTerraformConfluentPlatformExample 2022-07-25T21:32:01Z retry.go:91: terraform [output -no-color -json schemaregistry]
+TestTerraformConfluentPlatformExample 2022-07-25T21:32:01Z logger.go:66: Running command terraform with args [output -no-color -json schemaregistry]
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:02Z logger.go:66: {"apiVersion":"platform.confluent.io/v1beta1","kind":"SchemaRegistry","metadata":{"name":"schemaregistry","namespace":"confluent"},"spec":{"image":{"application":"confluentinc/cp-schema-registry:7.2.0","init":"confluentinc/confluent-init-container:2.4.0"},"replicas":3}}
-TestTerraformConfluentPlatformExample 2022-07-25T21:32:02Z retry.go:91: terraform [output -no-color -json kafka_rest_proxy]
-TestTerraformConfluentPlatformExample 2022-07-25T21:32:02Z logger.go:66: Running command terraform with args [output -no-color -json kafka_rest_proxy]
+TestTerraformConfluentPlatformExample 2022-07-25T21:32:02Z retry.go:91: terraform [output -no-color -json kafkarestproxy]
+TestTerraformConfluentPlatformExample 2022-07-25T21:32:02Z logger.go:66: Running command terraform with args [output -no-color -json kafkarestproxy]
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:03Z logger.go:66: {"apiVersion":"platform.confluent.io/v1beta1","kind":"KafkaRestProxy","metadata":{"name":"kafkarestproxy","namespace":"confluent"},"spec":{"dependencies":{"schemaRegistry":{"url":"http://schemaregistry.confluent.svc.cluster.local:8081"}},"image":{"application":"confluentinc/cp-kafka-rest:7.2.0","init":"confluentinc/confluent-init-container:2.4.0"},"replicas":1}}
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:03Z retry.go:91: terraform [apply -input=false -auto-approve -no-color -lock=false]
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:03Z logger.go:66: Running command terraform with args [apply -input=false -auto-approve -no-color -lock=false]
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:08Z logger.go:66: module.confluent_platform.module.zookeeper.kubernetes_manifest.zookeeper: Refreshing state...
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:11Z logger.go:66: module.confluent_platform.module.kafka.kubernetes_manifest.kafka: Refreshing state...
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:16Z logger.go:66: module.confluent_platform.module.ksqldb.kubernetes_manifest.ksqldb: Refreshing state...
-TestTerraformConfluentPlatformExample 2022-07-25T21:32:16Z logger.go:66: module.confluent_platform.module.schema_registry.kubernetes_manifest.schema_registry: Refreshing state...
-TestTerraformConfluentPlatformExample 2022-07-25T21:32:16Z logger.go:66: module.confluent_platform.module.kafka_rest_proxy.kubernetes_manifest.kafka_rest_proxy: Refreshing state...
+TestTerraformConfluentPlatformExample 2022-07-25T21:32:16Z logger.go:66: module.confluent_platform.module.schemaregistry.kubernetes_manifest.schemaregistry: Refreshing state...
+TestTerraformConfluentPlatformExample 2022-07-25T21:32:16Z logger.go:66: module.confluent_platform.module.kafkarestproxy.kubernetes_manifest.kafkarestproxy: Refreshing state...
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:16Z logger.go:66: module.confluent_platform.module.connect.kubernetes_manifest.connect: Refreshing state...
-TestTerraformConfluentPlatformExample 2022-07-25T21:32:22Z logger.go:66: module.confluent_platform.module.control_center.kubernetes_manifest.control_center: Refreshing state...
+TestTerraformConfluentPlatformExample 2022-07-25T21:32:22Z logger.go:66: module.confluent_platform.module.controlcenter.kubernetes_manifest.controlcenter: Refreshing state...
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:24Z logger.go:66:
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:24Z logger.go:66: Note: Objects have changed outside of Terraform
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:24Z logger.go:66:
@@ -9978,8 +9978,8 @@ TestTerraformConfluentPlatformExample 2022-07-25T21:32:24Z logger.go:66:
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:24Z logger.go:66:         # (2 unchanged blocks hidden)
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:24Z logger.go:66:     }
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:24Z logger.go:66:
-TestTerraformConfluentPlatformExample 2022-07-25T21:32:24Z logger.go:66:   # module.confluent_platform.module.control_center.kubernetes_manifest.control_center has changed
-TestTerraformConfluentPlatformExample 2022-07-25T21:32:24Z logger.go:66:   ~ resource "kubernetes_manifest" "control_center" {
+TestTerraformConfluentPlatformExample 2022-07-25T21:32:24Z logger.go:66:   # module.confluent_platform.module.controlcenter.kubernetes_manifest.controlcenter has changed
+TestTerraformConfluentPlatformExample 2022-07-25T21:32:24Z logger.go:66:   ~ resource "kubernetes_manifest" "controlcenter" {
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:24Z logger.go:66:       ~ object          = {
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:24Z logger.go:66:           ~ metadata   = {
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:24Z logger.go:66:               ~ finalizers                 = null -> [
@@ -10016,8 +10016,8 @@ TestTerraformConfluentPlatformExample 2022-07-25T21:32:25Z logger.go:66:
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:25Z logger.go:66:         # (2 unchanged blocks hidden)
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:25Z logger.go:66:     }
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:25Z logger.go:66:
-TestTerraformConfluentPlatformExample 2022-07-25T21:32:25Z logger.go:66:   # module.confluent_platform.module.kafka_rest_proxy.kubernetes_manifest.kafka_rest_proxy has changed
-TestTerraformConfluentPlatformExample 2022-07-25T21:32:25Z logger.go:66:   ~ resource "kubernetes_manifest" "kafka_rest_proxy" {
+TestTerraformConfluentPlatformExample 2022-07-25T21:32:25Z logger.go:66:   # module.confluent_platform.module.kafkarestproxy.kubernetes_manifest.kafkarestproxy has changed
+TestTerraformConfluentPlatformExample 2022-07-25T21:32:25Z logger.go:66:   ~ resource "kubernetes_manifest" "kafkarestproxy" {
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:25Z logger.go:66:       ~ object          = {
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:25Z logger.go:66:           ~ metadata   = {
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:25Z logger.go:66:               ~ finalizers                 = null -> [
@@ -10050,8 +10050,8 @@ TestTerraformConfluentPlatformExample 2022-07-25T21:32:25Z logger.go:66:
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:25Z logger.go:66:         # (2 unchanged blocks hidden)
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:25Z logger.go:66:     }
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:25Z logger.go:66:
-TestTerraformConfluentPlatformExample 2022-07-25T21:32:25Z logger.go:66:   # module.confluent_platform.module.schema_registry.kubernetes_manifest.schema_registry has changed
-TestTerraformConfluentPlatformExample 2022-07-25T21:32:25Z logger.go:66:   ~ resource "kubernetes_manifest" "schema_registry" {
+TestTerraformConfluentPlatformExample 2022-07-25T21:32:25Z logger.go:66:   # module.confluent_platform.module.schemaregistry.kubernetes_manifest.schemaregistry has changed
+TestTerraformConfluentPlatformExample 2022-07-25T21:32:25Z logger.go:66:   ~ resource "kubernetes_manifest" "schemaregistry" {
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:25Z logger.go:66:       ~ object          = {
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:25Z logger.go:66:           ~ metadata   = {
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:25Z logger.go:66:               ~ finalizers                 = null -> [
@@ -10108,7 +10108,7 @@ TestTerraformConfluentPlatformExample 2022-07-25T21:32:25Z logger.go:66:        
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:25Z logger.go:66:                 # (6 unchanged elements hidden)
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:25Z logger.go:66:             }
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:25Z logger.go:66:         }
-TestTerraformConfluentPlatformExample 2022-07-25T21:32:25Z logger.go:66:       ~ control_center   = {
+TestTerraformConfluentPlatformExample 2022-07-25T21:32:25Z logger.go:66:       ~ controlcenter   = {
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:25Z logger.go:66:           ~ component = {
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:25Z logger.go:66:               ~ object          = {
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:25Z logger.go:66:                   ~ metadata   = {
@@ -10142,7 +10142,7 @@ TestTerraformConfluentPlatformExample 2022-07-25T21:32:25Z logger.go:66:        
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:25Z logger.go:66:                 # (6 unchanged elements hidden)
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:25Z logger.go:66:             }
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:25Z logger.go:66:         }
-TestTerraformConfluentPlatformExample 2022-07-25T21:32:25Z logger.go:66:       ~ kafka_rest_proxy = {
+TestTerraformConfluentPlatformExample 2022-07-25T21:32:25Z logger.go:66:       ~ kafkarestproxy = {
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:25Z logger.go:66:           ~ component = {
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:25Z logger.go:66:               ~ object          = {
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:25Z logger.go:66:                   ~ metadata   = {
@@ -10172,7 +10172,7 @@ TestTerraformConfluentPlatformExample 2022-07-25T21:32:25Z logger.go:66:        
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:25Z logger.go:66:                 # (6 unchanged elements hidden)
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:25Z logger.go:66:             }
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:25Z logger.go:66:         }
-TestTerraformConfluentPlatformExample 2022-07-25T21:32:25Z logger.go:66:       ~ schema_registry  = {
+TestTerraformConfluentPlatformExample 2022-07-25T21:32:25Z logger.go:66:       ~ schemaregistry  = {
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:25Z logger.go:66:           ~ component = {
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:25Z logger.go:66:               ~ object          = {
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:25Z logger.go:66:                   ~ metadata   = {
@@ -10765,7 +10765,7 @@ TestTerraformConfluentPlatformExample 2022-07-25T21:32:27Z logger.go:66:       ]
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:27Z logger.go:66:       "wait_for" = null /* object */
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:27Z logger.go:66:     }
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:27Z logger.go:66:   }
-TestTerraformConfluentPlatformExample 2022-07-25T21:32:27Z logger.go:66:   "control_center" = {
+TestTerraformConfluentPlatformExample 2022-07-25T21:32:27Z logger.go:66:   "controlcenter" = {
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:27Z logger.go:66:     "component" = {
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:27Z logger.go:66:       "computed_fields" = tolist([
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:27Z logger.go:66:         "metadata.finalizers",
@@ -11964,7 +11964,7 @@ TestTerraformConfluentPlatformExample 2022-07-25T21:32:27Z logger.go:66:       ]
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:27Z logger.go:66:       "wait_for" = null /* object */
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:27Z logger.go:66:     }
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:27Z logger.go:66:   }
-TestTerraformConfluentPlatformExample 2022-07-25T21:32:27Z logger.go:66:   "kafka_rest_proxy" = {
+TestTerraformConfluentPlatformExample 2022-07-25T21:32:27Z logger.go:66:   "kafkarestproxy" = {
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:27Z logger.go:66:     "component" = {
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:27Z logger.go:66:       "computed_fields" = tolist([
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:27Z logger.go:66:         "metadata.finalizers",
@@ -12851,7 +12851,7 @@ TestTerraformConfluentPlatformExample 2022-07-25T21:32:28Z logger.go:66:       ]
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:28Z logger.go:66:       "wait_for" = null /* object */
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:28Z logger.go:66:     }
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:28Z logger.go:66:   }
-TestTerraformConfluentPlatformExample 2022-07-25T21:32:28Z logger.go:66:   "schema_registry" = {
+TestTerraformConfluentPlatformExample 2022-07-25T21:32:28Z logger.go:66:   "schemaregistry" = {
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:28Z logger.go:66:     "component" = {
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:28Z logger.go:66:       "computed_fields" = tolist([
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:28Z logger.go:66:         "metadata.finalizers",
@@ -13471,7 +13471,7 @@ TestTerraformConfluentPlatformExample 2022-07-25T21:32:28Z logger.go:66:     }
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:28Z logger.go:66:     "replicas" = 1
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:28Z logger.go:66:   }
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:28Z logger.go:66: }
-TestTerraformConfluentPlatformExample 2022-07-25T21:32:28Z logger.go:66: control_center = {
+TestTerraformConfluentPlatformExample 2022-07-25T21:32:28Z logger.go:66: controlcenter = {
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:28Z logger.go:66:   "apiVersion" = "platform.confluent.io/v1beta1"
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:28Z logger.go:66:   "kind" = "ControlCenter"
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:28Z logger.go:66:   "metadata" = {
@@ -13523,7 +13523,7 @@ TestTerraformConfluentPlatformExample 2022-07-25T21:32:28Z logger.go:66:     }
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:28Z logger.go:66:     "replicas" = 3
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:28Z logger.go:66:   }
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:28Z logger.go:66: }
-TestTerraformConfluentPlatformExample 2022-07-25T21:32:28Z logger.go:66: kafka_rest_proxy = {
+TestTerraformConfluentPlatformExample 2022-07-25T21:32:28Z logger.go:66: kafkarestproxy = {
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:28Z logger.go:66:   "apiVersion" = "platform.confluent.io/v1beta1"
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:28Z logger.go:66:   "kind" = "KafkaRestProxy"
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:28Z logger.go:66:   "metadata" = {
@@ -13560,7 +13560,7 @@ TestTerraformConfluentPlatformExample 2022-07-25T21:32:28Z logger.go:66:     "re
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:28Z logger.go:66:   }
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:28Z logger.go:66: }
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:28Z logger.go:66: namespace = "confluent"
-TestTerraformConfluentPlatformExample 2022-07-25T21:32:28Z logger.go:66: schema_registry = {
+TestTerraformConfluentPlatformExample 2022-07-25T21:32:28Z logger.go:66: schemaregistry = {
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:28Z logger.go:66:   "apiVersion" = "platform.confluent.io/v1beta1"
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:28Z logger.go:66:   "kind" = "SchemaRegistry"
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:28Z logger.go:66:   "metadata" = {
@@ -13596,11 +13596,11 @@ TestTerraformConfluentPlatformExample 2022-07-25T21:32:28Z logger.go:66: Running
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:28Z logger.go:66: Running command terraform with args [plan -input=false -detailed-exitcode -no-color -lock=false]
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:32Z logger.go:66: module.confluent_platform.module.zookeeper.kubernetes_manifest.zookeeper: Refreshing state...
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:35Z logger.go:66: module.confluent_platform.module.kafka.kubernetes_manifest.kafka: Refreshing state...
-TestTerraformConfluentPlatformExample 2022-07-25T21:32:37Z logger.go:66: module.confluent_platform.module.schema_registry.kubernetes_manifest.schema_registry: Refreshing state...
+TestTerraformConfluentPlatformExample 2022-07-25T21:32:37Z logger.go:66: module.confluent_platform.module.schemaregistry.kubernetes_manifest.schemaregistry: Refreshing state...
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:37Z logger.go:66: module.confluent_platform.module.connect.kubernetes_manifest.connect: Refreshing state...
-TestTerraformConfluentPlatformExample 2022-07-25T21:32:37Z logger.go:66: module.confluent_platform.module.kafka_rest_proxy.kubernetes_manifest.kafka_rest_proxy: Refreshing state...
+TestTerraformConfluentPlatformExample 2022-07-25T21:32:37Z logger.go:66: module.confluent_platform.module.kafkarestproxy.kubernetes_manifest.kafkarestproxy: Refreshing state...
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:38Z logger.go:66: module.confluent_platform.module.ksqldb.kubernetes_manifest.ksqldb: Refreshing state...
-TestTerraformConfluentPlatformExample 2022-07-25T21:32:52Z logger.go:66: module.confluent_platform.module.control_center.kubernetes_manifest.control_center: Refreshing state...
+TestTerraformConfluentPlatformExample 2022-07-25T21:32:52Z logger.go:66: module.confluent_platform.module.controlcenter.kubernetes_manifest.controlcenter: Refreshing state...
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:56Z logger.go:66:
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:56Z logger.go:66: No changes. Your infrastructure matches the configuration.
 TestTerraformConfluentPlatformExample 2022-07-25T21:32:56Z logger.go:66:
@@ -13611,10 +13611,10 @@ TestTerraformConfluentPlatformExample 2022-07-25T21:32:56Z logger.go:66: Running
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:03Z logger.go:66: module.confluent_platform.module.zookeeper.kubernetes_manifest.zookeeper: Refreshing state...
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:08Z logger.go:66: module.confluent_platform.module.kafka.kubernetes_manifest.kafka: Refreshing state...
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:15Z logger.go:66: module.confluent_platform.module.ksqldb.kubernetes_manifest.ksqldb: Refreshing state...
-TestTerraformConfluentPlatformExample 2022-07-25T21:33:15Z logger.go:66: module.confluent_platform.module.schema_registry.kubernetes_manifest.schema_registry: Refreshing state...
-TestTerraformConfluentPlatformExample 2022-07-25T21:33:15Z logger.go:66: module.confluent_platform.module.kafka_rest_proxy.kubernetes_manifest.kafka_rest_proxy: Refreshing state...
+TestTerraformConfluentPlatformExample 2022-07-25T21:33:15Z logger.go:66: module.confluent_platform.module.schemaregistry.kubernetes_manifest.schemaregistry: Refreshing state...
+TestTerraformConfluentPlatformExample 2022-07-25T21:33:15Z logger.go:66: module.confluent_platform.module.kafkarestproxy.kubernetes_manifest.kafkarestproxy: Refreshing state...
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:15Z logger.go:66: module.confluent_platform.module.connect.kubernetes_manifest.connect: Refreshing state...
-TestTerraformConfluentPlatformExample 2022-07-25T21:33:23Z logger.go:66: module.confluent_platform.module.control_center.kubernetes_manifest.control_center: Refreshing state...
+TestTerraformConfluentPlatformExample 2022-07-25T21:33:23Z logger.go:66: module.confluent_platform.module.controlcenter.kubernetes_manifest.controlcenter: Refreshing state...
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:27Z logger.go:66:
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:27Z logger.go:66: Terraform used the selected providers to generate the following execution
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:27Z logger.go:66: plan. Resource actions are indicated with the following symbols:
@@ -14169,8 +14169,8 @@ TestTerraformConfluentPlatformExample 2022-07-25T21:33:27Z logger.go:66:        
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:27Z logger.go:66:         }
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:27Z logger.go:66:     }
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:27Z logger.go:66:
-TestTerraformConfluentPlatformExample 2022-07-25T21:33:27Z logger.go:66:   # module.confluent_platform.module.control_center.kubernetes_manifest.control_center will be destroyed
-TestTerraformConfluentPlatformExample 2022-07-25T21:33:27Z logger.go:66:   - resource "kubernetes_manifest" "control_center" {
+TestTerraformConfluentPlatformExample 2022-07-25T21:33:27Z logger.go:66:   # module.confluent_platform.module.controlcenter.kubernetes_manifest.controlcenter will be destroyed
+TestTerraformConfluentPlatformExample 2022-07-25T21:33:27Z logger.go:66:   - resource "kubernetes_manifest" "controlcenter" {
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:27Z logger.go:66:       - computed_fields = [
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:27Z logger.go:66:           - "metadata.finalizers",
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:27Z logger.go:66:         ] -> null
@@ -15356,8 +15356,8 @@ TestTerraformConfluentPlatformExample 2022-07-25T21:33:28Z logger.go:66:        
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:28Z logger.go:66:         }
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:28Z logger.go:66:     }
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:28Z logger.go:66:
-TestTerraformConfluentPlatformExample 2022-07-25T21:33:28Z logger.go:66:   # module.confluent_platform.module.kafka_rest_proxy.kubernetes_manifest.kafka_rest_proxy will be destroyed
-TestTerraformConfluentPlatformExample 2022-07-25T21:33:28Z logger.go:66:   - resource "kubernetes_manifest" "kafka_rest_proxy" {
+TestTerraformConfluentPlatformExample 2022-07-25T21:33:28Z logger.go:66:   # module.confluent_platform.module.kafkarestproxy.kubernetes_manifest.kafkarestproxy will be destroyed
+TestTerraformConfluentPlatformExample 2022-07-25T21:33:28Z logger.go:66:   - resource "kubernetes_manifest" "kafkarestproxy" {
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:28Z logger.go:66:       - computed_fields = [
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:28Z logger.go:66:           - "metadata.finalizers",
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:28Z logger.go:66:         ] -> null
@@ -16231,8 +16231,8 @@ TestTerraformConfluentPlatformExample 2022-07-25T21:33:28Z logger.go:66:        
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:28Z logger.go:66:         }
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:28Z logger.go:66:     }
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:28Z logger.go:66:
-TestTerraformConfluentPlatformExample 2022-07-25T21:33:28Z logger.go:66:   # module.confluent_platform.module.schema_registry.kubernetes_manifest.schema_registry will be destroyed
-TestTerraformConfluentPlatformExample 2022-07-25T21:33:28Z logger.go:66:   - resource "kubernetes_manifest" "schema_registry" {
+TestTerraformConfluentPlatformExample 2022-07-25T21:33:28Z logger.go:66:   # module.confluent_platform.module.schemaregistry.kubernetes_manifest.schemaregistry will be destroyed
+TestTerraformConfluentPlatformExample 2022-07-25T21:33:28Z logger.go:66:   - resource "kubernetes_manifest" "schemaregistry" {
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:28Z logger.go:66:       - computed_fields = [
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:28Z logger.go:66:           - "metadata.finalizers",
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:28Z logger.go:66:         ] -> null
@@ -17375,7 +17375,7 @@ TestTerraformConfluentPlatformExample 2022-07-25T21:33:29Z logger.go:66:        
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:29Z logger.go:66:               - wait_for        = null
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:29Z logger.go:66:             }
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:29Z logger.go:66:         }
-TestTerraformConfluentPlatformExample 2022-07-25T21:33:29Z logger.go:66:       - control_center   = {
+TestTerraformConfluentPlatformExample 2022-07-25T21:33:29Z logger.go:66:       - controlcenter   = {
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:29Z logger.go:66:           - component = {
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:29Z logger.go:66:               - computed_fields = [
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:29Z logger.go:66:                   - "metadata.finalizers",
@@ -18574,7 +18574,7 @@ TestTerraformConfluentPlatformExample 2022-07-25T21:33:29Z logger.go:66:        
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:29Z logger.go:66:               - wait_for        = null
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:29Z logger.go:66:             }
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:29Z logger.go:66:         }
-TestTerraformConfluentPlatformExample 2022-07-25T21:33:29Z logger.go:66:       - kafka_rest_proxy = {
+TestTerraformConfluentPlatformExample 2022-07-25T21:33:29Z logger.go:66:       - kafkarestproxy = {
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:29Z logger.go:66:           - component = {
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:29Z logger.go:66:               - computed_fields = [
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:29Z logger.go:66:                   - "metadata.finalizers",
@@ -19461,7 +19461,7 @@ TestTerraformConfluentPlatformExample 2022-07-25T21:33:29Z logger.go:66:        
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:29Z logger.go:66:               - wait_for        = null
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:29Z logger.go:66:             }
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:29Z logger.go:66:         }
-TestTerraformConfluentPlatformExample 2022-07-25T21:33:29Z logger.go:66:       - schema_registry  = {
+TestTerraformConfluentPlatformExample 2022-07-25T21:33:29Z logger.go:66:       - schemaregistry  = {
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:29Z logger.go:66:           - component = {
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:29Z logger.go:66:               - computed_fields = [
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:29Z logger.go:66:                   - "metadata.finalizers",
@@ -20081,7 +20081,7 @@ TestTerraformConfluentPlatformExample 2022-07-25T21:33:29Z logger.go:66:        
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:29Z logger.go:66:           - replicas     = 1
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:29Z logger.go:66:         }
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:29Z logger.go:66:     } -> null
-TestTerraformConfluentPlatformExample 2022-07-25T21:33:29Z logger.go:66:   - control_center     = {
+TestTerraformConfluentPlatformExample 2022-07-25T21:33:29Z logger.go:66:   - controlcenter     = {
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:29Z logger.go:66:       - apiVersion = "platform.confluent.io/v1beta1"
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:29Z logger.go:66:       - kind       = "ControlCenter"
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:29Z logger.go:66:       - metadata   = {
@@ -20133,7 +20133,7 @@ TestTerraformConfluentPlatformExample 2022-07-25T21:33:30Z logger.go:66:        
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:30Z logger.go:66:           - replicas           = 3
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:30Z logger.go:66:         }
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:30Z logger.go:66:     } -> null
-TestTerraformConfluentPlatformExample 2022-07-25T21:33:30Z logger.go:66:   - kafka_rest_proxy   = {
+TestTerraformConfluentPlatformExample 2022-07-25T21:33:30Z logger.go:66:   - kafkarestproxy   = {
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:30Z logger.go:66:       - apiVersion = "platform.confluent.io/v1beta1"
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:30Z logger.go:66:       - kind       = "KafkaRestProxy"
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:30Z logger.go:66:       - metadata   = {
@@ -20170,7 +20170,7 @@ TestTerraformConfluentPlatformExample 2022-07-25T21:33:30Z logger.go:66:        
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:30Z logger.go:66:         }
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:30Z logger.go:66:     } -> null
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:30Z logger.go:66:   - namespace          = "confluent" -> null
-TestTerraformConfluentPlatformExample 2022-07-25T21:33:30Z logger.go:66:   - schema_registry    = {
+TestTerraformConfluentPlatformExample 2022-07-25T21:33:30Z logger.go:66:   - schemaregistry    = {
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:30Z logger.go:66:       - apiVersion = "platform.confluent.io/v1beta1"
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:30Z logger.go:66:       - kind       = "SchemaRegistry"
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:30Z logger.go:66:       - metadata   = {
@@ -20202,15 +20202,15 @@ TestTerraformConfluentPlatformExample 2022-07-25T21:33:30Z logger.go:66:        
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:30Z logger.go:66:           - replicas           = 3
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:30Z logger.go:66:         }
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:30Z logger.go:66:     } -> null
-TestTerraformConfluentPlatformExample 2022-07-25T21:33:33Z logger.go:66: module.confluent_platform.module.kafka_rest_proxy.kubernetes_manifest.kafka_rest_proxy: Destroying...
-TestTerraformConfluentPlatformExample 2022-07-25T21:33:34Z logger.go:66: module.confluent_platform.module.control_center.kubernetes_manifest.control_center: Destroying...
-TestTerraformConfluentPlatformExample 2022-07-25T21:33:35Z logger.go:66: module.confluent_platform.module.kafka_rest_proxy.kubernetes_manifest.kafka_rest_proxy: Destruction complete after 1s
-TestTerraformConfluentPlatformExample 2022-07-25T21:33:37Z logger.go:66: module.confluent_platform.module.control_center.kubernetes_manifest.control_center: Destruction complete after 4s
+TestTerraformConfluentPlatformExample 2022-07-25T21:33:33Z logger.go:66: module.confluent_platform.module.kafkarestproxy.kubernetes_manifest.kafkarestproxy: Destroying...
+TestTerraformConfluentPlatformExample 2022-07-25T21:33:34Z logger.go:66: module.confluent_platform.module.controlcenter.kubernetes_manifest.controlcenter: Destroying...
+TestTerraformConfluentPlatformExample 2022-07-25T21:33:35Z logger.go:66: module.confluent_platform.module.kafkarestproxy.kubernetes_manifest.kafkarestproxy: Destruction complete after 1s
+TestTerraformConfluentPlatformExample 2022-07-25T21:33:37Z logger.go:66: module.confluent_platform.module.controlcenter.kubernetes_manifest.controlcenter: Destruction complete after 4s
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:41Z logger.go:66: module.confluent_platform.module.ksqldb.kubernetes_manifest.ksqldb: Destroying...
-TestTerraformConfluentPlatformExample 2022-07-25T21:33:41Z logger.go:66: module.confluent_platform.module.schema_registry.kubernetes_manifest.schema_registry: Destroying...
+TestTerraformConfluentPlatformExample 2022-07-25T21:33:41Z logger.go:66: module.confluent_platform.module.schemaregistry.kubernetes_manifest.schemaregistry: Destroying...
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:42Z logger.go:66: module.confluent_platform.module.connect.kubernetes_manifest.connect: Destroying...
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:42Z logger.go:66: module.confluent_platform.module.ksqldb.kubernetes_manifest.ksqldb: Destruction complete after 2s
-TestTerraformConfluentPlatformExample 2022-07-25T21:33:44Z logger.go:66: module.confluent_platform.module.schema_registry.kubernetes_manifest.schema_registry: Destruction complete after 4s
+TestTerraformConfluentPlatformExample 2022-07-25T21:33:44Z logger.go:66: module.confluent_platform.module.schemaregistry.kubernetes_manifest.schemaregistry: Destruction complete after 4s
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:44Z logger.go:66: module.confluent_platform.module.connect.kubernetes_manifest.connect: Destruction complete after 3s
 TestTerraformConfluentPlatformExample 2022-07-25T21:33:53Z logger.go:66: module.confluent_platform.module.kafka.kubernetes_manifest.kafka: Destroying...
 TestTerraformConfluentPlatformExample 2022-07-25T21:34:03Z logger.go:66: module.confluent_platform.module.kafka.kubernetes_manifest.kafka: Still destroying... [10s elapsed]

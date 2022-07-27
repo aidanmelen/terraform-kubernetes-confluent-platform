@@ -1,124 +1,143 @@
 variable "namespace" {
   type        = string
-  description = "The namespace to replease the confluent platform into."
+  description = "The namespace to release the Confluent Operator and Confluent Platform into."
   default     = "confluent"
 }
 
-variable "zookeeper_spec" {
-  type        = any
-  description = "The Zookeeper spec."
-  default = {
-    "dataVolumeCapacity" = "10Gi"
-    "image" = {
-      "application" = "confluentinc/cp-zookeeper:7.2.0"
-      "init"        = "confluentinc/confluent-init-container:2.4.0"
-    }
-    "logVolumeCapacity" = "10Gi"
-    "replicas"          = 3
-  }
+variable "create_namespace" {
+  type        = bool
+  description = "Create the namespace if it does not yet exist."
+  default     = false
 }
 
-variable "kafka_spec" {
+variable "namespace_annotations" {
   type        = any
-  description = "The Kafka spec."
-  default = {
-    "dataVolumeCapacity" = "10Gi"
-    "image" = {
-      "application" = "confluentinc/cp-server:7.2.0"
-      "init"        = "confluentinc/confluent-init-container:2.4.0"
-    }
-    "metricReporter" = {
-      "enabled" = true
-    }
-    "replicas" = 3
-  }
+  description = "The namespace annotations."
+  default     = null
 }
 
-variable "connect_spec" {
+variable "namespace_labels" {
   type        = any
-  description = "The Connect spec."
-  default = {
-    "dependencies" = {
-      "kafka" = {
-        "bootstrapEndpoint" = "kafka:9071"
-      }
-    }
-    "image" = {
-      "application" = "confluentinc/cp-server-connect:7.2.0"
-      "init"        = "confluentinc/confluent-init-container:2.4.0"
-    }
-    "replicas" = 1
-  }
+  description = "The namespace labels."
+  default     = null
 }
 
-variable "ksqldb_spec" {
-  type        = any
-  description = "The KsqlDB spec."
-  default = {
-    "dataVolumeCapacity" = "10Gi"
-    "image" = {
-      "application" = "confluentinc/cp-ksqldb-server:7.2.0"
-      "init"        = "confluentinc/confluent-init-container:2.4.0"
-    }
-    "replicas" = 1
-  }
+variable "create_confluent_operator" {
+  type        = bool
+  description = "Whether to create the Confluent Operator."
+  default     = false
 }
 
-variable "control_center_spec" {
-  type        = any
-  description = "The ControlCenter spec."
-  default = {
-    "dataVolumeCapacity" = "10Gi"
-    "dependencies" = {
-      "connect" = [
-        {
-          "name" = "connect"
-          "url"  = "http://connect.confluent.svc.cluster.local:8083"
-        },
-      ]
-      "ksqldb" = [
-        {
-          "name" = "ksqldb"
-          "url"  = "http://ksqldb.confluent.svc.cluster.local:8088"
-        },
-      ]
-      "schemaRegistry" = {
-        "url" = "http://schemaregistry.confluent.svc.cluster.local:8081"
-      }
-    }
-    "image" = {
-      "application" = "confluentinc/cp-enterprise-control-center:7.2.0"
-      "init"        = "confluentinc/confluent-init-container:2.4.0"
-    }
-    "replicas" = 1
-  }
+variable "confluent_operator_name" {
+  type        = string
+  description = "The name for the confluent operator."
+  default     = "confluent-operator"
 }
 
-variable "schema_registry_spec" {
-  type        = any
-  description = "The SchemaRegistry spec."
-  default = {
-    "image" = {
-      "application" = "confluentinc/cp-schema-registry:7.2.0"
-      "init"        = "confluentinc/confluent-init-container:2.4.0"
-    }
-    "replicas" = 3
-  }
+variable "confluent_operator_repository" {
+  type        = string
+  description = "Repository URL where to locate the requested chart."
+  default     = "https://packages.confluent.io/helm"
 }
 
-variable "kafka_rest_proxy_spec" {
+variable "confluent_operator_chart" {
+  type        = string
+  description = "Chart name to be installed. The chart name can be local path, a URL to a chart, or the name of the chart if `repository` is specified. It is also possible to use the `<repository>/<chart>` format here if you are running Terraform on a system that the repository has been added to with `helm repo add` but this is not recommended."
+  default     = "confluent-for-kubernetes"
+}
+
+variable "confluent_operator_chart_version" {
+  type        = string
+  description = "Specify the exact chart version to install. If this is not specified, the latest version is installed."
+  default     = null
+}
+
+variable "confluent_operator_wait_for_jobs" {
+  type        = bool
+  description = "If wait is enabled, will wait until all Jobs have been completed before marking the release as successful. It will wait for as long as `timeout`."
+  default     = true
+}
+
+variable "create_zookeeper" {
+  type        = bool
+  description = "Whether to create the Zookeeper component of the Confluent Platform."
+  default     = true
+}
+
+variable "zookeeper" {
   type        = any
-  description = "The KafkaRestProxy spec."
-  default = {
-    "dependencies" = {
-      "schemaRegistry" = {
-        "url" = "http://schemaregistry.confluent.svc.cluster.local:8081"
-      }
-    }
-    "image" = {
-      "application" = "confluentinc/cp-kafka-rest:7.2.0"
-      "init"        = "confluentinc/confluent-init-container:2.4.0"
-    }
-    "replicas" = 1
-  }
+  description = "The Zookeeper mainfest overrides."
+  default     = null
+}
+
+variable "create_kafka" {
+  type        = bool
+  description = "Whether to create the Kafka component of the Confluent Platform."
+  default     = true
+}
+
+variable "kafka" {
+  type        = any
+  description = "The Kafka mainfest overrides."
+  default     = null
+}
+
+variable "create_connect" {
+  type        = bool
+  description = "Whether to create the Connect component of the Confluent Platform."
+  default     = true
+}
+
+variable "connect" {
+  type        = any
+  description = "The Connect mainfest overrides."
+  default     = null
+}
+
+variable "create_ksqldb" {
+  type        = bool
+  description = "Whether to create the KsqlDB component of the Confluent Platform."
+  default     = true
+}
+
+variable "ksqldb" {
+  type        = any
+  description = "The KsqlDB mainfest overrides."
+  default     = null
+}
+
+variable "create_controlcenter" {
+  type        = bool
+  description = "Whether to create the ControlCenter component of the Confluent Platform."
+  default     = true
+}
+
+variable "controlcenter" {
+  type        = any
+  description = "The ControlCenter mainfest overrides."
+  default     = null
+}
+
+variable "create_schemaregistry" {
+  type        = bool
+  description = "Whether to create the SchemaRegistry component of the Confluent Platform."
+  default     = true
+}
+
+variable "schemaregistry" {
+  type        = any
+  description = "The SchemaRegistry mainfest overrides."
+  default     = null
+}
+
+variable "create_kafkarestproxy" {
+  type        = bool
+  description = "Whether to create the KafkaRestProxy component of the Confluent Platform."
+  default     = true
+}
+
+variable "kafkarestproxy" {
+  type        = any
+  description = "The KafkaRestProxy mainfest overrides."
+  default     = null
 }

@@ -27,9 +27,9 @@ func TestTerraformConfluentPlatformExample(t *testing.T) {
 	actualKafka := terraform.OutputMapOfObjects(t, terraformOptions, "kafka")
 	actualConnect := terraform.OutputMapOfObjects(t, terraformOptions, "connect")
 	actualKsqlDB := terraform.OutputMapOfObjects(t, terraformOptions, "ksqldb")
-	actualControlCenter := terraform.OutputMapOfObjects(t, terraformOptions, "control_center")
-	actualSchemaRegistry := terraform.OutputMapOfObjects(t, terraformOptions, "schema_registry")
-	actualKafkaRestProxy := terraform.OutputMapOfObjects(t, terraformOptions, "kafka_rest_proxy")
+	actualControlCenter := terraform.OutputMapOfObjects(t, terraformOptions, "controlcenter")
+	actualSchemaRegistry := terraform.OutputMapOfObjects(t, terraformOptions, "schemaregistry")
+	actualKafkaRestProxy := terraform.OutputMapOfObjects(t, terraformOptions, "kafkarestproxy")
 
 	expectedZookeeper := map[string]interface{}(map[string]interface{}{"apiVersion": "platform.confluent.io/v1beta1", "kind": "Zookeeper", "metadata": map[string]interface{}{"name": "zookeeper", "namespace": "confluent"}, "spec": map[string]interface{}{"dataVolumeCapacity": "10Gi", "image": map[string]interface{}{"application": "confluentinc/cp-zookeeper:7.2.0", "init": "confluentinc/confluent-init-container:2.4.0"}, "logVolumeCapacity": "10Gi", "replicas": 3}})
 	expectedKafka := map[string]interface{}(map[string]interface{}{"apiVersion": "platform.confluent.io/v1beta1", "kind": "Kafka", "metadata": map[string]interface{}{"name": "kafka", "namespace": "confluent"}, "spec": map[string]interface{}{"dataVolumeCapacity": "10Gi", "image": map[string]interface{}{"application": "confluentinc/cp-server:7.2.0", "init": "confluentinc/confluent-init-container:2.4.0"}, "metricReporter": map[string]interface{}{"enabled": true}, "replicas": 3}})

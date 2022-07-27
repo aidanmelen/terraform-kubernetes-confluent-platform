@@ -1,15 +1,15 @@
+# https://github.com/aidanmelen/terraform-kubernetes-confluent-platform/tree/main/examples/confluent_platform_singlenode
 module "confluent_platform" {
-  # source    = "terraform-kubernetes-confluent-platform/examples//confluent_platform"
   source    = "../../"
   namespace = "confluent"
 
   /*
-  zookeeper_spec        = { ... }
-  kafka_spec            = { ... }
-  connect_spec          = { ... }
-  ksqldb_spec           = { ... }
-  control_center_spec   = { ... }
-  schema_registry_spec  = { ... }
-  kafka_rest_proxy_spec = { ... }
+  zookeeper      = { ... }
+  kafka          = { ... }
+  connect        = { ... }
+  ksqldb         = { ... }
+  controlcenter  = { ... }
+  schemaregistry = { ... }
+  kafkarestproxy = { ... }
   */
 }

@@ -1,39 +1,39 @@
 output "namespace" {
-  description = "The namespace for the confluent platform."
-  value       = module.confluent_platform.kafka.component.manifest.metadata.namespace
+  description = "The namespace for the Confluent Platform."
+  value       = module.confluent_platform.namespace
 }
 
 output "zookeeper" {
   description = "The Zookeeper CFK manifest."
-  value       = module.confluent_platform.zookeeper.component.manifest
+  value       = module.confluent_platform.zookeeper_manifest
 }
 
 output "kafka" {
   description = "The Kafka CFK manifest."
-  value       = module.confluent_platform.kafka.component.manifest
+  value       = module.confluent_platform.kafka_manifest
 }
 
 output "connect" {
   description = "The Connect CFK manifest."
-  value       = module.confluent_platform.connect.component.manifest
+  value       = module.confluent_platform.connect_manifest
 }
 
 output "ksqldb" {
   description = "The KsqlDB CFK manifest."
-  value       = module.confluent_platform.ksqldb.component.manifest
+  value       = module.confluent_platform.ksqldb_manifest
 }
 
-output "control_center" {
+output "controlcenter" {
   description = "The ControlCenter CFK manifest."
-  value       = module.confluent_platform.control_center.component.manifest
+  value       = module.confluent_platform.controlcenter_manifest
 }
 
-output "schema_registry" {
+output "schemaregistry" {
   description = "The SchemaRegistry CFK manifest."
-  value       = module.confluent_platform.schema_registry.component.manifest
+  value       = module.confluent_platform.schemaregistry_manifest
 }
 
-output "kafka_rest_proxy" {
+output "kafkarestproxy" {
   description = "The KafkaRestProxy CFK manifest."
-  value       = module.confluent_platform.kafka_rest_proxy.component.manifest
+  value       = module.confluent_platform.kafkarestproxy_manifest
 }

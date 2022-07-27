@@ -1,11 +1,11 @@
 output "app_version" {
   description = "The CFK version."
-  value       = module.confluent_operator.helm_release.metadata[0].app_version
+  value       = module.confluent_operator.app_version
 }
 
 output "chart_version" {
   description = "The CFK version."
-  value       = module.confluent_operator.helm_release.metadata[0].version
+  value       = module.confluent_operator.chart_version
 }
 
 output "confluent_platform_version_compatibilities" {

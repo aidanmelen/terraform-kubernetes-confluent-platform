@@ -1,3 +1,20 @@
+# MAKE TERMINAL BETTER
+alias mv='mv -iv'
+alias mkdir='mkdir -pv'
+alias l='ls'
+alias ll='ls -FGlAhp'
+cd() { builtin cd "$@"; ls; }
+alias cd..='cd ../'
+alias ..='cd ../'
+alias ...='cd ../../'
+alias .3='cd ../../../'
+alias .4='cd ../../../../'
+alias .5='cd ../../../../../'
+alias .6='cd ../../../../../../'
+alias ~="cd ~"
+alias c='clear'
+alias his='history'
+
 # TERRAFORM
 alias tf='terraform'
 alias tfv='terrform validate'

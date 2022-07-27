@@ -55,9 +55,9 @@ RUN curl -sSL -o /usr/bin/kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/
  && curl -sS https://webinstall.dev/k9s | bash
 
 # Helm
-# RUN curl -sSL -o /tmp/helm.tar.gz https://get.helm.sh/helm-${HELM_VERSION}-linux-amd64.tar.gz \
-#  && tar -zxf /tmp/helm.tar.gz \
-#  && mv /tmp/linux-amd64/helm /usr/local/bin/helm
+RUN curl -fsSL -o /tmp/get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 \
+ && chmod 700 /tmp/get_helm.sh \
+ && ./tmp/get_helm.sh
 
 # Dotfiles
 COPY .aliases /root/.aliases
