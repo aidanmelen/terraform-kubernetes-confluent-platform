@@ -22,6 +22,12 @@ variable "namespace_labels" {
   default     = null
 }
 
+variable "name" {
+  type        = string
+  description = "The name for the Confluent Operator."
+  default     = "confluent-operator"
+}
+
 variable "repository" {
   type        = string
   description = "Repository URL where to locate the requested chart."
@@ -38,4 +44,10 @@ variable "chart_version" {
   type        = string
   description = "Specify the exact chart version to install. If this is not specified, the latest version is installed."
   default     = null
+}
+
+variable "wait_for_jobs" {
+  type        = bool
+  description = "If wait is enabled, will wait until all Jobs have been completed before marking the release as successful. It will wait for as long as `timeout`."
+  default     = true
 }

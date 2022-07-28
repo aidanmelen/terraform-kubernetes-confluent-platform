@@ -1,61 +1,19 @@
-variable "create_namespace" {
-  type        = bool
-  description = "Create the namespace if it does not yet exist."
-  default     = false
-}
-
 variable "namespace" {
   type        = string
-  description = "The namespace to release the Confluent Operator and Confluent Platform into."
+  description = "The namespace to release Confluent Platform into. Must be the same namespace running the Confluent Operator."
   default     = "confluent"
 }
 
-variable "namespace_annotations" {
-  type        = any
-  description = "The namespace annotations."
-  default     = null
-}
-
-variable "namespace_labels" {
-  type        = any
-  description = "The namespace labels."
-  default     = null
-}
-
-variable "create_confluent_operator" {
-  type        = bool
-  description = "Whether to create the Confluent Operator."
-  default     = false
-}
-
-variable "confluent_operator_name" {
+variable "confluent_operator_app_version" {
   type        = string
-  description = "The name for the confluent operator."
-  default     = "confluent-operator"
+  description = "The default Confluent Operator app version. This version may be overriden by component override values. This version must be compatible with the confluent operator app version. For more information, please visit: https://docs.confluent.io/platform/current/installation/versions-interoperability.html#confluent-operator"
+  default     = "2.4.0"
 }
 
-variable "confluent_operator_repository" {
+variable "confluent_platform_version" {
   type        = string
-  description = "Repository URL where to locate the requested chart."
-  default     = "https://packages.confluent.io/helm"
-}
-
-variable "confluent_operator_chart" {
-  type        = string
-  description = "Chart name to be installed. The chart name can be local path, a URL to a chart, or the name of the chart if `repository` is specified. It is also possible to use the `<repository>/<chart>` format here if you are running Terraform on a system that the repository has been added to with `helm repo add` but this is not recommended."
-  default     = "confluent-for-kubernetes"
-}
-
-variable "confluent_operator_chart_version" {
-  type        = string
-  description = "Specify the exact chart version to install. If this is not specified, the latest version is installed."
-  default     = null
-}
-
-variable "confluent_operator_wait_for_jobs" {
-  type        = bool
-  description = "If wait is enabled, will wait until all Jobs have been completed before marking the release as successful. It will wait for as long as `timeout`."
-  default     = true
+  description = "The default Confluent Platform app version. This version may be overriden by component override values. This version must be compatible with the confluent operator app version. For more information, please visit: https://docs.confluent.io/platform/current/installation/versions-interoperability.html#confluent-operator"
+  default     = "7.2.0"
 }
 
 variable "create_zookeeper" {
@@ -66,7 +24,7 @@ variable "create_zookeeper" {
 
 variable "zookeeper" {
   type        = any
-  description = "The Zookeeper mainfest overrides."
+  description = "The Zookeeper override values."
   default     = null
 }
 
@@ -78,7 +36,7 @@ variable "create_kafka" {
 
 variable "kafka" {
   type        = any
-  description = "The Kafka mainfest overrides."
+  description = "The Kafka override values."
   default     = null
 }
 
@@ -90,7 +48,7 @@ variable "create_connect" {
 
 variable "connect" {
   type        = any
-  description = "The Connect mainfest overrides."
+  description = "The Connect override values."
   default     = null
 }
 
@@ -102,7 +60,7 @@ variable "create_ksqldb" {
 
 variable "ksqldb" {
   type        = any
-  description = "The KsqlDB mainfest overrides."
+  description = "The KsqlDB override values."
   default     = null
 }
 
@@ -114,7 +72,7 @@ variable "create_controlcenter" {
 
 variable "controlcenter" {
   type        = any
-  description = "The ControlCenter mainfest overrides."
+  description = "The ControlCenter override values."
   default     = null
 }
 
@@ -126,7 +84,7 @@ variable "create_schemaregistry" {
 
 variable "schemaregistry" {
   type        = any
-  description = "The SchemaRegistry mainfest overrides."
+  description = "The SchemaRegistry override values."
   default     = null
 }
 
@@ -138,6 +96,6 @@ variable "create_kafkarestproxy" {
 
 variable "kafkarestproxy" {
   type        = any
-  description = "The KafkaRestProxy mainfest overrides."
+  description = "The KafkaRestProxy override values."
   default     = null
 }

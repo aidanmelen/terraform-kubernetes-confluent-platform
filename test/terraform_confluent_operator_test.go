@@ -23,18 +23,11 @@ func TestTerraformConfluentOperatorExample(t *testing.T) {
 	terraform.InitAndApply(t, terraformOptions)
 
 	// website::tag::3:: Run `terraform output` to get the values of output variables and check they have the expected values.
-	actualAppVersion := terraform.Output(t, terraformOptions, "app_version")
-	actualChartVersion := terraform.Output(t, terraformOptions, "chart_version")
-	actualConfluentPlatformVersionCompatibilities := terraform.OutputList(t, terraformOptions, "confluent_platform_version_compatibilities")
+	actualAppVersion := terraform.Output(t, terraformOptions, "confluent_operator")
 
-	expectedAppVersion := "2.4.0"
-	expectedChartVersion := "0.517.12"
-	expectedConfluentPlatformVersionCompatibilities := []string([]string{"7.1.0", "7.2.0"})
+	expectedAppVersion := "map[app_version:2.4.0 chart_version:0.517.12 namespace:confluent]"
 
 	assert.Equal(t, expectedAppVersion, actualAppVersion, "Map %q should match %q", expectedAppVersion, actualAppVersion)
-	assert.Equal(t, expectedChartVersion, actualChartVersion, "Map %q should match %q", expectedChartVersion, actualChartVersion)
-	assert.Equal(t, expectedConfluentPlatformVersionCompatibilities, actualConfluentPlatformVersionCompatibilities, "Map %q should match %q",
-		expectedConfluentPlatformVersionCompatibilities, actualConfluentPlatformVersionCompatibilities)
 
 	// website::tag::4:: Run a second "terraform apply". Fail the test if results have changes
 	terraform.ApplyAndIdempotent(t, terraformOptions)

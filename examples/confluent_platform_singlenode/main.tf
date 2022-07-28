@@ -1,4 +1,4 @@
-# https://github.com/aidanmelen/terraform-kubernetes-confluent-platform/tree/main/examples/confluent_platform
+# https://github.com/aidanmelen/terraform-kubernetes-confluent-platform/tree/main/examples/confluent_platform_single_node
 module "confluent_platform_singlenode" {
   source    = "../../"
   namespace = "confluent"

@@ -1,26 +1,11 @@
 output "namespace" {
-  description = "The namespace for the Confluent Platform."
-  value       = local.namespace
+  description = "The default namespace for the Confluent Platform."
+  value       = var.namespace
 }
 
-output "app_version" {
-  description = "The CFK version."
-  value       = try(local.cfk_app_version, null)
-}
-
-output "chart_version" {
-  description = "The CFK version."
-  value       = try(helm_release.confluent_operator[0].metadata[0].version, null)
-}
-
-output "confluent_platform_version_compatibilities" {
-  description = "The version compatibilities among Confluent Platform and Confluent for Kubernetes (CFK)."
-  value       = local.confluent_platform_version_compatibilities
-}
-
-output "latest_confluent_platform_version_compatibility" {
-  description = "The latest version compatibile among Confluent Platform and Confluent for Kubernetes (CFK)."
-  value       = local.latest_confluent_platform_version_compatibility
+output "confluent_platform_version" {
+  description = "The default Confluent Platform version."
+  value       = var.confluent_platform_version
 }
 
 output "zookeeper_manifest" {

@@ -17,18 +17,13 @@ content: |-
 
   ## Usage
 
-  The Confluent for Kubernetes (CFK) Custom Resource Definitions (CRDs) must be released on the kubernetes cluster before the `terraform-kubernetes-confluent-platform` module is run. The CFK CRDs can be released manually sing the `helm` commandline tool.
-
-  ```
-  helm repo add confluentinc https://packages.confluent.io/helm
-  helm repo update
-  ```
+  Confluent for Kubernetes (CFK) must be released on the Kubernetes cluster before the `terraform-kubernetes-confluent-platform` module is run. Please see the [Confluent for Kubernetes Quickstart](https://docs.confluent.io/operator/current/co-quickstart.html#co-long-quickstart) for more information.
 
   ---
 
-  Otherwise, the Confluent Operator and Confluent Platform can be deployed using Terraform. This deployment will require two separate Terraform workspace runs similiar to the [Deploy Applications with the Helm Provider](https://learn.hashicorp.com/tutorials/terraform/helm-provider?in=terraform/use-case) tutorial. For example:
+  The Confluent Operator and Confluent Platform can be deployed using Terraform. Similiar to the [Deploy Applications with the Helm Provider](https://learn.hashicorp.com/tutorials/terraform/helm-provider?in=terraform/use-case) tutorial; this deployment will require two separate Terraform workspace runs. For example:
 
-  1. Apply the `confluent` namespace and release Confluent Operator into it:
+  1. Create the `confluent` namespace and release Confluent Operator into it:
 
   ```bash
   cd examples/confluent_operator
@@ -53,25 +48,17 @@ content: |-
   terraform destroy
   ```
 
-  2. Uninstall the Confluent Operator and destroy `confluent` namespace:
+  2. Uninstall the Confluent Operator and delete `confluent` namespace:
 
   ```bash
   cd examples/confluent_operator
   terraform destroy
   ```
 
-
   ## Tests
 
-  1. Install [Terraform](https://www.terraform.io/) and make sure it's on your `PATH`.
-  2. Install [Golang](https://golang.org/) and make sure this code is checked out into your `GOPATH`.
-  3. `go get github.com/gruntwork-io/terratest/modules/terraform
-  4. `go mod init test/terraform_confluent_operator_test.go`
-  5. `cd test`
-  6. `go test terraform_confluent_operator_test.go -v`
-  7. `go test terraform_confluent_platform_test.go -v`
+  Run Terratest using the [Makefile](./Makefile) targets:
 
-  Or with the [Makefile](./Makefile)
   1. `make install`
   2. `make tests`
 

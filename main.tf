@@ -3,20 +3,18 @@
 # https://github.com/confluentinc/confluent-kubernetes-examples/blob/master/quickstart-deploy/confluent-platform.yaml
 #####################################################################################################################
 locals {
-  namespace = var.create_namespace ? kubernetes_namespace_v1.namespace[0].metadata[0].name : var.namespace
-
   default_zookeeper = yamldecode(
     <<EOF
 apiVersion: platform.confluent.io/v1beta1
 kind: Zookeeper
 metadata:
   name: zookeeper
-  namespace: ${local.namespace}
+  namespace: ${var.namespace}
 spec:
   replicas: 3
   image:
-    application: confluentinc/cp-zookeeper:${local.latest_confluent_platform_version_compatibility}
-    init: confluentinc/confluent-init-container:${local.cfk_app_version}
+    application: confluentinc/cp-zookeeper:${var.confluent_platform_version}
+    init: confluentinc/confluent-init-container:${var.confluent_operator_app_version}
   dataVolumeCapacity: 10Gi
   logVolumeCapacity: 10Gi
   EOF
@@ -28,12 +26,12 @@ apiVersion: platform.confluent.io/v1beta1
 kind: Kafka
 metadata:
   name: kafka
-  namespace: ${local.namespace}
+  namespace: ${var.namespace}
 spec:
   replicas: 3
   image:
-    application: confluentinc/cp-server:${local.latest_confluent_platform_version_compatibility}
-    init: confluentinc/confluent-init-container:${local.cfk_app_version}
+    application: confluentinc/cp-server:${var.confluent_platform_version}
+    init: confluentinc/confluent-init-container:${var.confluent_operator_app_version}
   dataVolumeCapacity: 10Gi
   metricReporter:
     enabled: true
@@ -46,12 +44,12 @@ apiVersion: platform.confluent.io/v1beta1
 kind: Connect
 metadata:
   name: connect
-  namespace: ${local.namespace}
+  namespace: ${var.namespace}
 spec:
   replicas: 1
   image:
-    application: confluentinc/cp-server-connect:${local.latest_confluent_platform_version_compatibility}
-    init: confluentinc/confluent-init-container:${local.cfk_app_version}
+    application: confluentinc/cp-server-connect:${var.confluent_platform_version}
+    init: confluentinc/confluent-init-container:${var.confluent_operator_app_version}
   dependencies:
     kafka:
       bootstrapEndpoint: kafka:9071
@@ -64,12 +62,12 @@ apiVersion: platform.confluent.io/v1beta1
 kind: KsqlDB
 metadata:
   name: ksqldb
-  namespace: ${local.namespace}
+  namespace: ${var.namespace}
 spec:
   replicas: 1
   image:
-    application: confluentinc/cp-ksqldb-server:${local.latest_confluent_platform_version_compatibility}
-    init: confluentinc/confluent-init-container:${local.cfk_app_version}
+    application: confluentinc/cp-ksqldb-server:${var.confluent_platform_version}
+    init: confluentinc/confluent-init-container:${var.confluent_operator_app_version}
   dataVolumeCapacity: 10Gi
   EOF
   )
@@ -80,12 +78,12 @@ apiVersion: platform.confluent.io/v1beta1
 kind: ControlCenter
 metadata:
   name: controlcenter
-  namespace: ${local.namespace}
+  namespace: ${var.namespace}
 spec:
   replicas: 1
   image:
-    application: confluentinc/cp-enterprise-control-center:${local.latest_confluent_platform_version_compatibility}
-    init: confluentinc/confluent-init-container:${local.cfk_app_version}
+    application: confluentinc/cp-enterprise-control-center:${var.confluent_platform_version}
+    init: confluentinc/confluent-init-container:${var.confluent_operator_app_version}
   dataVolumeCapacity: 10Gi
   dependencies:
     schemaRegistry:
@@ -105,12 +103,12 @@ apiVersion: platform.confluent.io/v1beta1
 kind: SchemaRegistry
 metadata:
   name: schemaregistry
-  namespace: ${local.namespace}
+  namespace: ${var.namespace}
 spec:
   replicas: 3
   image:
-    application: confluentinc/cp-schema-registry:${local.latest_confluent_platform_version_compatibility}
-    init: confluentinc/confluent-init-container:${local.cfk_app_version}
+    application: confluentinc/cp-schema-registry:${var.confluent_platform_version}
+    init: confluentinc/confluent-init-container:${var.confluent_operator_app_version}
   EOF
   )
 
@@ -120,12 +118,12 @@ apiVersion: platform.confluent.io/v1beta1
 kind: KafkaRestProxy
 metadata:
   name: kafkarestproxy
-  namespace: ${local.namespace}
+  namespace: ${var.namespace}
 spec:
   replicas: 1
   image:
-    application: confluentinc/cp-kafka-rest:${local.latest_confluent_platform_version_compatibility}
-    init: confluentinc/confluent-init-container:${local.cfk_app_version}
+    application: confluentinc/cp-kafka-rest:${var.confluent_platform_version}
+    init: confluentinc/confluent-init-container:${var.confluent_operator_app_version}
   dependencies:
     schemaRegistry:
       url: http://schemaregistry.confluent.svc.cluster.local:8081
