@@ -3,7 +3,7 @@ content: |-
   ## Example
 
   ```hcl
-  {{ include "./main.tf" }}
+  {{ include "../../examples/confluent_operator/main.tf" }}
   ```
 
   {{ .Requirements }}

@@ -6,8 +6,6 @@ Deploy the Confluent Platform. Similiar to the [confluent-for-kubernetes-example
 
 ## Example
 
-### Confluent Platform
-
 ```hcl
 # https://github.com/aidanmelen/terraform-kubernetes-confluent-platform/tree/main/examples/confluent_platform
 module "confluent_platform" {

@@ -3,6 +3,21 @@
 Deploy the Confluent Operator.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+
+## Example
+
+```hcl
+# https://github.com/aidanmelen/terraform-kubernetes-confluent-platform/tree/main/examples/confluent_operator
+module "confluent_operator" {
+  source = "../../modules/confluent_operator"
+
+  create_namespace = true
+  namespace        = "confluent"
+  name             = "confluent-operator"
+  chart_version    = "0.517.12"
+}
+```
+
 ## Requirements
 
 | Name | Version |
@@ -10,25 +25,21 @@ Deploy the Confluent Operator.
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.14.8 |
 | <a name="requirement_helm"></a> [helm](#requirement\_helm) | >= 2.0.0 |
 | <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | >= 2.12.1 |
-
 ## Providers
 
 | Name | Version |
 |------|---------|
 | <a name="provider_helm"></a> [helm](#provider\_helm) | >= 2.0.0 |
 | <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | >= 2.12.1 |
-
 ## Modules
 
 No modules.
-
 ## Resources
 
 | Name | Type |
 |------|------|
 | [helm_release.confluent_operator](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
 | [kubernetes_namespace_v1.namespace](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/namespace_v1) | resource |
-
 ## Inputs
 
 | Name | Description | Type | Default | Required |
@@ -42,7 +53,6 @@ No modules.
 | <a name="input_namespace_labels"></a> [namespace\_labels](#input\_namespace\_labels) | The namespace labels. | `any` | `null` | no |
 | <a name="input_repository"></a> [repository](#input\_repository) | Repository URL where to locate the requested chart. | `string` | `"https://packages.confluent.io/helm"` | no |
 | <a name="input_wait_for_jobs"></a> [wait\_for\_jobs](#input\_wait\_for\_jobs) | If wait is enabled, will wait until all Jobs have been completed before marking the release as successful. It will wait for as long as `timeout`. | `bool` | `true` | no |
-
 ## Outputs
 
 | Name | Description |

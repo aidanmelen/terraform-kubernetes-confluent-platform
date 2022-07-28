@@ -6,8 +6,6 @@ Deploy the Confluent Operator.
 
 ## Example
 
-### Confluent Operator
-
 ```hcl
 # https://github.com/aidanmelen/terraform-kubernetes-confluent-platform/tree/main/examples/confluent_operator
 module "confluent_operator" {

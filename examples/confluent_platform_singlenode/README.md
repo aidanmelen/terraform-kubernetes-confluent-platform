@@ -6,8 +6,6 @@ Deploy the Confluent Platform Single Node. Similiar to the [confluent-for-kubern
 
 ## Example
 
-### Confluent Platform Single Node
-
 ```hcl
 # https://github.com/aidanmelen/terraform-kubernetes-confluent-platform/tree/main/examples/confluent_platform_single_node
 module "confluent_platform_singlenode" {

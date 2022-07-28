@@ -2,8 +2,6 @@ content: |-
   {{ .Header }}
   ## Example
 
-  ### Confluent Platform Single Node
-
   ```hcl
   {{ include "./main.tf" }}
   ```
