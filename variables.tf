@@ -11,19 +11,19 @@ variable "namespace" {
 }
 
 variable "confluent_operator_app_version" {
-  description = "The default Confluent Operator app version. This version may be overriden by component override values. This version must be compatible with the confluent operator app version. For more information, please visit: https://docs.confluent.io/platform/current/installation/versions-interoperability.html#confluent-operator"
+  description = "The default Confluent Operator app version. This may be overriden by component override values. This version must be compatible with the`confluent_platform_version`. Please see confluent docs for more information: https://docs.confluent.io/platform/current/installation/versions-interoperability.html#confluent-operator"
   type        = string
   default     = "2.4.0"
 }
 
 variable "confluent_platform_version" {
-  description = "The default Confluent Platform app version. This version may be overriden by component override values. This version must be compatible with the confluent operator app version. For more information, please visit: https://docs.confluent.io/platform/current/installation/versions-interoperability.html#confluent-operator"
+  description = "The default Confluent Platform app version. This may be overriden by component override values. This version must be compatible with the `confluent_operator_app_version`. Please see confluent docs for more information: https://docs.confluent.io/platform/current/installation/versions-interoperability.html#confluent-operator"
   type        = string
   default     = "7.2.0"
 }
 
 variable "create_zookeeper" {
-  description = "Whether to create the Zookeeper component of the Confluent Platform."
+  description = "Controls if the Zookeeper component of the Confluent Platform should be created."
   type        = bool
   default     = true
 }
@@ -35,7 +35,7 @@ variable "zookeeper" {
 }
 
 variable "create_kafka" {
-  description = "Whether to create the Kafka component of the Confluent Platform."
+  description = "Controls if the Kafka component of the Confluent Platform should be created."
   type        = bool
   default     = true
 }
@@ -47,7 +47,7 @@ variable "kafka" {
 }
 
 variable "create_connect" {
-  description = "Whether to create the Connect component of the Confluent Platform."
+  description = "Controls if the Connect component of the Confluent Platform should be created."
   type        = bool
   default     = true
 }
@@ -59,7 +59,7 @@ variable "connect" {
 }
 
 variable "create_ksqldb" {
-  description = "Whether to create the KsqlDB component of the Confluent Platform."
+  description = "Controls if the KsqlDB component of the Confluent Platform should be created."
   type        = bool
   default     = true
 }
@@ -71,7 +71,7 @@ variable "ksqldb" {
 }
 
 variable "create_controlcenter" {
-  description = "Whether to create the ControlCenter component of the Confluent Platform."
+  description = "Controls if the ControlCenter component of the Confluent Platform should be created."
   type        = bool
   default     = true
 }
@@ -83,7 +83,7 @@ variable "controlcenter" {
 }
 
 variable "create_schemaregistry" {
-  description = "Whether to create the SchemaRegistry component of the Confluent Platform."
+  description = "Controls if the SchemaRegistry component of the Confluent Platform should be created."
   type        = bool
   default     = true
 }
@@ -95,7 +95,7 @@ variable "schemaregistry" {
 }
 
 variable "create_kafkarestproxy" {
-  description = "Whether to create the KafkaRestProxy component of the Confluent Platform."
+  description = "Controls if the KafkaRestProxy component of the Confluent Platform should be created."
   type        = bool
   default     = true
 }

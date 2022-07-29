@@ -145,18 +145,18 @@ clean                     Clean project
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_confluent_operator_app_version"></a> [confluent\_operator\_app\_version](#input\_confluent\_operator\_app\_version) | The default Confluent Operator app version. This version may be overriden by component override values. This version must be compatible with the confluent operator app version. For more information, please visit: https://docs.confluent.io/platform/current/installation/versions-interoperability.html#confluent-operator | `string` | `"2.4.0"` | no |
-| <a name="input_confluent_platform_version"></a> [confluent\_platform\_version](#input\_confluent\_platform\_version) | The default Confluent Platform app version. This version may be overriden by component override values. This version must be compatible with the confluent operator app version. For more information, please visit: https://docs.confluent.io/platform/current/installation/versions-interoperability.html#confluent-operator | `string` | `"7.2.0"` | no |
+| <a name="input_confluent_operator_app_version"></a> [confluent\_operator\_app\_version](#input\_confluent\_operator\_app\_version) | The default Confluent Operator app version. This may be overriden by component override values. This version must be compatible with the`confluent_platform_version`. Please see confluent docs for more information: https://docs.confluent.io/platform/current/installation/versions-interoperability.html#confluent-operator | `string` | `"2.4.0"` | no |
+| <a name="input_confluent_platform_version"></a> [confluent\_platform\_version](#input\_confluent\_platform\_version) | The default Confluent Platform app version. This may be overriden by component override values. This version must be compatible with the `confluent_operator_app_version`. Please see confluent docs for more information: https://docs.confluent.io/platform/current/installation/versions-interoperability.html#confluent-operator | `string` | `"7.2.0"` | no |
 | <a name="input_connect"></a> [connect](#input\_connect) | The Connect override values. | `any` | `null` | no |
 | <a name="input_controlcenter"></a> [controlcenter](#input\_controlcenter) | The ControlCenter override values. | `any` | `null` | no |
 | <a name="input_create"></a> [create](#input\_create) | Controls if the Confluent Platform resources should be created (affects all resources). | `bool` | `true` | no |
-| <a name="input_create_connect"></a> [create\_connect](#input\_create\_connect) | Whether to create the Connect component of the Confluent Platform. | `bool` | `true` | no |
-| <a name="input_create_controlcenter"></a> [create\_controlcenter](#input\_create\_controlcenter) | Whether to create the ControlCenter component of the Confluent Platform. | `bool` | `true` | no |
-| <a name="input_create_kafka"></a> [create\_kafka](#input\_create\_kafka) | Whether to create the Kafka component of the Confluent Platform. | `bool` | `true` | no |
-| <a name="input_create_kafkarestproxy"></a> [create\_kafkarestproxy](#input\_create\_kafkarestproxy) | Whether to create the KafkaRestProxy component of the Confluent Platform. | `bool` | `true` | no |
-| <a name="input_create_ksqldb"></a> [create\_ksqldb](#input\_create\_ksqldb) | Whether to create the KsqlDB component of the Confluent Platform. | `bool` | `true` | no |
-| <a name="input_create_schemaregistry"></a> [create\_schemaregistry](#input\_create\_schemaregistry) | Whether to create the SchemaRegistry component of the Confluent Platform. | `bool` | `true` | no |
-| <a name="input_create_zookeeper"></a> [create\_zookeeper](#input\_create\_zookeeper) | Whether to create the Zookeeper component of the Confluent Platform. | `bool` | `true` | no |
+| <a name="input_create_connect"></a> [create\_connect](#input\_create\_connect) | Controls if the Connect component of the Confluent Platform should be created. | `bool` | `true` | no |
+| <a name="input_create_controlcenter"></a> [create\_controlcenter](#input\_create\_controlcenter) | Controls if the ControlCenter component of the Confluent Platform should be created. | `bool` | `true` | no |
+| <a name="input_create_kafka"></a> [create\_kafka](#input\_create\_kafka) | Controls if the Kafka component of the Confluent Platform should be created. | `bool` | `true` | no |
+| <a name="input_create_kafkarestproxy"></a> [create\_kafkarestproxy](#input\_create\_kafkarestproxy) | Controls if the KafkaRestProxy component of the Confluent Platform should be created. | `bool` | `true` | no |
+| <a name="input_create_ksqldb"></a> [create\_ksqldb](#input\_create\_ksqldb) | Controls if the KsqlDB component of the Confluent Platform should be created. | `bool` | `true` | no |
+| <a name="input_create_schemaregistry"></a> [create\_schemaregistry](#input\_create\_schemaregistry) | Controls if the SchemaRegistry component of the Confluent Platform should be created. | `bool` | `true` | no |
+| <a name="input_create_zookeeper"></a> [create\_zookeeper](#input\_create\_zookeeper) | Controls if the Zookeeper component of the Confluent Platform should be created. | `bool` | `true` | no |
 | <a name="input_kafka"></a> [kafka](#input\_kafka) | The Kafka override values. | `any` | `null` | no |
 | <a name="input_kafkarestproxy"></a> [kafkarestproxy](#input\_kafkarestproxy) | The KafkaRestProxy override values. | `any` | `null` | no |
 | <a name="input_ksqldb"></a> [ksqldb](#input\_ksqldb) | The KsqlDB override values. | `any` | `null` | no |
