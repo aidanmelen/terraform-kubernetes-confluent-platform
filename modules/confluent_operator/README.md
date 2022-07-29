@@ -50,6 +50,8 @@ module "confluent_operator" {
 | <a name="input_namespace_annotations"></a> [namespace\_annotations](#input\_namespace\_annotations) | The namespace annotations. | `any` | `null` | no |
 | <a name="input_namespace_labels"></a> [namespace\_labels](#input\_namespace\_labels) | The namespace labels. | `any` | `null` | no |
 | <a name="input_repository"></a> [repository](#input\_repository) | Repository URL where to locate the requested chart. | `string` | `"https://packages.confluent.io/helm"` | no |
+| <a name="input_set"></a> [set](#input\_set) | List of value blocks with custom values to be merged with the values yaml. | <pre>list(object({<br>    name  = string<br>    value = any<br>    type  = string<br>  }))</pre> | `[]` | no |
+| <a name="input_set_sensitive"></a> [set\_sensitive](#input\_set\_sensitive) | List of value blocks with custom sensitive values to be merged with the values yaml that won't be exposed in the plan's diff.ye | <pre>list(object({<br>    name  = string<br>    value = any<br>    type  = string<br>  }))</pre> | `[]` | no |
 | <a name="input_wait_for_jobs"></a> [wait\_for\_jobs](#input\_wait\_for\_jobs) | If wait is enabled, will wait until all Jobs have been completed before marking the release as successful. It will wait for as long as `timeout`. | `bool` | `true` | no |
 ## Outputs
 

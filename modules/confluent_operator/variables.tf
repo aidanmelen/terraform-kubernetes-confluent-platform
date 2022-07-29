@@ -52,6 +52,26 @@ variable "chart_version" {
   default     = null
 }
 
+variable "set" {
+  description = "List of value blocks with custom values to be merged with the values yaml."
+  type = list(object({
+    name  = string
+    value = any
+    type  = string
+  }))
+  default = []
+}
+
+variable "set_sensitive" {
+  description = "List of value blocks with custom sensitive values to be merged with the values yaml that won't be exposed in the plan's diff.ye"
+  type = list(object({
+    name  = string
+    value = any
+    type  = string
+  }))
+  default = []
+}
+
 variable "wait_for_jobs" {
   description = "If wait is enabled, will wait until all Jobs have been completed before marking the release as successful. It will wait for as long as `timeout`."
   type        = bool
