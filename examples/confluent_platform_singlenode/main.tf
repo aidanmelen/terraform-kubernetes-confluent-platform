@@ -1,4 +1,3 @@
-# https://github.com/aidanmelen/terraform-kubernetes-confluent-platform/tree/main/examples/confluent_platform_single_node
 module "confluent_platform_singlenode" {
   source  = "aidanmelen/confluent-platform/kubernetes"
   version = ">= 0.3.0"
