@@ -1,5 +1,4 @@
 - add create bool logic for optional components
-- add support for annotations
 
 Implement the remaining sub-modules:
 - cluster_link
@@ -10,7 +9,8 @@ Implement the remaining sub-modules:
 
 Create examples:
 
-- [confluent_platform_singlenode](https://github.com/confluentinc/confluent-kubernetes-examples/blob/master/quickstart-deploy/confluent-platform-singlenode.yaml)
+- hybrid with AWS MSK
+- mirrormaker2 with Strimzi
 - [security/production-secure-deploy](https://github.com/confluentinc/confluent-kubernetes-examples/tree/master/security/production-secure-deploy)
 - [schemas](https://github.com/confluentinc/confluent-kubernetes-examples/tree/master/schemas)
 - [connectors](https://github.com/confluentinc/confluent-kubernetes-examples/tree/master/connector) https://github.com/confluentinc/confluent-kubernetes-examples/blob/master/hybrid/ccloud-connect-confluent-hub/kafka-connect.yaml#L2-L19

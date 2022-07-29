@@ -1,7 +1,5 @@
 module "confluent_operator" {
-  source  = "aidanmelen/confluent-platform/kubernetes//modules/confluent_operator"
-  version = ">= 0.3.0"
-
+  source           = "../../modules/confluent_operator"
   create_namespace = true
   namespace        = "confluent"
   name             = "confluent-operator"

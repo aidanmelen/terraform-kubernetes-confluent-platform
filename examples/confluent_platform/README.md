@@ -1,15 +1,15 @@
 # confluent_platform
 
-Deploy the Confluent Platform. Similiar to the [confluent-for-kubernetes-examples/quickstart-deploy/confluent-platform.yaml)](https://github.com/confluentinc/confluent-kubernetes-examples/blob/master/quickstart-deploy/confluent-platform.yaml)
+Deploy the Confluent Platform. This Terraforms [confluent-for-kubernetes-examples/quickstart-deploy/confluent-platform.yaml](https://github.com/confluentinc/confluent-kubernetes-examples/blob/master/quickstart-deploy/confluent-platform.yaml).
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Example
 
 ```hcl
-# https://github.com/aidanmelen/terraform-kubernetes-confluent-platform/tree/main/examples/confluent_platform
 module "confluent_platform" {
-  source    = "../../"
+  source    = "aidanmelen/confluent-platform/kubernetes"
+  version   = ">= 0.3.0"
   namespace = "confluent"
 
   /*
@@ -31,20 +31,11 @@ module "confluent_platform" {
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.14.8 |
 | <a name="requirement_helm"></a> [helm](#requirement\_helm) | >= 2.0.0 |
 | <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | >= 2.12.1 |
-## Providers
-
-No providers.
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_confluent_platform"></a> [confluent\_platform](#module\_confluent\_platform) | ../../ | n/a |
-## Resources
-
-No resources.
-## Inputs
-
-No inputs.
+| <a name="module_confluent_platform"></a> [confluent\_platform](#module\_confluent\_platform) | aidanmelen/confluent-platform/kubernetes | >= 0.3.0 |
 ## Outputs
 
 | Name | Description |

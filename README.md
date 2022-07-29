@@ -13,9 +13,9 @@ A Terraform module for running [Confluent for Kubernetes (CFK)](https://docs.con
 ### Confluent Operator
 
 ```hcl
-# https://github.com/aidanmelen/terraform-kubernetes-confluent-platform/tree/main/examples/confluent_operator
 module "confluent_operator" {
-  source = "../../modules/confluent_operator"
+  source  = "aidanmelen/confluent-platform/kubernetes//modules/confluent_operator"
+  version = ">= 0.3.0"
 
   create_namespace = true
   namespace        = "confluent"
@@ -27,9 +27,9 @@ module "confluent_operator" {
 ### Confluent Platform
 
 ```hcl
-# https://github.com/aidanmelen/terraform-kubernetes-confluent-platform/tree/main/examples/confluent_platform
 module "confluent_platform" {
-  source    = "../../"
+  source    = "aidanmelen/confluent-platform/kubernetes"
+  version   = ">= 0.3.0"
   namespace = "confluent"
 
   /*
@@ -46,13 +46,11 @@ module "confluent_platform" {
 
 ## Usage
 
-Confluent for Kubernetes (CFK) must be released on the Kubernetes cluster before the `terraform-kubernetes-confluent-platform` module is run. Please see the [Confluent for Kubernetes Quickstart](https://docs.confluent.io/operator/current/co-quickstart.html#co-long-quickstart) for more information.
+Similiar to the [Deploy Applications with the Helm Provider](https://learn.hashicorp.com/tutorials/terraform/helm-provider?in=terraform/use-case) tutorial; releasing the Confluent Operator and Confluent Platform will require two separate Terraform runs. For example:
 
----
+### Confluent Operator
 
-The Confluent Operator and Confluent Platform can be deployed using Terraform. Similiar to the [Deploy Applications with the Helm Provider](https://learn.hashicorp.com/tutorials/terraform/helm-provider?in=terraform/use-case) tutorial; this deployment will require two separate Terraform workspace runs. For example:
-
-1. Create the `confluent` namespace and release Confluent Operator into it:
+First, create the `confluent` namespace and release Confluent Operator into it:
 
 ```bash
 cd examples/confluent_operator
@@ -60,7 +58,11 @@ terraform init
 terraform apply
 ```
 
-2. Apply the Confluent Platform:
+Please see the [Confluent for Kubernetes Quickstart](https://docs.confluent.io/operator/current/co-quickstart.html#co-long-quickstart) for more information releasing the Confluent Operator.
+
+### Confluent Platform
+
+Second, apply the Confluent Platform:
 
 ```bash
 cd examples/confluent_platform
@@ -121,13 +123,13 @@ clean                     Clean project
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_connect"></a> [connect](#module\_connect) | Invicton-Labs/deepmerge/null | n/a |
-| <a name="module_controlcenter"></a> [controlcenter](#module\_controlcenter) | Invicton-Labs/deepmerge/null | n/a |
-| <a name="module_kafka"></a> [kafka](#module\_kafka) | Invicton-Labs/deepmerge/null | n/a |
-| <a name="module_kafkarestproxy"></a> [kafkarestproxy](#module\_kafkarestproxy) | Invicton-Labs/deepmerge/null | n/a |
-| <a name="module_ksqldb"></a> [ksqldb](#module\_ksqldb) | Invicton-Labs/deepmerge/null | n/a |
-| <a name="module_schemaregistry"></a> [schemaregistry](#module\_schemaregistry) | Invicton-Labs/deepmerge/null | n/a |
-| <a name="module_zookeeper"></a> [zookeeper](#module\_zookeeper) | Invicton-Labs/deepmerge/null | n/a |
+| <a name="module_connect"></a> [connect](#module\_connect) | Invicton-Labs/deepmerge/null | 0.1.5 |
+| <a name="module_controlcenter"></a> [controlcenter](#module\_controlcenter) | Invicton-Labs/deepmerge/null | 0.1.5 |
+| <a name="module_kafka"></a> [kafka](#module\_kafka) | Invicton-Labs/deepmerge/null | 0.1.5 |
+| <a name="module_kafkarestproxy"></a> [kafkarestproxy](#module\_kafkarestproxy) | Invicton-Labs/deepmerge/null | 0.1.5 |
+| <a name="module_ksqldb"></a> [ksqldb](#module\_ksqldb) | Invicton-Labs/deepmerge/null | 0.1.5 |
+| <a name="module_schemaregistry"></a> [schemaregistry](#module\_schemaregistry) | Invicton-Labs/deepmerge/null | 0.1.5 |
+| <a name="module_zookeeper"></a> [zookeeper](#module\_zookeeper) | Invicton-Labs/deepmerge/null | 0.1.5 |
 ## Resources
 
 | Name | Type |
@@ -147,6 +149,7 @@ clean                     Clean project
 | <a name="input_confluent_platform_version"></a> [confluent\_platform\_version](#input\_confluent\_platform\_version) | The default Confluent Platform app version. This version may be overriden by component override values. This version must be compatible with the confluent operator app version. For more information, please visit: https://docs.confluent.io/platform/current/installation/versions-interoperability.html#confluent-operator | `string` | `"7.2.0"` | no |
 | <a name="input_connect"></a> [connect](#input\_connect) | The Connect override values. | `any` | `null` | no |
 | <a name="input_controlcenter"></a> [controlcenter](#input\_controlcenter) | The ControlCenter override values. | `any` | `null` | no |
+| <a name="input_create"></a> [create](#input\_create) | Controls if the Confluent Platform resources should be created (affects all resources). | `bool` | `true` | no |
 | <a name="input_create_connect"></a> [create\_connect](#input\_create\_connect) | Whether to create the Connect component of the Confluent Platform. | `bool` | `true` | no |
 | <a name="input_create_controlcenter"></a> [create\_controlcenter](#input\_create\_controlcenter) | Whether to create the ControlCenter component of the Confluent Platform. | `bool` | `true` | no |
 | <a name="input_create_kafka"></a> [create\_kafka](#input\_create\_kafka) | Whether to create the Kafka component of the Confluent Platform. | `bool` | `true` | no |
@@ -177,4 +180,4 @@ clean                     Clean project
 
 ## License
 
-Apache 2 Licensed. See [LICENSE](./LICENSE) for full details.
+Apache 2 Licensed. See [LICENSE](https://github.com/aidanmelen/terraform-kubernetes-confluent-platform/blob/main/LICENSE) for full details.

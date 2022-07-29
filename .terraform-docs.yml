@@ -17,13 +17,11 @@ content: |-
 
   ## Usage
 
-  Confluent for Kubernetes (CFK) must be released on the Kubernetes cluster before the `terraform-kubernetes-confluent-platform` module is run. Please see the [Confluent for Kubernetes Quickstart](https://docs.confluent.io/operator/current/co-quickstart.html#co-long-quickstart) for more information.
+  Similiar to the [Deploy Applications with the Helm Provider](https://learn.hashicorp.com/tutorials/terraform/helm-provider?in=terraform/use-case) tutorial; releasing the Confluent Operator and Confluent Platform will require two separate Terraform runs. For example:
 
-  ---
+  ### Confluent Operator
 
-  The Confluent Operator and Confluent Platform can be deployed using Terraform. Similiar to the [Deploy Applications with the Helm Provider](https://learn.hashicorp.com/tutorials/terraform/helm-provider?in=terraform/use-case) tutorial; this deployment will require two separate Terraform workspace runs. For example:
-
-  1. Create the `confluent` namespace and release Confluent Operator into it:
+  First, create the `confluent` namespace and release Confluent Operator into it:
 
   ```bash
   cd examples/confluent_operator
@@ -31,7 +29,11 @@ content: |-
   terraform apply
   ```
 
-  2. Apply the Confluent Platform:
+  Please see the [Confluent for Kubernetes Quickstart](https://docs.confluent.io/operator/current/co-quickstart.html#co-long-quickstart) for more information releasing the Confluent Operator.
+
+  ### Confluent Platform
+
+  Second, apply the Confluent Platform:
 
   ```bash
   cd examples/confluent_platform

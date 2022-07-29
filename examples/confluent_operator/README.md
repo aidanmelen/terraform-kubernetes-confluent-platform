@@ -1,15 +1,15 @@
 # confluent_operator
 
-Deploy the Confluent Operator.
+Deploy the Confluent Operator. This Terraforms [Step 1,2 from the Confluent for Kubernetes Quickstart](https://docs.confluent.io/operator/current/co-quickstart.html).
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Example
 
 ```hcl
-# https://github.com/aidanmelen/terraform-kubernetes-confluent-platform/tree/main/examples/confluent_operator
 module "confluent_operator" {
-  source = "../../modules/confluent_operator"
+  source  = "aidanmelen/confluent-platform/kubernetes//modules/confluent_operator"
+  version = ">= 0.3.0"
 
   create_namespace = true
   namespace        = "confluent"
@@ -25,20 +25,11 @@ module "confluent_operator" {
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.14.8 |
 | <a name="requirement_helm"></a> [helm](#requirement\_helm) | >= 2.0.0 |
 | <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | >= 2.12.1 |
-## Providers
-
-No providers.
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_confluent_operator"></a> [confluent\_operator](#module\_confluent\_operator) | ../../modules/confluent_operator | n/a |
-## Resources
-
-No resources.
-## Inputs
-
-No inputs.
+| <a name="module_confluent_operator"></a> [confluent\_operator](#module\_confluent\_operator) | aidanmelen/confluent-platform/kubernetes//modules/confluent_operator | >= 0.3.0 |
 ## Outputs
 
 | Name | Description |

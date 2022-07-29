@@ -7,9 +7,9 @@ Deploy the Confluent Operator.
 ## Example
 
 ```hcl
-# https://github.com/aidanmelen/terraform-kubernetes-confluent-platform/tree/main/examples/confluent_operator
 module "confluent_operator" {
-  source = "../../modules/confluent_operator"
+  source  = "aidanmelen/confluent-platform/kubernetes//modules/confluent_operator"
+  version = ">= 0.3.0"
 
   create_namespace = true
   namespace        = "confluent"
@@ -31,9 +31,6 @@ module "confluent_operator" {
 |------|---------|
 | <a name="provider_helm"></a> [helm](#provider\_helm) | >= 2.0.0 |
 | <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | >= 2.12.1 |
-## Modules
-
-No modules.
 ## Resources
 
 | Name | Type |
@@ -46,6 +43,7 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_chart"></a> [chart](#input\_chart) | Chart name to be installed. The chart name can be local path, a URL to a chart, or the name of the chart if `repository` is specified. It is also possible to use the `<repository>/<chart>` format here if you are running Terraform on a system that the repository has been added to with `helm repo add` but this is not recommended. | `string` | `"confluent-for-kubernetes"` | no |
 | <a name="input_chart_version"></a> [chart\_version](#input\_chart\_version) | Specify the exact chart version to install. If this is not specified, the latest version is installed. | `string` | `null` | no |
+| <a name="input_create"></a> [create](#input\_create) | Controls if the Confluent Operator resources should be created (affects all resources) | `bool` | `true` | no |
 | <a name="input_create_namespace"></a> [create\_namespace](#input\_create\_namespace) | Create the namespace if it does not yet exist. | `bool` | `false` | no |
 | <a name="input_name"></a> [name](#input\_name) | The name for the Confluent Operator. | `string` | `"confluent-operator"` | no |
 | <a name="input_namespace"></a> [namespace](#input\_namespace) | The namespace to release the Confluent Operator and Confluent Platform into. | `string` | `"confluent"` | no |

@@ -135,8 +135,9 @@ spec:
 # Confluent for Kubernetes Manifests Overrides
 ##############################################
 module "zookeeper" {
-  source = "Invicton-Labs/deepmerge/null"
-  count  = var.create_zookeeper ? 1 : 0
+  source  = "Invicton-Labs/deepmerge/null"
+  version = "0.1.5"
+  count   = var.create && var.create_zookeeper ? 1 : 0
   maps = [
     local.default_zookeeper,
     var.zookeeper != null ? var.zookeeper : {}
@@ -144,8 +145,9 @@ module "zookeeper" {
 }
 
 module "kafka" {
-  source = "Invicton-Labs/deepmerge/null"
-  count  = var.create_kafka ? 1 : 0
+  source  = "Invicton-Labs/deepmerge/null"
+  version = "0.1.5"
+  count   = var.create && var.create_kafka ? 1 : 0
   maps = [
     local.default_kafka,
     var.kafka != null ? var.kafka : {}
@@ -153,8 +155,9 @@ module "kafka" {
 }
 
 module "connect" {
-  source = "Invicton-Labs/deepmerge/null"
-  count  = var.create_connect ? 1 : 0
+  source  = "Invicton-Labs/deepmerge/null"
+  version = "0.1.5"
+  count   = var.create && var.create_connect ? 1 : 0
   maps = [
     local.default_connect,
     var.connect != null ? var.connect : {}
@@ -162,8 +165,9 @@ module "connect" {
 }
 
 module "ksqldb" {
-  source = "Invicton-Labs/deepmerge/null"
-  count  = var.create_ksqldb ? 1 : 0
+  source  = "Invicton-Labs/deepmerge/null"
+  version = "0.1.5"
+  count   = var.create && var.create_ksqldb ? 1 : 0
   maps = [
     local.default_ksqldb,
     var.ksqldb != null ? var.ksqldb : {}
@@ -171,8 +175,9 @@ module "ksqldb" {
 }
 
 module "controlcenter" {
-  source = "Invicton-Labs/deepmerge/null"
-  count  = var.create_controlcenter ? 1 : 0
+  source  = "Invicton-Labs/deepmerge/null"
+  version = "0.1.5"
+  count   = var.create && var.create_controlcenter ? 1 : 0
   maps = [
     local.default_controlcenter,
     var.controlcenter != null ? var.controlcenter : {}
@@ -180,8 +185,9 @@ module "controlcenter" {
 }
 
 module "schemaregistry" {
-  source = "Invicton-Labs/deepmerge/null"
-  count  = var.create_schemaregistry ? 1 : 0
+  source  = "Invicton-Labs/deepmerge/null"
+  version = "0.1.5"
+  count   = var.create && var.create_schemaregistry ? 1 : 0
   maps = [
     local.default_schemaregistry,
     var.schemaregistry != null ? var.schemaregistry : {}
@@ -189,8 +195,9 @@ module "schemaregistry" {
 }
 
 module "kafkarestproxy" {
-  count  = var.create_kafkarestproxy ? 1 : 0
-  source = "Invicton-Labs/deepmerge/null"
+  count   = var.create && var.create_kafkarestproxy ? 1 : 0
+  source  = "Invicton-Labs/deepmerge/null"
+  version = "0.1.5"
   maps = [
     local.default_kafkarestproxy,
     var.kafkarestproxy != null ? var.kafkarestproxy : {}
@@ -201,7 +208,7 @@ module "kafkarestproxy" {
 # Kubernetes Manifests
 ######################
 resource "kubernetes_manifest" "zookeeper" {
-  count           = var.create_zookeeper ? 1 : 0
+  count           = var.create && var.create_zookeeper ? 1 : 0
   computed_fields = ["metadata.finalizers"]
   manifest        = module.zookeeper[0].merged
 
@@ -219,7 +226,7 @@ resource "kubernetes_manifest" "zookeeper" {
 }
 
 resource "kubernetes_manifest" "kafka" {
-  count           = var.create_kafka ? 1 : 0
+  count           = var.create && var.create_kafka ? 1 : 0
   computed_fields = ["metadata.finalizers"]
   manifest        = module.kafka[0].merged
 
@@ -237,7 +244,7 @@ resource "kubernetes_manifest" "kafka" {
 }
 
 resource "kubernetes_manifest" "connect" {
-  count           = var.create_connect ? 1 : 0
+  count           = var.create && var.create_connect ? 1 : 0
   computed_fields = ["metadata.finalizers"]
   manifest        = module.connect[0].merged
 
@@ -255,7 +262,7 @@ resource "kubernetes_manifest" "connect" {
 }
 
 resource "kubernetes_manifest" "ksqldb" {
-  count           = var.create_ksqldb ? 1 : 0
+  count           = var.create && var.create_ksqldb ? 1 : 0
   computed_fields = ["metadata.finalizers"]
   manifest        = module.ksqldb[0].merged
 
@@ -273,7 +280,7 @@ resource "kubernetes_manifest" "ksqldb" {
 }
 
 resource "kubernetes_manifest" "controlcenter" {
-  count           = var.create_controlcenter ? 1 : 0
+  count           = var.create && var.create_controlcenter ? 1 : 0
   computed_fields = ["metadata.finalizers"]
   manifest        = module.controlcenter[0].merged
 
@@ -291,7 +298,7 @@ resource "kubernetes_manifest" "controlcenter" {
 }
 
 resource "kubernetes_manifest" "schemaregistry" {
-  count           = var.create_schemaregistry ? 1 : 0
+  count           = var.create && var.create_schemaregistry ? 1 : 0
   computed_fields = ["metadata.finalizers"]
   manifest        = module.schemaregistry[0].merged
 
@@ -309,7 +316,7 @@ resource "kubernetes_manifest" "schemaregistry" {
 }
 
 resource "kubernetes_manifest" "kafkarestproxy" {
-  count           = var.create_kafkarestproxy ? 1 : 0
+  count           = var.create && var.create_kafkarestproxy ? 1 : 0
   computed_fields = ["metadata.finalizers"]
   manifest        = module.kafkarestproxy[0].merged
 

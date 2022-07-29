@@ -1,6 +1,6 @@
 # confluent_platform_singlenode
 
-Deploy the Confluent Platform Single Node. Similiar to the [confluent-for-kubernetes-examples/quickstart-deploy/confluent-platform-singlenode.yaml)](https://github.com/confluentinc/confluent-kubernetes-examples/blob/master/quickstart-deploy/confluent-platform-singlenode.yaml)
+Deploy the Confluent Platform Single Node. This Terraforms [confluent-for-kubernetes-examples/quickstart-deploy/confluent-platform-singlenode.yaml](https://github.com/confluentinc/confluent-kubernetes-examples/blob/master/quickstart-deploy/confluent-platform-singlenode.yaml).
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
@@ -9,8 +9,8 @@ Deploy the Confluent Platform Single Node. Similiar to the [confluent-for-kubern
 ```hcl
 # https://github.com/aidanmelen/terraform-kubernetes-confluent-platform/tree/main/examples/confluent_platform_single_node
 module "confluent_platform_singlenode" {
-  source    = "../../"
-  namespace = "confluent"
+  source  = "aidanmelen/confluent-platform/kubernetes"
+  version = ">= 0.3.0"
 
   zookeeper = yamldecode(<<EOF
 spec:
@@ -188,20 +188,11 @@ spec:
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.14.8 |
 | <a name="requirement_helm"></a> [helm](#requirement\_helm) | >= 2.0.0 |
 | <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | >= 2.12.1 |
-## Providers
-
-No providers.
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_confluent_platform_singlenode"></a> [confluent\_platform\_singlenode](#module\_confluent\_platform\_singlenode) | ../../ | n/a |
-## Resources
-
-No resources.
-## Inputs
-
-No inputs.
+| <a name="module_confluent_platform_singlenode"></a> [confluent\_platform\_singlenode](#module\_confluent\_platform\_singlenode) | aidanmelen/confluent-platform/kubernetes | >= 0.3.0 |
 ## Outputs
 
 | Name | Description |

@@ -1,4 +1,5 @@
 NAME = terraform-kubernetes-confluent
+VERSION = 0.3.1
 
 SHELL := /bin/bash
 
@@ -15,7 +16,7 @@ build: ## Build docker dev container
 run: ## Run docker dev container
 	docker run -it --rm -v "$$(pwd)":/workspaces/$(NAME) -v ~/.kube:/root/.kube -v ~/.cache/pre-commit:/root/.cache/pre-commit -v ~/.terraform.d/plugins:/root/.terraform.d/plugins --workdir /workspaces/$(NAME) $(NAME) /bin/bash
 
-install: ## Install project
+setup: ## Setup project
 	# terraform
 	terraform init
 	cd examples/confluent_operator && terraform init
@@ -41,20 +42,53 @@ lint-all:  ## Lint with pre-commit
 	pre-commit run --all-files
 	git add -A
 
-tests: test-confluent-operator test-confluent-platform test-confluent-platform-singlenode  ## Test with Terratest
+tests: test-confluent-operator test-confluent-platform test-confluent-platform-singlenode  ## Tests with Terratest
 
-test-confluent-operator: ## Test confluent_operator Example
+test-confluent-operator: ## Test the confluent_operator example
+	# setup
+	mv examples/confluent_operator/main.tf examples/confluent_operator/.main.tf.bk && mv examples/confluent_operator/.main.tf.terratest examples/confluent_operator/main.tf
+
+	# test
 	go test test/terraform_confluent_operator_test.go -timeout 5m -v |& tee test/terraform_confluent_operator_test.log
 
-test-confluent-platform: ## Test confluent_platform Example
-	cd examples/confluent_operator && terraform init && terraform apply --auto-approve
-	go test test/terraform_confluent_platform_test.go -timeout 1h -v |& tee test/terraform_confluent_platform_test.log
-	cd examples/confluent_operator && terraform init && terraform destroy --auto-approve
+	# teardown
+	mv examples/confluent_operator/main.tf examples/confluent_operator/.main.tf.terratest && mv examples/confluent_operator/.main.tf.bk examples/confluent_operator/main.tf
+	cd examples/confluent_operator && terraform init
 
-test-confluent-platform-singlenode: ## Test confluent_platform_singlenode Example
+_test-setup:
+	mv examples/confluent_operator/main.tf examples/confluent_operator/.main.tf.bk && mv examples/confluent_operator/.main.tf.terratest examples/confluent_operator/main.tf
 	cd examples/confluent_operator && terraform init && terraform apply --auto-approve
-	go test test/terraform_confluent_platform_singlenode_test.go -timeout 20m -v |& tee test/terraform_confluent_platform_singlenode_test.log
+
+_test-teardown:
 	cd examples/confluent_operator && terraform init && terraform destroy --auto-approve
+	mv examples/confluent_operator/main.tf examples/confluent_operator/.main.tf.terratest && mv examples/confluent_operator/.main.tf.bk examples/confluent_operator/main.tf
+	cd examples/confluent_operator && terraform init
+
+_test-confluent-platform:
+	# setup
+	mv examples/confluent_platform/main.tf examples/confluent_platform/.main.tf.bk && mv examples/confluent_platform/.main.tf.terratest examples/confluent_platform/main.tf
+
+	# test
+	go test test/terraform_confluent_platform_test.go -timeout 1h -v |& tee test/terraform_confluent_platform_test.log
+
+	# teardown
+	mv examples/confluent_platform/main.tf examples/confluent_platform/.main.tf.terratest && mv examples/confluent_platform/.main.tf.bk examples/confluent_platform/main.tf
+	cd examples/confluent_platform && terraform init
+
+_test-confluent-platform-singlenode:
+	# setup
+	mv examples/confluent_platform_singlenode/main.tf examples/confluent_platform_singlenode/.main.tf.bk && mv examples/confluent_platform_singlenode/.main.tf.terratest examples/confluent_platform_singlenode/main.tf
+
+	# test
+	go test test/terraform_confluent_platform_singlenode_test.go -timeout 20m -v |& tee test/terraform_confluent_platform_singlenode_test.log
+
+	# teardown
+	mv examples/confluent_platform_singlenode/main.tf examples/confluent_platform_singlenode/.main.tf.terratest && mv examples/confluent_platform_singlenode/.main.tf.bk examples/confluent_platform_singlenode/main.tf
+	cd examples/confluent_platform_singlenode && terraform init
+
+test-confluent-platform: _test-setup _test-confluent-platform _test-teardown ## Test the confluent_platform example
+
+test-confluent-platform-singlenode: _test-setup _test-confluent-platform-singlenode _test-teardown ## Test the confluent_platform_singlenode example
 
 clean: ## Clean project
 	@rm -f .terraform.lock.hcl
