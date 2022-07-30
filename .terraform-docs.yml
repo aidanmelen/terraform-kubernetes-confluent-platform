@@ -24,7 +24,7 @@ content: |-
   Then release the Confluent Platform with
 
   ```bash
-  cd examples/confluent_operator
+  cd examples/complete
   terraform init
   terraform apply
   ```
