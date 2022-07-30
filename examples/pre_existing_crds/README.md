@@ -10,7 +10,7 @@ The Confluent for Kubernetes CRDs must installed on the Kubernetes cluster befor
 make install-cfk-crds
 ```
 
-Please see the [Makefile](./Makefile) for more information.
+Please see the [Makefile](https://github.com/aidanmelen/terraform-kubernetes-confluent-platform/blob/main/Makefile) for more information.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
