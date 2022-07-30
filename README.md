@@ -54,7 +54,7 @@ Please see the [Confluent for Kubernetes Quickstart](https://docs.confluent.io/o
 Then release the Confluent Platform with
 
 ```bash
-cd examples/confluent_operator
+cd examples/complete
 terraform init
 terraform apply
 ```
