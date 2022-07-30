@@ -7,18 +7,10 @@ Deploy the Confluent Operator and Confluent Platform in a single Terraform run. 
 The Confluent for Kubernetes CRDs must exist on the cluster before the first Terraform apply of the Confluent Platform. Create the CRDs with:
 
 ```bash
-# download the cfk helm chart
-curl -O https://confluent-for-kubernetes.s3-us-west-1.amazonaws.com/confluent-for-kubernetes-2.4.0.tar.gz
-mkdir confluent-for-kubernetes-2.4.0
-tar -xzf confluent-for-kubernetes-2.4.0.tar.gz --strip-components=1 -C confluent-for-kubernetes-2.4.0
-
-# install the cfk crds
-kubectl apply -f confluent-for-kubernetes-2.4.0/helm/confluent-for-kubernetes/crds/
-
-# clean up the cfk downloads
-rm confluent-for-kubernetes-2.4.0.tar.gz
-rm -rf confluent-for-kubernetes-2.4.0
+make install-cfk-crds
 ```
+
+Please see the [Makefile](./Makefile) for more information.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
