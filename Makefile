@@ -1,5 +1,4 @@
 NAME = terraform-kubernetes-confluent
-VERSION = 0.3.1
 
 SHELL := /bin/bash
 
