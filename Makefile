@@ -38,7 +38,7 @@ render-terraform-docs-code:
 	sed -z 's/source[^\r\n]*/source  = "aidanmelen\/confluent-platform\/kubernetes\/\/modules\/confluent_operator"\n  version = ">= 0.3.0"\n/g' examples/confluent_operator/main.tf > examples/confluent_operator/.main.tf.docs
 	sed -z 's/source[^\r\n]*/source  = "aidanmelen\/confluent-platform\/kubernetes"\n  version = ">= 0.3.0"\n/g' examples/confluent_platform/main.tf > examples/confluent_platform/.main.tf.docs
 	sed -z 's/source[^\r\n]*/source  = "aidanmelen\/confluent-platform\/kubernetes"\n  version = ">= 0.3.0"\n/g' examples/confluent_platform_singlenode/main.tf > examples/confluent_platform_singlenode/.main.tf.docs
-	sed -z 's/source[^\r\n]*/source  = "aidanmelen\/confluent-platform\/kubernetes"\n  version = ">= 0.3.0"/g' examples/pre_existing_crds/main.tf > examples/pre_existing_crds/.main.tf.docs
+	# sed -z 's/source[^\r\n]*/source  = "aidanmelen\/confluent-platform\/kubernetes"\n  version = ">= 0.3.0"/g' examples/pre_existing_crds/main.tf > examples/pre_existing_crds/.main.tf.docs
 
 lint:  ## Lint with pre-commit
 	git add -A
