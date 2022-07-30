@@ -46,7 +46,4 @@ func TestTerraformConfluentPlatformSinglenodeExample(t *testing.T) {
 	assert.Equal(t, expectedControlCenter, actualControlCenter, "Map %q should match %q", expectedControlCenter, actualControlCenter)
 	assert.Equal(t, expectedSchemaRegistry, actualSchemaRegistry, "Map %q should match %q", expectedSchemaRegistry, actualSchemaRegistry)
 	assert.Equal(t, expectedKafkaRestProxy, actualKafkaRestProxy, "Map %q should match %q", expectedKafkaRestProxy, actualKafkaRestProxy)
-
-	// website::tag::4:: Run a second "terraform apply". Fail the test if results have changes
-	terraform.ApplyAndIdempotent(t, terraformOptions)
 }

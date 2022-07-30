@@ -32,7 +32,7 @@ setup: install-cfk-crds ## Setup project
 	cd examples/confluent_operator && terraform init
 	cd examples/confluent_platform && terraform init
 	cd examples/confluent_platform_singlenode && terraform init
-	cd examples/pre_existing_crds && terraform init
+	cd examples/complete && terraform init
 
 	# pre-commit
 	git init
@@ -49,7 +49,7 @@ render-terraform-docs-code:
 	sed -z 's/source[^\r\n]*/source  = "aidanmelen\/confluent-platform\/kubernetes\/\/modules\/confluent_operator"\n  version = ">= 0.3.0"\n/g' examples/confluent_operator/main.tf > examples/confluent_operator/.main.tf.docs
 	sed -z 's/source[^\r\n]*/source  = "aidanmelen\/confluent-platform\/kubernetes"\n  version = ">= 0.3.0"\n/g' examples/confluent_platform/main.tf > examples/confluent_platform/.main.tf.docs
 	sed -z 's/source[^\r\n]*/source  = "aidanmelen\/confluent-platform\/kubernetes"\n  version = ">= 0.3.0"\n/g' examples/confluent_platform_singlenode/main.tf > examples/confluent_platform_singlenode/.main.tf.docs
-	sed -z 's/source[^\r\n]*/source  = "aidanmelen\/confluent-platform\/kubernetes"\n  version = ">= 0.3.0"/g' examples/pre_existing_crds/main.tf > examples/pre_existing_crds/.main.tf.docs
+	sed -z 's/source[^\r\n]*/source  = "aidanmelen\/confluent-platform\/kubernetes"\n  version = ">= 0.3.0"/g' examples/complete/main.tf > examples/complete/.main.tf.docs
 
 lint:  ## Lint with pre-commit
 	git add -A
@@ -61,7 +61,7 @@ lint-all: render-terraform-docs-code ## Lint with pre-commit
 	pre-commit run --all-files
 	git add -A
 
-tests: test-confluent-operator test-confluent-platform test-confluent-platform-singlenode  ## Tests with Terratest
+tests: test-confluent-operator test-confluent-platform-singlenode test-complete ## Tests with Terratest
 
 test-confluent-operator: ## Test the confluent_operator example
 	go test test/terraform_confluent_operator_test.go -timeout 5m -v |& tee test/terraform_confluent_operator_test.log
@@ -82,6 +82,9 @@ test-confluent-platform: test-setup test-confluent-platform test-clean ## Test t
 
 test-confluent-platform-singlenode: test-setup test-confluent-platform-singlenode test-clean ## Test the confluent_platform_singlenode example
 
+test-complete: # Test the complete example
+	go test test/terraform_complete_test.go -timeout 20m -v |& tee test/terraform_complete_test.log
+
 uninstall-cfk-crds:
 	# download the cfk helm chart
 	curl -O https://confluent-for-kubernetes.s3-us-west-1.amazonaws.com/confluent-for-kubernetes-2.4.0.tar.gz
@@ -101,13 +104,12 @@ clean: uninstall-cfk-crds ## Clean project
 	@rm -f examples/confluent_operator/.terraform.lock.hcl
 	@rm -f examples/confluent_platform/.terraform.lock.hcl
 	@rm -f examples/confluent_platform_singlenode/.terraform.lock.hcl
-	@rm -f examples/pre_existing_crds/.terraform.lock.hcl
+	@rm -f examples/complete/.terraform.lock.hcl
 
-	@rm -rf .terraform*
 	@rm -rf examples/confluent_operator/.terraform
 	@rm -rf examples/confluent_platform/.terraform
 	@rm -rf examples/confluent_platform_singlenode/.terraform
-	@rm -f examples/pre_existing_crds/.terraform.terraform
+	@rm -f examples/complete/.terraform.terraform
 
 	@rm -f go.mod
 	@rm -f go.sum

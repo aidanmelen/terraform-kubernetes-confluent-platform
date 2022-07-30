@@ -12,12 +12,13 @@ module "confluent_platform" {
   }
 
   # confluent platform
-  create                = true
-  create_zookeeper      = true
-  create_kafka          = true
-  create_connect        = false
-  create_ksqldb         = false
-  create_controlcenter  = false
-  create_schemaregistry = false
-  create_kafkarestproxy = false
+  /*
+  zookeeper      = { ... }
+  kafka          = { ... }
+  connect        = { ... }
+  ksqldb         = { ... }
+  controlcenter  = { ... }
+  schemaregistry = { ... }
+  kafkarestproxy = { ... }
+  */
 }

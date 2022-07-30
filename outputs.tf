@@ -8,7 +8,7 @@ output "confluent_operator" {
   value       = module.confluent_operator
 }
 
-output "confluent_platform_version" {
+output "version" {
   description = "The default Confluent Platform version."
   value       = var.confluent_platform_version
 }

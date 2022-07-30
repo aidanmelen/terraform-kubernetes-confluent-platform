@@ -1,6 +1,10 @@
-# pre_existing_crds
+# complete
 
 Deploy the Confluent Operator and Confluent Platform in a single Terraform run. This Terraforms [confluent-for-kubernetes-examples/quickstart-deploy/confluent-platform.yaml](https://github.com/confluentinc/confluent-kubernetes-examples/blob/master/quickstart-deploy/confluent-platform.yaml).
+
+## Assumptions
+
+This example assumes you have a Kubernetes cluster running locally on Docker Desktop. Please see [Docker's official documentation](https://docs.docker.com/desktop/kubernetes/) for more information.
 
 ## Prerequisites
 
@@ -31,14 +35,15 @@ module "confluent_platform" {
   }
 
   # confluent platform
-  create                = true
-  create_zookeeper      = true
-  create_kafka          = true
-  create_connect        = false
-  create_ksqldb         = false
-  create_controlcenter  = false
-  create_schemaregistry = false
-  create_kafkarestproxy = false
+  /*
+  zookeeper      = { ... }
+  kafka          = { ... }
+  connect        = { ... }
+  ksqldb         = { ... }
+  controlcenter  = { ... }
+  schemaregistry = { ... }
+  kafkarestproxy = { ... }
+  */
 }
 ```
 

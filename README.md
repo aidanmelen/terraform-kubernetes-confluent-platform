@@ -6,6 +6,82 @@
 A Terraform module for running [Confluent for Kubernetes (CFK)](https://docs.confluent.io/operator/current/overview.html).
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+
+
+## Example
+
+### Confluent Platform
+
+```hcl
+module "confluent_platform" {
+  source  = "aidanmelen/confluent-platform/kubernetes"
+  version = ">= 0.3.0"
+
+  namespace = var.namespace
+
+  # confluent operator
+  confluent_operator = {
+    create_namespace = true
+    name             = "confluent-operator"
+    chart_version    = "0.517.12"
+  }
+
+  # confluent platform
+  /*
+  zookeeper      = { ... }
+  kafka          = { ... }
+  connect        = { ... }
+  ksqldb         = { ... }
+  controlcenter  = { ... }
+  schemaregistry = { ... }
+  kafkarestproxy = { ... }
+  */
+}
+```
+
+## Usage
+
+### Confluent Platform
+
+First, install the CFK CDRs on the Kubernetes Cluster. For example:
+
+```bash
+make install-cfk-crds
+```
+
+Please see the [Confluent for Kubernetes Quickstart](https://docs.confluent.io/operator/current/co-quickstart.html#co-long-quickstart) for more information.
+
+Then release the Confluent Platform with
+
+```bash
+cd examples/confluent_operator
+terraform init
+terraform apply
+```
+
+
+## Tests
+
+Run Terratest using the [Makefile](./Makefile) targets:
+
+1. `make install`
+2. `make tests`
+
+## Makefile Targets
+
+```
+help                      This help.
+build                     Build docker dev container
+run                       Run docker dev container
+install                   Install project
+lint                      Lint with pre-commit
+lint-all                  Lint with pre-commit
+tests                     Test with Terratest
+test-confluent-operator   Test confluent-operator Example
+test-confluent-platform   Test confluent-platform Example
+clean                     Clean project
+```
+
 ## Requirements
 
 | Name | Version |
@@ -13,26 +89,22 @@ A Terraform module for running [Confluent for Kubernetes (CFK)](https://docs.con
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.14.8 |
 | <a name="requirement_helm"></a> [helm](#requirement\_helm) | >= 2.0.0 |
 | <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | >= 2.12.1 |
-
 ## Providers
 
 | Name | Version |
 |------|---------|
 | <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | >= 2.12.1 |
-
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
 | <a name="module_confluent_operator"></a> [confluent\_operator](#module\_confluent\_operator) | ./modules/confluent_operator | n/a |
 | <a name="module_confluent_platform_override_values"></a> [confluent\_platform\_override\_values](#module\_confluent\_platform\_override\_values) | Invicton-Labs/deepmerge/null | 0.1.5 |
-
 ## Resources
 
 | Name | Type |
 |------|------|
 | [kubernetes_manifest.component](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/manifest) | resource |
-
 ## Inputs
 
 | Name | Description | Type | Default | Required |
@@ -59,13 +131,11 @@ A Terraform module for running [Confluent for Kubernetes (CFK)](https://docs.con
 | <a name="input_schemaregistry"></a> [schemaregistry](#input\_schemaregistry) | The SchemaRegistry override values. | `any` | `{}` | no |
 | <a name="input_update_timeout"></a> [update\_timeout](#input\_update\_timeout) | The update timeout for each Conlfuent Platform component. | `string` | `"1h"` | no |
 | <a name="input_zookeeper"></a> [zookeeper](#input\_zookeeper) | The Zookeeper override values. | `any` | `{}` | no |
-
 ## Outputs
 
 | Name | Description |
 |------|-------------|
 | <a name="output_confluent_operator"></a> [confluent\_operator](#output\_confluent\_operator) | The Confluent Operator. |
-| <a name="output_confluent_platform_version"></a> [confluent\_platform\_version](#output\_confluent\_platform\_version) | The default Confluent Platform version. |
 | <a name="output_connect_manifest"></a> [connect\_manifest](#output\_connect\_manifest) | The Connect manifest. |
 | <a name="output_controlcenter_manifest"></a> [controlcenter\_manifest](#output\_controlcenter\_manifest) | The ControlCenter manifest. |
 | <a name="output_kafka_manifest"></a> [kafka\_manifest](#output\_kafka\_manifest) | The Kafka manifest. |
@@ -73,6 +143,7 @@ A Terraform module for running [Confluent for Kubernetes (CFK)](https://docs.con
 | <a name="output_ksqldb_manifest"></a> [ksqldb\_manifest](#output\_ksqldb\_manifest) | The KsqlDB manifest. |
 | <a name="output_namespace"></a> [namespace](#output\_namespace) | The default namespace for the Confluent Platform. |
 | <a name="output_schemaregistry_manifest"></a> [schemaregistry\_manifest](#output\_schemaregistry\_manifest) | The SchemaRegistry manifest. |
+| <a name="output_version"></a> [version](#output\_version) | The default Confluent Platform version. |
 | <a name="output_zookeeper_manifest"></a> [zookeeper\_manifest](#output\_zookeeper\_manifest) | The Zookeeper manifest. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
