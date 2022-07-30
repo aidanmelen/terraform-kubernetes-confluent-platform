@@ -52,6 +52,12 @@ variable "chart_version" {
   default     = null
 }
 
+variable "values" {
+  description = "List of values in raw yaml to pass to helm. Values will be merged, in order, as Helm does with multiple -f options."
+  type        = list(string)
+  default     = []
+}
+
 variable "set" {
   description = "List of value blocks with custom values to be merged with the values yaml."
   type = list(object({

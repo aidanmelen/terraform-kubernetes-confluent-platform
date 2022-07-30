@@ -1,5 +1,3 @@
-- add create bool logic for optional components
-
 Implement the remaining sub-modules:
 - cluster_link
 - confluent_cluster_role_binding

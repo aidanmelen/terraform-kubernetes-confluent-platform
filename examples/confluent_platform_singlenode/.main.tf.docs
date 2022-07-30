@@ -1,12 +1,16 @@
 module "confluent_platform_singlenode" {
-  source    = "../../"
+  source  = "aidanmelen/confluent-platform/kubernetes"
+  version = ">= 0.3.0"
+
   namespace = "confluent"
 
   zookeeper = yamldecode(<<EOF
 spec:
   replicas: 1
   podTemplate:
-    resources:
+    resource  = "aidanmelen/confluent-platform/kubernetes"
+  version = ">= 0.3.0"
+
       requests:
         cpu: 100m
         memory: 256Mi
@@ -33,7 +37,9 @@ spec:
       - "confluent.cluster.link.enable=true"
       - "password.encoder.secret=secret"
   podTemplate:
-    resources:
+    resource  = "aidanmelen/confluent-platform/kubernetes"
+  version = ">= 0.3.0"
+
       requests:
         cpu: 200m
         memory: 512Mi
@@ -55,7 +61,9 @@ spec:
       - "offset.storage.replication.factor=1"
       - "status.storage.replication.factor=1"
   podTemplate:
-    resources:
+    resource  = "aidanmelen/confluent-platform/kubernetes"
+  version = ">= 0.3.0"
+
       requests:
         cpu: 100m
         memory: 256Mi
@@ -79,7 +87,9 @@ spec:
     schemaRegistry:
       url: http://schemaregistry.confluent.svc.cluster.local:8081
   podTemplate:
-    resources:
+    resource  = "aidanmelen/confluent-platform/kubernetes"
+  version = ">= 0.3.0"
+
       requests:
         cpu: 100m
         memory: 256Mi
@@ -111,7 +121,9 @@ spec:
     loadBalancer:
       domain: minikube.domain
   podTemplate:
-    resources:
+    resource  = "aidanmelen/confluent-platform/kubernetes"
+  version = ">= 0.3.0"
+
       requests:
         cpu: 500m
         memory: 512Mi
@@ -140,7 +152,9 @@ spec:
 spec:
   replicas: 1
   podTemplate:
-    resources:
+    resource  = "aidanmelen/confluent-platform/kubernetes"
+  version = ">= 0.3.0"
+
       requests:
         cpu: 100m
         memory: 256Mi
@@ -158,7 +172,9 @@ spec:
     schemaRegistry:
       url: http://schemaregistry.confluent.svc.cluster.local:8081
   podTemplate:
-    resources:
+    resource  = "aidanmelen/confluent-platform/kubernetes"
+  version = ">= 0.3.0"
+
       requests:
         cpu: 100m
         memory: 256Mi

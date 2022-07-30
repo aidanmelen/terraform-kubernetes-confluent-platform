@@ -50,3 +50,6 @@ go.mod
 go.sum
 examples/scratch
 test/terraform_scratch_test.go
+
+confluent-for-kubernetes-2.4.0.tar.gz
+confluent-for-kubernetes-2.4.0

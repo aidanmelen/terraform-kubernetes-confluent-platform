@@ -8,8 +8,9 @@ Deploy the Confluent Platform. This Terraforms [confluent-for-kubernetes-example
 
 ```hcl
 module "confluent_platform" {
-  source    = "aidanmelen/confluent-platform/kubernetes"
-  version   = ">= 0.3.0"
+  source  = "aidanmelen/confluent-platform/kubernetes"
+  version = ">= 0.3.0"
+
   namespace = "confluent"
 
   /*
@@ -35,7 +36,7 @@ module "confluent_platform" {
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_confluent_platform"></a> [confluent\_platform](#module\_confluent\_platform) | aidanmelen/confluent-platform/kubernetes | >= 0.3.0 |
+| <a name="module_confluent_platform"></a> [confluent\_platform](#module\_confluent\_platform) | ../../ | n/a |
 ## Outputs
 
 | Name | Description |

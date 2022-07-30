@@ -1,6 +1,6 @@
 module "confluent_platform_singlenode" {
-  source  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.3.0"
+  source    = "../../"
+  namespace = "confluent"
 
   zookeeper = yamldecode(<<EOF
 spec:

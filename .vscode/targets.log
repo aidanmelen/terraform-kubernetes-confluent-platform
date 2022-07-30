@@ -1,0 +1,332 @@
+@D = $(patsubst %/,%,$(dir $@))
+# automatic
+@F = $(notdir $@)
+# makefile
+CURDIR := /workspaces/terraform-kubernetes-conlfuent-platform
+# makefile (from 'Makefile', line 4)
+SHELL := /bin/bash
+# environment
+VSCODE_NLS_CONFIG = {"locale":"en","availableLanguages":{}}
+# environment
+_ = /bin/cat
+# makefile (from 'Makefile', line 1)
+MAKEFILE_LIST :=  Makefile
+# 'override' directive
+GNUMAKEFLAGS :=
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# makefile (from 'Makefile', line 2)
+VERSION = 0.3.1
+# environment
+LESSOPEN = | /bin/lesspipe %s
+# environment
+VSCODE_CWD = /vscode/vscode-server/bin/linux-x64/3b889b090b5ad5793f524b5d1d39fda662b96a2a
+# environment
+GOPROXY = https://proxy.golang.org,direct
+# default
+MAKE_HOST := x86_64-pc-linux-gnu
+# environment
+PATH = /usr/local/go/bin:/vscode/vscode-server/bin/linux-x64/3b889b090b5ad5793f524b5d1d39fda662b96a2a/bin/remote-cli:/root/.local/bin:/root/.tfenv/bin:/bin:/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+# environment
+GOPATH = /go
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# environment
+VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-46605a50-4b51-47d3-8fd4-5b6876f9197f.sock
+# default
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
+# environment
+LS_COLORS =
+# environment
+SSH_AUTH_SOCK = /tmp/vscode-ssh-auth-ea0097780ed8d95b5096e1aabd7bff1716fe6bf6.sock
+# automatic
+%F = $(notdir $%)
+# environment
+PWD = /workspaces/terraform-kubernetes-conlfuent-platform
+# default
+.LOADED :=
+# environment
+GOMODCACHE = /go/pkg/mod
+# environment
+HOME = /root
+# environment
+REMOTE_CONTAINERS = true
+# environment
+LESSCLOSE = /bin/lesspipe %s %s
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+# automatic
++F = $(notdir $+)
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# environment
+HOSTNAME = 45ac65726361
+# environment
+MAKELEVEL := 0
+# default
+MAKE = $(MAKE_COMMAND)
+# default
+MAKECMDGOALS := all
+# environment
+SHLVL = 1
+# default
+MAKE_VERSION := 4.2.1
+# makefile (from 'Makefile', line 11)
+.DEFAULT_GOAL := help
+# environment
+GOROOT = /usr/local/go
+# makefile (from 'Makefile', line 1)
+NAME = terraform-kubernetes-confluent
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# environment
+REMOTE_CONTAINERS_IPC = /tmp/vscode-remote-containers-ipc-ea0097780ed8d95b5096e1aabd7bff1716fe6bf6.sock
+# default
+MAKE_COMMAND := make
+# default
+.VARIABLES :=
+# automatic
+*F = $(notdir $*)
+# environment
+LANGUAGE = C
+# makefile
+MAKEFLAGS = pqrR
+# environment
+MFLAGS = -pqrR
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# environment
+BROWSER = /vscode/vscode-server/bin/linux-x64/3b889b090b5ad5793f524b5d1d39fda662b96a2a/bin/helpers/browser.sh
+# environment
+VSCODE_HANDLES_SIGPIPE = true
+# default
+MAKEFILES :=
+# automatic
+<F = $(notdir $<)
+# environment
+LC_ALL = C
+# automatic
+^F = $(notdir $^)
+# default
+SUFFIXES :=
+# environment
+REMOTE_CONTAINERS_SOCKETS = ["/tmp/vscode-ssh-auth-ea0097780ed8d95b5096e1aabd7bff1716fe6bf6.sock","/root/.gnupg/S.gpg-agent"]
+# default
+.INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
+# default
+.RECIPEPREFIX :=
+# environment
+LANG = C
+# variable set hash-table stats:
+# Load=67/1024=7%, Rehash=0, Collisions=6/94=6%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# . (device 113, inode 4317671833): 22 files, no impossibilities.
+
+# 22 files, no impossibilities in 1 directories.
+
+# Implicit Rules
+
+# No implicit rules.
+
+# Files
+
+setup:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 20):
+	# terraform
+	terraform init
+	cd examples/confluent_operator && terraform init
+	cd examples/confluent_platform && terraform init
+	cd examples/confluent_platform_singlenode && terraform init
+	cd examples/pre_existing_crds && terraform init
+	# terratest
+	go get github.com/gruntwork-io/terratest/modules/terraform
+	go mod init test/terraform_confluent_operator_test.go
+	# pre-commit
+	git init
+	git add -A
+	pre-commit install
+
+_test-confluent-platform-singlenode:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 80):
+	# setup
+	mv examples/confluent_platform_singlenode/main.tf examples/confluent_platform_singlenode/.main.tf.bk && mv examples/confluent_platform_singlenode/.main.tf.terratest examples/confluent_platform_singlenode/main.tf
+	# test
+	go test test/terraform_confluent_platform_singlenode_test.go -timeout 20m -v |& tee test/terraform_confluent_platform_singlenode_test.log
+	# teardown
+	mv examples/confluent_platform_singlenode/main.tf examples/confluent_platform_singlenode/.main.tf.terratest && mv examples/confluent_platform_singlenode/.main.tf.bk examples/confluent_platform_singlenode/main.tf
+	cd examples/confluent_platform_singlenode && terraform init
+
+_test-setup:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 60):
+	mv examples/confluent_operator/main.tf examples/confluent_operator/.main.tf.bk && mv examples/confluent_operator/.main.tf.terratest examples/confluent_operator/main.tf
+	cd examples/confluent_operator && terraform init && terraform apply --auto-approve
+
+all:
+#  Phony target (prerequisite of .PHONY).
+#  Command line target.
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has been updated.
+#  Successfully updated.
+
+.PHONY: help all
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+tests: test-confluent-operator test-confluent-platform test-confluent-platform-singlenode
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+_test-confluent-platform:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 69):
+	# setup
+	mv examples/confluent_platform/main.tf examples/confluent_platform/.main.tf.bk && mv examples/confluent_platform/.main.tf.terratest examples/confluent_platform/main.tf
+	# test
+	go test test/terraform_confluent_platform_test.go -timeout 1h -v |& tee test/terraform_confluent_platform_test.log
+	# teardown
+	mv examples/confluent_platform/main.tf examples/confluent_platform/.main.tf.terratest && mv examples/confluent_platform/.main.tf.bk examples/confluent_platform/main.tf
+	cd examples/confluent_platform && terraform init
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2022-07-30 04:14:00.355237633
+#  File has been updated.
+#  Successfully updated.
+
+build:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 14):
+	cd .devcontainer && docker build -f Dockerfile . -t $(NAME)
+
+_test-teardown:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 64):
+	cd examples/confluent_operator && terraform init && terraform destroy --auto-approve
+	mv examples/confluent_operator/main.tf examples/confluent_operator/.main.tf.terratest && mv examples/confluent_operator/.main.tf.bk examples/confluent_operator/main.tf
+	cd examples/confluent_operator && terraform init
+
+help:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 9):
+	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "\033[36m%-35s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
+
+test-confluent-operator:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 49):
+	# setup
+	mv examples/confluent_operator/main.tf examples/confluent_operator/.main.tf.bk && mv examples/confluent_operator/.main.tf.terratest examples/confluent_operator/main.tf
+	# test
+	go test test/terraform_confluent_operator_test.go -timeout 5m -v |& tee test/terraform_confluent_operator_test.log
+	# teardown
+	mv examples/confluent_operator/main.tf examples/confluent_operator/.main.tf.terratest && mv examples/confluent_operator/.main.tf.bk examples/confluent_operator/main.tf
+	cd examples/confluent_operator && terraform init
+
+test-confluent-platform-singlenode: _test-setup _test-confluent-platform-singlenode _test-teardown
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+run:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 17):
+	docker run -it --rm -v "$$(pwd)":/workspaces/$(NAME) -v ~/.kube:/root/.kube -v ~/.cache/pre-commit:/root/.cache/pre-commit -v ~/.terraform.d/plugins:/root/.terraform.d/plugins --workdir /workspaces/$(NAME) $(NAME) /bin/bash
+
+clean:
+
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 95):
+	@rm -f .terraform.lock.hcl
+	@rm -f examples/confluent_platform/.terraform.lock.hcl
+	@rm -f examples/confluent_platform_singlenode/.terraform.lock.hcl
+	@rm -f examples/confluent_operator/.terraform.lock.hcl
+	@rm -rf .terraform*
+	@rm -rf examples/confluent_platform/.terraform
+	@rm -rf examples/confluent_platform_singlenode/.terraform
+	@rm -rf examples/confluent_operator/.terraform
+	@rm -f go.mod
+	@rm -f go.sum
+	@rm -f test/go.mod
+	@rm -f test/go.sum
+
+test-confluent-platform: _test-setup _test-confluent-platform _test-teardown
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+lint:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 37):
+	git add -A
+	pre-commit run
+	git add -A
+
+lint-all:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 42):
+	git add -A
+	pre-commit run --all-files
+	git add -A
+
+# files hash-table stats:
+# Load=20/1024=2%, Rehash=0, Collisions=0/45=0%
+# VPATH Search Paths
+
+# No 'vpath' search paths.
+
+# No general ('VPATH' variable) search path.
+
+# strcache buffers: 1 (0) / strings = 43 / storage = 493 B / avg = 11 B
+# current buf: size = 8162 B / used = 493 B / count = 43 / avg = 11 B
+
+# strcache performance: lookups = 74 / hit rate = 41%
+# hash-table stats:
+# Load=43/8192=1%, Rehash=0, Collisions=1/74=1%
+# Finished Make data base on Sat Jul 30 16:55:00 2022

@@ -29,7 +29,7 @@ module "confluent_operator" {
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_confluent_operator"></a> [confluent\_operator](#module\_confluent\_operator) | aidanmelen/confluent-platform/kubernetes//modules/confluent_operator | >= 0.3.0 |
+| <a name="module_confluent_operator"></a> [confluent\_operator](#module\_confluent\_operator) | ../../modules/confluent_operator | n/a |
 ## Outputs
 
 | Name | Description |

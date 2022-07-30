@@ -14,9 +14,7 @@ A Terraform module for running [Confluent for Kubernetes (CFK)](https://docs.con
 
 ```hcl
 module "confluent_operator" {
-  source  = "aidanmelen/confluent-platform/kubernetes//modules/confluent_operator"
-  version = ">= 0.3.0"
-
+  source           = "../../modules/confluent_operator"
   create_namespace = true
   namespace        = "confluent"
   name             = "confluent-operator"
@@ -28,8 +26,7 @@ module "confluent_operator" {
 
 ```hcl
 module "confluent_platform" {
-  source    = "aidanmelen/confluent-platform/kubernetes"
-  version   = ">= 0.3.0"
+  source    = "../../"
   namespace = "confluent"
 
   /*
@@ -72,14 +69,18 @@ terraform apply
 
 ## Teardown
 
-1. Destroy the Confluent Platform:
+### Confluent Platform
+
+First, destroy the Confluent Platform:
 
 ```bash
 cd examples/confluent_platform
 terraform destroy
 ```
 
-2. Uninstall the Confluent Operator and delete `confluent` namespace:
+### Confluent Operator
+
+Second, uninstall the Confluent Operator and delete `confluent` namespace:
 
 ```bash
 cd examples/confluent_operator
@@ -107,6 +108,7 @@ test-confluent-operator   Test confluent-operator Example
 test-confluent-platform   Test confluent-platform Example
 clean                     Clean project
 ```
+
 ## Requirements
 
 | Name | Version |
@@ -123,32 +125,20 @@ clean                     Clean project
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_connect"></a> [connect](#module\_connect) | Invicton-Labs/deepmerge/null | 0.1.5 |
-| <a name="module_controlcenter"></a> [controlcenter](#module\_controlcenter) | Invicton-Labs/deepmerge/null | 0.1.5 |
-| <a name="module_kafka"></a> [kafka](#module\_kafka) | Invicton-Labs/deepmerge/null | 0.1.5 |
-| <a name="module_kafkarestproxy"></a> [kafkarestproxy](#module\_kafkarestproxy) | Invicton-Labs/deepmerge/null | 0.1.5 |
-| <a name="module_ksqldb"></a> [ksqldb](#module\_ksqldb) | Invicton-Labs/deepmerge/null | 0.1.5 |
-| <a name="module_schemaregistry"></a> [schemaregistry](#module\_schemaregistry) | Invicton-Labs/deepmerge/null | 0.1.5 |
-| <a name="module_zookeeper"></a> [zookeeper](#module\_zookeeper) | Invicton-Labs/deepmerge/null | 0.1.5 |
+| <a name="module_confluent_platform_override_values"></a> [confluent\_platform\_override\_values](#module\_confluent\_platform\_override\_values) | Invicton-Labs/deepmerge/null | 0.1.5 |
 ## Resources
 
 | Name | Type |
 |------|------|
-| [kubernetes_manifest.connect](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/manifest) | resource |
-| [kubernetes_manifest.controlcenter](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/manifest) | resource |
-| [kubernetes_manifest.kafka](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/manifest) | resource |
-| [kubernetes_manifest.kafkarestproxy](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/manifest) | resource |
-| [kubernetes_manifest.ksqldb](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/manifest) | resource |
-| [kubernetes_manifest.schemaregistry](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/manifest) | resource |
-| [kubernetes_manifest.zookeeper](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/manifest) | resource |
+| [kubernetes_manifest.component](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/manifest) | resource |
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_confluent_operator_app_version"></a> [confluent\_operator\_app\_version](#input\_confluent\_operator\_app\_version) | The default Confluent Operator app version. This may be overriden by component override values. This version must be compatible with the`confluent_platform_version`. Please see confluent docs for more information: https://docs.confluent.io/platform/current/installation/versions-interoperability.html#confluent-operator | `string` | `"2.4.0"` | no |
 | <a name="input_confluent_platform_version"></a> [confluent\_platform\_version](#input\_confluent\_platform\_version) | The default Confluent Platform app version. This may be overriden by component override values. This version must be compatible with the `confluent_operator_app_version`. Please see confluent docs for more information: https://docs.confluent.io/platform/current/installation/versions-interoperability.html#confluent-operator | `string` | `"7.2.0"` | no |
-| <a name="input_connect"></a> [connect](#input\_connect) | The Connect override values. | `any` | `null` | no |
-| <a name="input_controlcenter"></a> [controlcenter](#input\_controlcenter) | The ControlCenter override values. | `any` | `null` | no |
+| <a name="input_connect"></a> [connect](#input\_connect) | The Connect override values. | `any` | `{}` | no |
+| <a name="input_controlcenter"></a> [controlcenter](#input\_controlcenter) | The ControlCenter override values. | `any` | `{}` | no |
 | <a name="input_create"></a> [create](#input\_create) | Controls if the Confluent Platform resources should be created (affects all resources). | `bool` | `true` | no |
 | <a name="input_create_connect"></a> [create\_connect](#input\_create\_connect) | Controls if the Connect component of the Confluent Platform should be created. | `bool` | `true` | no |
 | <a name="input_create_controlcenter"></a> [create\_controlcenter](#input\_create\_controlcenter) | Controls if the ControlCenter component of the Confluent Platform should be created. | `bool` | `true` | no |
@@ -156,13 +146,16 @@ clean                     Clean project
 | <a name="input_create_kafkarestproxy"></a> [create\_kafkarestproxy](#input\_create\_kafkarestproxy) | Controls if the KafkaRestProxy component of the Confluent Platform should be created. | `bool` | `true` | no |
 | <a name="input_create_ksqldb"></a> [create\_ksqldb](#input\_create\_ksqldb) | Controls if the KsqlDB component of the Confluent Platform should be created. | `bool` | `true` | no |
 | <a name="input_create_schemaregistry"></a> [create\_schemaregistry](#input\_create\_schemaregistry) | Controls if the SchemaRegistry component of the Confluent Platform should be created. | `bool` | `true` | no |
+| <a name="input_create_timeout"></a> [create\_timeout](#input\_create\_timeout) | The create timeout for each Conlfuent Platform component. | `string` | `"1h"` | no |
 | <a name="input_create_zookeeper"></a> [create\_zookeeper](#input\_create\_zookeeper) | Controls if the Zookeeper component of the Confluent Platform should be created. | `bool` | `true` | no |
-| <a name="input_kafka"></a> [kafka](#input\_kafka) | The Kafka override values. | `any` | `null` | no |
-| <a name="input_kafkarestproxy"></a> [kafkarestproxy](#input\_kafkarestproxy) | The KafkaRestProxy override values. | `any` | `null` | no |
-| <a name="input_ksqldb"></a> [ksqldb](#input\_ksqldb) | The KsqlDB override values. | `any` | `null` | no |
+| <a name="input_delete_timeout"></a> [delete\_timeout](#input\_delete\_timeout) | The delete timeout for each Conlfuent Platform component. | `string` | `"10m"` | no |
+| <a name="input_kafka"></a> [kafka](#input\_kafka) | The Kafka override values. | `any` | `{}` | no |
+| <a name="input_kafkarestproxy"></a> [kafkarestproxy](#input\_kafkarestproxy) | The KafkaRestProxy override values. | `any` | `{}` | no |
+| <a name="input_ksqldb"></a> [ksqldb](#input\_ksqldb) | The KsqlDB override values. | `any` | `{}` | no |
 | <a name="input_namespace"></a> [namespace](#input\_namespace) | The namespace to release Confluent Platform into. Must be the same namespace running the Confluent Operator. | `string` | `"confluent"` | no |
-| <a name="input_schemaregistry"></a> [schemaregistry](#input\_schemaregistry) | The SchemaRegistry override values. | `any` | `null` | no |
-| <a name="input_zookeeper"></a> [zookeeper](#input\_zookeeper) | The Zookeeper override values. | `any` | `null` | no |
+| <a name="input_schemaregistry"></a> [schemaregistry](#input\_schemaregistry) | The SchemaRegistry override values. | `any` | `{}` | no |
+| <a name="input_update_timeout"></a> [update\_timeout](#input\_update\_timeout) | The update timeout for each Conlfuent Platform component. | `string` | `"1h"` | no |
+| <a name="input_zookeeper"></a> [zookeeper](#input\_zookeeper) | The Zookeeper override values. | `any` | `{}` | no |
 ## Outputs
 
 | Name | Description |

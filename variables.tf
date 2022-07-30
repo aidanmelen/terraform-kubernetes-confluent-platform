@@ -31,7 +31,7 @@ variable "create_zookeeper" {
 variable "zookeeper" {
   description = "The Zookeeper override values."
   type        = any
-  default     = null
+  default     = {}
 }
 
 variable "create_kafka" {
@@ -43,7 +43,7 @@ variable "create_kafka" {
 variable "kafka" {
   description = "The Kafka override values."
   type        = any
-  default     = null
+  default     = {}
 }
 
 variable "create_connect" {
@@ -55,7 +55,7 @@ variable "create_connect" {
 variable "connect" {
   description = "The Connect override values."
   type        = any
-  default     = null
+  default     = {}
 }
 
 variable "create_ksqldb" {
@@ -67,7 +67,7 @@ variable "create_ksqldb" {
 variable "ksqldb" {
   description = "The KsqlDB override values."
   type        = any
-  default     = null
+  default     = {}
 }
 
 variable "create_controlcenter" {
@@ -79,7 +79,7 @@ variable "create_controlcenter" {
 variable "controlcenter" {
   description = "The ControlCenter override values."
   type        = any
-  default     = null
+  default     = {}
 }
 
 variable "create_schemaregistry" {
@@ -91,7 +91,7 @@ variable "create_schemaregistry" {
 variable "schemaregistry" {
   description = "The SchemaRegistry override values."
   type        = any
-  default     = null
+  default     = {}
 }
 
 variable "create_kafkarestproxy" {
@@ -103,5 +103,23 @@ variable "create_kafkarestproxy" {
 variable "kafkarestproxy" {
   description = "The KafkaRestProxy override values."
   type        = any
-  default     = null
+  default     = {}
+}
+
+variable "create_timeout" {
+  description = "The create timeout for each Conlfuent Platform component."
+  type        = string
+  default     = "1h"
+}
+
+variable "update_timeout" {
+  description = "The update timeout for each Conlfuent Platform component."
+  type        = string
+  default     = "1h"
+}
+
+variable "delete_timeout" {
+  description = "The delete timeout for each Conlfuent Platform component."
+  type        = string
+  default     = "10m"
 }

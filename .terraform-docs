@@ -43,14 +43,18 @@ content: |-
 
   ## Teardown
 
-  1. Destroy the Confluent Platform:
+  ### Confluent Platform
+
+  First, destroy the Confluent Platform:
 
   ```bash
   cd examples/confluent_platform
   terraform destroy
   ```
 
-  2. Uninstall the Confluent Operator and delete `confluent` namespace:
+  ### Confluent Operator
+
+  Second, uninstall the Confluent Operator and delete `confluent` namespace:
 
   ```bash
   cd examples/confluent_operator
@@ -78,6 +82,7 @@ content: |-
   test-confluent-platform   Test confluent-platform Example
   clean                     Clean project
   ```
+
   {{ .Requirements }}
   {{ .Providers }}
   {{ .Modules }}

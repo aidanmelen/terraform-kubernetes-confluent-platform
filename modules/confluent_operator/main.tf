@@ -6,14 +6,15 @@ resource "helm_release" "confluent_operator" {
   chart            = var.chart
   version          = var.chart_version
   repository       = var.repository
+  values           = var.values
   wait_for_jobs    = var.wait_for_jobs
 
   dynamic "set" {
     for_each = var.set
     content {
-      name  = "set".value["name"]
-      value = "set".value["value"]
-      type  = "set".value["type"]
+      name  = set.value["name"]
+      value = set.value["value"]
+      type  = set.value["type"]
     }
   }
 
