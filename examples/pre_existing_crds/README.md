@@ -4,7 +4,7 @@ Deploy the Confluent Operator and Confluent Platform in a single Terraform run. 
 
 ## Prerequisites
 
-The Confluent for Kubernetes CRDs must exist on the cluster before the first Terraform apply of the Confluent Platform. Create the CRDs with:
+The Confluent for Kubernetes CRDs must installed on the Kubernetes cluster before the first Terraform apply of the Confluent Platform. Install the CRDs with:
 
 ```bash
 make install-cfk-crds
