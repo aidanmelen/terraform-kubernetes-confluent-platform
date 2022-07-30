@@ -4,7 +4,7 @@ Deploy the Confluent Platform. This Terraforms [confluent-for-kubernetes-example
 
 ## Prerequisites
 
-Deploy the Confluent Operator into the `confluent` namespace. Please see the [confluent_operator example](../confluent_operator)
+Deploy the Confluent Operator into the `confluent` namespace. Please see the [confluent_operator example](https://github.com/aidanmelen/terraform-kubernetes-confluent-platform/tree/main/examples/confluent_operator) for more information.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
