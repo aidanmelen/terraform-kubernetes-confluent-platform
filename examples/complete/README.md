@@ -1,6 +1,6 @@
-# confluent_platform
+# complete
 
-Deploy the Confluent Platform. This Terraforms [confluent-for-kubernetes-examples/quickstart-deploy/confluent-platform.yaml](https://github.com/confluentinc/confluent-kubernetes-examples/blob/master/quickstart-deploy/confluent-platform.yaml).
+Deploy the Confluent Operator and Confluent Platform in a single Terraform run. This Terraforms [confluent-for-kubernetes-examples/quickstart-deploy/confluent-platform.yaml](https://github.com/confluentinc/confluent-kubernetes-examples/blob/master/quickstart-deploy/confluent-platform.yaml).
 
 ## Assumptions
 
@@ -8,9 +8,13 @@ This example assumes you have a Kubernetes cluster running locally on Docker Des
 
 ## Prerequisites
 
-Similiar to the [Deploy Applications with the Helm Provider](https://learn.hashicorp.com/tutorials/terraform/helm-provider?in=terraform/use-case) tutorial; releasing the Confluent Operator and Confluent Platform will require two separate Terraform runs.
+The Confluent for Kubernetes CRDs must installed on the Kubernetes cluster before the first Terraform apply of the Confluent Platform. Install the CRDs with:
 
-Deploy the Confluent Operator into the `confluent` namespace. Please see the [confluent_operator example](https://github.com/aidanmelen/terraform-kubernetes-confluent-platform/tree/main/examples/confluent_operator) for more information.
+```bash
+make install-cfk-crds
+```
+
+Please see the [Makefile](https://github.com/aidanmelen/terraform-kubernetes-confluent-platform/blob/main/Makefile) for more information.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
@@ -21,8 +25,16 @@ module "confluent_platform" {
   source  = "aidanmelen/confluent-platform/kubernetes"
   version = ">= 0.3.0"
 
-  namespace = "confluent"
+  namespace = var.namespace
 
+  # confluent operator
+  confluent_operator = {
+    create_namespace = true
+    name             = "confluent-operator"
+    chart_version    = "0.517.12"
+  }
+
+  # confluent platform
   /*
   zookeeper      = { ... }
   kafka          = { ... }
@@ -51,12 +63,8 @@ module "confluent_platform" {
 
 | Name | Description |
 |------|-------------|
-| <a name="output_connect"></a> [connect](#output\_connect) | The Connect CFK manifest. |
-| <a name="output_controlcenter"></a> [controlcenter](#output\_controlcenter) | The ControlCenter CFK manifest. |
+| <a name="output_confluent_operator"></a> [confluent\_operator](#output\_confluent\_operator) | The Confluent Operator. |
 | <a name="output_kafka"></a> [kafka](#output\_kafka) | The Kafka CFK manifest. |
-| <a name="output_kafkarestproxy"></a> [kafkarestproxy](#output\_kafkarestproxy) | The KafkaRestProxy CFK manifest. |
-| <a name="output_ksqldb"></a> [ksqldb](#output\_ksqldb) | The KsqlDB CFK manifest. |
 | <a name="output_namespace"></a> [namespace](#output\_namespace) | The namespace for the Confluent Platform. |
-| <a name="output_schemaregistry"></a> [schemaregistry](#output\_schemaregistry) | The SchemaRegistry CFK manifest. |
 | <a name="output_zookeeper"></a> [zookeeper](#output\_zookeeper) | The Zookeeper CFK manifest. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

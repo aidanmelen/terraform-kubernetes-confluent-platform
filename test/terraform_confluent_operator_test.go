@@ -28,7 +28,4 @@ func TestTerraformConfluentOperatorExample(t *testing.T) {
 	expectedAppVersion := "map[app_version:2.4.0 chart_version:0.517.12 namespace:confluent]"
 
 	assert.Equal(t, expectedAppVersion, actualAppVersion, "Map %q should match %q", expectedAppVersion, actualAppVersion)
-
-	// website::tag::4:: Run a second "terraform apply". Fail the test if results have changes
-	terraform.ApplyAndIdempotent(t, terraformOptions)
 }

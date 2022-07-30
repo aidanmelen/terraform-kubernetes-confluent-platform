@@ -2,6 +2,10 @@
 
 Deploy the Confluent Operator. This Terraforms [Step 1,2 from the Confluent for Kubernetes Quickstart](https://docs.confluent.io/operator/current/co-quickstart.html).
 
+## Assumptions
+
+This example assumes you have a Kubernetes cluster running locally on Docker Desktop. Please see [Docker's official documentation](https://docs.docker.com/desktop/kubernetes/) for more information.
+
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Example

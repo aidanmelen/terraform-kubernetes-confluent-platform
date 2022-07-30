@@ -1,15 +1,27 @@
 variable "create" {
-  description = "Controls if the Confluent Platform resources should be created (affects all resources)."
+  description = "Controls if the Confluent Platform and Operator resources should be created (affects all resources)."
   type        = bool
   default     = true
 }
 
 variable "namespace" {
-  description = "The namespace to release Confluent Platform into. Must be the same namespace running the Confluent Operator."
+  description = "The namespace to release Confluent Platform into. When `confluent_operator` is specified, this will also ensure the Confluent Operator is released into the same namespace."
   type        = string
   default     = "confluent"
 }
 
+################################################################################
+# Confluent Operator
+################################################################################
+variable "confluent_operator" {
+  description = "Controls if the Confluent Operator resources should be created."
+  type        = any
+  default     = null
+}
+
+################################################################################
+# Confluent Platform
+################################################################################
 variable "confluent_operator_app_version" {
   description = "The default Confluent Operator app version. This may be overriden by component override values. This version must be compatible with the`confluent_platform_version`. Please see confluent docs for more information: https://docs.confluent.io/platform/current/installation/versions-interoperability.html#confluent-operator"
   type        = string

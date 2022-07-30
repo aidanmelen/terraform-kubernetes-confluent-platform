@@ -1,0 +1,60 @@
+content: |-
+  {{ .Header }}
+
+  ## Example
+
+  ### Confluent Platform
+
+  ```hcl
+  {{ include "examples/complete/.main.tf.docs" }}
+  ```
+
+  ## Usage
+
+  ### Confluent Platform
+
+  First, install the CFK CDRs on the Kubernetes Cluster. For example:
+
+  ```bash
+  make install-cfk-crds
+  ```
+
+  Please see the [Confluent for Kubernetes Quickstart](https://docs.confluent.io/operator/current/co-quickstart.html#co-long-quickstart) for more information.
+
+  Then release the Confluent Platform with
+
+  ```bash
+  cd examples/confluent_operator
+  terraform init
+  terraform apply
+  ```
+
+
+  ## Tests
+
+  Run Terratest using the [Makefile](./Makefile) targets:
+
+  1. `make install`
+  2. `make tests`
+
+  ## Makefile Targets
+
+  ```
+  help                      This help.
+  build                     Build docker dev container
+  run                       Run docker dev container
+  install                   Install project
+  lint                      Lint with pre-commit
+  lint-all                  Lint with pre-commit
+  tests                     Test with Terratest
+  test-confluent-operator   Test confluent-operator Example
+  test-confluent-platform   Test confluent-platform Example
+  clean                     Clean project
+  ```
+
+  {{ .Requirements }}
+  {{ .Providers }}
+  {{ .Modules }}
+  {{ .Resources }}
+  {{ .Inputs }}
+  {{ .Outputs }}

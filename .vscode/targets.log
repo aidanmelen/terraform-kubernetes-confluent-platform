@@ -150,7 +150,7 @@ setup:
 	cd examples/confluent_operator && terraform init
 	cd examples/confluent_platform && terraform init
 	cd examples/confluent_platform_singlenode && terraform init
-	cd examples/pre_existing_crds && terraform init
+	cd examples/complete && terraform init
 	# terratest
 	go get github.com/gruntwork-io/terratest/modules/terraform
 	go mod init test/terraform_confluent_operator_test.go

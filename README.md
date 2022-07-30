@@ -10,25 +10,23 @@ A Terraform module for running [Confluent for Kubernetes (CFK)](https://docs.con
 
 ## Example
 
-### Confluent Operator
-
-```hcl
-module "confluent_operator" {
-  source           = "../../modules/confluent_operator"
-  create_namespace = true
-  namespace        = "confluent"
-  name             = "confluent-operator"
-  chart_version    = "0.517.12"
-}
-```
-
 ### Confluent Platform
 
 ```hcl
 module "confluent_platform" {
-  source    = "../../"
-  namespace = "confluent"
+  source  = "aidanmelen/confluent-platform/kubernetes"
+  version = ">= 0.3.0"
 
+  namespace = var.namespace
+
+  # confluent operator
+  confluent_operator = {
+    create_namespace = true
+    name             = "confluent-operator"
+    chart_version    = "0.517.12"
+  }
+
+  # confluent platform
   /*
   zookeeper      = { ... }
   kafka          = { ... }
@@ -43,11 +41,17 @@ module "confluent_platform" {
 
 ## Usage
 
-Similiar to the [Deploy Applications with the Helm Provider](https://learn.hashicorp.com/tutorials/terraform/helm-provider?in=terraform/use-case) tutorial; releasing the Confluent Operator and Confluent Platform will require two separate Terraform runs. For example:
+### Confluent Platform
 
-### Confluent Operator
+First, install the CFK CDRs on the Kubernetes Cluster. For example:
 
-First, create the `confluent` namespace and release Confluent Operator into it:
+```bash
+make install-cfk-crds
+```
+
+Please see the [Confluent for Kubernetes Quickstart](https://docs.confluent.io/operator/current/co-quickstart.html#co-long-quickstart) for more information.
+
+Then release the Confluent Platform with
 
 ```bash
 cd examples/confluent_operator
@@ -55,37 +59,6 @@ terraform init
 terraform apply
 ```
 
-Please see the [Confluent for Kubernetes Quickstart](https://docs.confluent.io/operator/current/co-quickstart.html#co-long-quickstart) for more information releasing the Confluent Operator.
-
-### Confluent Platform
-
-Second, apply the Confluent Platform:
-
-```bash
-cd examples/confluent_platform
-terraform init
-terraform apply
-```
-
-## Teardown
-
-### Confluent Platform
-
-First, destroy the Confluent Platform:
-
-```bash
-cd examples/confluent_platform
-terraform destroy
-```
-
-### Confluent Operator
-
-Second, uninstall the Confluent Operator and delete `confluent` namespace:
-
-```bash
-cd examples/confluent_operator
-terraform destroy
-```
 
 ## Tests
 
@@ -125,6 +98,7 @@ clean                     Clean project
 
 | Name | Source | Version |
 |------|--------|---------|
+| <a name="module_confluent_operator"></a> [confluent\_operator](#module\_confluent\_operator) | ./modules/confluent_operator | n/a |
 | <a name="module_confluent_platform_override_values"></a> [confluent\_platform\_override\_values](#module\_confluent\_platform\_override\_values) | Invicton-Labs/deepmerge/null | 0.1.5 |
 ## Resources
 
@@ -135,11 +109,12 @@ clean                     Clean project
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_confluent_operator"></a> [confluent\_operator](#input\_confluent\_operator) | Controls if the Confluent Operator resources should be created. | `any` | `null` | no |
 | <a name="input_confluent_operator_app_version"></a> [confluent\_operator\_app\_version](#input\_confluent\_operator\_app\_version) | The default Confluent Operator app version. This may be overriden by component override values. This version must be compatible with the`confluent_platform_version`. Please see confluent docs for more information: https://docs.confluent.io/platform/current/installation/versions-interoperability.html#confluent-operator | `string` | `"2.4.0"` | no |
 | <a name="input_confluent_platform_version"></a> [confluent\_platform\_version](#input\_confluent\_platform\_version) | The default Confluent Platform app version. This may be overriden by component override values. This version must be compatible with the `confluent_operator_app_version`. Please see confluent docs for more information: https://docs.confluent.io/platform/current/installation/versions-interoperability.html#confluent-operator | `string` | `"7.2.0"` | no |
 | <a name="input_connect"></a> [connect](#input\_connect) | The Connect override values. | `any` | `{}` | no |
 | <a name="input_controlcenter"></a> [controlcenter](#input\_controlcenter) | The ControlCenter override values. | `any` | `{}` | no |
-| <a name="input_create"></a> [create](#input\_create) | Controls if the Confluent Platform resources should be created (affects all resources). | `bool` | `true` | no |
+| <a name="input_create"></a> [create](#input\_create) | Controls if the Confluent Platform and Operator resources should be created (affects all resources). | `bool` | `true` | no |
 | <a name="input_create_connect"></a> [create\_connect](#input\_create\_connect) | Controls if the Connect component of the Confluent Platform should be created. | `bool` | `true` | no |
 | <a name="input_create_controlcenter"></a> [create\_controlcenter](#input\_create\_controlcenter) | Controls if the ControlCenter component of the Confluent Platform should be created. | `bool` | `true` | no |
 | <a name="input_create_kafka"></a> [create\_kafka](#input\_create\_kafka) | Controls if the Kafka component of the Confluent Platform should be created. | `bool` | `true` | no |
@@ -152,7 +127,7 @@ clean                     Clean project
 | <a name="input_kafka"></a> [kafka](#input\_kafka) | The Kafka override values. | `any` | `{}` | no |
 | <a name="input_kafkarestproxy"></a> [kafkarestproxy](#input\_kafkarestproxy) | The KafkaRestProxy override values. | `any` | `{}` | no |
 | <a name="input_ksqldb"></a> [ksqldb](#input\_ksqldb) | The KsqlDB override values. | `any` | `{}` | no |
-| <a name="input_namespace"></a> [namespace](#input\_namespace) | The namespace to release Confluent Platform into. Must be the same namespace running the Confluent Operator. | `string` | `"confluent"` | no |
+| <a name="input_namespace"></a> [namespace](#input\_namespace) | The namespace to release Confluent Platform into. When `confluent_operator` is specified, this will also ensure the Confluent Operator is released into the same namespace. | `string` | `"confluent"` | no |
 | <a name="input_schemaregistry"></a> [schemaregistry](#input\_schemaregistry) | The SchemaRegistry override values. | `any` | `{}` | no |
 | <a name="input_update_timeout"></a> [update\_timeout](#input\_update\_timeout) | The update timeout for each Conlfuent Platform component. | `string` | `"1h"` | no |
 | <a name="input_zookeeper"></a> [zookeeper](#input\_zookeeper) | The Zookeeper override values. | `any` | `{}` | no |
@@ -160,7 +135,7 @@ clean                     Clean project
 
 | Name | Description |
 |------|-------------|
-| <a name="output_confluent_platform_version"></a> [confluent\_platform\_version](#output\_confluent\_platform\_version) | The default Confluent Platform version. |
+| <a name="output_confluent_operator"></a> [confluent\_operator](#output\_confluent\_operator) | The Confluent Operator. |
 | <a name="output_connect_manifest"></a> [connect\_manifest](#output\_connect\_manifest) | The Connect manifest. |
 | <a name="output_controlcenter_manifest"></a> [controlcenter\_manifest](#output\_controlcenter\_manifest) | The ControlCenter manifest. |
 | <a name="output_kafka_manifest"></a> [kafka\_manifest](#output\_kafka\_manifest) | The Kafka manifest. |
@@ -168,6 +143,7 @@ clean                     Clean project
 | <a name="output_ksqldb_manifest"></a> [ksqldb\_manifest](#output\_ksqldb\_manifest) | The KsqlDB manifest. |
 | <a name="output_namespace"></a> [namespace](#output\_namespace) | The default namespace for the Confluent Platform. |
 | <a name="output_schemaregistry_manifest"></a> [schemaregistry\_manifest](#output\_schemaregistry\_manifest) | The SchemaRegistry manifest. |
+| <a name="output_version"></a> [version](#output\_version) | The default Confluent Platform version. |
 | <a name="output_zookeeper_manifest"></a> [zookeeper\_manifest](#output\_zookeeper\_manifest) | The Zookeeper manifest. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
