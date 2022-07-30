@@ -2,6 +2,10 @@
 
 Deploy the Confluent Platform Single Node. This Terraforms [confluent-for-kubernetes-examples/quickstart-deploy/confluent-platform-singlenode.yaml](https://github.com/confluentinc/confluent-kubernetes-examples/blob/master/quickstart-deploy/confluent-platform-singlenode.yaml).
 
+## Prerequisites
+
+Deploy the Confluent Operator into the `confluent` namespace. Please see the [confluent_operator example](https://github.com/aidanmelen/terraform-kubernetes-confluent-platform/tree/main/examples/confluent_operator) for more information.
+
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Example

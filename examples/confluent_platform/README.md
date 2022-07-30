@@ -2,6 +2,10 @@
 
 Deploy the Confluent Platform. This Terraforms [confluent-for-kubernetes-examples/quickstart-deploy/confluent-platform.yaml](https://github.com/confluentinc/confluent-kubernetes-examples/blob/master/quickstart-deploy/confluent-platform.yaml).
 
+## Prerequisites
+
+Deploy the Confluent Operator into the `confluent` namespace. Please see the [confluent_operator example](../confluent_operator)
+
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Example
