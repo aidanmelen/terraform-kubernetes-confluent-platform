@@ -1,11 +1,11 @@
-output "confluent_operator" {
-  description = "The Confluent Operator outputs."
-  value       = module.confluent_operator
-}
-
 output "namespace" {
   description = "The namespace for the Confluent Platform."
   value       = module.confluent_platform.namespace
+}
+
+output "confluent_operator" {
+  description = "The Confluent Operator."
+  value       = module.confluent_platform.confluent_operator
 }
 
 output "zookeeper" {

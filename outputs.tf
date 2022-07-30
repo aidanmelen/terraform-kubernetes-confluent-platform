@@ -3,6 +3,11 @@ output "namespace" {
   value       = var.namespace
 }
 
+output "confluent_operator" {
+  description = "The Confluent Operator."
+  value       = module.confluent_operator
+}
+
 output "confluent_platform_version" {
   description = "The default Confluent Platform version."
   value       = var.confluent_platform_version
