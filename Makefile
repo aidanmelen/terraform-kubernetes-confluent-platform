@@ -47,7 +47,7 @@ lint: docs ## Lint with pre-commit
 	pre-commit run
 	git add -A
 
-lint-all: docs ## Lint with pre-commit
+lint-all: docs ## Lint all files with pre-commit
 	git add -A
 	pre-commit run --all-files
 	git add -A
