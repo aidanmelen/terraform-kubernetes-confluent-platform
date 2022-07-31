@@ -15,23 +15,18 @@ build: ## Build docker dev container
 run: ## Run docker dev container
 	docker run -it --rm -v "$$(pwd)":/workspaces/$(NAME) -v ~/.kube:/root/.kube -v ~/.cache/pre-commit:/root/.cache/pre-commit -v ~/.terraform.d/plugins:/root/.terraform.d/plugins --workdir /workspaces/$(NAME) $(NAME) /bin/bash
 
-install-cfk-crds:
-	# download the cfk helm chart
-	curl -O https://confluent-for-kubernetes.s3-us-west-1.amazonaws.com/confluent-for-kubernetes-2.4.0.tar.gz
-	mkdir -p confluent-for-kubernetes-2.4.0
-	tar -xzf confluent-for-kubernetes-2.4.0.tar.gz --strip-components=1 -C confluent-for-kubernetes-2.4.0
-
-	# install the cfk crds
+apply-cfk-crds:
 	kubectl config set-cluster docker-desktop
-	kubectl apply -f confluent-for-kubernetes-2.4.0/helm/confluent-for-kubernetes/crds/
+	kubectl apply -f ./crds/2.4.0
 
-setup: install-cfk-crds ## Setup project
+setup: apply-cfk-crds ## Setup project
 	# terraform
 	terraform init
 	cd examples/confluent_operator && terraform init
 	cd examples/confluent_platform && terraform init
 	cd examples/confluent_platform_singlenode && terraform init
 	cd examples/complete && terraform init
+	cd examples/kafka_topics && terraform init
 
 	# pre-commit
 	git init
@@ -39,23 +34,20 @@ setup: install-cfk-crds ## Setup project
 	pre-commit install
 
 	# terratest
+	rm -rf go.mod*
 	go get github.com/gruntwork-io/terratest/modules/terraform
 	go mod init test/terraform_confluent_operator_test.go
 	go mod tidy -go=1.16 && go mod tidy -go=1.17
 
-render-terraform-docs-code:
-	# render terraform-docs code examples
-	sed -z 's/source[^\r\n]*/source  = "aidanmelen\/confluent-platform\/kubernetes\/\/modules\/confluent_operator"\n  version = ">= 0.3.0"\n/g' examples/confluent_operator/main.tf > examples/confluent_operator/.main.tf.docs
-	sed -z 's/source[^\r\n]*/source  = "aidanmelen\/confluent-platform\/kubernetes"\n  version = ">= 0.3.0"\n/g' examples/confluent_platform/main.tf > examples/confluent_platform/.main.tf.docs
-	sed -z 's/source[^\r\n]*/source  = "aidanmelen\/confluent-platform\/kubernetes"\n  version = ">= 0.3.0"\n/g' examples/confluent_platform_singlenode/main.tf > examples/confluent_platform_singlenode/.main.tf.docs
-	sed -z 's/source[^\r\n]*/source  = "aidanmelen\/confluent-platform\/kubernetes"\n  version = ">= 0.3.0"/g' examples/complete/main.tf > examples/complete/.main.tf.docs
+docs:
+	./bin/render-docs.sh
 
-lint:  ## Lint with pre-commit
+lint: docs ## Lint with pre-commit
 	git add -A
 	pre-commit run
 	git add -A
 
-lint-all: render-terraform-docs-code ## Lint with pre-commit
+lint-all: docs ## Lint with pre-commit
 	git add -A
 	pre-commit run --all-files
 	git add -A
@@ -81,24 +73,17 @@ test-confluent-platform: test-setup test-confluent-platform test-clean ## Test t
 
 test-confluent-platform-singlenode: test-setup test-confluent-platform-singlenode test-clean ## Test the confluent_platform_singlenode example
 
-test-complete: # Test the complete example
+test-complete: ## Test the complete example
 	go test test/terraform_complete_test.go -timeout 20m -v |& tee test/terraform_complete_test.log
 
-uninstall-cfk-crds:
-	# download the cfk helm chart
-	curl -O https://confluent-for-kubernetes.s3-us-west-1.amazonaws.com/confluent-for-kubernetes-2.4.0.tar.gz
-	mkdir confluent-for-kubernetes-2.4.0
-	tar -xzf confluent-for-kubernetes-2.4.0.tar.gz --strip-components=1 -C confluent-for-kubernetes-2.4.0
+test-kafka-topics: ## Test the kafka_topics example
+	go test test/terraform_kafka_topics_test.go -timeout 20m -v |& tee test/terraform_kafka_topics_test.log
 
-	# install the cfk crds
+delete-cfk-crds:
 	kubectl config set-cluster docker-desktop
-	kubectl delete -f confluent-for-kubernetes-2.4.0/helm/confluent-for-kubernetes/crds/
+	kubectl delete -f ./crds/2.4.0
 
-	# clean up the cfk downloads
-	rm confluent-for-kubernetes-2.4.0.tar.gz
-	rm -rf confluent-for-kubernetes-2.4.0
-
-clean: uninstall-cfk-crds ## Clean project
+clean: delete-cfk-crds ## Clean project
 	@rm -f .terraform.lock.hcl
 	@rm -f examples/confluent_operator/.terraform.lock.hcl
 	@rm -f examples/confluent_platform/.terraform.lock.hcl

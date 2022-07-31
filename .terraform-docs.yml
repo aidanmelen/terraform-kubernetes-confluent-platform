@@ -29,6 +29,13 @@ content: |-
   terraform apply
   ```
 
+  ## Troubleshooting
+
+  ```
+  Error: Failed to determine GroupVersionResource for manifest
+  ```
+
+  This happens when you attempt to apply the Confluent Platform Terraform without first applying the Confluent for Kubernetes CRDs. Please see [Prerequisites](#prerequisites) for more information.
 
   ## Tests
 
@@ -40,16 +47,7 @@ content: |-
   ## Makefile Targets
 
   ```
-  help                      This help.
-  build                     Build docker dev container
-  run                       Run docker dev container
-  install                   Install project
-  lint                      Lint with pre-commit
-  lint-all                  Lint with pre-commit
-  tests                     Test with Terratest
-  test-confluent-operator   Test confluent-operator Example
-  test-confluent-platform   Test confluent-platform Example
-  clean                     Clean project
+  {{ include ".make.docs" }}
   ```
 
   {{ .Requirements }}

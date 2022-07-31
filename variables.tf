@@ -23,7 +23,7 @@ variable "confluent_operator" {
 # Confluent Platform
 ################################################################################
 variable "confluent_operator_app_version" {
-  description = "The default Confluent Operator app version. This may be overriden by component override values. This version must be compatible with the`confluent_platform_version`. Please see confluent docs for more information: https://docs.confluent.io/platform/current/installation/versions-interoperability.html#confluent-operator"
+  description = "The default Confluent Operator app version. This may be overriden by component override values. This version must be compatible with the `confluent_platform_version`. Please see confluent docs for more information: https://docs.confluent.io/platform/current/installation/versions-interoperability.html#confluent-operator"
   type        = string
   default     = "2.4.0"
 }
@@ -116,6 +116,12 @@ variable "kafkarestproxy" {
   description = "The KafkaRestProxy override values."
   type        = any
   default     = {}
+}
+
+variable "kafka_topics" {
+  description = "The Kafka Topics to create."
+  type        = any
+  default     = []
 }
 
 variable "create_timeout" {

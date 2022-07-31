@@ -13,7 +13,7 @@ This example assumes you have a Kubernetes cluster running locally on Docker Des
 ```hcl
 module "confluent_operator" {
   source  = "aidanmelen/confluent-platform/kubernetes//modules/confluent_operator"
-  version = ">= 0.3.0"
+  version = ">= 0.4.0"
 
   create_namespace = true
   namespace        = "confluent"

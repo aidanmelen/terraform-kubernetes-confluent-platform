@@ -3,12 +3,12 @@ module "confluent_platform" {
   namespace = "confluent"
 
   /*
-  zookeeper      = { ... }
-  kafka          = { ... }
-  connect        = { ... }
-  ksqldb         = { ... }
-  controlcenter  = { ... }
-  schemaregistry = { ... }
-  kafkarestproxy = { ... }
+  zookeeper      = yamldecode( ... )
+  kafka          = yamldecode( ... )
+  connect        = yamldecode( ... )
+  ksqldb         = yamldecode( ... )
+  controlcenter  = yamldecode( ... )
+  schemaregistry = yamldecode( ... )
+  kafkarestproxy = yamldecode( ... )
   */
 }

@@ -1,0 +1,13 @@
+help                                This help.
+build                               Build docker dev container
+run                                 Run docker dev container
+setup                               Setup project
+lint                                Lint with pre-commit
+lint-all                            Lint with pre-commit
+tests                               Tests with Terratest
+test-confluent-operator             Test the confluent_operator example
+test-confluent-platform             Test the confluent_platform example
+test-confluent-platform-singlenode  Test the confluent_platform_singlenode example
+test-complete                       Test the complete example
+test-kafka-topics                   Test the kafka_topics example
+clean                               Clean project
