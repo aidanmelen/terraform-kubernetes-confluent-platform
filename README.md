@@ -52,17 +52,20 @@ module "confluent_platform" {
 
 ## Usage
 
-### Confluent Platform
+### Prerequisites
 
-First, install the CFK CDRs on the Kubernetes Cluster. For example:
+The Confluent for Kubernetes CRDs must installed on the Kubernetes cluster before the first Terraform apply of the Confluent Platform. Install the CRDs with:
 
 ```bash
-make install-cfk-crds
+kubectl config set-cluster docker-desktop
+kubectl apply -f ./crds/2.4.0
 ```
 
-Please see the [Confluent for Kubernetes Quickstart](https://docs.confluent.io/operator/current/co-quickstart.html#co-long-quickstart) for more information.
+Please see the [Makefile](https://github.com/aidanmelen/terraform-kubernetes-confluent-platform/blob/main/Makefile) for more information.
 
-Then release the Confluent Platform with
+### Confluent Platform
+
+Release the Confluent Platform with:
 
 ```bash
 cd examples/complete
@@ -70,7 +73,7 @@ terraform init
 terraform apply
 ```
 
-## Troubleshooting
+### Troubleshooting
 
 ```
 Error: Failed to determine GroupVersionResource for manifest
