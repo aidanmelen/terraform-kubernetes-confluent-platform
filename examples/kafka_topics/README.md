@@ -32,6 +32,7 @@ module "other_kafka_topic" {
 
   values = yamldecode(<<EOF
 spec:
+  partitionCount: 4
   configs:
     cleanup.policy: "compact"
   kafkaRest:
@@ -58,6 +59,6 @@ spec:
 
 | Name | Description |
 |------|-------------|
-| <a name="output_kafka_topic_manifest"></a> [kafka\_topic\_manifest](#output\_kafka\_topic\_manifest) | The Kafka Topic manifest from the Kubernetes server. |
-| <a name="output_other_kafka_topic_server_manifest"></a> [other\_kafka\_topic\_server\_manifest](#output\_other\_kafka\_topic\_server\_manifest) | The Kafka Topic manifest from the Kubernetes server. |
+| <a name="output_kafka_topic_manifest"></a> [kafka\_topic\_manifest](#output\_kafka\_topic\_manifest) | The Kafka Topic manifest. |
+| <a name="output_other_kafka_topic_manifest"></a> [other\_kafka\_topic\_manifest](#output\_other\_kafka\_topic\_manifest) | The Kafka Topic manifest. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

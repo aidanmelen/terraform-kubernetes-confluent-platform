@@ -3,11 +3,17 @@ output "namespace" {
   value       = var.namespace
 }
 
+################################################################################
+# Confluent Operator
+################################################################################
 output "confluent_operator" {
   description = "The Confluent Operator."
   value       = module.confluent_operator
 }
 
+################################################################################
+# Confluent Platform
+################################################################################
 output "version" {
   description = "The default Confluent Platform version."
   value       = var.confluent_platform_version
@@ -46,4 +52,12 @@ output "schemaregistry_manifest" {
 output "kafkarestproxy_manifest" {
   description = "The KafkaRestProxy manifest."
   value       = try(kubernetes_manifest.components["kafkarestproxy"].manifest, null)
+}
+
+################################################################################
+# Kafka Topics
+################################################################################
+output "kafka_topics" {
+  description = "The Kafka Topic manifests"
+  value       = module.kafka_topics[*]
 }

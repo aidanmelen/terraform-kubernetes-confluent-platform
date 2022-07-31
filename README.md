@@ -25,15 +25,28 @@ module "confluent_platform" {
     chart_version    = "0.517.12"
   }
 
-  /*
-  zookeeper      = { ... }
-  kafka          = { ... }
-  connect        = { ... }
-  ksqldb         = { ... }
-  controlcenter  = { ... }
-  schemaregistry = { ... }
-  kafkarestproxy = { ... }
-  */
+  zookeeper = {
+    "spec" = {
+      "replicas" = "3"
+    }
+  }
+
+  kafka = {
+    "spec" = {
+      "replicas" = "3"
+    }
+  }
+
+  create_connect        = false
+  create_ksqldb         = false
+  create_controlcenter  = false
+  create_schemaregistry = false
+  create_kafkarestproxy = false
+
+  kafka_topics = {
+    "my-topic"       = {}
+    "my-other-topic" = { "spec" = { "configs" = { "cleanup.policy" = "compact" } } }
+  }
 }
 ```
 
@@ -85,6 +98,8 @@ tests                               Tests with Terratest
 test-confluent-operator             Test the confluent_operator example
 test-confluent-platform             Test the confluent_platform example
 test-confluent-platform-singlenode  Test the confluent_platform_singlenode example
+test-complete                       Test the complete example
+test-kafka-topics                   Test the kafka_topics example
 clean                               Clean project
 ```
 
@@ -106,6 +121,7 @@ clean                               Clean project
 |------|--------|---------|
 | <a name="module_confluent_operator"></a> [confluent\_operator](#module\_confluent\_operator) | ./modules/confluent_operator | n/a |
 | <a name="module_confluent_platform_override_values"></a> [confluent\_platform\_override\_values](#module\_confluent\_platform\_override\_values) | Invicton-Labs/deepmerge/null | 0.1.5 |
+| <a name="module_kafka_topics"></a> [kafka\_topics](#module\_kafka\_topics) | ./modules/kafka_topic | n/a |
 ## Resources
 
 | Name | Type |
@@ -116,7 +132,7 @@ clean                               Clean project
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_confluent_operator"></a> [confluent\_operator](#input\_confluent\_operator) | Controls if the Confluent Operator resources should be created. | `any` | `null` | no |
-| <a name="input_confluent_operator_app_version"></a> [confluent\_operator\_app\_version](#input\_confluent\_operator\_app\_version) | The default Confluent Operator app version. This may be overriden by component override values. This version must be compatible with the`confluent_platform_version`. Please see confluent docs for more information: https://docs.confluent.io/platform/current/installation/versions-interoperability.html#confluent-operator | `string` | `"2.4.0"` | no |
+| <a name="input_confluent_operator_app_version"></a> [confluent\_operator\_app\_version](#input\_confluent\_operator\_app\_version) | The default Confluent Operator app version. This may be overriden by component override values. This version must be compatible with the `confluent_platform_version`. Please see confluent docs for more information: https://docs.confluent.io/platform/current/installation/versions-interoperability.html#confluent-operator | `string` | `"2.4.0"` | no |
 | <a name="input_confluent_platform_version"></a> [confluent\_platform\_version](#input\_confluent\_platform\_version) | The default Confluent Platform app version. This may be overriden by component override values. This version must be compatible with the `confluent_operator_app_version`. Please see confluent docs for more information: https://docs.confluent.io/platform/current/installation/versions-interoperability.html#confluent-operator | `string` | `"7.2.0"` | no |
 | <a name="input_connect"></a> [connect](#input\_connect) | The Connect override values. | `any` | `{}` | no |
 | <a name="input_controlcenter"></a> [controlcenter](#input\_controlcenter) | The ControlCenter override values. | `any` | `{}` | no |
@@ -131,6 +147,7 @@ clean                               Clean project
 | <a name="input_create_zookeeper"></a> [create\_zookeeper](#input\_create\_zookeeper) | Controls if the Zookeeper component of the Confluent Platform should be created. | `bool` | `true` | no |
 | <a name="input_delete_timeout"></a> [delete\_timeout](#input\_delete\_timeout) | The delete timeout for each Conlfuent Platform component. | `string` | `"10m"` | no |
 | <a name="input_kafka"></a> [kafka](#input\_kafka) | The Kafka override values. | `any` | `{}` | no |
+| <a name="input_kafka_topics"></a> [kafka\_topics](#input\_kafka\_topics) | The Kafka Topics to create. | `any` | `[]` | no |
 | <a name="input_kafkarestproxy"></a> [kafkarestproxy](#input\_kafkarestproxy) | The KafkaRestProxy override values. | `any` | `{}` | no |
 | <a name="input_ksqldb"></a> [ksqldb](#input\_ksqldb) | The KsqlDB override values. | `any` | `{}` | no |
 | <a name="input_namespace"></a> [namespace](#input\_namespace) | The namespace to release Confluent Platform into. When `confluent_operator` is specified, this will also ensure the Confluent Operator is released into the same namespace. | `string` | `"confluent"` | no |
@@ -145,6 +162,7 @@ clean                               Clean project
 | <a name="output_connect_manifest"></a> [connect\_manifest](#output\_connect\_manifest) | The Connect manifest. |
 | <a name="output_controlcenter_manifest"></a> [controlcenter\_manifest](#output\_controlcenter\_manifest) | The ControlCenter manifest. |
 | <a name="output_kafka_manifest"></a> [kafka\_manifest](#output\_kafka\_manifest) | The Kafka manifest. |
+| <a name="output_kafka_topics"></a> [kafka\_topics](#output\_kafka\_topics) | The Kafka Topic manifests |
 | <a name="output_kafkarestproxy_manifest"></a> [kafkarestproxy\_manifest](#output\_kafkarestproxy\_manifest) | The KafkaRestProxy manifest. |
 | <a name="output_ksqldb_manifest"></a> [ksqldb\_manifest](#output\_ksqldb\_manifest) | The KsqlDB manifest. |
 | <a name="output_namespace"></a> [namespace](#output\_namespace) | The default namespace for the Confluent Platform. |

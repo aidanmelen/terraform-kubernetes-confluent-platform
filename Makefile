@@ -26,6 +26,7 @@ setup: apply-cfk-crds ## Setup project
 	cd examples/confluent_platform && terraform init
 	cd examples/confluent_platform_singlenode && terraform init
 	cd examples/complete && terraform init
+	cd examples/kafka_topics && terraform init
 
 	# pre-commit
 	git init
@@ -51,7 +52,7 @@ lint-all: docs ## Lint with pre-commit
 	pre-commit run --all-files
 	git add -A
 
-tests: test-confluent-operator test-confluent-platform-singlenode ## Tests with Terratest
+tests: test-confluent-operator test-confluent-platform-singlenode test-complete ## Tests with Terratest
 
 test-confluent-operator: ## Test the confluent_operator example
 	go test test/terraform_confluent_operator_test.go -timeout 5m -v |& tee test/terraform_confluent_operator_test.log
@@ -72,11 +73,11 @@ test-confluent-platform: test-setup test-confluent-platform test-clean ## Test t
 
 test-confluent-platform-singlenode: test-setup test-confluent-platform-singlenode test-clean ## Test the confluent_platform_singlenode example
 
-test-complete: # Test the complete example
+test-complete: ## Test the complete example
 	go test test/terraform_complete_test.go -timeout 20m -v |& tee test/terraform_complete_test.log
 
-test-kafka-topic: # Test the kafka_topic example
-	go test test/terraform_kafka_topic_test.go -timeout 20m -v |& tee test/terraform_kafka_topic_test.log
+test-kafka-topics: ## Test the kafka_topics example
+	go test test/terraform_kafka_topics_test.go -timeout 20m -v |& tee test/terraform_kafka_topics_test.log
 
 delete-cfk-crds:
 	kubectl config set-cluster docker-desktop

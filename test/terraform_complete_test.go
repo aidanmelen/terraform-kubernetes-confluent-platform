@@ -24,15 +24,17 @@ func TestTerraformCompleteExample(t *testing.T) {
 
 	// website::tag::3:: Run `terraform output` to get the values of output variables and check they have the expected values.
 	actualConfluentOperator := terraform.Output(t, terraformOptions, "confluent_operator")
-
 	actualZookeeper := terraform.Output(t, terraformOptions, "zookeeper")
 	actualKafka := terraform.Output(t, terraformOptions, "kafka")
+	actualKafkaTopics := terraform.Output(t, terraformOptions, "kafka_topics")
 
 	expectedConfluentOperator := "map[app_version:2.4.0 chart_version:0.517.12 namespace:confluent]"
 	expectedZookeeper := "map[apiVersion:platform.confluent.io/v1beta1 kind:Zookeeper metadata:map[name:zookeeper namespace:confluent] spec:map[dataVolumeCapacity:10Gi image:map[application:confluentinc/cp-zookeeper:7.2.0 init:confluentinc/confluent-init-container:2.4.0] logVolumeCapacity:10Gi replicas:3]]"
 	expectedKafka := "map[apiVersion:platform.confluent.io/v1beta1 kind:Kafka metadata:map[name:kafka namespace:confluent] spec:map[dataVolumeCapacity:10Gi image:map[application:confluentinc/cp-server:7.2.0 init:confluentinc/confluent-init-container:2.4.0] metricReporter:map[enabled:true] replicas:3]]"
+	expectedKafkaTopics := "[map[my-other-topic:map[manifest:map[apiVersion:platform.confluent.io/v1beta1 kind:KafkaTopic metadata:map[name:my-other-topic namespace:confluent] spec:map[configs:map[cleanup.policy:delete] partitionCount:3 replicas:3]]] my-topic:map[manifest:map[apiVersion:platform.confluent.io/v1beta1 kind:KafkaTopic metadata:map[name:my-topic namespace:confluent] spec:map[configs:map[cleanup.policy:delete] partitionCount:3 replicas:3]]]]]"
 
 	assert.Equal(t, expectedConfluentOperator, actualConfluentOperator, "Map %q should match %q", expectedConfluentOperator, actualConfluentOperator)
 	assert.Equal(t, expectedZookeeper, actualZookeeper, "Map %q should match %q", expectedZookeeper, actualZookeeper)
 	assert.Equal(t, expectedKafka, actualKafka, "Map %q should match %q", expectedKafka, actualKafka)
+	assert.Equal(t, expectedKafkaTopics, actualKafkaTopics, "Map %q should match %q", expectedKafkaTopics, actualKafkaTopics)
 }

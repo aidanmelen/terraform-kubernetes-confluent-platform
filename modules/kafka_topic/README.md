@@ -22,6 +22,7 @@ module "other_kafka_topic" {
 
   values = yamldecode(<<EOF
 spec:
+  partitionCount: 4
   configs:
     cleanup.policy: "compact"
   kafkaRest:
@@ -48,7 +49,6 @@ spec:
 | Name | Type |
 |------|------|
 | [kubernetes_manifest.topic](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/manifest) | resource |
-| [kubernetes_resource.topic](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/data-sources/resource) | data source |
 ## Inputs
 
 | Name | Description | Type | Default | Required |
@@ -64,5 +64,4 @@ spec:
 | Name | Description |
 |------|-------------|
 | <a name="output_manifest"></a> [manifest](#output\_manifest) | The Kafka Topic manifest. |
-| <a name="output_server_manifest"></a> [server\_manifest](#output\_server\_manifest) | The Kafka Topic manifest from the Kubernetes server. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

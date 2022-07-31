@@ -1,6 +1,6 @@
 # complete
 
-Deploy the Confluent Operator and Confluent Platform in a single Terraform run. This Terraforms [confluent-for-kubernetes-examples/quickstart-deploy/confluent-platform.yaml](https://github.com/confluentinc/confluent-kubernetes-examples/blob/master/quickstart-deploy/confluent-platform.yaml).
+Deploy the Confluent Operator and Confluent Platform in a single Terraform run.
 
 ## Assumptions
 
@@ -34,15 +34,28 @@ module "confluent_platform" {
     chart_version    = "0.517.12"
   }
 
-  /*
-  zookeeper      = { ... }
-  kafka          = { ... }
-  connect        = { ... }
-  ksqldb         = { ... }
-  controlcenter  = { ... }
-  schemaregistry = { ... }
-  kafkarestproxy = { ... }
-  */
+  zookeeper = {
+    "spec" = {
+      "replicas" = "3"
+    }
+  }
+
+  kafka = {
+    "spec" = {
+      "replicas" = "3"
+    }
+  }
+
+  create_connect        = false
+  create_ksqldb         = false
+  create_controlcenter  = false
+  create_schemaregistry = false
+  create_kafkarestproxy = false
+
+  kafka_topics = {
+    "my-topic"       = {}
+    "my-other-topic" = { "spec" = { "configs" = { "cleanup.policy" = "compact" } } }
+  }
 }
 ```
 
@@ -64,6 +77,7 @@ module "confluent_platform" {
 |------|-------------|
 | <a name="output_confluent_operator"></a> [confluent\_operator](#output\_confluent\_operator) | The Confluent Operator. |
 | <a name="output_kafka"></a> [kafka](#output\_kafka) | The Kafka CFK manifest. |
+| <a name="output_kafka_topics"></a> [kafka\_topics](#output\_kafka\_topics) | The Kafka CFK manifest. |
 | <a name="output_namespace"></a> [namespace](#output\_namespace) | The namespace for the Confluent Platform. |
 | <a name="output_zookeeper"></a> [zookeeper](#output\_zookeeper) | The Zookeeper CFK manifest. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

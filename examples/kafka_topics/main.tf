@@ -1,20 +1,19 @@
 module "kafka_topic" {
-  source  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.4.0"
+  source = "../../modules/kafka_topic"
 
   name      = "my-topic"
   namespace = "confluent"
 }
 
 module "other_kafka_topic" {
-  source  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.4.0"
+  source = "../../modules/kafka_topic"
 
   name      = "my-other-topic"
   namespace = "confluent"
 
   values = yamldecode(<<EOF
 spec:
+  partitionCount: 4
   configs:
     cleanup.policy: "compact"
   kafkaRest:
