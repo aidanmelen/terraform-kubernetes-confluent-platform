@@ -96,7 +96,7 @@ build                               Build docker dev container
 run                                 Run docker dev container
 setup                               Setup project
 lint                                Lint with pre-commit
-lint-all                            Lint with pre-commit
+lint-all                            Lint all files with pre-commit
 tests                               Tests with Terratest
 test-confluent-operator             Test the confluent_operator example
 test-confluent-platform             Test the confluent_platform example
