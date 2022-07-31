@@ -1,0 +1,24 @@
+module "kafka_topic" {
+  source  = "aidanmelen/confluent-platform/kubernetes"
+  version = ">= 0.4.0"
+
+  name      = "my-topic"
+  namespace = "confluent"
+}
+
+module "other_kafka_topic" {
+  source  = "aidanmelen/confluent-platform/kubernetes"
+  version = ">= 0.4.0"
+
+  name      = "my-other-topic"
+  namespace = "confluent"
+
+  values = yamldecode(<<EOF
+spec:
+  configs:
+    cleanup.policy: "compact"
+  kafkaRest:
+    endpoint: http://kafka.confluent.svc.cluster.local:8090
+  EOF
+  )
+}

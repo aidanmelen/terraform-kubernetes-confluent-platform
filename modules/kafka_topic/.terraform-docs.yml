@@ -1,0 +1,13 @@
+content: |-
+  {{ .Header }}
+  ## Example
+
+  ```hcl
+  {{ include "../../examples/kafka_topic/main.tf" }}
+  ```
+
+  {{ .Requirements }}
+  {{ .Providers }}
+  {{ .Resources }}
+  {{ .Inputs }}
+  {{ .Outputs }}

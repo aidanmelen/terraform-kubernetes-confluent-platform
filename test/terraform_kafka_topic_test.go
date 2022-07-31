@@ -7,10 +7,10 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestTerraformConfluentOperatorExample(t *testing.T) {
+func TestTerraformKafkaTopicExample(t *testing.T) {
 	terraformOptions := &terraform.Options{
 		// website::tag::1:: Set the path to the Terraform code that will be tested.
-		TerraformDir: "../examples/confluent_operator",
+		TerraformDir: "../examples/kafka_topic",
 
 		// Disable colors in Terraform commands so its easier to parse stdout/stderr
 		NoColor: true,
@@ -23,9 +23,9 @@ func TestTerraformConfluentOperatorExample(t *testing.T) {
 	terraform.InitAndApply(t, terraformOptions)
 
 	// website::tag::3:: Run `terraform output` to get the values of output variables and check they have the expected values.
-	actualConfluentOperator := terraform.Output(t, terraformOptions, "confluent_operator")
+	actualKafkaTopic := terraform.Output(t, terraformOptions, "kafka_topic_manifest")
 
-	expectedConfluentOperator := "map[app_version:2.4.0 chart_version:0.517.12 namespace:confluent]"
+	expectedKafkaTopic := "map[apiVersion:platform.confluent.io/v1beta1 kind:KafkaTopic metadata:map[name:my-topic namespace:confluent] spec:map[configs:map[cleanup.policy:delete] partitionCount:3 replicas:3]]"
 
-	assert.Equal(t, expectedConfluentOperator, actualConfluentOperator, "Map %q should match %q", expectedConfluentOperator, actualConfluentOperator)
+	assert.Equal(t, expectedKafkaTopic, actualKafkaTopic, "Map %q should match %q", expectedKafkaTopic, actualKafkaTopic)
 }

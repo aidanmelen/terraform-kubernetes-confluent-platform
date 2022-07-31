@@ -8,9 +8,7 @@ This example assumes you have a Kubernetes cluster running locally on Docker Des
 
 ## Prerequisites
 
-Similiar to the [Deploy Applications with the Helm Provider](https://learn.hashicorp.com/tutorials/terraform/helm-provider?in=terraform/use-case) tutorial; releasing the Confluent Operator and Confluent Platform will require two separate Terraform runs.
-
-Deploy the Confluent Operator into the `confluent` namespace. Please see the [confluent_operator example](https://github.com/aidanmelen/terraform-kubernetes-confluent-platform/tree/main/examples/confluent_operator) for more information.
+Release the [Confluent Operator example](https://github.com/aidanmelen/terraform-kubernetes-confluent-platform/tree/main/examples/confluent_operator). This will ensure the CFK CRDs are created and the Confluent Operator pod is running in the `confluent` namespace before releasing the Confluent Platform.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
@@ -19,18 +17,18 @@ Deploy the Confluent Operator into the `confluent` namespace. Please see the [co
 ```hcl
 module "confluent_platform" {
   source  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.3.0"
+  version = ">= 0.4.0"
 
   namespace = "confluent"
 
   /*
-  zookeeper      = { ... }
-  kafka          = { ... }
-  connect        = { ... }
-  ksqldb         = { ... }
-  controlcenter  = { ... }
-  schemaregistry = { ... }
-  kafkarestproxy = { ... }
+  zookeeper      = yamldecode( ... )
+  kafka          = yamldecode( ... )
+  connect        = yamldecode( ... )
+  ksqldb         = yamldecode( ... )
+  controlcenter  = yamldecode( ... )
+  schemaregistry = yamldecode( ... )
+  kafkarestproxy = yamldecode( ... )
   */
 }
 ```

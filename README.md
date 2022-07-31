@@ -15,18 +15,16 @@ A Terraform module for running [Confluent for Kubernetes (CFK)](https://docs.con
 ```hcl
 module "confluent_platform" {
   source  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.3.0"
+  version = ">= 0.4.0"
 
   namespace = var.namespace
 
-  # confluent operator
   confluent_operator = {
     create_namespace = true
     name             = "confluent-operator"
     chart_version    = "0.517.12"
   }
 
-  # confluent platform
   /*
   zookeeper      = { ... }
   kafka          = { ... }
@@ -59,6 +57,13 @@ terraform init
 terraform apply
 ```
 
+## Troubleshooting
+
+```
+Error: Failed to determine GroupVersionResource for manifest
+```
+
+This happens when you attempt to apply the Confluent Platform Terraform without first applying the Confluent for Kubernetes CRDs. Please see [Prerequisites](#prerequisites) for more information.
 
 ## Tests
 
@@ -70,16 +75,17 @@ Run Terratest using the [Makefile](./Makefile) targets:
 ## Makefile Targets
 
 ```
-help                      This help.
-build                     Build docker dev container
-run                       Run docker dev container
-install                   Install project
-lint                      Lint with pre-commit
-lint-all                  Lint with pre-commit
-tests                     Test with Terratest
-test-confluent-operator   Test confluent-operator Example
-test-confluent-platform   Test confluent-platform Example
-clean                     Clean project
+help                                This help.
+build                               Build docker dev container
+run                                 Run docker dev container
+setup                               Setup project
+lint                                Lint with pre-commit
+lint-all                            Lint with pre-commit
+tests                               Tests with Terratest
+test-confluent-operator             Test the confluent_operator example
+test-confluent-platform             Test the confluent_platform example
+test-confluent-platform-singlenode  Test the confluent_platform_singlenode example
+clean                               Clean project
 ```
 
 ## Requirements
@@ -104,7 +110,7 @@ clean                     Clean project
 
 | Name | Type |
 |------|------|
-| [kubernetes_manifest.component](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/manifest) | resource |
+| [kubernetes_manifest.components](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/manifest) | resource |
 ## Inputs
 
 | Name | Description | Type | Default | Required |

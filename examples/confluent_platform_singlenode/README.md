@@ -8,9 +8,7 @@ This example assumes you have a Kubernetes cluster running locally on Docker Des
 
 ## Prerequisites
 
-Similiar to the [Deploy Applications with the Helm Provider](https://learn.hashicorp.com/tutorials/terraform/helm-provider?in=terraform/use-case) tutorial; releasing the Confluent Operator and Confluent Platform will require two separate Terraform runs.
-
-Deploy the Confluent Operator into the `confluent` namespace. Please see the [confluent_operator example](https://github.com/aidanmelen/terraform-kubernetes-confluent-platform/tree/main/examples/confluent_operator) for more information.
+Release the [Confluent Operator example](https://github.com/aidanmelen/terraform-kubernetes-confluent-platform/tree/main/examples/confluent_operator). This will ensure the CFK CRDs are created and the Confluent Operator pod is running in the `confluent` namespace before releasing the Confluent Platform.
 
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
@@ -19,14 +17,18 @@ Deploy the Confluent Operator into the `confluent` namespace. Please see the [co
 
 ```hcl
 module "confluent_platform_singlenode" {
-  source    = "../../"
+  source  = "aidanmelen/confluent-platform/kubernetes"
+  version = ">= 0.4.0"
+
   namespace = "confluent"
 
   zookeeper = yamldecode(<<EOF
 spec:
   replicas: 1
   podTemplate:
-    resources:
+    resource  = "aidanmelen/confluent-platform/kubernetes"
+  version = ">= 0.4.0"
+
       requests:
         cpu: 100m
         memory: 256Mi
@@ -53,7 +55,9 @@ spec:
       - "confluent.cluster.link.enable=true"
       - "password.encoder.secret=secret"
   podTemplate:
-    resources:
+    resource  = "aidanmelen/confluent-platform/kubernetes"
+  version = ">= 0.4.0"
+
       requests:
         cpu: 200m
         memory: 512Mi
@@ -75,7 +79,9 @@ spec:
       - "offset.storage.replication.factor=1"
       - "status.storage.replication.factor=1"
   podTemplate:
-    resources:
+    resource  = "aidanmelen/confluent-platform/kubernetes"
+  version = ">= 0.4.0"
+
       requests:
         cpu: 100m
         memory: 256Mi
@@ -99,7 +105,9 @@ spec:
     schemaRegistry:
       url: http://schemaregistry.confluent.svc.cluster.local:8081
   podTemplate:
-    resources:
+    resource  = "aidanmelen/confluent-platform/kubernetes"
+  version = ">= 0.4.0"
+
       requests:
         cpu: 100m
         memory: 256Mi
@@ -131,7 +139,9 @@ spec:
     loadBalancer:
       domain: minikube.domain
   podTemplate:
-    resources:
+    resource  = "aidanmelen/confluent-platform/kubernetes"
+  version = ">= 0.4.0"
+
       requests:
         cpu: 500m
         memory: 512Mi
@@ -160,7 +170,9 @@ spec:
 spec:
   replicas: 1
   podTemplate:
-    resources:
+    resource  = "aidanmelen/confluent-platform/kubernetes"
+  version = ">= 0.4.0"
+
       requests:
         cpu: 100m
         memory: 256Mi
@@ -178,7 +190,9 @@ spec:
     schemaRegistry:
       url: http://schemaregistry.confluent.svc.cluster.local:8081
   podTemplate:
-    resources:
+    resource  = "aidanmelen/confluent-platform/kubernetes"
+  version = ">= 0.4.0"
+
       requests:
         cpu: 100m
         memory: 256Mi

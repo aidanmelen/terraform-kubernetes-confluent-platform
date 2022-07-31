@@ -11,7 +11,8 @@ This example assumes you have a Kubernetes cluster running locally on Docker Des
 The Confluent for Kubernetes CRDs must installed on the Kubernetes cluster before the first Terraform apply of the Confluent Platform. Install the CRDs with:
 
 ```bash
-make install-cfk-crds
+kubectl config set-cluster docker-desktop
+kubectl apply -f ./crds/2.4.0
 ```
 
 Please see the [Makefile](https://github.com/aidanmelen/terraform-kubernetes-confluent-platform/blob/main/Makefile) for more information.
@@ -23,18 +24,16 @@ Please see the [Makefile](https://github.com/aidanmelen/terraform-kubernetes-con
 ```hcl
 module "confluent_platform" {
   source  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.3.0"
+  version = ">= 0.4.0"
 
   namespace = var.namespace
 
-  # confluent operator
   confluent_operator = {
     create_namespace = true
     name             = "confluent-operator"
     chart_version    = "0.517.12"
   }
 
-  # confluent platform
   /*
   zookeeper      = { ... }
   kafka          = { ... }

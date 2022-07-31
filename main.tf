@@ -9,7 +9,7 @@ module "confluent_platform_override_values" {
   ]
 }
 
-resource "kubernetes_manifest" "component" {
+resource "kubernetes_manifest" "components" {
   for_each = {
     for name, manifest in module.confluent_platform_override_values.merged : name => manifest
     if var.create && local.create_confluent_platform[name]
