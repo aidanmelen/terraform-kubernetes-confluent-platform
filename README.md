@@ -15,7 +15,7 @@ A Terraform module for running [Confluent for Kubernetes (CFK)](https://docs.con
 ```hcl
 module "confluent_platform" {
   source  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.4.0"
+  version = ">= 0.6.0"
 
   namespace = var.namespace
 

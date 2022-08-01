@@ -17,7 +17,7 @@ Release the [Confluent Operator example](https://github.com/aidanmelen/terraform
 ```hcl
 module "confluent_platform" {
   source  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.4.0"
+  version = ">= 0.6.0"
 
   namespace = "confluent"
 

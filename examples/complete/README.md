@@ -24,7 +24,7 @@ Please see the [Makefile](https://github.com/aidanmelen/terraform-kubernetes-con
 ```hcl
 module "confluent_platform" {
   source  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.4.0"
+  version = ">= 0.6.0"
 
   namespace = var.namespace
 

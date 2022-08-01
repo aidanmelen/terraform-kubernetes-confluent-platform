@@ -44,6 +44,11 @@ spec:
 | Name | Version |
 |------|---------|
 | <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | >= 2.12.1 |
+## Modules
+
+| Name | Source | Version |
+|------|--------|---------|
+| <a name="module_kafka_topic_override_values"></a> [kafka\_topic\_override\_values](#module\_kafka\_topic\_override\_values) | Invicton-Labs/deepmerge/null | 0.1.5 |
 ## Resources
 
 | Name | Type |

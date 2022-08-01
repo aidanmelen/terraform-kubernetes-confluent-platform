@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # render terraform-docs code examples
-sed -z 's/source[^\r\n]*/source  = "aidanmelen\/confluent-platform\/kubernetes\/\/modules\/confluent_operator"\n  version = ">= 0.4.0"\n/g' examples/confluent_operator/main.tf > examples/confluent_operator/.main.tf.docs
-sed -z 's/source[^\r\n]*/source  = "aidanmelen\/confluent-platform\/kubernetes"\n  version = ">= 0.4.0"\n/g' examples/confluent_platform/main.tf > examples/confluent_platform/.main.tf.docs
-sed -z 's/source[^\r\n]*/source  = "aidanmelen\/confluent-platform\/kubernetes"\n  version = ">= 0.4.0"\n/g' examples/confluent_platform_singlenode/main.tf > examples/confluent_platform_singlenode/.main.tf.docs
-sed -z 's/source[^\r\n]*/source  = "aidanmelen\/confluent-platform\/kubernetes"\n  version = ">= 0.4.0"/g' examples/complete/main.tf > examples/complete/.main.tf.docs
-sed -z 's/source[^\r\n]*/source  = "aidanmelen\/confluent-platform\/kubernetes"\n  version = ">= 0.4.0"/g' examples/kafka_topics/main.tf > examples/kafka_topics/.main.tf.docs
+sed -z 's/source[^\r\n]*/source  = "aidanmelen\/confluent-platform\/kubernetes\/\/modules\/confluent_operator"\n  version = ">= 0.6.0"\n/g' examples/confluent_operator/main.tf > examples/confluent_operator/.main.tf.docs
+sed -z 's/source[^\r\n]*/source  = "aidanmelen\/confluent-platform\/kubernetes"\n  version = ">= 0.6.0"\n/g' examples/confluent_platform/main.tf > examples/confluent_platform/.main.tf.docs
+sed -z 's/source[^\r\n]*/source  = "aidanmelen\/confluent-platform\/kubernetes"\n  version = ">= 0.6.0"\n/g' examples/confluent_platform_singlenode/main.tf > examples/confluent_platform_singlenode/.main.tf.docs
+sed -z 's/source[^\r\n]*/source  = "aidanmelen\/confluent-platform\/kubernetes"\n  version = ">= 0.6.0"/g' examples/complete/main.tf > examples/complete/.main.tf.docs
+sed -z 's/source[^\r\n]*/source  = "aidanmelen\/confluent-platform\/kubernetes"\n  version = ">= 0.6.0"/g' examples/kafka_topics/main.tf > examples/kafka_topics/.main.tf.docs
 
 # render Makefile targets examples
 make > .make.docs

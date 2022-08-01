@@ -17,7 +17,7 @@ Release the [Complete example](https://github.com/aidanmelen/terraform-kubernete
 ```hcl
 module "kafka_topic" {
   source  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.4.0"
+  version = ">= 0.6.0"
 
   name      = "my-topic"
   namespace = "confluent"
@@ -25,7 +25,7 @@ module "kafka_topic" {
 
 module "other_kafka_topic" {
   source  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.4.0"
+  version = ">= 0.6.0"
 
   name      = "my-other-topic"
   namespace = "confluent"
