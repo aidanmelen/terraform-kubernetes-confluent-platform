@@ -1,5 +1,5 @@
 variable "name" {
-  description = "The Kafka Topic name."
+  description = "The KafkaTopic name."
   type        = string
 }
 
@@ -10,7 +10,7 @@ variable "namespace" {
 }
 
 variable "values" {
-  description = "The Kafka Topic override values."
+  description = "The KafkaTopic override values."
   type        = any
   default     = {}
 }

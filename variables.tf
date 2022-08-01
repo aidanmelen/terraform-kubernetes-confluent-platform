@@ -121,7 +121,7 @@ variable "kafkarestproxy" {
 variable "kafka_topics" {
   description = "The Kafka Topics to create."
   type        = any
-  default     = []
+  default     = {}
 }
 
 variable "create_timeout" {

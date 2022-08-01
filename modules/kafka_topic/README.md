@@ -1,6 +1,6 @@
-# Confluent Operator
+# kafka_topic
 
-Deploy the Confluent Operator.
+Deploy a KafkaTopic.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
@@ -49,19 +49,21 @@ spec:
 | Name | Type |
 |------|------|
 | [kubernetes_manifest.topic](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/manifest) | resource |
+| [kubernetes_resource.topic](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/data-sources/resource) | data source |
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_create_timeout"></a> [create\_timeout](#input\_create\_timeout) | The create timeout for each Conlfuent Platform component. | `string` | `"5m"` | no |
 | <a name="input_delete_timeout"></a> [delete\_timeout](#input\_delete\_timeout) | The delete timeout for each Conlfuent Platform component. | `string` | `"5m"` | no |
-| <a name="input_name"></a> [name](#input\_name) | The Kafka Topic name. | `string` | n/a | yes |
+| <a name="input_name"></a> [name](#input\_name) | The KafkaTopic name. | `string` | n/a | yes |
 | <a name="input_namespace"></a> [namespace](#input\_namespace) | The namespace of the Confluent Platform. | `string` | `"confluent"` | no |
 | <a name="input_update_timeout"></a> [update\_timeout](#input\_update\_timeout) | The update timeout for each Conlfuent Platform component. | `string` | `"5m"` | no |
-| <a name="input_values"></a> [values](#input\_values) | The Kafka Topic override values. | `any` | `{}` | no |
+| <a name="input_values"></a> [values](#input\_values) | The KafkaTopic override values. | `any` | `{}` | no |
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| <a name="output_manifest"></a> [manifest](#output\_manifest) | The Kafka Topic manifest. |
+| <a name="output_manifest"></a> [manifest](#output\_manifest) | The KafkaTopic manifest. |
+| <a name="output_object"></a> [object](#output\_object) | The KafkaTopic object. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

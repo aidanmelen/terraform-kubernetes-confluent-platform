@@ -1,8 +1,7 @@
-Implement the remaining sub-modules:
+Implement the remaining submodules:
 - cluster_link
 - confluent_cluster_role_binding
 - connector
-- kafka_topic
 - schema
 
 Create examples:

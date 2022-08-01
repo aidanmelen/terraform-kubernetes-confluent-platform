@@ -54,10 +54,55 @@ output "kafkarestproxy_manifest" {
   value       = try(kubernetes_manifest.components["kafkarestproxy"].manifest, null)
 }
 
+output "zookeeper_object" {
+  description = "The Zookeeper object."
+  value       = try(data.kubernetes_resource.components["zookeeper"].object, null)
+}
+
+output "kafka_object" {
+  description = "The Kafka object."
+  value       = try(data.kubernetes_resource.components["kafka"].object, null)
+}
+
+output "connect_object" {
+  description = "The Connect object."
+  value       = try(data.kubernetes_resource.components["connect"].object, null)
+}
+
+output "ksqldb_object" {
+  description = "The KsqlDB object."
+  value       = try(data.kubernetes_resource.components["ksqldb"].object, null)
+}
+
+output "controlcenter_object" {
+  description = "The ControlCenter object."
+  value       = try(data.kubernetes_resource.components["controlcenter"].object, null)
+}
+
+output "schemaregistry_object" {
+  description = "The SchemaRegistry object."
+  value       = try(data.kubernetes_resource.components["schemaregistry"].object, null)
+}
+
+output "kafkarestproxy_object" {
+  description = "The KafkaRestProxy object."
+  value       = try(data.kubernetes_resource.components["kafkarestproxy"].object, null)
+}
+
 ################################################################################
 # Kafka Topics
 ################################################################################
 output "kafka_topics" {
-  description = "The Kafka Topic manifests"
-  value       = module.kafka_topics[*]
+  description = "Map of attribute maps for all KafkaTopic submodules created."
+  value       = module.kafka_topics
+}
+
+output "kafka_topic_manifests" {
+  description = "Map of attribute maps for all the KafkaTopic manifests created."
+  value       = { for name, kafka_topic in module.kafka_topics : name => kafka_topic.manifest }
+}
+
+output "kafka_topic_objects" {
+  description = "Map of attribute maps for all the KafkaTopic objects created."
+  value       = { for name, kafka_topic in module.kafka_topics : name => kafka_topic.object }
 }

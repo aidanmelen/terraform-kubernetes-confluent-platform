@@ -24,9 +24,8 @@ module "confluent_operator" {
 # Confluent Platform
 ################################################################################
 module "confluent_platform_override_values" {
-  source     = "Invicton-Labs/deepmerge/null"
-  version    = "0.1.5"
-  depends_on = [module.confluent_operator]
+  source  = "Invicton-Labs/deepmerge/null"
+  version = "0.1.5"
 
   maps = [
     local.default_confluent_platform_values,
@@ -35,6 +34,8 @@ module "confluent_platform_override_values" {
 }
 
 resource "kubernetes_manifest" "components" {
+  # Terraform will invoke the the Confluent Platform and the Confluent Operator
+  # will ensure that all the components are created/destroyed in the correct order.
   for_each = {
     for name, manifest in module.confluent_platform_override_values.merged : name => manifest
     if var.create && local.create_confluent_platform[name]
@@ -54,6 +55,21 @@ resource "kubernetes_manifest" "components" {
     create = var.create_timeout
     update = var.update_timeout
     delete = var.delete_timeout
+  }
+}
+
+data "kubernetes_resource" "components" {
+  for_each = {
+    for name, manifest in module.confluent_platform_override_values.merged : name => manifest
+    if var.create && local.create_confluent_platform[name]
+  }
+
+  api_version = kubernetes_manifest.components[each.key].manifest.apiVersion
+  kind        = kubernetes_manifest.components[each.key].manifest.kind
+
+  metadata {
+    name      = kubernetes_manifest.components[each.key].manifest.metadata.name
+    namespace = kubernetes_manifest.components[each.key].manifest.metadata.namespace
   }
 }
 

@@ -49,12 +49,12 @@ module "confluent_platform" {
 
 | Name | Description |
 |------|-------------|
-| <a name="output_connect"></a> [connect](#output\_connect) | The Connect CFK manifest. |
-| <a name="output_controlcenter"></a> [controlcenter](#output\_controlcenter) | The ControlCenter CFK manifest. |
-| <a name="output_kafka"></a> [kafka](#output\_kafka) | The Kafka CFK manifest. |
-| <a name="output_kafkarestproxy"></a> [kafkarestproxy](#output\_kafkarestproxy) | The KafkaRestProxy CFK manifest. |
-| <a name="output_ksqldb"></a> [ksqldb](#output\_ksqldb) | The KsqlDB CFK manifest. |
+| <a name="output_connect"></a> [connect](#output\_connect) | The Connect object spec. |
+| <a name="output_controlcenter"></a> [controlcenter](#output\_controlcenter) | The ControlCenter object spec. |
+| <a name="output_kafka"></a> [kafka](#output\_kafka) | The Kafka object spec. |
+| <a name="output_kafkarestproxy"></a> [kafkarestproxy](#output\_kafkarestproxy) | The KafkaRestProxy object spec. |
+| <a name="output_ksqldb"></a> [ksqldb](#output\_ksqldb) | The KsqlDB object spec. |
 | <a name="output_namespace"></a> [namespace](#output\_namespace) | The namespace for the Confluent Platform. |
-| <a name="output_schemaregistry"></a> [schemaregistry](#output\_schemaregistry) | The SchemaRegistry CFK manifest. |
-| <a name="output_zookeeper"></a> [zookeeper](#output\_zookeeper) | The Zookeeper CFK manifest. |
+| <a name="output_schemaregistry"></a> [schemaregistry](#output\_schemaregistry) | The SchemaRegistry object spec. |
+| <a name="output_zookeeper"></a> [zookeeper](#output\_zookeeper) | The Zookeeper object spec. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
