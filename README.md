@@ -163,15 +163,24 @@ clean                               Clean project
 | Name | Description |
 |------|-------------|
 | <a name="output_confluent_operator"></a> [confluent\_operator](#output\_confluent\_operator) | The Confluent Operator. |
+| <a name="output_connect_manifest"></a> [connect\_manifest](#output\_connect\_manifest) | The Connect manifest. |
 | <a name="output_connect_object"></a> [connect\_object](#output\_connect\_object) | The Connect object. |
+| <a name="output_controlcenter_manifest"></a> [controlcenter\_manifest](#output\_controlcenter\_manifest) | The ControlCenter manifest. |
 | <a name="output_controlcenter_object"></a> [controlcenter\_object](#output\_controlcenter\_object) | The ControlCenter object. |
+| <a name="output_kafka_manifest"></a> [kafka\_manifest](#output\_kafka\_manifest) | The Kafka manifest. |
 | <a name="output_kafka_object"></a> [kafka\_object](#output\_kafka\_object) | The Kafka object. |
-| <a name="output_kafka_topic_objects"></a> [kafka\_topic\_objects](#output\_kafka\_topic\_objects) | The Kafka Topic objects. |
+| <a name="output_kafka_topic_manifests"></a> [kafka\_topic\_manifests](#output\_kafka\_topic\_manifests) | Map of attribute maps for all the KafkaTopic manifests created. |
+| <a name="output_kafka_topic_objects"></a> [kafka\_topic\_objects](#output\_kafka\_topic\_objects) | Map of attribute maps for all the KafkaTopic objects created. |
+| <a name="output_kafka_topics"></a> [kafka\_topics](#output\_kafka\_topics) | Map of attribute maps for all KafkaTopic submodules created. |
+| <a name="output_kafkarestproxy_manifest"></a> [kafkarestproxy\_manifest](#output\_kafkarestproxy\_manifest) | The KafkaRestProxy manifest. |
 | <a name="output_kafkarestproxy_object"></a> [kafkarestproxy\_object](#output\_kafkarestproxy\_object) | The KafkaRestProxy object. |
+| <a name="output_ksqldb_manifest"></a> [ksqldb\_manifest](#output\_ksqldb\_manifest) | The KsqlDB manifest. |
 | <a name="output_ksqldb_object"></a> [ksqldb\_object](#output\_ksqldb\_object) | The KsqlDB object. |
 | <a name="output_namespace"></a> [namespace](#output\_namespace) | The default namespace for the Confluent Platform. |
+| <a name="output_schemaregistry_manifest"></a> [schemaregistry\_manifest](#output\_schemaregistry\_manifest) | The SchemaRegistry manifest. |
 | <a name="output_schemaregistry_object"></a> [schemaregistry\_object](#output\_schemaregistry\_object) | The SchemaRegistry object. |
 | <a name="output_version"></a> [version](#output\_version) | The default Confluent Platform version. |
+| <a name="output_zookeeper_manifest"></a> [zookeeper\_manifest](#output\_zookeeper\_manifest) | The Zookeeper manifest. |
 | <a name="output_zookeeper_object"></a> [zookeeper\_object](#output\_zookeeper\_object) | The Zookeeper object. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 

@@ -59,6 +59,6 @@ spec:
 
 | Name | Description |
 |------|-------------|
-| <a name="output_kafka_topic"></a> [kafka\_topic](#output\_kafka\_topic) | The Kafka Topic spec. |
-| <a name="output_other_kafka_topic"></a> [other\_kafka\_topic](#output\_other\_kafka\_topic) | The other Kafka Topic spec. |
+| <a name="output_kafka_topic"></a> [kafka\_topic](#output\_kafka\_topic) | The KafkaTopic object spec. |
+| <a name="output_other_kafka_topic"></a> [other\_kafka\_topic](#output\_other\_kafka\_topic) | The other KafkaTopic object spec. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

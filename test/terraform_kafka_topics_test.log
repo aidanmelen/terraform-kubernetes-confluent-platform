@@ -1,684 +1,684 @@
 === RUN   TestTerraformKafkaTopicsExample
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:34Z retry.go:91: terraform [init -upgrade=false]
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:34Z logger.go:66: Running command terraform with args [init -upgrade=false]
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:34Z logger.go:66: [0m[1mInitializing modules...[0m
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:35Z logger.go:66:
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:35Z logger.go:66: [0m[1mInitializing the backend...[0m
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:35Z logger.go:66:
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:35Z logger.go:66: [0m[1mInitializing provider plugins...[0m
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:35Z logger.go:66: - Reusing previous version of hashicorp/helm from the dependency lock file
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:35Z logger.go:66: - Reusing previous version of hashicorp/kubernetes from the dependency lock file
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:36Z logger.go:66: - Using previously-installed hashicorp/helm v2.6.0
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:36Z logger.go:66: - Using previously-installed hashicorp/kubernetes v2.12.1
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:36Z logger.go:66:
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:36Z logger.go:66: [0m[1m[32mTerraform has been successfully initialized![0m[32m[0m
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:36Z logger.go:66: [0m[32m
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:36Z logger.go:66: You may now begin working with Terraform. Try running "terraform plan" to see
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:36Z logger.go:66: any changes that are required for your infrastructure. All Terraform commands
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:36Z logger.go:66: should now work.
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:36Z logger.go:66:
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:36Z logger.go:66: If you ever set or change modules or backend configuration for Terraform,
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:36Z logger.go:66: rerun this command to reinitialize your working directory. If you forget, other
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:36Z logger.go:66: commands will detect it and remind you to do so if necessary.[0m
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:36Z retry.go:91: terraform [apply -input=false -auto-approve -no-color -lock=false]
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:36Z logger.go:66: Running command terraform with args [apply -input=false -auto-approve -no-color -lock=false]
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66: Terraform used the selected providers to generate the following execution
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66: plan. Resource actions are indicated with the following symbols:
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:   + create
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:  <= read (data resources)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66: Terraform will perform the following actions:
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:   # module.kafka_topic.data.kubernetes_resource.topic will be read during apply
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:   # (depends on a resource or a module with changes pending)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:  <= data "kubernetes_resource" "topic" {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:       + api_version = "platform.confluent.io/v1beta1"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:       + kind        = "KafkaTopic"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:       + object      = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:       + metadata {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:           + name      = "my-topic"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:           + namespace = "confluent"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:         }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:     }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:   # module.kafka_topic.kubernetes_manifest.topic will be created
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:   + resource "kubernetes_manifest" "topic" {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:       + computed_fields = [
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:           + "metadata.finalizers",
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:         ]
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:       + manifest        = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:           + apiVersion = "platform.confluent.io/v1beta1"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:           + kind       = "KafkaTopic"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:           + metadata   = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + name      = "my-topic"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + namespace = "confluent"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:             }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:           + spec       = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + configs        = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                   + "cleanup.policy" = "delete"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                 }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + partitionCount = 3
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + replicas       = 3
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:             }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:         }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:       + object          = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:           + apiVersion = "platform.confluent.io/v1beta1"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:           + kind       = "KafkaTopic"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:           + metadata   = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + annotations                = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + clusterName                = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + creationTimestamp          = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + deletionGracePeriodSeconds = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + deletionTimestamp          = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + finalizers                 = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + generateName               = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + generation                 = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + labels                     = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + managedFields              = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + name                       = "my-topic"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + namespace                  = "confluent"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + ownerReferences            = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + resourceVersion            = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + selfLink                   = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + uid                        = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:             }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:           + spec       = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + configs           = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                   + "cleanup.policy" = "delete"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                 }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + kafkaClusterRef   = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                   + name      = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                   + namespace = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                 }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + kafkaRest         = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                   + authentication = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                       + basic  = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                           + debug                    = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                           + directoryPathInContainer = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                           + restrictedRoles          = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                           + roles                    = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                           + secretRef                = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                         }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                       + bearer = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                           + directoryPathInContainer = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                           + secretRef                = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                         }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                       + type   = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                     }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                   + endpoint       = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                   + kafkaClusterID = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                   + tls            = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                       + directoryPathInContainer = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                       + jksPassword              = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                           + secretRef = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                         }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                       + secretRef                = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                     }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                 }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + kafkaRestClassRef = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                   + name      = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                   + namespace = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                 }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + name              = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + partitionCount    = 3
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + replicas          = 3
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:             }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:         }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:       + timeouts {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:           + create = "5m"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:           + delete = "5m"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:           + update = "5m"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:         }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:       + wait {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:           + fields = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + "status.state" = "CREATED"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:             }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:         }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:     }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:   # module.other_kafka_topic.data.kubernetes_resource.topic will be read during apply
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:   # (depends on a resource or a module with changes pending)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:  <= data "kubernetes_resource" "topic" {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:       + api_version = "platform.confluent.io/v1beta1"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:       + kind        = "KafkaTopic"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:       + object      = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:       + metadata {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:           + name      = "my-other-topic"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:           + namespace = "confluent"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:         }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:     }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:   # module.other_kafka_topic.kubernetes_manifest.topic will be created
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:   + resource "kubernetes_manifest" "topic" {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:       + computed_fields = [
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:           + "metadata.finalizers",
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:         ]
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:       + manifest        = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:           + apiVersion = "platform.confluent.io/v1beta1"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:           + kind       = "KafkaTopic"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:           + metadata   = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + name      = "my-other-topic"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + namespace = "confluent"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:             }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:           + spec       = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + configs        = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                   + "cleanup.policy" = "compact"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                 }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + kafkaRest      = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                   + endpoint = "http://kafka.confluent.svc.cluster.local:8090"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                 }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + partitionCount = 4
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + replicas       = 3
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:             }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:         }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:       + object          = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:           + apiVersion = "platform.confluent.io/v1beta1"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:           + kind       = "KafkaTopic"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:           + metadata   = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + annotations                = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + clusterName                = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + creationTimestamp          = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + deletionGracePeriodSeconds = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + deletionTimestamp          = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + finalizers                 = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + generateName               = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + generation                 = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + labels                     = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + managedFields              = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + name                       = "my-other-topic"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + namespace                  = "confluent"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + ownerReferences            = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + resourceVersion            = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + selfLink                   = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + uid                        = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:             }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:           + spec       = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + configs           = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                   + "cleanup.policy" = "compact"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                 }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + kafkaClusterRef   = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                   + name      = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                   + namespace = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                 }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + kafkaRest         = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                   + authentication = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                       + basic  = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                           + debug                    = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                           + directoryPathInContainer = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                           + restrictedRoles          = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                           + roles                    = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                           + secretRef                = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                         }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                       + bearer = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                           + directoryPathInContainer = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                           + secretRef                = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                         }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                       + type   = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                     }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                   + endpoint       = "http://kafka.confluent.svc.cluster.local:8090"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                   + kafkaClusterID = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                   + tls            = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                       + directoryPathInContainer = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                       + jksPassword              = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                           + secretRef = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                         }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                       + secretRef                = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                     }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                 }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + kafkaRestClassRef = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                   + name      = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                   + namespace = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:                 }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + name              = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + partitionCount    = 4
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + replicas          = 3
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:             }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:         }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:       + timeouts {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:           + create = "5m"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:           + delete = "5m"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:           + update = "5m"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:         }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:       + wait {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:           + fields = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:               + "status.state" = "CREATED"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:             }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:         }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:     }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66: Plan: 2 to add, 0 to change, 0 to destroy.
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66: Changes to Outputs:
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:   + kafka_topic       = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:40Z logger.go:66:   + other_kafka_topic = (known after apply)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:42Z logger.go:66: module.other_kafka_topic.kubernetes_manifest.topic: Creating...
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:42Z logger.go:66: module.kafka_topic.kubernetes_manifest.topic: Creating...
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:44Z logger.go:66: module.kafka_topic.kubernetes_manifest.topic: Creation complete after 1s
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:44Z logger.go:66: module.other_kafka_topic.kubernetes_manifest.topic: Creation complete after 1s
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:44Z logger.go:66: module.kafka_topic.data.kubernetes_resource.topic: Reading...
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:44Z logger.go:66: module.other_kafka_topic.data.kubernetes_resource.topic: Reading...
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66: module.other_kafka_topic.data.kubernetes_resource.topic: Read complete after 1s
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66: module.kafka_topic.data.kubernetes_resource.topic: Read complete after 1s
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66: Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66: Outputs:
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66: kafka_topic = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:   "configs" = tomap({
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:     "cleanup.policy" = "delete"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:   })
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:   "kafkaClusterRef" = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:     "name" = tostring(null)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:     "namespace" = tostring(null)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:   }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:   "kafkaRest" = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:     "authentication" = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:       "basic" = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:         "debug" = tobool(null)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:         "directoryPathInContainer" = tostring(null)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:         "restrictedRoles" = tolist(null) /* of string */
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:         "roles" = tolist(null) /* of string */
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:         "secretRef" = tostring(null)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:       }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:       "bearer" = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:         "directoryPathInContainer" = tostring(null)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:         "secretRef" = tostring(null)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:       }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:       "type" = tostring(null)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:     }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:     "endpoint" = tostring(null)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:     "kafkaClusterID" = tostring(null)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:     "tls" = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:       "directoryPathInContainer" = tostring(null)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:       "jksPassword" = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:         "secretRef" = tostring(null)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:       }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:       "secretRef" = tostring(null)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:     }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:   }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:   "kafkaRestClassRef" = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:     "name" = tostring(null)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:     "namespace" = tostring(null)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:   }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:   "name" = tostring(null)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:   "partitionCount" = 3
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:   "replicas" = 3
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66: }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66: other_kafka_topic = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:   "configs" = tomap({
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:     "cleanup.policy" = "compact"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:   })
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:   "kafkaClusterRef" = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:     "name" = tostring(null)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:     "namespace" = tostring(null)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:   }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:   "kafkaRest" = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:     "authentication" = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:       "basic" = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:         "debug" = tobool(null)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:         "directoryPathInContainer" = tostring(null)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:         "restrictedRoles" = tolist(null) /* of string */
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:         "roles" = tolist(null) /* of string */
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:         "secretRef" = tostring(null)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:       }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:       "bearer" = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:         "directoryPathInContainer" = tostring(null)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:         "secretRef" = tostring(null)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:       }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:       "type" = tostring(null)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:     }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:     "endpoint" = "http://kafka.confluent.svc.cluster.local:8090"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:     "kafkaClusterID" = tostring(null)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:     "tls" = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:       "directoryPathInContainer" = tostring(null)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:       "jksPassword" = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:         "secretRef" = tostring(null)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:       }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:       "secretRef" = tostring(null)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:     }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:   }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:   "kafkaRestClassRef" = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:     "name" = tostring(null)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:     "namespace" = tostring(null)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:   }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:   "name" = tostring(null)
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:   "partitionCount" = 4
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66:   "replicas" = 3
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66: }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z retry.go:91: terraform [output -no-color -json kafka_topic]
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66: Running command terraform with args [output -no-color -json kafka_topic]
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66: {"configs":{"cleanup.policy":"delete"},"kafkaClusterRef":{"name":null,"namespace":null},"kafkaRest":{"authentication":{"basic":{"debug":null,"directoryPathInContainer":null,"restrictedRoles":null,"roles":null,"secretRef":null},"bearer":{"directoryPathInContainer":null,"secretRef":null},"type":null},"endpoint":null,"kafkaClusterID":null,"tls":{"directoryPathInContainer":null,"jksPassword":{"secretRef":null},"secretRef":null}},"kafkaRestClassRef":{"name":null,"namespace":null},"name":null,"partitionCount":3,"replicas":3}
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z retry.go:91: terraform [output -no-color -json other_kafka_topic]
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:45Z logger.go:66: Running command terraform with args [output -no-color -json other_kafka_topic]
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:46Z logger.go:66: {"configs":{"cleanup.policy":"compact"},"kafkaClusterRef":{"name":null,"namespace":null},"kafkaRest":{"authentication":{"basic":{"debug":null,"directoryPathInContainer":null,"restrictedRoles":null,"roles":null,"secretRef":null},"bearer":{"directoryPathInContainer":null,"secretRef":null},"type":null},"endpoint":"http://kafka.confluent.svc.cluster.local:8090","kafkaClusterID":null,"tls":{"directoryPathInContainer":null,"jksPassword":{"secretRef":null},"secretRef":null}},"kafkaRestClassRef":{"name":null,"namespace":null},"name":null,"partitionCount":4,"replicas":3}
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:46Z retry.go:91: terraform [destroy -auto-approve -input=false -no-color -lock=false]
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:46Z logger.go:66: Running command terraform with args [destroy -auto-approve -input=false -no-color -lock=false]
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:49Z logger.go:66: module.kafka_topic.kubernetes_manifest.topic: Refreshing state...
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:49Z logger.go:66: module.other_kafka_topic.kubernetes_manifest.topic: Refreshing state...
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:50Z logger.go:66: module.kafka_topic.data.kubernetes_resource.topic: Reading...
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:50Z logger.go:66: module.other_kafka_topic.data.kubernetes_resource.topic: Reading...
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:50Z logger.go:66: module.kafka_topic.data.kubernetes_resource.topic: Read complete after 1s
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:50Z logger.go:66: module.other_kafka_topic.data.kubernetes_resource.topic: Read complete after 1s
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66: Terraform used the selected providers to generate the following execution
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66: plan. Resource actions are indicated with the following symbols:
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:   - destroy
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66: Terraform will perform the following actions:
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:   # module.kafka_topic.kubernetes_manifest.topic will be destroyed
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:   - resource "kubernetes_manifest" "topic" {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:       - computed_fields = [
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:           - "metadata.finalizers",
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:         ] -> null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:       - manifest        = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:           - apiVersion = "platform.confluent.io/v1beta1"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:           - kind       = "KafkaTopic"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:           - metadata   = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - name      = "my-topic"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - namespace = "confluent"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:             }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:           - spec       = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - configs        = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                   - "cleanup.policy" = "delete"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                 }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - partitionCount = 3
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - replicas       = 3
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:             }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:         } -> null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:       - object          = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:           - apiVersion = "platform.confluent.io/v1beta1"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:           - kind       = "KafkaTopic"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:           - metadata   = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - annotations                = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                   - "platform.confluent.io/last-spec-hash" = "7i6/qOJHLetfg5ZGkh0Cl1rS/27WOe+EQCiKKuet8rE="
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                 }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - clusterName                = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - creationTimestamp          = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - deletionGracePeriodSeconds = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - deletionTimestamp          = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - finalizers                 = [
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                   - "kafkatopic.finalizers.platform.confluent.io",
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                 ]
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - generateName               = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - generation                 = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - labels                     = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - managedFields              = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - name                       = "my-topic"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - namespace                  = "confluent"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - ownerReferences            = [
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                   - {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                       - apiVersion         = "platform.confluent.io/v1beta1"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                       - blockOwnerDeletion = true
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                       - controller         = true
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                       - kind               = "Kafka"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                       - name               = "kafka"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                       - uid                = "1b8ef941-5b4a-4931-9d90-0c3f177d31f0"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                     },
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                 ]
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - resourceVersion            = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - selfLink                   = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - uid                        = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:             }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:           - spec       = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - configs           = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                   - "cleanup.policy" = "delete"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                 }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - kafkaClusterRef   = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                   - name      = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                   - namespace = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                 }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - kafkaRest         = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                   - authentication = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                       - basic  = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                           - debug                    = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                           - directoryPathInContainer = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                           - restrictedRoles          = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                           - roles                    = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                           - secretRef                = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                         }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                       - bearer = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                           - directoryPathInContainer = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                           - secretRef                = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                         }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                       - type   = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                     }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                   - endpoint       = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                   - kafkaClusterID = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                   - tls            = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                       - directoryPathInContainer = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                       - jksPassword              = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                           - secretRef = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                         }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                       - secretRef                = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                     }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                 }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - kafkaRestClassRef = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                   - name      = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                   - namespace = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                 }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - name              = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - partitionCount    = 3
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - replicas          = 3
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:             }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:         } -> null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:       - timeouts {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:           - create = "5m" -> null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:           - delete = "5m" -> null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:           - update = "5m" -> null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:         }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:       - wait {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:           - fields = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - "status.state" = "CREATED"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:             } -> null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:         }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:     }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:   # module.other_kafka_topic.kubernetes_manifest.topic will be destroyed
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:   - resource "kubernetes_manifest" "topic" {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:       - computed_fields = [
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:           - "metadata.finalizers",
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:         ] -> null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:       - manifest        = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:           - apiVersion = "platform.confluent.io/v1beta1"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:           - kind       = "KafkaTopic"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:           - metadata   = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - name      = "my-other-topic"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - namespace = "confluent"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:             }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:           - spec       = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - configs        = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                   - "cleanup.policy" = "compact"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                 }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - kafkaRest      = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                   - endpoint = "http://kafka.confluent.svc.cluster.local:8090"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                 }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - partitionCount = 4
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - replicas       = 3
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:             }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:         } -> null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:       - object          = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:           - apiVersion = "platform.confluent.io/v1beta1"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:           - kind       = "KafkaTopic"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:           - metadata   = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - annotations                = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                   - "platform.confluent.io/last-spec-hash" = "lEw7UWAqvLDY5+mAtzYZa7+U8qQNJiQxZoGr1dLo55w="
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                 }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - clusterName                = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - creationTimestamp          = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - deletionGracePeriodSeconds = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - deletionTimestamp          = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - finalizers                 = [
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                   - "kafkatopic.finalizers.platform.confluent.io",
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                 ]
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - generateName               = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - generation                 = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - labels                     = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - managedFields              = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - name                       = "my-other-topic"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - namespace                  = "confluent"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - ownerReferences            = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - resourceVersion            = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - selfLink                   = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - uid                        = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:             }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:           - spec       = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - configs           = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                   - "cleanup.policy" = "compact"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                 }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - kafkaClusterRef   = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                   - name      = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                   - namespace = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                 }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - kafkaRest         = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                   - authentication = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                       - basic  = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                           - debug                    = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                           - directoryPathInContainer = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                           - restrictedRoles          = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                           - roles                    = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                           - secretRef                = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                         }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                       - bearer = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                           - directoryPathInContainer = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                           - secretRef                = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                         }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                       - type   = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                     }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                   - endpoint       = "http://kafka.confluent.svc.cluster.local:8090"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                   - kafkaClusterID = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                   - tls            = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                       - directoryPathInContainer = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                       - jksPassword              = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                           - secretRef = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                         }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                       - secretRef                = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                     }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                 }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - kafkaRestClassRef = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                   - name      = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                   - namespace = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                 }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - name              = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - partitionCount    = 4
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - replicas          = 3
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:             }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:         } -> null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:       - timeouts {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:           - create = "5m" -> null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:           - delete = "5m" -> null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:           - update = "5m" -> null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:         }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:       - wait {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:           - fields = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - "status.state" = "CREATED"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:             } -> null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:         }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:     }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66: Plan: 0 to add, 0 to change, 2 to destroy.
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66: Changes to Outputs:
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:   - kafka_topic       = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:       - configs           = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:           - "cleanup.policy" = "delete"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:         }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:       - kafkaClusterRef   = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:           - name      = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:           - namespace = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:         }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:       - kafkaRest         = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:           - authentication = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - basic  = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                   - debug                    = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                   - directoryPathInContainer = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                   - restrictedRoles          = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                   - roles                    = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                   - secretRef                = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                 }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - bearer = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                   - directoryPathInContainer = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                   - secretRef                = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                 }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - type   = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:             }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:           - endpoint       = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:           - kafkaClusterID = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:           - tls            = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - directoryPathInContainer = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - jksPassword              = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                   - secretRef = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                 }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - secretRef                = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:             }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:         }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:       - kafkaRestClassRef = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:           - name      = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:           - namespace = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:         }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:       - name              = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:       - partitionCount    = 3
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:       - replicas          = 3
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:     } -> null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:   - other_kafka_topic = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:       - configs           = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:           - "cleanup.policy" = "compact"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:         }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:       - kafkaClusterRef   = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:           - name      = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:           - namespace = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:         }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:       - kafkaRest         = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:           - authentication = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - basic  = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                   - debug                    = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                   - directoryPathInContainer = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                   - restrictedRoles          = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                   - roles                    = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                   - secretRef                = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                 }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - bearer = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                   - directoryPathInContainer = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                   - secretRef                = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                 }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - type   = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:             }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:           - endpoint       = "http://kafka.confluent.svc.cluster.local:8090"
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:           - kafkaClusterID = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:           - tls            = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - directoryPathInContainer = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - jksPassword              = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                   - secretRef = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:                 }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:               - secretRef                = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:             }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:         }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:       - kafkaRestClassRef = {
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:           - name      = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:           - namespace = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:         }
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:       - name              = null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:       - partitionCount    = 4
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:       - replicas          = 3
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:51Z logger.go:66:     } -> null
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:52Z logger.go:66: module.kafka_topic.kubernetes_manifest.topic: Destroying...
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:52Z logger.go:66: module.other_kafka_topic.kubernetes_manifest.topic: Destroying...
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:53Z logger.go:66: module.kafka_topic.kubernetes_manifest.topic: Destruction complete after 1s
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:53Z logger.go:66: module.other_kafka_topic.kubernetes_manifest.topic: Destruction complete after 1s
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:53Z logger.go:66:
-TestTerraformKafkaTopicsExample 2022-08-01T17:39:53Z logger.go:66: Destroy complete! Resources: 2 destroyed.
---- PASS: TestTerraformKafkaTopicsExample (19.43s)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:09Z retry.go:91: terraform [init -upgrade=false]
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:09Z logger.go:66: Running command terraform with args [init -upgrade=false]
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:09Z logger.go:66: [0m[1mInitializing modules...[0m
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:09Z logger.go:66:
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:09Z logger.go:66: [0m[1mInitializing the backend...[0m
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:12Z logger.go:66:
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:12Z logger.go:66: [0m[1mInitializing provider plugins...[0m
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:12Z logger.go:66: - Reusing previous version of hashicorp/helm from the dependency lock file
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:12Z logger.go:66: - Reusing previous version of hashicorp/kubernetes from the dependency lock file
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:12Z logger.go:66: - Using previously-installed hashicorp/helm v2.6.0
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:13Z logger.go:66: - Using previously-installed hashicorp/kubernetes v2.12.1
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:13Z logger.go:66:
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:13Z logger.go:66: [0m[1m[32mTerraform has been successfully initialized![0m[32m[0m
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:13Z logger.go:66: [0m[32m
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:13Z logger.go:66: You may now begin working with Terraform. Try running "terraform plan" to see
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:13Z logger.go:66: any changes that are required for your infrastructure. All Terraform commands
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:13Z logger.go:66: should now work.
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:13Z logger.go:66:
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:13Z logger.go:66: If you ever set or change modules or backend configuration for Terraform,
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:13Z logger.go:66: rerun this command to reinitialize your working directory. If you forget, other
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:13Z logger.go:66: commands will detect it and remind you to do so if necessary.[0m
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:13Z retry.go:91: terraform [apply -input=false -auto-approve -no-color -lock=false]
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:13Z logger.go:66: Running command terraform with args [apply -input=false -auto-approve -no-color -lock=false]
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66: Terraform used the selected providers to generate the following execution
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66: plan. Resource actions are indicated with the following symbols:
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:   + create
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:  <= read (data resources)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66: Terraform will perform the following actions:
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:   # module.kafka_topic.data.kubernetes_resource.topic will be read during apply
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:   # (depends on a resource or a module with changes pending)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:  <= data "kubernetes_resource" "topic" {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:       + api_version = "platform.confluent.io/v1beta1"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:       + kind        = "KafkaTopic"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:       + object      = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:       + metadata {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:           + name      = "my-topic"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:           + namespace = "confluent"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:         }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:     }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:   # module.kafka_topic.kubernetes_manifest.topic will be created
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:   + resource "kubernetes_manifest" "topic" {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:       + computed_fields = [
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:           + "metadata.finalizers",
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:         ]
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:       + manifest        = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:           + apiVersion = "platform.confluent.io/v1beta1"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:           + kind       = "KafkaTopic"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:           + metadata   = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + name      = "my-topic"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + namespace = "confluent"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:             }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:           + spec       = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + configs        = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                   + "cleanup.policy" = "delete"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                 }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + partitionCount = 3
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + replicas       = 3
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:             }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:         }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:       + object          = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:           + apiVersion = "platform.confluent.io/v1beta1"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:           + kind       = "KafkaTopic"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:           + metadata   = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + annotations                = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + clusterName                = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + creationTimestamp          = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + deletionGracePeriodSeconds = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + deletionTimestamp          = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + finalizers                 = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + generateName               = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + generation                 = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + labels                     = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + managedFields              = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + name                       = "my-topic"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + namespace                  = "confluent"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + ownerReferences            = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + resourceVersion            = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + selfLink                   = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + uid                        = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:             }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:           + spec       = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + configs           = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                   + "cleanup.policy" = "delete"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                 }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + kafkaClusterRef   = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                   + name      = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                   + namespace = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                 }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + kafkaRest         = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                   + authentication = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                       + basic  = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                           + debug                    = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                           + directoryPathInContainer = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                           + restrictedRoles          = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                           + roles                    = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                           + secretRef                = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                         }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                       + bearer = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                           + directoryPathInContainer = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                           + secretRef                = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                         }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                       + type   = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                     }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                   + endpoint       = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                   + kafkaClusterID = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                   + tls            = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                       + directoryPathInContainer = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                       + jksPassword              = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                           + secretRef = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                         }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                       + secretRef                = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                     }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                 }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + kafkaRestClassRef = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                   + name      = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                   + namespace = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                 }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + name              = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + partitionCount    = 3
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + replicas          = 3
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:             }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:         }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:       + timeouts {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:           + create = "5m"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:           + delete = "5m"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:           + update = "5m"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:         }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:       + wait {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:           + fields = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + "status.state" = "CREATED"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:             }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:         }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:     }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:   # module.other_kafka_topic.data.kubernetes_resource.topic will be read during apply
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:   # (depends on a resource or a module with changes pending)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:  <= data "kubernetes_resource" "topic" {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:       + api_version = "platform.confluent.io/v1beta1"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:       + kind        = "KafkaTopic"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:       + object      = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:       + metadata {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:           + name      = "my-other-topic"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:           + namespace = "confluent"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:         }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:     }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:   # module.other_kafka_topic.kubernetes_manifest.topic will be created
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:   + resource "kubernetes_manifest" "topic" {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:       + computed_fields = [
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:           + "metadata.finalizers",
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:         ]
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:       + manifest        = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:           + apiVersion = "platform.confluent.io/v1beta1"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:           + kind       = "KafkaTopic"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:           + metadata   = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + name      = "my-other-topic"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + namespace = "confluent"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:             }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:           + spec       = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + configs        = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                   + "cleanup.policy" = "compact"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                 }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + kafkaRest      = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                   + endpoint = "http://kafka.confluent.svc.cluster.local:8090"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                 }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + partitionCount = 4
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + replicas       = 3
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:             }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:         }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:       + object          = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:           + apiVersion = "platform.confluent.io/v1beta1"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:           + kind       = "KafkaTopic"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:           + metadata   = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + annotations                = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + clusterName                = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + creationTimestamp          = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + deletionGracePeriodSeconds = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + deletionTimestamp          = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + finalizers                 = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + generateName               = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + generation                 = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + labels                     = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + managedFields              = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + name                       = "my-other-topic"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + namespace                  = "confluent"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + ownerReferences            = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + resourceVersion            = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + selfLink                   = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + uid                        = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:             }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:           + spec       = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + configs           = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                   + "cleanup.policy" = "compact"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                 }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + kafkaClusterRef   = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                   + name      = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                   + namespace = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                 }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + kafkaRest         = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                   + authentication = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                       + basic  = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                           + debug                    = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                           + directoryPathInContainer = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                           + restrictedRoles          = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                           + roles                    = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                           + secretRef                = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                         }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                       + bearer = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                           + directoryPathInContainer = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                           + secretRef                = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                         }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                       + type   = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                     }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                   + endpoint       = "http://kafka.confluent.svc.cluster.local:8090"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                   + kafkaClusterID = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                   + tls            = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                       + directoryPathInContainer = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                       + jksPassword              = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                           + secretRef = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                         }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                       + secretRef                = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                     }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                 }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + kafkaRestClassRef = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                   + name      = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                   + namespace = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:                 }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + name              = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + partitionCount    = 4
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + replicas          = 3
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:             }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:         }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:       + timeouts {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:           + create = "5m"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:           + delete = "5m"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:           + update = "5m"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:         }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:       + wait {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:           + fields = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:               + "status.state" = "CREATED"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:             }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:         }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:     }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66: Plan: 2 to add, 0 to change, 0 to destroy.
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66: Changes to Outputs:
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:   + kafka_topic       = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:16Z logger.go:66:   + other_kafka_topic = (known after apply)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:17Z logger.go:66: module.other_kafka_topic.kubernetes_manifest.topic: Creating...
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:17Z logger.go:66: module.kafka_topic.kubernetes_manifest.topic: Creating...
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:18Z logger.go:66: module.other_kafka_topic.kubernetes_manifest.topic: Creation complete after 1s
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:18Z logger.go:66: module.other_kafka_topic.data.kubernetes_resource.topic: Reading...
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:18Z logger.go:66: module.kafka_topic.kubernetes_manifest.topic: Creation complete after 1s
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:18Z logger.go:66: module.kafka_topic.data.kubernetes_resource.topic: Reading...
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66: module.other_kafka_topic.data.kubernetes_resource.topic: Read complete after 0s
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66: module.kafka_topic.data.kubernetes_resource.topic: Read complete after 0s
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66: Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66: Outputs:
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66: kafka_topic = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:   "configs" = tomap({
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:     "cleanup.policy" = "delete"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:   })
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:   "kafkaClusterRef" = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:     "name" = tostring(null)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:     "namespace" = tostring(null)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:   }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:   "kafkaRest" = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:     "authentication" = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:       "basic" = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:         "debug" = tobool(null)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:         "directoryPathInContainer" = tostring(null)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:         "restrictedRoles" = tolist(null) /* of string */
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:         "roles" = tolist(null) /* of string */
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:         "secretRef" = tostring(null)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:       }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:       "bearer" = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:         "directoryPathInContainer" = tostring(null)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:         "secretRef" = tostring(null)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:       }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:       "type" = tostring(null)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:     }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:     "endpoint" = tostring(null)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:     "kafkaClusterID" = tostring(null)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:     "tls" = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:       "directoryPathInContainer" = tostring(null)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:       "jksPassword" = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:         "secretRef" = tostring(null)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:       }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:       "secretRef" = tostring(null)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:     }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:   }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:   "kafkaRestClassRef" = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:     "name" = tostring(null)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:     "namespace" = tostring(null)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:   }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:   "name" = tostring(null)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:   "partitionCount" = 3
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:   "replicas" = 3
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66: }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66: other_kafka_topic = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:   "configs" = tomap({
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:     "cleanup.policy" = "compact"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:   })
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:   "kafkaClusterRef" = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:     "name" = tostring(null)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:     "namespace" = tostring(null)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:   }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:   "kafkaRest" = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:     "authentication" = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:       "basic" = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:         "debug" = tobool(null)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:         "directoryPathInContainer" = tostring(null)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:         "restrictedRoles" = tolist(null) /* of string */
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:         "roles" = tolist(null) /* of string */
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:         "secretRef" = tostring(null)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:       }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:       "bearer" = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:         "directoryPathInContainer" = tostring(null)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:         "secretRef" = tostring(null)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:       }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:       "type" = tostring(null)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:     }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:     "endpoint" = "http://kafka.confluent.svc.cluster.local:8090"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:     "kafkaClusterID" = tostring(null)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:     "tls" = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:       "directoryPathInContainer" = tostring(null)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:       "jksPassword" = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:         "secretRef" = tostring(null)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:       }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:       "secretRef" = tostring(null)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:     }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:   }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:   "kafkaRestClassRef" = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:     "name" = tostring(null)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:     "namespace" = tostring(null)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:   }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:   "name" = tostring(null)
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:   "partitionCount" = 4
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66:   "replicas" = 3
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66: }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z retry.go:91: terraform [output -no-color -json kafka_topic]
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66: Running command terraform with args [output -no-color -json kafka_topic]
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66: {"configs":{"cleanup.policy":"delete"},"kafkaClusterRef":{"name":null,"namespace":null},"kafkaRest":{"authentication":{"basic":{"debug":null,"directoryPathInContainer":null,"restrictedRoles":null,"roles":null,"secretRef":null},"bearer":{"directoryPathInContainer":null,"secretRef":null},"type":null},"endpoint":null,"kafkaClusterID":null,"tls":{"directoryPathInContainer":null,"jksPassword":{"secretRef":null},"secretRef":null}},"kafkaRestClassRef":{"name":null,"namespace":null},"name":null,"partitionCount":3,"replicas":3}
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z retry.go:91: terraform [output -no-color -json other_kafka_topic]
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:19Z logger.go:66: Running command terraform with args [output -no-color -json other_kafka_topic]
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:20Z logger.go:66: {"configs":{"cleanup.policy":"compact"},"kafkaClusterRef":{"name":null,"namespace":null},"kafkaRest":{"authentication":{"basic":{"debug":null,"directoryPathInContainer":null,"restrictedRoles":null,"roles":null,"secretRef":null},"bearer":{"directoryPathInContainer":null,"secretRef":null},"type":null},"endpoint":"http://kafka.confluent.svc.cluster.local:8090","kafkaClusterID":null,"tls":{"directoryPathInContainer":null,"jksPassword":{"secretRef":null},"secretRef":null}},"kafkaRestClassRef":{"name":null,"namespace":null},"name":null,"partitionCount":4,"replicas":3}
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:20Z retry.go:91: terraform [destroy -auto-approve -input=false -no-color -lock=false]
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:20Z logger.go:66: Running command terraform with args [destroy -auto-approve -input=false -no-color -lock=false]
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:22Z logger.go:66: module.kafka_topic.kubernetes_manifest.topic: Refreshing state...
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:22Z logger.go:66: module.other_kafka_topic.kubernetes_manifest.topic: Refreshing state...
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:23Z logger.go:66: module.kafka_topic.data.kubernetes_resource.topic: Reading...
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:23Z logger.go:66: module.other_kafka_topic.data.kubernetes_resource.topic: Reading...
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:23Z logger.go:66: module.other_kafka_topic.data.kubernetes_resource.topic: Read complete after 0s
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:23Z logger.go:66: module.kafka_topic.data.kubernetes_resource.topic: Read complete after 0s
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66: Terraform used the selected providers to generate the following execution
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66: plan. Resource actions are indicated with the following symbols:
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:   - destroy
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66: Terraform will perform the following actions:
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:   # module.kafka_topic.kubernetes_manifest.topic will be destroyed
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:   - resource "kubernetes_manifest" "topic" {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:       - computed_fields = [
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:           - "metadata.finalizers",
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:         ] -> null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:       - manifest        = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:           - apiVersion = "platform.confluent.io/v1beta1"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:           - kind       = "KafkaTopic"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:           - metadata   = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - name      = "my-topic"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - namespace = "confluent"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:             }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:           - spec       = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - configs        = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                   - "cleanup.policy" = "delete"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                 }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - partitionCount = 3
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - replicas       = 3
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:             }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:         } -> null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:       - object          = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:           - apiVersion = "platform.confluent.io/v1beta1"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:           - kind       = "KafkaTopic"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:           - metadata   = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - annotations                = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                   - "platform.confluent.io/last-spec-hash" = "7i6/qOJHLetfg5ZGkh0Cl1rS/27WOe+EQCiKKuet8rE="
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                 }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - clusterName                = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - creationTimestamp          = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - deletionGracePeriodSeconds = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - deletionTimestamp          = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - finalizers                 = [
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                   - "kafkatopic.finalizers.platform.confluent.io",
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                 ]
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - generateName               = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - generation                 = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - labels                     = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - managedFields              = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - name                       = "my-topic"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - namespace                  = "confluent"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - ownerReferences            = [
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                   - {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                       - apiVersion         = "platform.confluent.io/v1beta1"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                       - blockOwnerDeletion = true
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                       - controller         = true
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                       - kind               = "Kafka"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                       - name               = "kafka"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                       - uid                = "09f34f1a-522a-448f-b10c-a63382c42e75"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                     },
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                 ]
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - resourceVersion            = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - selfLink                   = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - uid                        = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:             }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:           - spec       = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - configs           = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                   - "cleanup.policy" = "delete"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                 }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - kafkaClusterRef   = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                   - name      = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                   - namespace = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                 }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - kafkaRest         = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                   - authentication = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                       - basic  = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                           - debug                    = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                           - directoryPathInContainer = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                           - restrictedRoles          = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                           - roles                    = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                           - secretRef                = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                         }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                       - bearer = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                           - directoryPathInContainer = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                           - secretRef                = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                         }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                       - type   = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                     }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                   - endpoint       = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                   - kafkaClusterID = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                   - tls            = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                       - directoryPathInContainer = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                       - jksPassword              = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                           - secretRef = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                         }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                       - secretRef                = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                     }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                 }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - kafkaRestClassRef = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                   - name      = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                   - namespace = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                 }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - name              = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - partitionCount    = 3
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - replicas          = 3
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:             }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:         } -> null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:       - timeouts {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:           - create = "5m" -> null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:           - delete = "5m" -> null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:           - update = "5m" -> null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:         }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:       - wait {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:           - fields = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - "status.state" = "CREATED"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:             } -> null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:         }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:     }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:   # module.other_kafka_topic.kubernetes_manifest.topic will be destroyed
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:   - resource "kubernetes_manifest" "topic" {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:       - computed_fields = [
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:           - "metadata.finalizers",
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:         ] -> null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:       - manifest        = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:           - apiVersion = "platform.confluent.io/v1beta1"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:           - kind       = "KafkaTopic"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:           - metadata   = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - name      = "my-other-topic"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - namespace = "confluent"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:             }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:           - spec       = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - configs        = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                   - "cleanup.policy" = "compact"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                 }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - kafkaRest      = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                   - endpoint = "http://kafka.confluent.svc.cluster.local:8090"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                 }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - partitionCount = 4
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - replicas       = 3
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:             }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:         } -> null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:       - object          = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:           - apiVersion = "platform.confluent.io/v1beta1"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:           - kind       = "KafkaTopic"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:           - metadata   = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - annotations                = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                   - "platform.confluent.io/last-spec-hash" = "lEw7UWAqvLDY5+mAtzYZa7+U8qQNJiQxZoGr1dLo55w="
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                 }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - clusterName                = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - creationTimestamp          = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - deletionGracePeriodSeconds = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - deletionTimestamp          = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - finalizers                 = [
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                   - "kafkatopic.finalizers.platform.confluent.io",
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                 ]
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - generateName               = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - generation                 = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - labels                     = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - managedFields              = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - name                       = "my-other-topic"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - namespace                  = "confluent"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - ownerReferences            = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - resourceVersion            = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - selfLink                   = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - uid                        = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:             }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:           - spec       = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - configs           = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                   - "cleanup.policy" = "compact"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                 }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - kafkaClusterRef   = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                   - name      = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                   - namespace = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                 }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - kafkaRest         = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                   - authentication = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                       - basic  = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                           - debug                    = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                           - directoryPathInContainer = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                           - restrictedRoles          = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                           - roles                    = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                           - secretRef                = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                         }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                       - bearer = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                           - directoryPathInContainer = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                           - secretRef                = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                         }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                       - type   = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                     }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                   - endpoint       = "http://kafka.confluent.svc.cluster.local:8090"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                   - kafkaClusterID = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                   - tls            = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                       - directoryPathInContainer = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                       - jksPassword              = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                           - secretRef = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                         }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                       - secretRef                = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                     }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                 }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - kafkaRestClassRef = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                   - name      = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                   - namespace = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                 }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - name              = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - partitionCount    = 4
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - replicas          = 3
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:             }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:         } -> null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:       - timeouts {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:           - create = "5m" -> null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:           - delete = "5m" -> null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:           - update = "5m" -> null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:         }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:       - wait {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:           - fields = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - "status.state" = "CREATED"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:             } -> null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:         }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:     }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66: Plan: 0 to add, 0 to change, 2 to destroy.
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66: Changes to Outputs:
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:   - kafka_topic       = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:       - configs           = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:           - "cleanup.policy" = "delete"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:         }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:       - kafkaClusterRef   = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:           - name      = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:           - namespace = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:         }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:       - kafkaRest         = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:           - authentication = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - basic  = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                   - debug                    = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                   - directoryPathInContainer = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                   - restrictedRoles          = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                   - roles                    = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                   - secretRef                = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                 }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - bearer = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                   - directoryPathInContainer = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                   - secretRef                = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                 }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - type   = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:             }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:           - endpoint       = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:           - kafkaClusterID = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:           - tls            = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - directoryPathInContainer = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - jksPassword              = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                   - secretRef = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                 }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - secretRef                = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:             }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:         }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:       - kafkaRestClassRef = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:           - name      = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:           - namespace = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:         }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:       - name              = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:       - partitionCount    = 3
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:       - replicas          = 3
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:     } -> null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:   - other_kafka_topic = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:       - configs           = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:           - "cleanup.policy" = "compact"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:         }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:       - kafkaClusterRef   = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:           - name      = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:           - namespace = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:         }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:       - kafkaRest         = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:           - authentication = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - basic  = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                   - debug                    = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                   - directoryPathInContainer = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                   - restrictedRoles          = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                   - roles                    = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                   - secretRef                = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                 }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - bearer = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                   - directoryPathInContainer = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                   - secretRef                = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                 }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - type   = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:             }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:           - endpoint       = "http://kafka.confluent.svc.cluster.local:8090"
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:           - kafkaClusterID = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:           - tls            = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - directoryPathInContainer = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - jksPassword              = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                   - secretRef = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:                 }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:               - secretRef                = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:             }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:         }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:       - kafkaRestClassRef = {
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:           - name      = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:           - namespace = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:         }
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:       - name              = null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:       - partitionCount    = 4
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:       - replicas          = 3
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:24Z logger.go:66:     } -> null
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:26Z logger.go:66: module.kafka_topic.kubernetes_manifest.topic: Destroying...
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:26Z logger.go:66: module.other_kafka_topic.kubernetes_manifest.topic: Destroying...
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:27Z logger.go:66: module.kafka_topic.kubernetes_manifest.topic: Destruction complete after 1s
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:27Z logger.go:66: module.other_kafka_topic.kubernetes_manifest.topic: Destruction complete after 1s
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:27Z logger.go:66:
+TestTerraformKafkaTopicsExample 2022-08-01T19:01:27Z logger.go:66: Destroy complete! Resources: 2 destroyed.
+--- PASS: TestTerraformKafkaTopicsExample (17.99s)
 PASS
-ok  	command-line-arguments	19.452s
+ok  	command-line-arguments	18.003s

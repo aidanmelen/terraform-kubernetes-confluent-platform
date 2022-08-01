@@ -76,8 +76,11 @@ module "confluent_platform" {
 | Name | Description |
 |------|-------------|
 | <a name="output_confluent_operator"></a> [confluent\_operator](#output\_confluent\_operator) | The Confluent Operator. |
-| <a name="output_kafka"></a> [kafka](#output\_kafka) | The Kafka object spec. |
-| <a name="output_kafka_topics"></a> [kafka\_topics](#output\_kafka\_topics) | The Kafka Topic object specs. |
+| <a name="output_kafka_manifest"></a> [kafka\_manifest](#output\_kafka\_manifest) | The Kafka manifest. |
+| <a name="output_kafka_object_spec"></a> [kafka\_object\_spec](#output\_kafka\_object\_spec) | The Kafka object spec. |
+| <a name="output_kafka_topic_manifests"></a> [kafka\_topic\_manifests](#output\_kafka\_topic\_manifests) | Map of attribute maps for all the KafkaTopic manifests created. |
+| <a name="output_kafka_topic_object_specs"></a> [kafka\_topic\_object\_specs](#output\_kafka\_topic\_object\_specs) | Map of attribute maps for all the KafkaTopic object specs created. |
 | <a name="output_namespace"></a> [namespace](#output\_namespace) | The namespace for the Confluent Platform. |
-| <a name="output_zookeeper"></a> [zookeeper](#output\_zookeeper) | The Zookeeper object spec. |
+| <a name="output_zookeeper_manifest"></a> [zookeeper\_manifest](#output\_zookeeper\_manifest) | The Zookeeper manifest. |
+| <a name="output_zookeeper_object_spec"></a> [zookeeper\_object\_spec](#output\_zookeeper\_object\_spec) | The Zookeeper object spec. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
