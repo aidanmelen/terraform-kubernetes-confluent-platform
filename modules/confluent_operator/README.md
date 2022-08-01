@@ -1,4 +1,4 @@
-# Confluent Operator
+# confluent_operator
 
 Deploy the Confluent Operator.
 

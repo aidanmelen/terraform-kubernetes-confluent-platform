@@ -1,6 +1,6 @@
-# Confluent Operator
+# kafka_topic
 
-Deploy the Confluent Operator.
+Deploy a Kafka Topic.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
@@ -49,6 +49,7 @@ spec:
 | Name | Type |
 |------|------|
 | [kubernetes_manifest.topic](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/manifest) | resource |
+| [kubernetes_resource.topic](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/data-sources/resource) | data source |
 ## Inputs
 
 | Name | Description | Type | Default | Required |
@@ -63,5 +64,5 @@ spec:
 
 | Name | Description |
 |------|-------------|
-| <a name="output_manifest"></a> [manifest](#output\_manifest) | The Kafka Topic manifest. |
+| <a name="output_object"></a> [object](#output\_object) | The Kafka Topic object. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

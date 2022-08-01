@@ -42,12 +42,12 @@ resource "kubernetes_manifest" "topic" {
   }
 }
 
-# data "kubernetes_resource" "topic" {
-#   api_version = kubernetes_manifest.topic.manifest.apiVersion
-#   kind        = kubernetes_manifest.topic.manifest.kind
+data "kubernetes_resource" "topic" {
+  api_version = kubernetes_manifest.topic.manifest.apiVersion
+  kind        = kubernetes_manifest.topic.manifest.kind
 
-#   metadata {
-#     name      = kubernetes_manifest.topic.manifest.metadata.name
-#     namespace = kubernetes_manifest.topic.manifest.metadata.namespace
-#   }
-# }
+  metadata {
+    name      = kubernetes_manifest.topic.manifest.metadata.name
+    namespace = kubernetes_manifest.topic.manifest.metadata.namespace
+  }
+}

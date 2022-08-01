@@ -1,9 +1,4 @@
-output "manifest" {
-  description = "The Kafka Topic manifest."
-  value       = kubernetes_manifest.topic.manifest
+output "object" {
+  description = "The Kafka Topic object."
+  value       = data.kubernetes_resource.topic.object
 }
-
-# output "server_manifest" {
-#   description = "The Kafka Topic manifest from the Kubernetes server."
-#   value       = data.kubernetes_resource.topic
-# }

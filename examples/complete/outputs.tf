@@ -15,19 +15,19 @@ output "confluent_operator" {
 # Confluent Platform
 ################################################################################
 output "zookeeper" {
-  description = "The Zookeeper CFK manifest."
-  value       = module.confluent_platform.zookeeper_manifest
+  description = "The Zookeeper object spec."
+  value       = module.confluent_platform.zookeeper_object["spec"]
 }
 
 output "kafka" {
-  description = "The Kafka CFK manifest."
-  value       = module.confluent_platform.kafka_manifest
+  description = "The Kafka object spec."
+  value       = module.confluent_platform.kafka_object["spec"]
 }
 
 ################################################################################
 # Kafka Topics
 ################################################################################
 output "kafka_topics" {
-  description = "The Kafka CFK manifest."
-  value       = module.confluent_platform.kafka_topics
+  description = "The Kafka Topic object specs."
+  value       = { for name, kafka_topic in module.confluent_platform.kafka_topic_objects : name => kafka_topic.object["spec"] }
 }

@@ -4,36 +4,36 @@ output "namespace" {
 }
 
 output "zookeeper" {
-  description = "The Zookeeper CFK manifest."
-  value       = module.confluent_platform_singlenode.zookeeper_manifest
+  description = "The Zookeeper object spec."
+  value       = module.confluent_platform_singlenode.zookeeper_object["spec"]
 }
 
 output "kafka" {
-  description = "The Kafka CFK manifest."
-  value       = module.confluent_platform_singlenode.kafka_manifest
+  description = "The Kafka object spec."
+  value       = module.confluent_platform_singlenode.kafka_object["spec"]
 }
 
 output "connect" {
-  description = "The Connect CFK manifest."
-  value       = module.confluent_platform_singlenode.connect_manifest
+  description = "The Connect object spec."
+  value       = module.confluent_platform_singlenode.connect_object["spec"]
 }
 
 output "ksqldb" {
-  description = "The KsqlDB CFK manifest."
-  value       = module.confluent_platform_singlenode.ksqldb_manifest
+  description = "The KsqlDB object spec."
+  value       = module.confluent_platform_singlenode.ksqldb_object["spec"]
 }
 
 output "controlcenter" {
-  description = "The ControlCenter CFK manifest."
-  value       = module.confluent_platform_singlenode.controlcenter_manifest
+  description = "The ControlCenter object spec."
+  value       = module.confluent_platform_singlenode.controlcenter_object["spec"]
 }
 
 output "schemaregistry" {
-  description = "The SchemaRegistry CFK manifest."
-  value       = module.confluent_platform_singlenode.schemaregistry_manifest
+  description = "The SchemaRegistry object spec."
+  value       = module.confluent_platform_singlenode.schemaregistry_object["spec"]
 }
 
 output "kafkarestproxy" {
-  description = "The KafkaRestProxy CFK manifest."
-  value       = module.confluent_platform_singlenode.kafkarestproxy_manifest
+  description = "The KafkaRestProxy object spec."
+  value       = module.confluent_platform_singlenode.kafkarestproxy_object["spec"]
 }

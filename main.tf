@@ -57,6 +57,21 @@ resource "kubernetes_manifest" "components" {
   }
 }
 
+data "kubernetes_resource" "components" {
+  for_each = {
+    for name, manifest in module.confluent_platform_override_values.merged : name => manifest
+    if var.create && local.create_confluent_platform[name]
+  }
+
+  api_version = kubernetes_manifest.components[each.key].manifest.apiVersion
+  kind        = kubernetes_manifest.components[each.key].manifest.kind
+
+  metadata {
+    name      = kubernetes_manifest.components[each.key].manifest.metadata.name
+    namespace = kubernetes_manifest.components[each.key].manifest.metadata.namespace
+  }
+}
+
 ################################################################################
 # Kafka Topics
 ################################################################################

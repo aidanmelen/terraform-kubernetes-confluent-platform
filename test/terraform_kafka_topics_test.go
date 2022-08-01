@@ -23,11 +23,11 @@ func TestTerraformKafkaTopicsExample(t *testing.T) {
 	terraform.InitAndApply(t, terraformOptions)
 
 	// website::tag::3:: Run `terraform output` to get the values of output variables and check they have the expected values.
-	actualKafkaTopic := terraform.Output(t, terraformOptions, "kafka_topic_manifest")
-	actualOtherKafkaTopic := terraform.Output(t, terraformOptions, "other_kafka_topic_manifest")
+	actualKafkaTopic := terraform.Output(t, terraformOptions, "kafka_topic")
+	actualOtherKafkaTopic := terraform.Output(t, terraformOptions, "other_kafka_topic")
 
-	expectedKafkaTopic := "map[apiVersion:platform.confluent.io/v1beta1 kind:KafkaTopic metadata:map[name:my-topic namespace:confluent] spec:map[configs:map[cleanup.policy:delete] partitionCount:3 replicas:3]]"
-	expectedOtherKafkaTopic := "map[apiVersion:platform.confluent.io/v1beta1 kind:KafkaTopic metadata:map[name:my-other-topic namespace:confluent] spec:map[configs:map[cleanup.policy:compact] kafkaRest:map[endpoint:http://kafka.confluent.svc.cluster.local:8090] partitionCount:4 replicas:3]]"
+	expectedKafkaTopic := "map[configs:map[cleanup.policy:delete] kafkaClusterRef:map[name:<nil> namespace:<nil>] kafkaRest:map[authentication:map[basic:map[debug:<nil> directoryPathInContainer:<nil> restrictedRoles:<nil> roles:<nil> secretRef:<nil>] bearer:map[directoryPathInContainer:<nil> secretRef:<nil>] type:<nil>] endpoint:<nil> kafkaClusterID:<nil> tls:map[directoryPathInContainer:<nil> jksPassword:map[secretRef:<nil>] secretRef:<nil>]] kafkaRestClassRef:map[name:<nil> namespace:<nil>] name:<nil> partitionCount:3 replicas:3]"
+	expectedOtherKafkaTopic := "map[configs:map[cleanup.policy:compact] kafkaClusterRef:map[name:<nil> namespace:<nil>] kafkaRest:map[authentication:map[basic:map[debug:<nil> directoryPathInContainer:<nil> restrictedRoles:<nil> roles:<nil> secretRef:<nil>] bearer:map[directoryPathInContainer:<nil> secretRef:<nil>] type:<nil>] endpoint:http://kafka.confluent.svc.cluster.local:8090 kafkaClusterID:<nil> tls:map[directoryPathInContainer:<nil> jksPassword:map[secretRef:<nil>] secretRef:<nil>]] kafkaRestClassRef:map[name:<nil> namespace:<nil>] name:<nil> partitionCount:4 replicas:3]"
 
 	assert.Equal(t, expectedKafkaTopic, actualKafkaTopic, "Map %q should match %q", expectedKafkaTopic, actualKafkaTopic)
 	assert.Equal(t, expectedOtherKafkaTopic, actualOtherKafkaTopic, "Map %q should match %q", expectedOtherKafkaTopic, actualOtherKafkaTopic)

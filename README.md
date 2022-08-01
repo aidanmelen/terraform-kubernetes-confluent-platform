@@ -130,6 +130,7 @@ clean                               Clean project
 | Name | Type |
 |------|------|
 | [kubernetes_manifest.components](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/manifest) | resource |
+| [kubernetes_resource.components](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/data-sources/resource) | data source |
 ## Inputs
 
 | Name | Description | Type | Default | Required |
@@ -150,7 +151,7 @@ clean                               Clean project
 | <a name="input_create_zookeeper"></a> [create\_zookeeper](#input\_create\_zookeeper) | Controls if the Zookeeper component of the Confluent Platform should be created. | `bool` | `true` | no |
 | <a name="input_delete_timeout"></a> [delete\_timeout](#input\_delete\_timeout) | The delete timeout for each Conlfuent Platform component. | `string` | `"10m"` | no |
 | <a name="input_kafka"></a> [kafka](#input\_kafka) | The Kafka override values. | `any` | `{}` | no |
-| <a name="input_kafka_topics"></a> [kafka\_topics](#input\_kafka\_topics) | The Kafka Topics to create. | `any` | `[]` | no |
+| <a name="input_kafka_topics"></a> [kafka\_topics](#input\_kafka\_topics) | The Kafka Topics to create. | `any` | `{}` | no |
 | <a name="input_kafkarestproxy"></a> [kafkarestproxy](#input\_kafkarestproxy) | The KafkaRestProxy override values. | `any` | `{}` | no |
 | <a name="input_ksqldb"></a> [ksqldb](#input\_ksqldb) | The KsqlDB override values. | `any` | `{}` | no |
 | <a name="input_namespace"></a> [namespace](#input\_namespace) | The namespace to release Confluent Platform into. When `confluent_operator` is specified, this will also ensure the Confluent Operator is released into the same namespace. | `string` | `"confluent"` | no |
@@ -162,16 +163,16 @@ clean                               Clean project
 | Name | Description |
 |------|-------------|
 | <a name="output_confluent_operator"></a> [confluent\_operator](#output\_confluent\_operator) | The Confluent Operator. |
-| <a name="output_connect_manifest"></a> [connect\_manifest](#output\_connect\_manifest) | The Connect manifest. |
-| <a name="output_controlcenter_manifest"></a> [controlcenter\_manifest](#output\_controlcenter\_manifest) | The ControlCenter manifest. |
-| <a name="output_kafka_manifest"></a> [kafka\_manifest](#output\_kafka\_manifest) | The Kafka manifest. |
-| <a name="output_kafka_topics"></a> [kafka\_topics](#output\_kafka\_topics) | The Kafka Topic manifests |
-| <a name="output_kafkarestproxy_manifest"></a> [kafkarestproxy\_manifest](#output\_kafkarestproxy\_manifest) | The KafkaRestProxy manifest. |
-| <a name="output_ksqldb_manifest"></a> [ksqldb\_manifest](#output\_ksqldb\_manifest) | The KsqlDB manifest. |
+| <a name="output_connect_object"></a> [connect\_object](#output\_connect\_object) | The Connect object. |
+| <a name="output_controlcenter_object"></a> [controlcenter\_object](#output\_controlcenter\_object) | The ControlCenter object. |
+| <a name="output_kafka_object"></a> [kafka\_object](#output\_kafka\_object) | The Kafka object. |
+| <a name="output_kafka_topic_objects"></a> [kafka\_topic\_objects](#output\_kafka\_topic\_objects) | The Kafka Topic objects. |
+| <a name="output_kafkarestproxy_object"></a> [kafkarestproxy\_object](#output\_kafkarestproxy\_object) | The KafkaRestProxy object. |
+| <a name="output_ksqldb_object"></a> [ksqldb\_object](#output\_ksqldb\_object) | The KsqlDB object. |
 | <a name="output_namespace"></a> [namespace](#output\_namespace) | The default namespace for the Confluent Platform. |
-| <a name="output_schemaregistry_manifest"></a> [schemaregistry\_manifest](#output\_schemaregistry\_manifest) | The SchemaRegistry manifest. |
+| <a name="output_schemaregistry_object"></a> [schemaregistry\_object](#output\_schemaregistry\_object) | The SchemaRegistry object. |
 | <a name="output_version"></a> [version](#output\_version) | The default Confluent Platform version. |
-| <a name="output_zookeeper_manifest"></a> [zookeeper\_manifest](#output\_zookeeper\_manifest) | The Zookeeper manifest. |
+| <a name="output_zookeeper_object"></a> [zookeeper\_object](#output\_zookeeper\_object) | The Zookeeper object. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## License
