@@ -1,11 +1,6 @@
-# connectors
+# connector
 
 Deploy a Connector on Kafka Connect.
-
-## Prerequisites
-
-Kafka Connect must be running before the Connector instance is created. Please see the [connectors example](../../examples/connectors) for more information.
-
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
@@ -13,42 +8,75 @@ Kafka Connect must be running before the Connector instance is created. Please s
 
 ```hcl
 module "confluent_platform" {
-  source = "../confluent_platform_singlenode"
-}
+  source = "../../"
 
-module "file_stream_source_connector" {
-  source = "../../modules/connector"
+  namespace = var.namespace
 
-  name      = "my-file-stream-source-connector"
-  namespace = "confluent"
-  class     = "FileStreamSource"
+  confluent_operator = {
+    create_namespace = true
+    name             = "confluent-operator"
+    chart_version    = "0.517.12"
+  }
 
-  config = {
-    "tasks.max" : "1"
-    "file" : "/tmp/test.txt"
-    "topic" : "connect-test"
+  zookeeper = {
+    "spec" = {
+      "replicas" = "3"
+    }
+  }
+
+  kafka = {
+    "spec" = {
+      "replicas" = "3"
+    }
+  }
+
+  connect = yamldecode(
+    <<EOF
+spec:
+  build:
+    type: onDemand
+    onDemand:
+      plugins:
+        locationType: confluentHub
+        confluentHub:
+          - name: kafka-connect-spooldir
+            owner: jcustenborder
+            version: 2.0.64
+  EOF
+  )
+
+  create_ksqldb         = false
+  create_controlcenter  = true
+  create_schemaregistry = false
+  create_kafkarestproxy = false
+
+  kafka_topics = {
+    "spooldir-testing-topic" = {}
   }
 }
 
-# module "file_stream_sink_connector" {
-#   source = "../../modules/connector"
+module "spooldir_source_connector" {
+  source = "../../modules/connector"
 
-#   name      = "my-file-stream-sink-connector"
-#   namespace = "confluent"
+  name      = "example"
+  namespace = var.namespace
 
-#   values = yamldecode(<<EOF
-# spec:
-#   class: "FileStreamSink"
-#   taskMax: 3
-#   connectClusterRef:
-#     name: connect
-#   configs:
-#     tasks.max: "1"
-#     file: "/tmp/test.txt"
-#     topic: "connect-test"
-#   EOF
-#   )
-# }
+  # https://docs.confluent.io/kafka-connect-spooldir/current/connectors/json_source_connector.html#json-source-connector-example
+  values = yamldecode(<<EOF
+spec:
+  class: "com.github.jcustenborder.kafka.connect.spooldir.SpoolDirJsonSourceConnector"
+  taskMax: 1
+  configs:
+    "input.path": "/tmp"
+    "input.file.pattern": "json-spooldir-source.json"
+    error.path: "/tmp"
+    finished.path: "/tmp"
+    "halt.on.error": "false"
+    schema.generation.enabled: "true"
+    "topic": "spooldir-testing-topic"
+  EOF
+  )
+}
 ```
 
 ## Requirements
@@ -78,8 +106,6 @@ module "file_stream_source_connector" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_class"></a> [class](#input\_class) | class specifies the class name of the connector. The Connect cluster displays the supported class names in its status. Required when not overriden by `values`. | `string` | `""` | no |
-| <a name="input_config"></a> [config](#input\_config) | configs is a map of string key and value pairs. It specifies the additional configurations for the connector. Required when not overriden by `values`. | `any` | `{}` | no |
 | <a name="input_create_timeout"></a> [create\_timeout](#input\_create\_timeout) | The create timeout for each Confluent Platform component. | `string` | `"5m"` | no |
 | <a name="input_delete_timeout"></a> [delete\_timeout](#input\_delete\_timeout) | The delete timeout for each Confluent Platform component. | `string` | `"5m"` | no |
 | <a name="input_name"></a> [name](#input\_name) | The Connector name. | `string` | n/a | yes |

@@ -30,8 +30,8 @@ setup: apply-cfk-crds ## Setup project
 	cd examples/confluent_platform && terraform init
 	cd examples/confluent_platform_singlenode && terraform init
 	cd examples/complete && terraform init
-	cd examples/kafka_topics && terraform init
-	cd examples/connectors && terraform init
+	cd examples/kafka_topic && terraform init
+	cd examples/connector && terraform init
 
 	# pre-commit
 	git init
@@ -81,11 +81,11 @@ test-confluent-platform-singlenode: test-setup test-confluent-platform-singlenod
 test-complete: ## Test the complete example
 	go test test/terraform_complete_test.go -timeout 20m -v |& tee test/terraform_complete_test.log
 
-test-kafka-topics: ## Test the kafka_topics example
-	go test test/terraform_kafka_topics_test.go -timeout 20m -v |& tee test/terraform_kafka_topics_test.log
+test-kafka-topic: ## Test the kafka_topic example
+	go test test/terraform_kafka_topic_test.go -timeout 20m -v |& tee test/terraform_kafka_topic_test.log
 
-test-connectors: ## Test the connectors example
-	go test test/terraform_connectors_test.go -timeout 20m -v |& tee test/terraform_connectors_test.log
+test-connector: ## Test the connector example
+	go test test/terraform_connector_test.go -timeout 20m -v |& tee test/terraform_connector_test.log
 
 delete-cfk-crds:
 	kubectl config set-cluster docker-desktop
@@ -101,8 +101,8 @@ clean: delete-cfk-crds ## Clean project
 	@rm -f examples/confluent_platform/.terraform.lock.hcl
 	@rm -f examples/confluent_platform_singlenode/.terraform.lock.hcl
 	@rm -f examples/complete/.terraform.lock.hcl
-	@rm -rf examples/kafka_topics/.terraform.lock.hcl
-	@rm -rf examples/connectors/.terraform.lock.hcl
+	@rm -rf examples/kafka_topic/.terraform.lock.hcl
+	@rm -rf examples/connector/.terraform.lock.hcl
 
 	@rm -rf modules/confluent_operator/.terraform
 	@rm -rf modules/kafka_topic/.terraform
@@ -111,8 +111,8 @@ clean: delete-cfk-crds ## Clean project
 	@rm -rf examples/confluent_platform/.terraform
 	@rm -rf examples/confluent_platform_singlenode/.terraform
 	@rm -rf examples/complete/.terraform
-	@rm -rf examples/kafka_topics/.terraform
-	@rm -rf examples/connectors/.terraform
+	@rm -rf examples/kafka_topic/.terraform
+	@rm -rf examples/connector/.terraform
 
 	@rm -f go.mod
 	@rm -f go.sum

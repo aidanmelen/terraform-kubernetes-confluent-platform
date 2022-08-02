@@ -3,7 +3,7 @@ content: |-
   ## Example
 
   ```hcl
-  {{ include "../../examples/connectors/main.tf" }}
+  {{ include "../../examples/connector/main.tf" }}
   ```
 
   {{ .Requirements }}

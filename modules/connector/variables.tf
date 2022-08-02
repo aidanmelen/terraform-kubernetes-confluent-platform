@@ -9,18 +9,6 @@ variable "namespace" {
   default     = "confluent"
 }
 
-variable "class" {
-  description = "class specifies the class name of the connector. The Connect cluster displays the supported class names in its status. Required when not overriden by `values`."
-  type        = string
-  default     = ""
-}
-
-variable "config" {
-  description = "configs is a map of string key and value pairs. It specifies the additional configurations for the connector. Required when not overriden by `values`."
-  type        = any
-  default     = {}
-}
-
 variable "values" {
   description = "The Connector override values."
   type        = any

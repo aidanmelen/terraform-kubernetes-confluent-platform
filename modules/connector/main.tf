@@ -7,11 +7,9 @@ metadata:
   name: ${var.name}
   namespace: ${var.namespace}
 spec:
-  class: ${var.class}
   taskMax: 3
   connectClusterRef:
     name: connect
-  configs: ${yamlencode(var.config)}
   EOF
   )
 }

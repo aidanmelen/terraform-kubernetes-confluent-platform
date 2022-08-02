@@ -5,7 +5,8 @@ sed -z 's/source[^\r\n]*/source  = "aidanmelen\/confluent-platform\/kubernetes\/
 sed -z 's/source[^\r\n]*/source  = "aidanmelen\/confluent-platform\/kubernetes"\n  version = ">= 0.6.0"\n/g' examples/confluent_platform/main.tf > examples/confluent_platform/.main.tf.docs
 sed -z 's/source[^\r\n]*/source  = "aidanmelen\/confluent-platform\/kubernetes"\n  version = ">= 0.6.0"\n/g' examples/confluent_platform_singlenode/main.tf > examples/confluent_platform_singlenode/.main.tf.docs
 sed -z 's/source[^\r\n]*/source  = "aidanmelen\/confluent-platform\/kubernetes"\n  version = ">= 0.6.0"/g' examples/complete/main.tf > examples/complete/.main.tf.docs
-sed -z 's/source[^\r\n]*/source  = "aidanmelen\/confluent-platform\/kubernetes"\n  version = ">= 0.6.0"/g' examples/kafka_topics/main.tf > examples/kafka_topics/.main.tf.docs
+sed -z 's/source[^\r\n]*/source  = "aidanmelen\/confluent-platform\/kubernetes"\n  version = ">= 0.6.0"/g' examples/kafka_topic/main.tf > examples/kafka_topic/.main.tf.docs
+sed -z 's/source[^\r\n]*/source  = "aidanmelen\/confluent-platform\/kubernetes"\n  version = ">= 0.6.0"/g' examples/connectors/main.tf > examples/connectors/.main.tf.docs
 
 # render Makefile targets examples
 make > .make.docs
