@@ -14,8 +14,7 @@ The Confluent for Kubernetes CRDs must be installed on the Kubernetes cluster be
 
 ```bash
 kubectl config set-cluster docker-desktop
-helm repo add confluentinc https://packages.confluent.io/helm
-helm repo update
+kubectl apply -f ./crds/2.4.0
 ```
 
 Please see [The Confluent for Kubernetes Quickstart](https://docs.confluent.io/operator/current/co-quickstart.html#step-2-install-co-long) for more information.
