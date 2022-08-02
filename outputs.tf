@@ -7,18 +7,13 @@ output "namespace" {
 # Confluent Operator
 ################################################################################
 output "confluent_operator" {
-  description = "The Confluent Operator."
+  description = "Map of attributes for the Confluent Operator."
   value       = module.confluent_operator
 }
 
 ################################################################################
 # Confluent Platform
 ################################################################################
-output "version" {
-  description = "The default Confluent Platform version."
-  value       = var.confluent_platform_version
-}
-
 output "zookeeper_manifest" {
   description = "The Zookeeper manifest."
   value       = try(kubernetes_manifest.components["zookeeper"].manifest, null)

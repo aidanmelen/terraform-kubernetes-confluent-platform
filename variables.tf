@@ -14,9 +14,9 @@ variable "namespace" {
 # Confluent Operator
 ################################################################################
 variable "confluent_operator" {
-  description = "Controls if the Confluent Operator resources should be created."
+  description = "Controls if the Confluent Operator resources should be created. This is required when the Confluent Operator is not already running on the kubernetes cluster."
   type        = any
-  default     = null
+  default     = {}
 }
 
 ################################################################################
@@ -119,25 +119,25 @@ variable "kafkarestproxy" {
 }
 
 variable "kafka_topics" {
-  description = "The Kafka Topics to create."
+  description = "A map of Kafka Topics to create."
   type        = any
   default     = {}
 }
 
 variable "create_timeout" {
-  description = "The create timeout for each Conlfuent Platform component."
+  description = "The create timeout for each Confluent Platform component."
   type        = string
   default     = "1h"
 }
 
 variable "update_timeout" {
-  description = "The update timeout for each Conlfuent Platform component."
+  description = "The update timeout for each Confluent Platform component."
   type        = string
   default     = "1h"
 }
 
 variable "delete_timeout" {
-  description = "The delete timeout for each Conlfuent Platform component."
+  description = "The delete timeout for each Confluent Platform component."
   type        = string
   default     = "10m"
 }

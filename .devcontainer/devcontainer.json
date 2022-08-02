@@ -2,7 +2,8 @@
     "build": { "dockerfile": "Dockerfile" },
     "extensions": [
         "hashicorp.terraform",
-        "golang.Go"
+        "golang.Go",
+        "streetsidesoftware.code-spell-checker"
     ],
     "mounts": [
         "source=${localEnv:HOME}/.kube,target=/root/.kube,type=bind",

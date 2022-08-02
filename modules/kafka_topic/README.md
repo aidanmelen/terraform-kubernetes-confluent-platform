@@ -59,11 +59,11 @@ spec:
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_create_timeout"></a> [create\_timeout](#input\_create\_timeout) | The create timeout for each Conlfuent Platform component. | `string` | `"5m"` | no |
-| <a name="input_delete_timeout"></a> [delete\_timeout](#input\_delete\_timeout) | The delete timeout for each Conlfuent Platform component. | `string` | `"5m"` | no |
+| <a name="input_create_timeout"></a> [create\_timeout](#input\_create\_timeout) | The create timeout for each Confluent Platform component. | `string` | `"5m"` | no |
+| <a name="input_delete_timeout"></a> [delete\_timeout](#input\_delete\_timeout) | The delete timeout for each Confluent Platform component. | `string` | `"5m"` | no |
 | <a name="input_name"></a> [name](#input\_name) | The KafkaTopic name. | `string` | n/a | yes |
 | <a name="input_namespace"></a> [namespace](#input\_namespace) | The namespace of the Confluent Platform. | `string` | `"confluent"` | no |
-| <a name="input_update_timeout"></a> [update\_timeout](#input\_update\_timeout) | The update timeout for each Conlfuent Platform component. | `string` | `"5m"` | no |
+| <a name="input_update_timeout"></a> [update\_timeout](#input\_update\_timeout) | The update timeout for each Confluent Platform component. | `string` | `"5m"` | no |
 | <a name="input_values"></a> [values](#input\_values) | The KafkaTopic override values. | `any` | `{}` | no |
 ## Outputs
 

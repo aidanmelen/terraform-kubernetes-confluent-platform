@@ -15,16 +15,17 @@ build: ## Build docker dev container
 run: ## Run docker dev container
 	docker run -it --rm -v "$$(pwd)":/workspaces/$(NAME) -v ~/.kube:/root/.kube -v ~/.cache/pre-commit:/root/.cache/pre-commit -v ~/.terraform.d/plugins:/root/.terraform.d/plugins --workdir /workspaces/$(NAME) $(NAME) /bin/bash
 
-apply-cfk-crds:
+add-cfk-crds:
 	kubectl config set-cluster docker-desktop
-	kubectl apply -f ./crds/2.4.0
+	helm repo add confluentinc https://packages.confluent.io/helm
+	helm repo update
 
-setup: apply-cfk-crds ## Setup project
+setup: add-cfk-crds ## Setup project
 	# terraform
 	terraform init
 
 	cd modules/confluent_operator && terraform init
-	cd modules/kafka_topics && terraform init
+	cd modules/kafka_topic && terraform init
 	cd examples/confluent_operator && terraform init
 	cd examples/confluent_platform && terraform init
 	cd examples/confluent_platform_singlenode && terraform init
@@ -82,26 +83,29 @@ test-complete: ## Test the complete example
 test-kafka-topics: ## Test the kafka_topics example
 	go test test/terraform_kafka_topics_test.go -timeout 20m -v |& tee test/terraform_kafka_topics_test.log
 
-delete-cfk-crds:
+remove-cfk-crds:
 	kubectl config set-cluster docker-desktop
-	kubectl delete -f ./crds/2.4.0
+	helm repo remove confluentinc https://packages.confluent.io/helm
+	helm repo update
 
-clean: delete-cfk-crds ## Clean project
+clean: remove-cfk-crds ## Clean project
 	@rm -f .terraform.lock.hcl
 
 	@rm -f modules/confluent_operator/.terraform.lock.hcl
-	@rm -f modules/kafka_topics/.terraform.lock.hcl
+	@rm -f modules/kafka_topic/.terraform.lock.hcl
 	@rm -f examples/confluent_operator/.terraform.lock.hcl
 	@rm -f examples/confluent_platform/.terraform.lock.hcl
 	@rm -f examples/confluent_platform_singlenode/.terraform.lock.hcl
 	@rm -f examples/complete/.terraform.lock.hcl
+	@rm -rf examples/kafka_topics/.terraform.lock.hcl
 
 	@rm -rf modules/confluent_operator/.terraform
-	@rm -rf modules/kafka_topics/.terraform
+	@rm -rf modules/kafka_topic/.terraform
 	@rm -rf examples/confluent_operator/.terraform
 	@rm -rf examples/confluent_platform/.terraform
 	@rm -rf examples/confluent_platform_singlenode/.terraform
 	@rm -rf examples/complete/.terraform
+	@rm -rf examples/kafka_topics/.terraform
 
 	@rm -f go.mod
 	@rm -f go.sum

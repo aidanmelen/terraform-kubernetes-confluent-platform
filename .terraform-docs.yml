@@ -1,6 +1,22 @@
 content: |-
   {{ .Header }}
 
+  ## Prerequisites
+
+  The Confluent for Kubernetes CRDs must be installed on the Kubernetes cluster before the first Terraform apply of the Confluent Platform. Install the CRDs with:
+
+  ```bash
+  kubectl config set-cluster docker-desktop
+  helm repo add confluentinc https://packages.confluent.io/helm
+  helm repo update
+  ```
+
+  Please see [The Confluent for Kubernetes Quickstart](https://docs.confluent.io/operator/current/co-quickstart.html#step-2-install-co-long) for more information.
+
+  ## Override CFK Manifest Values
+
+  Similar to the [values file for Helm](https://helm.sh/docs/chart_template_guide/values_files/); the Confluent Platform variables will be [deep-merged](https://github.com/privx-de/terraform-deepmerge) with the default `local` values of the module. Please see the [Confluent Platform Single Node](./examples/confluent_platform_singlenode) example for more information.
+
   ## Example
 
   ### Confluent Platform
@@ -10,19 +26,6 @@ content: |-
   ```
 
   ## Usage
-
-  ### Prerequisites
-
-  The Confluent for Kubernetes CRDs must installed on the Kubernetes cluster before the first Terraform apply of the Confluent Platform. Install the CRDs with:
-
-  ```bash
-  kubectl config set-cluster docker-desktop
-  kubectl apply -f ./crds/2.4.0
-  ```
-
-  Please see the [Makefile](https://github.com/aidanmelen/terraform-kubernetes-confluent-platform/blob/main/Makefile) for more information.
-
-  ### Confluent Platform
 
   Release the Confluent Platform with:
 
@@ -38,13 +41,13 @@ content: |-
   Error: Failed to determine GroupVersionResource for manifest
   ```
 
-  This happens when you attempt to apply the Confluent Platform Terraform without first applying the Confluent for Kubernetes CRDs. Please see [Prerequisites](#prerequisites) for more information.
+  This happens when you attempt to apply the Confluent Platform Terraform without first creating the Confluent for Kubernetes CRDs. Please see [Prerequisites](#prerequisites) for more information.
 
   ## Tests
 
   Run Terratest using the [Makefile](./Makefile) targets:
 
-  1. `make install`
+  1. `make setup`
   2. `make tests`
 
   ## Makefile Targets
