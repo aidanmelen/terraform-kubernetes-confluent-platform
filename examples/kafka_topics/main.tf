@@ -1,3 +1,7 @@
+module "confluent_platform" {
+  source = "../confluent_platform"
+}
+
 module "kafka_topic" {
   source = "../../modules/kafka_topic"
 

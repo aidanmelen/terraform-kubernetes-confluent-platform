@@ -1,8 +1,3 @@
-module "confluent_platform" {
-  source  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.6.0"
-}
-
 module "kafka_topic" {
   source  = "aidanmelen/confluent-platform/kubernetes"
   version = ">= 0.6.0"

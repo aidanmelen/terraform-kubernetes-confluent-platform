@@ -15,22 +15,23 @@ build: ## Build docker dev container
 run: ## Run docker dev container
 	docker run -it --rm -v "$$(pwd)":/workspaces/$(NAME) -v ~/.kube:/root/.kube -v ~/.cache/pre-commit:/root/.cache/pre-commit -v ~/.terraform.d/plugins:/root/.terraform.d/plugins --workdir /workspaces/$(NAME) $(NAME) /bin/bash
 
-add-cfk-crds:
+apply-cfk-crds:
 	kubectl config set-cluster docker-desktop
-	helm repo add confluentinc https://packages.confluent.io/helm
-	helm repo update
+	kubectl apply -f ./crds/2.4.0
 
-setup: add-cfk-crds ## Setup project
+setup: apply-cfk-crds ## Setup project
 	# terraform
 	terraform init
 
 	cd modules/confluent_operator && terraform init
 	cd modules/kafka_topic && terraform init
+	cd modules/connector && terraform init
 	cd examples/confluent_operator && terraform init
 	cd examples/confluent_platform && terraform init
 	cd examples/confluent_platform_singlenode && terraform init
 	cd examples/complete && terraform init
 	cd examples/kafka_topics && terraform init
+	cd examples/connectors && terraform init
 
 	# pre-commit
 	git init
@@ -83,29 +84,35 @@ test-complete: ## Test the complete example
 test-kafka-topics: ## Test the kafka_topics example
 	go test test/terraform_kafka_topics_test.go -timeout 20m -v |& tee test/terraform_kafka_topics_test.log
 
-remove-cfk-crds:
-	kubectl config set-cluster docker-desktop
-	helm repo remove confluentinc https://packages.confluent.io/helm
-	helm repo update
+test-connectors: ## Test the connectors example
+	go test test/terraform_connectors_test.go -timeout 20m -v |& tee test/terraform_connectors_test.log
 
-clean: remove-cfk-crds ## Clean project
+delete-cfk-crds:
+	kubectl config set-cluster docker-desktop
+	kubectl delete -f ./crds/2.4.0
+
+clean: delete-cfk-crds ## Clean project
 	@rm -f .terraform.lock.hcl
 
 	@rm -f modules/confluent_operator/.terraform.lock.hcl
 	@rm -f modules/kafka_topic/.terraform.lock.hcl
+	@rm -f modules/connector/.terraform.lock.hcl
 	@rm -f examples/confluent_operator/.terraform.lock.hcl
 	@rm -f examples/confluent_platform/.terraform.lock.hcl
 	@rm -f examples/confluent_platform_singlenode/.terraform.lock.hcl
 	@rm -f examples/complete/.terraform.lock.hcl
 	@rm -rf examples/kafka_topics/.terraform.lock.hcl
+	@rm -rf examples/connectors/.terraform.lock.hcl
 
 	@rm -rf modules/confluent_operator/.terraform
 	@rm -rf modules/kafka_topic/.terraform
+	@rm -rf modules/connector/.terraform
 	@rm -rf examples/confluent_operator/.terraform
 	@rm -rf examples/confluent_platform/.terraform
 	@rm -rf examples/confluent_platform_singlenode/.terraform
 	@rm -rf examples/complete/.terraform
 	@rm -rf examples/kafka_topics/.terraform
+	@rm -rf examples/connectors/.terraform
 
 	@rm -f go.mod
 	@rm -f go.sum

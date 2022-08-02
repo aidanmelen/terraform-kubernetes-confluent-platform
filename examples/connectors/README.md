@@ -1,21 +1,20 @@
 # kafka_topic
 
-Create the Confluent Platform and then use the submodule to create Kafka topics.
+Create a Kafka topic.
 
 ## Assumptions
 
 This example assumes you have a Kubernetes cluster running locally on Docker Desktop. Please see [Docker's official documentation](https://docs.docker.com/desktop/kubernetes/) for more information.
+
+## Prerequisites
+
+Release the [Complete example](https://github.com/aidanmelen/terraform-kubernetes-confluent-platform/tree/main/examples/complete). This will ensure the CFK CRDs are created and the Confluent Operator pod is running, and the Confluent Platform created.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Example
 
 ```hcl
-module "confluent_platform" {
-  source  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.6.0"
-}
-
 module "kafka_topic" {
   source  = "aidanmelen/confluent-platform/kubernetes"
   version = ">= 0.6.0"
@@ -54,13 +53,9 @@ spec:
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_confluent_platform"></a> [confluent\_platform](#module\_confluent\_platform) | ../confluent_platform | n/a |
-| <a name="module_kafka_topic"></a> [kafka\_topic](#module\_kafka\_topic) | ../../modules/kafka_topic | n/a |
-| <a name="module_other_kafka_topic"></a> [other\_kafka\_topic](#module\_other\_kafka\_topic) | ../../modules/kafka_topic | n/a |
+| <a name="module_confluent_platform"></a> [confluent\_platform](#module\_confluent\_platform) | ../confluent_platform_singlenode | n/a |
+| <a name="module_file_stream_source_connector"></a> [file\_stream\_source\_connector](#module\_file\_stream\_source\_connector) | ../../modules/connector | n/a |
 ## Outputs
 
-| Name | Description |
-|------|-------------|
-| <a name="output_kafka_topic"></a> [kafka\_topic](#output\_kafka\_topic) | The KafkaTopic object spec. |
-| <a name="output_other_kafka_topic"></a> [other\_kafka\_topic](#output\_other\_kafka\_topic) | The other KafkaTopic object spec. |
+No outputs.
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

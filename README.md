@@ -105,6 +105,7 @@ test-confluent-platform             Test the confluent_platform example
 test-confluent-platform-singlenode  Test the confluent_platform_singlenode example
 test-complete                       Test the complete example
 test-kafka-topics                   Test the kafka_topics example
+test-connectors                     Test the connectors example
 clean                               Clean project
 ```
 
