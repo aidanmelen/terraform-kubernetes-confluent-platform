@@ -20,7 +20,7 @@ kubectl config set-cluster docker-desktop
 kubectl apply -f ./crds/2.4.0
 ```
 
-Please see [The Confluent for Kubernetes Quickstart](https://docs.confluent.io/operator/current/co-quickstart.html#step-2-install-co-long) for more information.
+Please see [The Confluent for Kubernetes Quickstart](https://docs.confluent.io/operator/current/co-quickstart.html#co-long-quickstart) for more information.
 
 ## Override CFK Manifest Values
 
