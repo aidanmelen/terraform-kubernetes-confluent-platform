@@ -15,8 +15,6 @@ kubectl config set-cluster docker-desktop
 kubectl apply -f ./crds/2.4.0
 ```
 
-Please see the [Makefile](https://github.com/aidanmelen/terraform-kubernetes-confluent-platform/blob/main/Makefile) for more information.
-
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Example
