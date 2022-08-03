@@ -18,7 +18,7 @@ Release the [Confluent Operator example](https://github.com/aidanmelen/terraform
 ```hcl
 module "confluent_platform_singlenode" {
   source  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.6.0"
+  version = ">= 0.7.0"
 
   namespace = var.namespace
 
@@ -32,7 +32,7 @@ spec:
   replicas: 1
   podTemplate:
     resource  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.6.0"
+  version = ">= 0.7.0"
 
       requests:
         cpu: 100m
@@ -61,7 +61,7 @@ spec:
       - "password.encoder.secret=secret"
   podTemplate:
     resource  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.6.0"
+  version = ">= 0.7.0"
 
       requests:
         cpu: 200m
@@ -85,7 +85,7 @@ spec:
       - "status.storage.replication.factor=1"
   podTemplate:
     resource  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.6.0"
+  version = ">= 0.7.0"
 
       requests:
         cpu: 100m
@@ -111,7 +111,7 @@ spec:
       url: http://schemaregistry.confluent.svc.cluster.local:8081
   podTemplate:
     resource  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.6.0"
+  version = ">= 0.7.0"
 
       requests:
         cpu: 100m
@@ -145,7 +145,7 @@ spec:
       domain: minikube.domain
   podTemplate:
     resource  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.6.0"
+  version = ">= 0.7.0"
 
       requests:
         cpu: 500m
@@ -176,7 +176,7 @@ spec:
   replicas: 1
   podTemplate:
     resource  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.6.0"
+  version = ">= 0.7.0"
 
       requests:
         cpu: 100m
@@ -196,7 +196,7 @@ spec:
       url: http://schemaregistry.confluent.svc.cluster.local:8081
   podTemplate:
     resource  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.6.0"
+  version = ">= 0.7.0"
 
       requests:
         cpu: 100m

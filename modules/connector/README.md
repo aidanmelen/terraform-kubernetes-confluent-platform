@@ -9,7 +9,7 @@ Deploy a Connector on Kafka Connect.
 ```hcl
 module "connector" {
   source     = "aidanmelen/confluent-platform/kubernetes//modules/connector"
-  version    = ">= 0.6.0"
+  version    = ">= 0.7.0"
   depends_on = [module.confluent_platform]
 
   name      = "my-connector"
