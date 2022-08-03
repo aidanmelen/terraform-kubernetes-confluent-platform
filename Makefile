@@ -69,6 +69,7 @@ test-clean:
 	cd examples/confluent_operator && terraform destroy --auto-approve
 
 _test-confluent-platform:
+	# This test can take longer because controlcenter takes a while to become healthy
 	go test test/terraform_confluent_platform_test.go -timeout 1h -v |& tee test/terraform_confluent_platform_test.log
 
 _test-confluent-platform-singlenode:

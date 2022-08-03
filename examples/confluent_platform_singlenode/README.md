@@ -20,7 +20,12 @@ module "confluent_platform_singlenode" {
   source  = "aidanmelen/confluent-platform/kubernetes"
   version = ">= 0.6.0"
 
-  namespace = "confluent"
+  namespace = var.namespace
+
+  # assumes the confluent operator was deployed in another terraform run.
+  confluent_operator = {
+    create = false
+  }
 
   zookeeper = yamldecode(<<EOF
 spec:

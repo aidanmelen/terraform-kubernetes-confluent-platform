@@ -16,7 +16,9 @@ variable "namespace" {
 variable "confluent_operator" {
   description = "Controls if the Confluent Operator resources should be created. This is required when the Confluent Operator is not already running on the kubernetes cluster."
   type        = any
-  default     = { create = true }
+  default = {
+    create = true
+  }
 }
 
 ################################################################################

@@ -21,6 +21,11 @@ module "confluent_platform" {
 
   namespace = var.namespace
 
+  # assumes the confluent operator was deployed in another terraform run.
+  confluent_operator = {
+    create = false
+  }
+
   # Uncomment to override default values
   /*
   zookeeper      = yamldecode(file("${path.module}/values/zookeeper.yaml"))
