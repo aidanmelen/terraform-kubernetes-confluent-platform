@@ -12,7 +12,6 @@ variable "namespace" {
 variable "values" {
   description = "The Connector override values."
   type        = any
-  default     = {}
 }
 
 variable "create_timeout" {

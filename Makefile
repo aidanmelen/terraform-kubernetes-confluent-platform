@@ -57,16 +57,10 @@ lint-all: docs ## Lint all files with pre-commit
 	pre-commit run --all-files
 	git add -A
 
-tests: test-confluent-operator test-confluent-platform-singlenode test-complete ## Tests with Terratest
+tests: test-confluent-operator test-confluent-platform test-confluent-platform-singlenode test-complete test-kafka-topic test-connector ## Tests with Terratest
 
 test-confluent-operator: ## Test the confluent_operator example
 	go test test/terraform_confluent_operator_test.go -timeout 5m -v |& tee test/terraform_confluent_operator_test.log
-
-test-confluent-platform:
-	go test test/terraform_confluent_platform_test.go -timeout 1h -v |& tee test/terraform_confluent_platform_test.log
-
-test-confluent-platform-singlenode:
-	go test test/terraform_confluent_platform_singlenode_test.go -timeout 20m -v |& tee test/terraform_confluent_platform_singlenode_test.log
 
 test-setup:
 	cd examples/confluent_operator && terraform apply --auto-approve
@@ -74,18 +68,24 @@ test-setup:
 test-clean:
 	cd examples/confluent_operator && terraform destroy --auto-approve
 
-test-confluent-platform: test-setup test-confluent-platform test-clean ## Test the confluent_platform example
+_test-confluent-platform:
+	go test test/terraform_confluent_platform_test.go -timeout 1h -v |& tee test/terraform_confluent_platform_test.log
 
-test-confluent-platform-singlenode: test-setup test-confluent-platform-singlenode test-clean ## Test the confluent_platform_singlenode example
+_test-confluent-platform-singlenode:
+	go test test/terraform_confluent_platform_singlenode_test.go -timeout 30m -v |& tee test/terraform_confluent_platform_singlenode_test.log
+
+test-confluent-platform: test-setup _test-confluent-platform test-clean ## Test the confluent_platform example
+
+test-confluent-platform-singlenode: test-setup _test-confluent-platform-singlenode test-clean ## Test the confluent_platform_singlenode example
 
 test-complete: ## Test the complete example
-	go test test/terraform_complete_test.go -timeout 20m -v |& tee test/terraform_complete_test.log
+	go test test/terraform_complete_test.go -timeout 30m -v |& tee test/terraform_complete_test.log
 
 test-kafka-topic: ## Test the kafka_topic example
-	go test test/terraform_kafka_topic_test.go -timeout 20m -v |& tee test/terraform_kafka_topic_test.log
+	go test test/terraform_kafka_topic_test.go -timeout 30m -v |& tee test/terraform_kafka_topic_test.log
 
 test-connector: ## Test the connector example
-	go test test/terraform_connector_test.go -timeout 20m -v |& tee test/terraform_connector_test.log
+	go test test/terraform_connector_test.go -timeout 30m -v |& tee test/terraform_connector_test.log
 
 delete-cfk-crds:
 	kubectl config set-cluster docker-desktop

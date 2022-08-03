@@ -11,26 +11,22 @@ This example assumes you have a Kubernetes cluster running locally on Docker Des
 ## Example
 
 ```hcl
-module "confluent_platform" {
-  source  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.6.0"
-}
-
 module "kafka_topic" {
-  source  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.6.0"
+  source     = "aidanmelen/confluent-platform/kubernetes//modules/kafka_topic"
+  version    = ">= 0.6.0"
+  depends_on = [module.confluent_platform]
 
   name      = "my-topic"
-  namespace = "confluent"
+  namespace = var.namespace
 }
 
 module "other_kafka_topic" {
-  source  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.6.0"
+  source     = "aidanmelen/confluent-platform/kubernetes//modules/kafka_topic"
+  version    = ">= 0.6.0"
+  depends_on = [module.confluent_platform]
 
   name      = "my-other-topic"
-  namespace = "confluent"
-
+  namespace = var.namespace
   values = yamldecode(<<EOF
 spec:
   partitionCount: 4
@@ -54,7 +50,7 @@ spec:
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_confluent_platform"></a> [confluent\_platform](#module\_confluent\_platform) | ../confluent_platform | n/a |
+| <a name="module_confluent_platform"></a> [confluent\_platform](#module\_confluent\_platform) | ../../ | n/a |
 | <a name="module_kafka_topic"></a> [kafka\_topic](#module\_kafka\_topic) | ../../modules/kafka_topic | n/a |
 | <a name="module_other_kafka_topic"></a> [other\_kafka\_topic](#module\_other\_kafka\_topic) | ../../modules/kafka_topic | n/a |
 ## Outputs

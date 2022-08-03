@@ -7,73 +7,21 @@ Deploy a Connector on Kafka Connect.
 ## Example
 
 ```hcl
-module "confluent_platform" {
-  source = "../../"
+module "connector" {
+  source     = "../../modules/connector"
+  depends_on = [module.confluent_platform]
 
+  name      = "my-connector"
   namespace = var.namespace
-
-  confluent_operator = {
-    create_namespace = true
-    name             = "confluent-operator"
-    chart_version    = "0.517.12"
-  }
-
-  zookeeper = {
-    "spec" = {
-      "replicas" = "3"
-    }
-  }
-
-  kafka = {
-    "spec" = {
-      "replicas" = "3"
-    }
-  }
-
-  connect = yamldecode(
-    <<EOF
-spec:
-  build:
-    type: onDemand
-    onDemand:
-      plugins:
-        locationType: confluentHub
-        confluentHub:
-          - name: kafka-connect-spooldir
-            owner: jcustenborder
-            version: 2.0.64
-  EOF
-  )
-
-  create_ksqldb         = false
-  create_controlcenter  = true
-  create_schemaregistry = false
-  create_kafkarestproxy = false
-
-  kafka_topics = {
-    "spooldir-testing-topic" = {}
-  }
-}
-
-module "spooldir_source_connector" {
-  source = "../../modules/connector"
-
-  name      = "example"
-  namespace = var.namespace
-
-  # https://docs.confluent.io/kafka-connect-spooldir/current/connectors/json_source_connector.html#json-source-connector-example
   values = yamldecode(<<EOF
 spec:
-  class: "com.github.jcustenborder.kafka.connect.spooldir.SpoolDirJsonSourceConnector"
+  class: "org.apache.kafka.connect.mirror.MirrorSourceConnector"
   taskMax: 1
   configs:
-    "input.path": "/tmp"
-    "input.file.pattern": "json-spooldir-source.json"
-    error.path: "/tmp"
-    finished.path: "/tmp"
-    "halt.on.error": "false"
-    schema.generation.enabled: "true"
-    "topic": "spooldir-testing-topic"
+    topics: "my-topic"
+    target.cluster.bootstrap.servers: "kafka:9092"
+    source.cluster.bootstrap.servers: "kafka:9092"
+    source.cluster.alias: "self"
   EOF
   )
 }
@@ -111,7 +59,7 @@ spec:
 | <a name="input_name"></a> [name](#input\_name) | The Connector name. | `string` | n/a | yes |
 | <a name="input_namespace"></a> [namespace](#input\_namespace) | The namespace of the Confluent Platform. | `string` | `"confluent"` | no |
 | <a name="input_update_timeout"></a> [update\_timeout](#input\_update\_timeout) | The update timeout for each Confluent Platform component. | `string` | `"5m"` | no |
-| <a name="input_values"></a> [values](#input\_values) | The Connector override values. | `any` | `{}` | no |
+| <a name="input_values"></a> [values](#input\_values) | The Connector override values. | `any` | n/a | yes |
 ## Outputs
 
 | Name | Description |

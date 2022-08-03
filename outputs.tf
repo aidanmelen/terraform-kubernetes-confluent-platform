@@ -101,3 +101,21 @@ output "kafka_topic_objects" {
   description = "Map of attribute maps for all the KafkaTopic objects created."
   value       = { for name, kafka_topic in module.kafka_topics : name => kafka_topic.object }
 }
+
+################################################################################
+# Connectors
+################################################################################
+output "connectors" {
+  description = "Map of attribute maps for all Connector submodules created."
+  value       = module.connectors
+}
+
+output "connector_manifests" {
+  description = "Map of attribute maps for all the Connector manifests created."
+  value       = { for name, connector in module.connectors : name => connector.manifest }
+}
+
+output "connector_objects" {
+  description = "Map of attribute maps for all the Connector objects created."
+  value       = { for name, connector in module.connectors : name => connector.object }
+}

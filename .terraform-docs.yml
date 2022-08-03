@@ -21,7 +21,7 @@ content: |-
   ### Confluent Platform
 
   ```hcl
-  {{ include "examples/complete/.main.tf.docs" }}
+  {{ include "examples/confluent_platform/.main.tf.docs" }}
   ```
 
   ## Usage

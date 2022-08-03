@@ -7,23 +7,20 @@ Deploy a KafkaTopic.
 ## Example
 
 ```hcl
-module "confluent_platform" {
-  source = "../confluent_platform"
-}
-
 module "kafka_topic" {
-  source = "../../modules/kafka_topic"
+  source     = "../../modules/kafka_topic"
+  depends_on = [module.confluent_platform]
 
   name      = "my-topic"
-  namespace = "confluent"
+  namespace = var.namespace
 }
 
 module "other_kafka_topic" {
-  source = "../../modules/kafka_topic"
+  source     = "../../modules/kafka_topic"
+  depends_on = [module.confluent_platform]
 
   name      = "my-other-topic"
-  namespace = "confluent"
-
+  namespace = var.namespace
   values = yamldecode(<<EOF
 spec:
   partitionCount: 4

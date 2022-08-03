@@ -10,7 +10,7 @@ import (
 func TestTerraformKafkaTopicsExample(t *testing.T) {
 	terraformOptions := &terraform.Options{
 		// website::tag::1:: Set the path to the Terraform code that will be tested.
-		TerraformDir: "../examples/kafka_topics",
+		TerraformDir: "../examples/kafka_topic",
 
 		// Disable colors in Terraform commands so its easier to parse stdout/stderr
 		NoColor: true,

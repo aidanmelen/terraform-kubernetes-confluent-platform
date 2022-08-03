@@ -7,10 +7,10 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestTerraformConnectorsExample(t *testing.T) {
+func TestTerraformConnectorExample(t *testing.T) {
 	terraformOptions := &terraform.Options{
 		// website::tag::1:: Set the path to the Terraform code that will be tested.
-		TerraformDir: "../examples/connectors",
+		TerraformDir: "../examples/connector",
 
 		// Disable colors in Terraform commands so its easier to parse stdout/stderr
 		NoColor: true,
@@ -23,9 +23,9 @@ func TestTerraformConnectorsExample(t *testing.T) {
 	terraform.InitAndApply(t, terraformOptions)
 
 	// website::tag::3:: Run `terraform output` to get the values of output variables and check they have the expected values.
-	actualConnector := terraform.Output(t, terraformOptions, "spooldir_source_connector")
+	actualConnector := terraform.Output(t, terraformOptions, "connector")
 
-	expectedConnector := ""
+	expectedConnector := "map[class:org.apache.kafka.connect.mirror.MirrorSourceConnector configs:map[source.cluster.alias:self source.cluster.bootstrap.servers:kafka:9092 target.cluster.bootstrap.servers:kafka:9092 topics:my-topic] connectClusterRef:map[name:connect namespace:<nil>] connectRest:map[authentication:map[basic:map[debug:<nil> directoryPathInContainer:<nil> restrictedRoles:<nil> roles:<nil> secretRef:<nil>] bearer:map[directoryPathInContainer:<nil> secretRef:<nil>] type:<nil>] endpoint:<nil> kafkaClusterID:<nil> tls:map[directoryPathInContainer:<nil> jksPassword:map[secretRef:<nil>] secretRef:<nil>]] name:<nil> restartPolicy:map[maxRetry:<nil> type:<nil>] taskMax:1]"
 
 	assert.Equal(t, expectedConnector, actualConnector, "Map %q should match %q", expectedConnector, actualConnector)
 }

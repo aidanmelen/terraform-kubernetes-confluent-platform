@@ -1,4 +1,4 @@
-output "spooldir_source_connector" {
-  description = "The SpoolDir Source Connector object spec."
-  value       = module.spooldir_source_connector.object["spec"]
+output "connector" {
+  description = "The Connector object spec."
+  value       = module.connector.object["spec"]
 }

@@ -47,3 +47,16 @@ output "kafka_topic_object_specs" {
   description = "Map of attribute maps for all the KafkaTopic object specs created."
   value       = { for name, kafka_topic in module.confluent_platform.kafka_topic_objects : name => kafka_topic["spec"] }
 }
+
+################################################################################
+# Connectors
+################################################################################
+output "connector_manifests" {
+  description = "Map of attribute maps for all the Connector manifests created."
+  value       = module.confluent_platform.connector_manifests
+}
+
+output "connector_object_specs" {
+  description = "Map of attribute maps for all the Connector object specs created."
+  value       = { for name, connectors in module.confluent_platform.connector_objects : name => connectors["spec"] }
+}
