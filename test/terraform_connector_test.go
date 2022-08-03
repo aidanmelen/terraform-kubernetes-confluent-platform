@@ -12,6 +12,10 @@ func TestTerraformConnectorExample(t *testing.T) {
 		// website::tag::1:: Set the path to the Terraform code that will be tested.
 		TerraformDir: "../examples/connector",
 
+		Vars: map[string]interface{}{
+			"create_controlcenter": false, // make test faster
+		},
+
 		// Disable colors in Terraform commands so its easier to parse stdout/stderr
 		NoColor: true,
 	}

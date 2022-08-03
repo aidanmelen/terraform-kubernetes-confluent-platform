@@ -2,8 +2,8 @@ module "confluent_platform" {
   source    = "../../"
   namespace = var.namespace
 
-  # example installing connector plugin on demand
-  # this is not used in this example
+  # this is for demostration purposes only
+  # this connector is not used in this example
   connect = yamldecode(<<EOF
 spec:
   build:
@@ -19,12 +19,12 @@ spec:
   )
 
   # disable componentes not needed for examples
-  create_controlcenter  = false
+  create_controlcenter  = var.create_controlcenter
   create_ksqldb         = false
   create_schemaregistry = false
   create_kafkarestproxy = false
 
   kafka_topics = {
-    "my-topic" = {}
+    "my-topic" = {} # this topic will be mirrored to 'self.my-topic' using the connector
   }
 }

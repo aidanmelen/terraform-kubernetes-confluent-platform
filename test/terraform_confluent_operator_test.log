@@ -1,189 +1,228 @@
 === RUN   TestTerraformConfluentOperatorExample
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:21Z retry.go:91: terraform [init -upgrade=false]
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:21Z logger.go:66: Running command terraform with args [init -upgrade=false]
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:21Z logger.go:66: [0m[1mInitializing modules...[0m
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:21Z logger.go:66:
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:21Z logger.go:66: [0m[1mInitializing the backend...[0m
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:21Z logger.go:66:
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:21Z logger.go:66: [0m[1mInitializing provider plugins...[0m
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:21Z logger.go:66: - Reusing previous version of hashicorp/kubernetes from the dependency lock file
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:22Z logger.go:66: - Reusing previous version of hashicorp/helm from the dependency lock file
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:22Z logger.go:66: - Using previously-installed hashicorp/kubernetes v2.12.1
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:22Z logger.go:66: - Using previously-installed hashicorp/helm v2.6.0
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:22Z logger.go:66:
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:22Z logger.go:66: [0m[1m[32mTerraform has been successfully initialized![0m[32m[0m
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:22Z logger.go:66: [0m[32m
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:22Z logger.go:66: You may now begin working with Terraform. Try running "terraform plan" to see
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:22Z logger.go:66: any changes that are required for your infrastructure. All Terraform commands
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:22Z logger.go:66: should now work.
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:22Z logger.go:66:
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:22Z logger.go:66: If you ever set or change modules or backend configuration for Terraform,
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:22Z logger.go:66: rerun this command to reinitialize your working directory. If you forget, other
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:22Z logger.go:66: commands will detect it and remind you to do so if necessary.[0m
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:22Z retry.go:91: terraform [apply -input=false -auto-approve -no-color -lock=false]
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:22Z logger.go:66: Running command terraform with args [apply -input=false -auto-approve -no-color -lock=false]
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66: Terraform used the selected providers to generate the following execution
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66: plan. Resource actions are indicated with the following symbols:
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:   + create
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66: Terraform will perform the following actions:
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:   # module.confluent_operator.helm_release.confluent_operator[0] will be created
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:   + resource "helm_release" "confluent_operator" {
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:       + atomic                     = false
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:       + chart                      = "confluent-for-kubernetes"
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:       + cleanup_on_fail            = false
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:       + create_namespace           = false
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:       + dependency_update          = false
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:       + disable_crd_hooks          = false
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:       + disable_openapi_validation = false
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:       + disable_webhooks           = false
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:       + force_update               = false
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:       + id                         = (known after apply)
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:       + lint                       = false
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:       + manifest                   = (known after apply)
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:       + max_history                = 0
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:       + metadata                   = (known after apply)
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:       + name                       = "confluent-operator"
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:       + namespace                  = "confluent"
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:       + pass_credentials           = false
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:       + recreate_pods              = false
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:       + render_subchart_notes      = true
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:       + replace                    = false
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:       + repository                 = "https://packages.confluent.io/helm"
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:       + reset_values               = false
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:       + reuse_values               = false
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:       + skip_crds                  = false
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:       + status                     = "deployed"
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:       + timeout                    = 300
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:       + values                     = []
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:       + verify                     = false
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:       + version                    = "0.517.12"
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:       + wait                       = true
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:       + wait_for_jobs              = true
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:     }
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:   # module.confluent_operator.kubernetes_namespace_v1.namespace[0] will be created
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:   + resource "kubernetes_namespace_v1" "namespace" {
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:       + id = (known after apply)
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:       + metadata {
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:           + generation       = (known after apply)
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:           + name             = "confluent"
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:           + resource_version = (known after apply)
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:           + uid              = (known after apply)
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:         }
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:     }
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66: Plan: 2 to add, 0 to change, 0 to destroy.
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66: Changes to Outputs:
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:   + confluent_operator = {
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:       + app_version   = (known after apply)
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:       + chart_version = (known after apply)
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:       + namespace     = "confluent"
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:24Z logger.go:66:     }
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:25Z logger.go:66: module.confluent_operator.kubernetes_namespace_v1.namespace[0]: Creating...
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:25Z logger.go:66: module.confluent_operator.kubernetes_namespace_v1.namespace[0]: Creation complete after 0s [id=confluent]
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:26Z logger.go:66: module.confluent_operator.helm_release.confluent_operator[0]: Creating...
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:34Z logger.go:66: module.confluent_operator.helm_release.confluent_operator[0]: Creation complete after 8s [id=confluent-operator]
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:34Z logger.go:66:
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:34Z logger.go:66: Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:34Z logger.go:66:
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:34Z logger.go:66: Outputs:
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:34Z logger.go:66:
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:34Z logger.go:66: confluent_operator = {
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:34Z logger.go:66:   "app_version" = "2.4.0"
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:34Z logger.go:66:   "chart_version" = "0.517.12"
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:34Z logger.go:66:   "namespace" = "confluent"
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:34Z logger.go:66: }
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:34Z retry.go:91: terraform [output -no-color -json confluent_operator]
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:34Z logger.go:66: Running command terraform with args [output -no-color -json confluent_operator]
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:34Z logger.go:66: {"app_version":"2.4.0","chart_version":"0.517.12","namespace":"confluent"}
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:34Z retry.go:91: terraform [destroy -auto-approve -input=false -no-color -lock=false]
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:34Z logger.go:66: Running command terraform with args [destroy -auto-approve -input=false -no-color -lock=false]
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:36Z logger.go:66: module.confluent_operator.kubernetes_namespace_v1.namespace[0]: Refreshing state... [id=confluent]
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:36Z logger.go:66: module.confluent_operator.helm_release.confluent_operator[0]: Refreshing state... [id=confluent-operator]
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66: Terraform used the selected providers to generate the following execution
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66: plan. Resource actions are indicated with the following symbols:
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:   - destroy
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66: Terraform will perform the following actions:
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:   # module.confluent_operator.helm_release.confluent_operator[0] will be destroyed
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:   - resource "helm_release" "confluent_operator" {
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:       - atomic                     = false -> null
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:       - chart                      = "confluent-for-kubernetes" -> null
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:       - cleanup_on_fail            = false -> null
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:       - create_namespace           = false -> null
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:       - dependency_update          = false -> null
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:       - disable_crd_hooks          = false -> null
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:       - disable_openapi_validation = false -> null
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:       - disable_webhooks           = false -> null
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:       - force_update               = false -> null
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:       - id                         = "confluent-operator" -> null
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:       - lint                       = false -> null
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:       - max_history                = 0 -> null
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:       - metadata                   = [
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:           - {
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:               - app_version = "2.4.0"
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:               - chart       = "confluent-for-kubernetes"
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:               - name        = "confluent-operator"
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:               - namespace   = "confluent"
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:               - revision    = 1
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:               - values      = "null"
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:               - version     = "0.517.12"
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:             },
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:         ] -> null
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:       - name                       = "confluent-operator" -> null
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:       - namespace                  = "confluent" -> null
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:       - pass_credentials           = false -> null
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:       - recreate_pods              = false -> null
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:       - render_subchart_notes      = true -> null
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:       - replace                    = false -> null
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:       - repository                 = "https://packages.confluent.io/helm" -> null
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:       - reset_values               = false -> null
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:       - reuse_values               = false -> null
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:       - skip_crds                  = false -> null
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:       - status                     = "deployed" -> null
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:       - timeout                    = 300 -> null
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:       - values                     = [] -> null
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:       - verify                     = false -> null
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:       - version                    = "0.517.12" -> null
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:       - wait                       = true -> null
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:       - wait_for_jobs              = true -> null
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:     }
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:   # module.confluent_operator.kubernetes_namespace_v1.namespace[0] will be destroyed
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:   - resource "kubernetes_namespace_v1" "namespace" {
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:       - id = "confluent" -> null
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:       - metadata {
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:           - annotations      = {} -> null
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:           - generation       = 0 -> null
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:           - labels           = {} -> null
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:           - name             = "confluent" -> null
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:           - resource_version = "675" -> null
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:           - uid              = "7d2fc711-1892-4d86-850a-b724f70b3587" -> null
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:         }
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:     }
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66: Plan: 0 to add, 0 to change, 2 to destroy.
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66: Changes to Outputs:
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:   - confluent_operator = {
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:       - app_version   = "2.4.0"
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:       - chart_version = "0.517.12"
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:       - namespace     = "confluent"
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66:     } -> null
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:37Z logger.go:66: module.confluent_operator.helm_release.confluent_operator[0]: Destroying... [id=confluent-operator]
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:38Z logger.go:66: module.confluent_operator.helm_release.confluent_operator[0]: Destruction complete after 0s
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:38Z logger.go:66: module.confluent_operator.kubernetes_namespace_v1.namespace[0]: Destroying... [id=confluent]
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:44Z logger.go:66: module.confluent_operator.kubernetes_namespace_v1.namespace[0]: Destruction complete after 7s
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:44Z logger.go:66:
-TestTerraformConfluentOperatorExample 2022-08-03T15:53:44Z logger.go:66: Destroy complete! Resources: 2 destroyed.
---- PASS: TestTerraformConfluentOperatorExample (23.33s)
+TestTerraformConfluentOperatorExample 2022-08-03T18:03:59Z retry.go:91: terraform [init -upgrade=false]
+TestTerraformConfluentOperatorExample 2022-08-03T18:03:59Z logger.go:66: Running command terraform with args [init -upgrade=false]
+TestTerraformConfluentOperatorExample 2022-08-03T18:03:59Z logger.go:66: [0m[1mInitializing modules...[0m
+TestTerraformConfluentOperatorExample 2022-08-03T18:03:59Z logger.go:66:
+TestTerraformConfluentOperatorExample 2022-08-03T18:03:59Z logger.go:66: [0m[1mInitializing the backend...[0m
+TestTerraformConfluentOperatorExample 2022-08-03T18:03:59Z logger.go:66:
+TestTerraformConfluentOperatorExample 2022-08-03T18:03:59Z logger.go:66: [0m[1mInitializing provider plugins...[0m
+TestTerraformConfluentOperatorExample 2022-08-03T18:03:59Z logger.go:66: - Reusing previous version of hashicorp/kubernetes from the dependency lock file
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:00Z logger.go:66: - Reusing previous version of hashicorp/helm from the dependency lock file
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:00Z logger.go:66: - Using previously-installed hashicorp/kubernetes v2.12.1
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:00Z logger.go:66: - Using previously-installed hashicorp/helm v2.6.0
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:00Z logger.go:66:
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:00Z logger.go:66: [0m[1m[32mTerraform has been successfully initialized![0m[32m[0m
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:00Z logger.go:66: [0m[32m
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:00Z logger.go:66: You may now begin working with Terraform. Try running "terraform plan" to see
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:00Z logger.go:66: any changes that are required for your infrastructure. All Terraform commands
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:00Z logger.go:66: should now work.
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:00Z logger.go:66:
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:00Z logger.go:66: If you ever set or change modules or backend configuration for Terraform,
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:00Z logger.go:66: rerun this command to reinitialize your working directory. If you forget, other
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:00Z logger.go:66: commands will detect it and remind you to do so if necessary.[0m
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:00Z retry.go:91: terraform [apply -input=false -auto-approve -no-color -lock=false]
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:00Z logger.go:66: Running command terraform with args [apply -input=false -auto-approve -no-color -lock=false]
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66: module.confluent_operator.kubernetes_namespace_v1.namespace[0]: Refreshing state... [id=confluent]
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66: module.confluent_operator.helm_release.confluent_operator[0]: Refreshing state... [id=confluent-operator]
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66: Note: Objects have changed outside of Terraform
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66: Terraform detected the following changes made outside of Terraform since the
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66: last "terraform apply" which may have affected this plan:
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:   # module.confluent_operator.helm_release.confluent_operator[0] has been deleted
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:   - resource "helm_release" "confluent_operator" {
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:         id                         = "confluent-operator"
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:       ~ metadata                   = [
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:           ~ {
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:               ~ app_version = "2.4.0" -> null
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:                 name        = "confluent-operator"
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:               ~ version     = "0.517.12" -> null
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:                 # (4 unchanged elements hidden)
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:             },
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:         ]
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:         name                       = "confluent-operator"
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:         # (27 unchanged attributes hidden)
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:     }
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:   # module.confluent_operator.kubernetes_namespace_v1.namespace[0] has been deleted
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:   - resource "kubernetes_namespace_v1" "namespace" {
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:         id = "confluent"
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:       ~ metadata {
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:           - name             = "confluent" -> null
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:             # (3 unchanged attributes hidden)
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:         }
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:     }
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66: Unless you have made equivalent changes to your configuration, or ignored the
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66: relevant attributes using ignore_changes, the following plan may include
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66: actions to undo or respond to these changes.
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66: ─────────────────────────────────────────────────────────────────────────────
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66: Terraform used the selected providers to generate the following execution
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66: plan. Resource actions are indicated with the following symbols:
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:   + create
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66: Terraform will perform the following actions:
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:   # module.confluent_operator.helm_release.confluent_operator[0] will be created
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:   + resource "helm_release" "confluent_operator" {
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:       + atomic                     = false
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:       + chart                      = "confluent-for-kubernetes"
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:       + cleanup_on_fail            = false
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:       + create_namespace           = false
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:       + dependency_update          = false
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:       + disable_crd_hooks          = false
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:       + disable_openapi_validation = false
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:       + disable_webhooks           = false
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:       + force_update               = false
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:       + id                         = (known after apply)
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:       + lint                       = false
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:       + manifest                   = (known after apply)
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:       + max_history                = 0
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:       + metadata                   = (known after apply)
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:       + name                       = "confluent-operator"
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:       + namespace                  = "confluent"
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:       + pass_credentials           = false
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:       + recreate_pods              = false
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:       + render_subchart_notes      = true
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:       + replace                    = false
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:       + repository                 = "https://packages.confluent.io/helm"
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:       + reset_values               = false
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:       + reuse_values               = false
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:       + skip_crds                  = false
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:       + status                     = "deployed"
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:       + timeout                    = 300
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:       + values                     = []
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:       + verify                     = false
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:       + version                    = "0.517.12"
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:       + wait                       = true
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:       + wait_for_jobs              = true
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:     }
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:   # module.confluent_operator.kubernetes_namespace_v1.namespace[0] will be created
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:   + resource "kubernetes_namespace_v1" "namespace" {
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:       + id = (known after apply)
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:       + metadata {
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:           + generation       = (known after apply)
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:           + name             = "confluent"
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:           + resource_version = (known after apply)
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:           + uid              = (known after apply)
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:         }
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:     }
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66: Plan: 2 to add, 0 to change, 0 to destroy.
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66: Changes to Outputs:
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:   ~ confluent_operator = {
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:       ~ app_version   = "2.4.0" -> (known after apply)
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:       ~ chart_version = "0.517.12" -> (known after apply)
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:         # (1 unchanged element hidden)
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:02Z logger.go:66:     }
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:03Z logger.go:66: module.confluent_operator.kubernetes_namespace_v1.namespace[0]: Creating...
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:03Z logger.go:66: module.confluent_operator.kubernetes_namespace_v1.namespace[0]: Creation complete after 1s [id=confluent]
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:04Z logger.go:66: module.confluent_operator.helm_release.confluent_operator[0]: Creating...
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:11Z logger.go:66: module.confluent_operator.helm_release.confluent_operator[0]: Creation complete after 7s [id=confluent-operator]
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:11Z logger.go:66:
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:11Z logger.go:66: Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:11Z logger.go:66:
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:11Z logger.go:66: Outputs:
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:11Z logger.go:66:
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:11Z logger.go:66: confluent_operator = {
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:11Z logger.go:66:   "app_version" = "2.4.0"
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:11Z logger.go:66:   "chart_version" = "0.517.12"
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:11Z logger.go:66:   "namespace" = "confluent"
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:11Z logger.go:66: }
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:11Z retry.go:91: terraform [output -no-color -json confluent_operator]
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:11Z logger.go:66: Running command terraform with args [output -no-color -json confluent_operator]
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:11Z logger.go:66: {"app_version":"2.4.0","chart_version":"0.517.12","namespace":"confluent"}
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:11Z retry.go:91: terraform [destroy -auto-approve -input=false -no-color -lock=false]
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:11Z logger.go:66: Running command terraform with args [destroy -auto-approve -input=false -no-color -lock=false]
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:15Z logger.go:66: module.confluent_operator.kubernetes_namespace_v1.namespace[0]: Refreshing state... [id=confluent]
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:15Z logger.go:66: module.confluent_operator.helm_release.confluent_operator[0]: Refreshing state... [id=confluent-operator]
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66: Terraform used the selected providers to generate the following execution
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66: plan. Resource actions are indicated with the following symbols:
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:   - destroy
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66: Terraform will perform the following actions:
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:   # module.confluent_operator.helm_release.confluent_operator[0] will be destroyed
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:   - resource "helm_release" "confluent_operator" {
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:       - atomic                     = false -> null
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:       - chart                      = "confluent-for-kubernetes" -> null
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:       - cleanup_on_fail            = false -> null
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:       - create_namespace           = false -> null
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:       - dependency_update          = false -> null
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:       - disable_crd_hooks          = false -> null
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:       - disable_openapi_validation = false -> null
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:       - disable_webhooks           = false -> null
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:       - force_update               = false -> null
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:       - id                         = "confluent-operator" -> null
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:       - lint                       = false -> null
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:       - max_history                = 0 -> null
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:       - metadata                   = [
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:           - {
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:               - app_version = "2.4.0"
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:               - chart       = "confluent-for-kubernetes"
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:               - name        = "confluent-operator"
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:               - namespace   = "confluent"
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:               - revision    = 1
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:               - values      = "null"
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:               - version     = "0.517.12"
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:             },
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:         ] -> null
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:       - name                       = "confluent-operator" -> null
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:       - namespace                  = "confluent" -> null
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:       - pass_credentials           = false -> null
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:       - recreate_pods              = false -> null
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:       - render_subchart_notes      = true -> null
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:       - replace                    = false -> null
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:       - repository                 = "https://packages.confluent.io/helm" -> null
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:       - reset_values               = false -> null
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:       - reuse_values               = false -> null
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:       - skip_crds                  = false -> null
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:       - status                     = "deployed" -> null
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:       - timeout                    = 300 -> null
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:       - values                     = [] -> null
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:       - verify                     = false -> null
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:       - version                    = "0.517.12" -> null
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:       - wait                       = true -> null
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:       - wait_for_jobs              = true -> null
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:     }
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:   # module.confluent_operator.kubernetes_namespace_v1.namespace[0] will be destroyed
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:   - resource "kubernetes_namespace_v1" "namespace" {
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:       - id = "confluent" -> null
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:       - metadata {
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:           - annotations      = {} -> null
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:           - generation       = 0 -> null
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:           - labels           = {} -> null
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:           - name             = "confluent" -> null
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:           - resource_version = "1062" -> null
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:           - uid              = "45215ccc-608a-4ddf-955c-b690aad9685c" -> null
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:         }
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:     }
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66: Plan: 0 to add, 0 to change, 2 to destroy.
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66: Changes to Outputs:
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:   - confluent_operator = {
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:       - app_version   = "2.4.0"
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:       - chart_version = "0.517.12"
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:       - namespace     = "confluent"
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:16Z logger.go:66:     } -> null
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:17Z logger.go:66: module.confluent_operator.helm_release.confluent_operator[0]: Destroying... [id=confluent-operator]
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:19Z logger.go:66: module.confluent_operator.helm_release.confluent_operator[0]: Destruction complete after 1s
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:19Z logger.go:66: module.confluent_operator.kubernetes_namespace_v1.namespace[0]: Destroying... [id=confluent]
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:25Z logger.go:66: module.confluent_operator.kubernetes_namespace_v1.namespace[0]: Destruction complete after 6s
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:25Z logger.go:66:
+TestTerraformConfluentOperatorExample 2022-08-03T18:04:25Z logger.go:66: Destroy complete! Resources: 2 destroyed.
+--- PASS: TestTerraformConfluentOperatorExample (26.14s)
 PASS
-ok  	command-line-arguments	23.344s
+ok  	command-line-arguments	26.161s

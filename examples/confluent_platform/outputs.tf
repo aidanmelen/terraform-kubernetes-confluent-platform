@@ -25,7 +25,7 @@ output "ksqldb" {
 
 output "controlcenter" {
   description = "The ControlCenter object spec."
-  value       = module.confluent_platform.controlcenter_object["spec"]
+  value       = try(module.confluent_platform.controlcenter_object["spec"], null)
 }
 
 output "schemaregistry" {

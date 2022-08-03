@@ -2,7 +2,7 @@ module "confluent_platform_singlenode" {
   source    = "../../"
   namespace = var.namespace
 
-  # assumes the confluent operator was deployed in another terraform run.
+  # assumes the confluent operator was deployed in another terraform run
   confluent_operator = {
     create = false
   }

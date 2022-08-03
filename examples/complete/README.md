@@ -37,9 +37,9 @@ module "confluent_platform" {
   zookeeper = { "spec" = { "replicas" = "3" } } # override default value
   kafka     = { "spec" = { "replicas" = "3" } } # override default value
 
-  create_connect        = true # explictly enabled
+  create_connect        = true # create with default values
   create_ksqldb         = false
-  create_controlcenter  = false
+  create_controlcenter  = var.create_controlcenter
   create_schemaregistry = false
   create_kafkarestproxy = false
 

@@ -22,7 +22,6 @@ apply-cfk-crds:
 setup: apply-cfk-crds ## Setup project
 	# terraform
 	terraform init
-
 	cd modules/confluent_operator && terraform init
 	cd modules/kafka_topic && terraform init
 	cd modules/connector && terraform init
@@ -70,23 +69,23 @@ test-clean:
 
 _test-confluent-platform:
 	# This test can take longer because controlcenter takes a while to become healthy
-	go test test/terraform_confluent_platform_test.go -timeout 1h -v |& tee test/terraform_confluent_platform_test.log
+	go test test/terraform_confluent_platform_test.go -timeout 10m -v |& tee test/terraform_confluent_platform_test.log
 
 _test-confluent-platform-singlenode:
-	go test test/terraform_confluent_platform_singlenode_test.go -timeout 30m -v |& tee test/terraform_confluent_platform_singlenode_test.log
+	go test test/terraform_confluent_platform_singlenode_test.go -timeout 10m -v |& tee test/terraform_confluent_platform_singlenode_test.log
 
 test-confluent-platform: test-setup _test-confluent-platform test-clean ## Test the confluent_platform example
 
 test-confluent-platform-singlenode: test-setup _test-confluent-platform-singlenode test-clean ## Test the confluent_platform_singlenode example
 
 test-complete: ## Test the complete example
-	go test test/terraform_complete_test.go -timeout 30m -v |& tee test/terraform_complete_test.log
+	go test test/terraform_complete_test.go -timeout 10m -v |& tee test/terraform_complete_test.log
 
 test-kafka-topic: ## Test the kafka_topic example
-	go test test/terraform_kafka_topic_test.go -timeout 30m -v |& tee test/terraform_kafka_topic_test.log
+	go test test/terraform_kafka_topic_test.go -timeout 10m -v |& tee test/terraform_kafka_topic_test.log
 
 test-connector: ## Test the connector example
-	go test test/terraform_connector_test.go -timeout 30m -v |& tee test/terraform_connector_test.log
+	go test test/terraform_connector_test.go -timeout 10m -v |& tee test/terraform_connector_test.log
 
 delete-cfk-crds:
 	kubectl config set-cluster docker-desktop
@@ -94,7 +93,6 @@ delete-cfk-crds:
 
 clean: delete-cfk-crds ## Clean project
 	@rm -f .terraform.lock.hcl
-
 	@rm -f modules/confluent_operator/.terraform.lock.hcl
 	@rm -f modules/kafka_topic/.terraform.lock.hcl
 	@rm -f modules/connector/.terraform.lock.hcl
@@ -105,6 +103,7 @@ clean: delete-cfk-crds ## Clean project
 	@rm -rf examples/kafka_topic/.terraform.lock.hcl
 	@rm -rf examples/connector/.terraform.lock.hcl
 
+	@rm -rf .terraform
 	@rm -rf modules/confluent_operator/.terraform
 	@rm -rf modules/kafka_topic/.terraform
 	@rm -rf modules/connector/.terraform

@@ -8,8 +8,4 @@ module "confluent_platform" {
   create_controlcenter  = false
   create_schemaregistry = false
   create_kafkarestproxy = false
-
-  kafka_topics = {
-    "my-topic" = {}
-  }
 }

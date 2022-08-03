@@ -1,6 +1,6 @@
 # connector
 
-Deploy a Connector on Kafka Connect.
+Deploy a Connector on Kafka Connect. This example produces data to `my-topic` and uses the connector to mirror the data to `self.my-topic`
 
 ## Assumptions
 
@@ -13,7 +13,7 @@ This example assumes you have a Kubernetes cluster running locally on Docker Des
 ```hcl
 module "connector" {
   source     = "aidanmelen/confluent-platform/kubernetes//modules/connector"
-  version     = ">= 0.6.0"
+  version    = ">= 0.6.0"
   depends_on = [module.confluent_platform]
 
   name      = "my-connector"
@@ -25,10 +25,8 @@ spec:
   configs:
     topics: "my-topic"
     target.cluster.bootstrap.servers: "kafka:9092"
-    source     = "aidanmelen/confluent-platform/kubernetes//modules/connector"
-  version     = ">= 0.6.0"
-    source     = "aidanmelen/confluent-platform/kubernetes//modules/connector"
-  version     = ">= 0.6.0"
+    source.cluster.bootstrap.servers: "kafka:9092"
+    source.cluster.alias: "self"
   EOF
   )
 }
