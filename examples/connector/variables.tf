@@ -11,7 +11,7 @@ variable "create_controlcenter" {
 }
 
 variable "producer_num_records" {
-  description = "The number of messages to produce to 'my-topic'."
+  description = "The number of messages to produce to `my-topic`."
   type        = number
   default     = 1000
 }
