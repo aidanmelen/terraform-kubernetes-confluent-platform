@@ -7,7 +7,7 @@ A Terraform module for managing [Confluent for Kubernetes (CFK)](https://docs.co
 
 ## Limitations
 
-This Terraform module uses the [kubernetes_manifest resource](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/manifest) to deploy CFK custom resources. The following excerpt is from [Beta Support for CRDs in the Terraform Provider for Kubernetes](https://www.hashicorp.com/blog/beta-support-for-crds-in-the-terraform-provider-for-kubernetes):
+This Terraform module uses the [kubernetes_manifest](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/manifest) resource to deploy CFK custom resources. The following excerpt is from [Beta Support for CRDs in the Terraform Provider for Kubernetes](https://www.hashicorp.com/blog/beta-support-for-crds-in-the-terraform-provider-for-kubernetes):
 
 > Custom resource definitions must be applied before custom resources. As above, this is because the provider queries the Kubernetes API for the OpenAPI specification for the resource supplied in the manifest attribute. If the CRD doesn’t exist in the OpenAPI specification during plan time then Terraform can’t use it to create custom resources.
 
