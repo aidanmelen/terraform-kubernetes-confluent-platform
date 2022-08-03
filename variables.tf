@@ -16,7 +16,9 @@ variable "namespace" {
 variable "confluent_operator" {
   description = "Controls if the Confluent Operator resources should be created. This is required when the Confluent Operator is not already running on the kubernetes cluster."
   type        = any
-  default     = {}
+  default = {
+    create = true
+  }
 }
 
 ################################################################################
@@ -119,7 +121,13 @@ variable "kafkarestproxy" {
 }
 
 variable "kafka_topics" {
-  description = "A map of Kafka Topics to create."
+  description = "A map of Kafka Topics to create. The key is the topic name and the value are the override values."
+  type        = any
+  default     = {}
+}
+
+variable "connectors" {
+  description = "A map of Connectors to create. The key is the connector name and the value are the override values."
   type        = any
   default     = {}
 }

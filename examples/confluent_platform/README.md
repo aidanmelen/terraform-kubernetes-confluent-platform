@@ -19,17 +19,25 @@ module "confluent_platform" {
   source  = "aidanmelen/confluent-platform/kubernetes"
   version = ">= 0.6.0"
 
-  namespace = "confluent"
+  namespace = var.namespace
 
+  # assumes the confluent operator was deployed in another terraform run
+  confluent_operator = {
+    create = false
+  }
+
+  # uncomment to override the modules default local values
   /*
-  zookeeper      = yamldecode( ... )
-  kafka          = yamldecode( ... )
-  connect        = yamldecode( ... )
-  ksqldb         = yamldecode( ... )
-  controlcenter  = yamldecode( ... )
-  schemaregistry = yamldecode( ... )
-  kafkarestproxy = yamldecode( ... )
+  zookeeper      = yamldecode(file("${path.module}/values/zookeeper.yaml"))
+  kafka          = yamldecode(file("${path.module}/values/kafka.yaml"))
+  connect        = yamldecode(file("${path.module}/values/connect.yaml"))
+  ksqldb         = yamldecode(file("${path.module}/values/ksqldb.yaml"))
+  controlcenter  = yamldecode(file("${path.module}/values/controlcenter.yaml"))
+  schemaregistry = yamldecode(file("${path.module}/values/schemaregistry.yaml"))
+  kafkarestproxy = yamldecode(file("${path.module}/values/kafkarestproxy.yaml"))
   */
+
+  create_controlcenter = var.create_controlcenter
 }
 ```
 
@@ -45,6 +53,12 @@ module "confluent_platform" {
 | Name | Source | Version |
 |------|--------|---------|
 | <a name="module_confluent_platform"></a> [confluent\_platform](#module\_confluent\_platform) | ../../ | n/a |
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_create_controlcenter"></a> [create\_controlcenter](#input\_create\_controlcenter) | Controls if the ControlCenter component of the Confluent Platform should be created. | `bool` | `true` | no |
+| <a name="input_namespace"></a> [namespace](#input\_namespace) | The namespace to release the Confluent Operator and Confluent Platform into. | `string` | `"confluent"` | no |
 ## Outputs
 
 | Name | Description |

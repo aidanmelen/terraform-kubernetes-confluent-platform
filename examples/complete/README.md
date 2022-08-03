@@ -15,8 +15,6 @@ kubectl config set-cluster docker-desktop
 kubectl apply -f ./crds/2.4.0
 ```
 
-Please see the [Makefile](https://github.com/aidanmelen/terraform-kubernetes-confluent-platform/blob/main/Makefile) for more information.
-
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Example
@@ -34,27 +32,26 @@ module "confluent_platform" {
     chart_version    = "0.517.12"
   }
 
-  zookeeper = {
-    "spec" = {
-      "replicas" = "3"
-    }
-  }
+  zookeeper = { "spec" = { "replicas" = "3" } } # override default value
+  kafka     = { "spec" = { "replicas" = "3" } } # override default value
 
-  kafka = {
-    "spec" = {
-      "replicas" = "3"
-    }
-  }
-
-  create_connect        = false
+  create_connect        = true # create with default values
   create_ksqldb         = false
-  create_controlcenter  = false
+  create_controlcenter  = var.create_controlcenter
   create_schemaregistry = false
   create_kafkarestproxy = false
 
   kafka_topics = {
-    "my-topic"       = {}
-    "my-other-topic" = { "spec" = { "configs" = { "cleanup.policy" = "compact" } } }
+    "my-topic" = {}
+    "my-other-topic" = {
+      "values" = { "spec" = { "configs" = { "cleanup.policy" = "compact" } } }
+    }
+  }
+
+  connectors = {
+    "my-connector" = {
+      "values" = yamldecode(file("${path.module}/values/connector.yaml"))
+    }
   }
 }
 ```
@@ -71,11 +68,19 @@ module "confluent_platform" {
 | Name | Source | Version |
 |------|--------|---------|
 | <a name="module_confluent_platform"></a> [confluent\_platform](#module\_confluent\_platform) | ../../ | n/a |
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_create_controlcenter"></a> [create\_controlcenter](#input\_create\_controlcenter) | Controls if the ControlCenter component of the Confluent Platform should be created. | `bool` | `true` | no |
+| <a name="input_namespace"></a> [namespace](#input\_namespace) | The namespace to release the Confluent Operator and Confluent Platform into. | `string` | `"confluent"` | no |
 ## Outputs
 
 | Name | Description |
 |------|-------------|
 | <a name="output_confluent_operator"></a> [confluent\_operator](#output\_confluent\_operator) | The Confluent Operator. |
+| <a name="output_connector_manifests"></a> [connector\_manifests](#output\_connector\_manifests) | Map of attribute maps for all the Connector manifests created. |
+| <a name="output_connector_object_specs"></a> [connector\_object\_specs](#output\_connector\_object\_specs) | Map of attribute maps for all the Connector object specs created. |
 | <a name="output_kafka_manifest"></a> [kafka\_manifest](#output\_kafka\_manifest) | The Kafka manifest. |
 | <a name="output_kafka_object_spec"></a> [kafka\_object\_spec](#output\_kafka\_object\_spec) | The Kafka object spec. |
 | <a name="output_kafka_topic_manifests"></a> [kafka\_topic\_manifests](#output\_kafka\_topic\_manifests) | Map of attribute maps for all the KafkaTopic manifests created. |

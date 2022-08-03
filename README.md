@@ -5,12 +5,15 @@
 
 A Terraform module for managing [Confluent for Kubernetes (CFK)](https://docs.confluent.io/operator/current/overview.html).
 
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Limitations
 
+This Terraform module uses the [kubernetes_manifest resource](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/manifest) to deploy CFK custom resources. The following excerpt is from [Beta Support for CRDs in the Terraform Provider for Kubernetes](https://www.hashicorp.com/blog/beta-support-for-crds-in-the-terraform-provider-for-kubernetes):
+
+> Custom resource definitions must be applied before custom resources. As above, this is because the provider queries the Kubernetes API for the OpenAPI specification for the resource supplied in the manifest attribute. If the CRD doesn’t exist in the OpenAPI specification during plan time then Terraform can’t use it to create custom resources.
 
 ## Prerequisites
 
-The Confluent for Kubernetes CRDs must be installed on the Kubernetes cluster before the first Terraform apply of the Confluent Platform. Install the CRDs with:
+Install the CFK CRDs:
 
 ```bash
 kubectl config set-cluster docker-desktop
@@ -22,6 +25,9 @@ Please see [The Confluent for Kubernetes Quickstart](https://docs.confluent.io/o
 ## Override CFK Manifest Values
 
 Similar to the [values file for Helm](https://helm.sh/docs/chart_template_guide/values_files/); the Confluent Platform variables will be [deep-merged](https://github.com/privx-de/terraform-deepmerge) with the default `local` values of the module. Please see the [Confluent Platform Single Node](./examples/confluent_platform_singlenode) example for more information.
+
+<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+
 
 ## Example
 
@@ -40,27 +46,26 @@ module "confluent_platform" {
     chart_version    = "0.517.12"
   }
 
-  zookeeper = {
-    "spec" = {
-      "replicas" = "3"
-    }
-  }
+  zookeeper = { "spec" = { "replicas" = "3" } } # override default value
+  kafka     = { "spec" = { "replicas" = "3" } } # override default value
 
-  kafka = {
-    "spec" = {
-      "replicas" = "3"
-    }
-  }
-
-  create_connect        = false
+  create_connect        = true # create with default values
   create_ksqldb         = false
-  create_controlcenter  = false
+  create_controlcenter  = var.create_controlcenter
   create_schemaregistry = false
   create_kafkarestproxy = false
 
   kafka_topics = {
-    "my-topic"       = {}
-    "my-other-topic" = { "spec" = { "configs" = { "cleanup.policy" = "compact" } } }
+    "my-topic" = {}
+    "my-other-topic" = {
+      "values" = { "spec" = { "configs" = { "cleanup.policy" = "compact" } } }
+    }
+  }
+
+  connectors = {
+    "my-connector" = {
+      "values" = yamldecode(file("${path.module}/values/connector.yaml"))
+    }
   }
 }
 ```
@@ -104,7 +109,8 @@ test-confluent-operator             Test the confluent_operator example
 test-confluent-platform             Test the confluent_platform example
 test-confluent-platform-singlenode  Test the confluent_platform_singlenode example
 test-complete                       Test the complete example
-test-kafka-topics                   Test the kafka_topics example
+test-kafka-topic                    Test the kafka_topic example
+test-connector                      Test the connector example
 clean                               Clean project
 ```
 
@@ -126,6 +132,7 @@ clean                               Clean project
 |------|--------|---------|
 | <a name="module_confluent_operator"></a> [confluent\_operator](#module\_confluent\_operator) | ./modules/confluent_operator | n/a |
 | <a name="module_confluent_platform_override_values"></a> [confluent\_platform\_override\_values](#module\_confluent\_platform\_override\_values) | Invicton-Labs/deepmerge/null | 0.1.5 |
+| <a name="module_connectors"></a> [connectors](#module\_connectors) | ./modules/connector | n/a |
 | <a name="module_kafka_topics"></a> [kafka\_topics](#module\_kafka\_topics) | ./modules/kafka_topic | n/a |
 ## Resources
 
@@ -137,10 +144,11 @@ clean                               Clean project
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_confluent_operator"></a> [confluent\_operator](#input\_confluent\_operator) | Controls if the Confluent Operator resources should be created. This is required when the Confluent Operator is not already running on the kubernetes cluster. | `any` | `{}` | no |
+| <a name="input_confluent_operator"></a> [confluent\_operator](#input\_confluent\_operator) | Controls if the Confluent Operator resources should be created. This is required when the Confluent Operator is not already running on the kubernetes cluster. | `any` | <pre>{<br>  "create": true<br>}</pre> | no |
 | <a name="input_confluent_operator_app_version"></a> [confluent\_operator\_app\_version](#input\_confluent\_operator\_app\_version) | The default Confluent Operator app version. This may be overriden by component override values. This version must be compatible with the `confluent_platform_version`. Please see confluent docs for more information: https://docs.confluent.io/platform/current/installation/versions-interoperability.html#confluent-operator | `string` | `"2.4.0"` | no |
 | <a name="input_confluent_platform_version"></a> [confluent\_platform\_version](#input\_confluent\_platform\_version) | The default Confluent Platform app version. This may be overriden by component override values. This version must be compatible with the `confluent_operator_app_version`. Please see confluent docs for more information: https://docs.confluent.io/platform/current/installation/versions-interoperability.html#confluent-operator | `string` | `"7.2.0"` | no |
 | <a name="input_connect"></a> [connect](#input\_connect) | The Connect override values. | `any` | `{}` | no |
+| <a name="input_connectors"></a> [connectors](#input\_connectors) | A map of Connectors to create. The key is the connector name and the value are the override values. | `any` | `{}` | no |
 | <a name="input_controlcenter"></a> [controlcenter](#input\_controlcenter) | The ControlCenter override values. | `any` | `{}` | no |
 | <a name="input_create"></a> [create](#input\_create) | Controls if the Confluent Platform and Operator resources should be created (affects all resources). | `bool` | `true` | no |
 | <a name="input_create_connect"></a> [create\_connect](#input\_create\_connect) | Controls if the Connect component of the Confluent Platform should be created. | `bool` | `true` | no |
@@ -153,7 +161,7 @@ clean                               Clean project
 | <a name="input_create_zookeeper"></a> [create\_zookeeper](#input\_create\_zookeeper) | Controls if the Zookeeper component of the Confluent Platform should be created. | `bool` | `true` | no |
 | <a name="input_delete_timeout"></a> [delete\_timeout](#input\_delete\_timeout) | The delete timeout for each Confluent Platform component. | `string` | `"10m"` | no |
 | <a name="input_kafka"></a> [kafka](#input\_kafka) | The Kafka override values. | `any` | `{}` | no |
-| <a name="input_kafka_topics"></a> [kafka\_topics](#input\_kafka\_topics) | A map of Kafka Topics to create. | `any` | `{}` | no |
+| <a name="input_kafka_topics"></a> [kafka\_topics](#input\_kafka\_topics) | A map of Kafka Topics to create. The key is the topic name and the value are the override values. | `any` | `{}` | no |
 | <a name="input_kafkarestproxy"></a> [kafkarestproxy](#input\_kafkarestproxy) | The KafkaRestProxy override values. | `any` | `{}` | no |
 | <a name="input_ksqldb"></a> [ksqldb](#input\_ksqldb) | The KsqlDB override values. | `any` | `{}` | no |
 | <a name="input_namespace"></a> [namespace](#input\_namespace) | The namespace to release Confluent Platform into. When `confluent_operator` is specified, this will also ensure the Confluent Operator is released into the same namespace. | `string` | `"confluent"` | no |
@@ -167,6 +175,9 @@ clean                               Clean project
 | <a name="output_confluent_operator"></a> [confluent\_operator](#output\_confluent\_operator) | Map of attributes for the Confluent Operator. |
 | <a name="output_connect_manifest"></a> [connect\_manifest](#output\_connect\_manifest) | The Connect manifest. |
 | <a name="output_connect_object"></a> [connect\_object](#output\_connect\_object) | The Connect object. |
+| <a name="output_connector_manifests"></a> [connector\_manifests](#output\_connector\_manifests) | Map of attribute maps for all the Connector manifests created. |
+| <a name="output_connector_objects"></a> [connector\_objects](#output\_connector\_objects) | Map of attribute maps for all the Connector objects created. |
+| <a name="output_connectors"></a> [connectors](#output\_connectors) | Map of attribute maps for all Connector submodules created. |
 | <a name="output_controlcenter_manifest"></a> [controlcenter\_manifest](#output\_controlcenter\_manifest) | The ControlCenter manifest. |
 | <a name="output_controlcenter_object"></a> [controlcenter\_object](#output\_controlcenter\_object) | The ControlCenter object. |
 | <a name="output_kafka_manifest"></a> [kafka\_manifest](#output\_kafka\_manifest) | The Kafka manifest. |

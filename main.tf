@@ -85,3 +85,16 @@ module "kafka_topics" {
   namespace = lookup(each.value, "namespace", var.namespace)
   values    = lookup(each.value, "values", {})
 }
+
+################################################################################
+# Connectors
+################################################################################
+module "connectors" {
+  source     = "./modules/connector"
+  depends_on = [kubernetes_manifest.components]
+  for_each   = var.connectors
+
+  name      = each.key
+  namespace = lookup(each.value, "namespace", var.namespace)
+  values    = lookup(each.value, "values", {})
+}

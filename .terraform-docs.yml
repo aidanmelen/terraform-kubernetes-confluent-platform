@@ -1,21 +1,6 @@
 content: |-
   {{ .Header }}
 
-  ## Prerequisites
-
-  The Confluent for Kubernetes CRDs must be installed on the Kubernetes cluster before the first Terraform apply of the Confluent Platform. Install the CRDs with:
-
-  ```bash
-  kubectl config set-cluster docker-desktop
-  kubectl apply -f ./crds/2.4.0
-  ```
-
-  Please see [The Confluent for Kubernetes Quickstart](https://docs.confluent.io/operator/current/co-quickstart.html#step-2-install-co-long) for more information.
-
-  ## Override CFK Manifest Values
-
-  Similar to the [values file for Helm](https://helm.sh/docs/chart_template_guide/values_files/); the Confluent Platform variables will be [deep-merged](https://github.com/privx-de/terraform-deepmerge) with the default `local` values of the module. Please see the [Confluent Platform Single Node](./examples/confluent_platform_singlenode) example for more information.
-
   ## Example
 
   ### Confluent Platform

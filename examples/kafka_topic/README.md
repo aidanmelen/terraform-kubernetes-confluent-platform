@@ -1,14 +1,10 @@
 # kafka_topic
 
-Create a Kafka topic.
+Create the Confluent Platform and then use the submodule to create Kafka topics.
 
 ## Assumptions
 
 This example assumes you have a Kubernetes cluster running locally on Docker Desktop. Please see [Docker's official documentation](https://docs.docker.com/desktop/kubernetes/) for more information.
-
-## Prerequisites
-
-Release the [Complete example](https://github.com/aidanmelen/terraform-kubernetes-confluent-platform/tree/main/examples/complete). This will ensure the CFK CRDs are created and the Confluent Operator pod is running, and the Confluent Platform created.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
@@ -16,20 +12,21 @@ Release the [Complete example](https://github.com/aidanmelen/terraform-kubernete
 
 ```hcl
 module "kafka_topic" {
-  source  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.6.0"
+  source     = "aidanmelen/confluent-platform/kubernetes//modules/kafka_topic"
+  version    = ">= 0.6.0"
+  depends_on = [module.confluent_platform]
 
   name      = "my-topic"
-  namespace = "confluent"
+  namespace = var.namespace
 }
 
 module "other_kafka_topic" {
-  source  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.6.0"
+  source     = "aidanmelen/confluent-platform/kubernetes//modules/kafka_topic"
+  version    = ">= 0.6.0"
+  depends_on = [module.confluent_platform]
 
   name      = "my-other-topic"
-  namespace = "confluent"
-
+  namespace = var.namespace
   values = yamldecode(<<EOF
 spec:
   partitionCount: 4
@@ -53,8 +50,14 @@ spec:
 
 | Name | Source | Version |
 |------|--------|---------|
+| <a name="module_confluent_platform"></a> [confluent\_platform](#module\_confluent\_platform) | ../../ | n/a |
 | <a name="module_kafka_topic"></a> [kafka\_topic](#module\_kafka\_topic) | ../../modules/kafka_topic | n/a |
 | <a name="module_other_kafka_topic"></a> [other\_kafka\_topic](#module\_other\_kafka\_topic) | ../../modules/kafka_topic | n/a |
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_namespace"></a> [namespace](#input\_namespace) | The namespace to release the Confluent Operator and Confluent Platform into. | `string` | `"confluent"` | no |
 ## Outputs
 
 | Name | Description |
