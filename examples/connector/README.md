@@ -45,6 +45,13 @@ spec:
 |------|--------|---------|
 | <a name="module_confluent_platform"></a> [confluent\_platform](#module\_confluent\_platform) | ../../ | n/a |
 | <a name="module_connector"></a> [connector](#module\_connector) | ../../modules/connector | n/a |
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_create_controlcenter"></a> [create\_controlcenter](#input\_create\_controlcenter) | Controls if the ControlCenter component of the Confluent Platform should be created. | `bool` | `true` | no |
+| <a name="input_namespace"></a> [namespace](#input\_namespace) | The namespace to release the Confluent Operator and Confluent Platform into. | `string` | `"confluent"` | no |
+| <a name="input_producer_num_records"></a> [producer\_num\_records](#input\_producer\_num\_records) | The number of messages to produce to 'my-topic'. | `number` | `1000` | no |
 ## Outputs
 
 | Name | Description |
