@@ -31,8 +31,8 @@ setup: apply-cfk-crds ## Setup project
 	cd examples/confluent_platform_singlenode && terraform init
 	cd examples/complete && terraform init
 	cd examples/kafka_topic && terraform init
-	cd examples/connector && terraform init
 	cd examples/schema && terraform init
+	cd examples/connector && terraform init
 
 	# pre-commit
 	git init
@@ -107,8 +107,8 @@ clean: delete-cfk-crds ## Clean project
 	@rm -f examples/confluent_platform_singlenode/.terraform.lock.hcl
 	@rm -f examples/complete/.terraform.lock.hcl
 	@rm -rf examples/kafka_topic/.terraform.lock.hcl
-	@rm -rf examples/connector/.terraform.lock.hcl
 	@rm -rf examples/schema/.terraform.lock.hcl
+	@rm -rf examples/connector/.terraform.lock.hcl
 
 	@rm -rf .terraform
 	@rm -rf modules/confluent_operator/.terraform
@@ -120,8 +120,8 @@ clean: delete-cfk-crds ## Clean project
 	@rm -rf examples/confluent_platform_singlenode/.terraform
 	@rm -rf examples/complete/.terraform
 	@rm -rf examples/kafka_topic/.terraform
-	@rm -rf examples/connector/.terraform
 	@rm -rf examples/schema/.terraform
+	@rm -rf examples/connector/.terraform
 
 	@rm -f go.mod
 	@rm -f go.sum
