@@ -58,7 +58,7 @@ lint-all: docs ## Lint all files with pre-commit
 	pre-commit run --all-files
 	git add -A
 
-tests: test-confluent-operator test-confluent-platform test-confluent-platform-singlenode test-complete test-kafka-topic test-connector ## Tests with Terratest
+tests: test-confluent-operator test-confluent-platform test-confluent-platform-singlenode test-complete test-kafka-topic test-schema test-connector ## Tests with Terratest
 
 test-confluent-operator: ## Test the confluent_operator example
 	go test test/terraform_confluent_operator_test.go -timeout 5m -v |& tee test/terraform_confluent_operator_test.log
@@ -85,6 +85,9 @@ test-complete: ## Test the complete example
 
 test-kafka-topic: ## Test the kafka_topic example
 	go test test/terraform_kafka_topic_test.go -timeout 10m -v |& tee test/terraform_kafka_topic_test.log
+
+test-schema: ## Test the schema example
+	go test test/terraform_schema_test.go -timeout 10m -v |& tee test/terraform_schema_test.log
 
 test-connector: ## Test the connector example
 	go test test/terraform_connector_test.go -timeout 10m -v |& tee test/terraform_connector_test.log

@@ -1,0 +1,11 @@
+spec:
+  replicas: 1
+  build:
+    type: onDemand
+    onDemand:
+      plugins:
+        locationType: confluentHub
+        confluentHub:
+          - name: kafka-connect-datagen
+            owner: confluentinc
+            version: 0.5.2

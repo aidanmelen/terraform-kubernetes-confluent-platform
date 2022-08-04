@@ -1,8 +1,0 @@
-module "schema" {
-  source     = "aidanmelen/confluent-platform/kubernetes//modules/schema"
-  version    = ">= 0.7.0"
-
-  name      = "pageviews"
-  namespace = var.namespace
-  schema    = data.http.pageviews_schema_avro.body
-}

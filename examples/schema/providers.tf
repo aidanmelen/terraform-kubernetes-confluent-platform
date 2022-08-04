@@ -11,11 +11,6 @@ terraform {
       source  = "hashicorp/kubernetes"
       version = ">= 2.12.1"
     }
-
-    http = {
-      source  = "hashicorp/http"
-      version = "3.0.1"
-    }
   }
 }
 
@@ -30,5 +25,3 @@ provider "helm" {
     config_context = "docker-desktop"
   }
 }
-
-provider "http" {}

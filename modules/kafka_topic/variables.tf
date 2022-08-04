@@ -18,17 +18,17 @@ variable "values" {
 variable "create_timeout" {
   description = "The create timeout for each Confluent Platform component."
   type        = string
-  default     = "5m"
+  default     = "10m"
 }
 
 variable "update_timeout" {
   description = "The update timeout for each Confluent Platform component."
   type        = string
-  default     = "5m"
+  default     = "10m"
 }
 
 variable "delete_timeout" {
   description = "The delete timeout for each Confluent Platform component."
   type        = string
-  default     = "5m"
+  default     = "10m"
 }

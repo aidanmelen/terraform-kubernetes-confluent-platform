@@ -1,7 +1,27 @@
 module "schema" {
-  source = "../../modules/schema"
-
-  name      = "pageviews"
+  source    = "../../modules/schema"
+  name      = "pageviews-value"
   namespace = var.namespace
-  schema    = data.http.pageviews_schema_avro.body
+  data      = <<-EOF
+    {
+      "connect.name": "ksql.pageviews",
+      "fields": [
+        {
+          "name": "viewtime",
+          "type": "long"
+        },
+        {
+          "name": "userid",
+          "type": "string"
+        },
+        {
+          "name": "pageid",
+          "type": "string"
+        }
+      ],
+      "name": "pageviews",
+      "namespace": "ksql",
+      "type": "record"
+    }
+  EOF
 }

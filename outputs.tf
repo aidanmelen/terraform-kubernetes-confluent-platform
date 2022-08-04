@@ -103,6 +103,29 @@ output "kafka_topic_objects" {
 }
 
 ################################################################################
+# Schema
+################################################################################
+output "schemas" {
+  description = "Map of attribute maps for all Schema submodules created."
+  value       = module.schemas
+}
+
+output "schema_manifests" {
+  description = "Map of attribute maps for all the Schema manifests created."
+  value       = { for name, schema in module.schemas : name => schema.manifest }
+}
+
+output "schema_objects" {
+  description = "Map of attribute maps for all the Schema objects created."
+  value       = { for name, schema in module.schemas : name => schema.object }
+}
+
+output "schema_config_map" {
+  description = "Map of attribute maps for all the Schema ConfigMap created."
+  value       = { for name, schema in module.schemas : name => schema.config_map }
+}
+
+################################################################################
 # Connectors
 ################################################################################
 output "connectors" {

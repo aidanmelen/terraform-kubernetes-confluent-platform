@@ -1,6 +1,8 @@
 # connector
 
-Deploy a Connector on Kafka Connect. This example produces data to `my-topic` and uses the connector to mirror the data to `self.my-topic`
+Deploy a Connector on Kafka Connect. This contrived example creates a MirrorMakerSource connector to mirror messages from `my-topic` to `self.my-topic`.
+
+`my-topic` messages are produced using the `kafka-producer-perf-test` cli tool running on a Kubernetes StatefulSet. Please see [producer_app_data.tf](./producer_app_data.tf) for more information.
 
 ## Assumptions
 
@@ -13,7 +15,7 @@ This example assumes you have a Kubernetes cluster running locally on Docker Des
 ```hcl
 module "connector" {
   source     = "aidanmelen/confluent-platform/kubernetes//modules/connector"
-  version    = ">= 0.7.0"
+  version    = ">= 0.8.0"
   depends_on = [module.confluent_platform]
 
   name      = "my-connector"

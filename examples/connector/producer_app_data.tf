@@ -1,5 +1,4 @@
 # https://github.com/confluentinc/confluent-kubernetes-examples/blob/806b0f1a9664b17261f600e2a48106804bef89f5/security/plaintext-basic-auth-control-Center/producer-app-data.yaml
-
 resource "kubernetes_secret_v1" "kafka_client_config" {
   metadata {
     name      = "kafka-client-config"

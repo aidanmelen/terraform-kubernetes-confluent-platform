@@ -1,6 +1,6 @@
-# connector
+# schema
 
-Deploy a Connector on Kafka Connect. This example produces data to `my-topic` and uses the connector to mirror the data to `self.my-topic`
+Deploy a Schema on the Schema Registry. This example produces Avro messages to the `pageviews` topic using the [kafka-connect-datagen](https://github.com/confluentinc/kafka-connect-datagen) connector.
 
 ## Assumptions
 
@@ -12,12 +12,33 @@ This example assumes you have a Kubernetes cluster running locally on Docker Des
 
 ```hcl
 module "schema" {
-  source     = "aidanmelen/confluent-platform/kubernetes//modules/schema"
-  version    = ">= 0.7.0"
+  source  = "aidanmelen/confluent-platform/kubernetes//modules/schema"
+  version = ">= 0.8.0"
 
-  name      = "pageviews"
+  name      = "pageviews-value"
   namespace = var.namespace
-  schema    = data.http.pageviews_schema_avro.body
+  data      = <<-EOF
+    {
+      "connect.name": "ksql.pageviews",
+      "fields": [
+        {
+          "name": "viewtime",
+          "type": "long"
+        },
+        {
+          "name": "userid",
+          "type": "string"
+        },
+        {
+          "name": "pageid",
+          "type": "string"
+        }
+      ],
+      "name": "pageviews",
+      "namespace": "ksql",
+      "type": "record"
+    }
+  EOF
 }
 ```
 
@@ -27,7 +48,6 @@ module "schema" {
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.14.8 |
 | <a name="requirement_helm"></a> [helm](#requirement\_helm) | >= 2.0.0 |
-| <a name="requirement_http"></a> [http](#requirement\_http) | 3.0.1 |
 | <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | >= 2.12.1 |
 ## Modules
 
@@ -45,5 +65,6 @@ module "schema" {
 
 | Name | Description |
 |------|-------------|
-| <a name="output_schema"></a> [schema](#output\_schema) | The Schema object spec. |
+| <a name="output_schema_config_map_data"></a> [schema\_config\_map\_data](#output\_schema\_config\_map\_data) | The Schema ConfigMap data. |
+| <a name="output_schema_object_spec"></a> [schema\_object\_spec](#output\_schema\_object\_spec) | The Schema object spec. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

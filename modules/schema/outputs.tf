@@ -1,5 +1,5 @@
-output "schema_config" {
-  description = "The ConfigMap containing the Schema config."
+output "config_map" {
+  description = "The ConfigMap containing the Schema config data."
   value       = kubernetes_config_map_v1.schema_config
 }
 

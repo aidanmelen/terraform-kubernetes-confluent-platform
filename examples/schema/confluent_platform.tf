@@ -26,9 +26,9 @@ module "confluent_platform" {
     "pageviews" = {}
   }
 
-  # produce avro messages using the Schema
-  # https://www.confluent.io/blog/easy-ways-generate-test-data-kafka/
   connectors = {
+    # https://www.confluent.io/blog/easy-ways-generate-test-data-kafka/
+    # https://raw.githubusercontent.com/confluentinc/kafka-connect-datagen/master/src/main/resources/pageviews_schema.avro
     "pageviews-avro-datagen" = {
       "values" = yamldecode(<<-EOF
         spec:
@@ -36,6 +36,7 @@ module "confluent_platform" {
           taskMax: 1
           configs:
             kafka.topic: "pageviews"
+            quickstart: "pageviews"
             key.converter: "org.apache.kafka.connect.storage.StringConverter"
             value.converter: "io.confluent.connect.avro.AvroConverter"
             value.converter.schemas.enable: "true"

@@ -9,7 +9,7 @@ Deploy a Connector on Kafka Connect.
 ```hcl
 module "connector" {
   source     = "aidanmelen/confluent-platform/kubernetes//modules/connector"
-  version    = ">= 0.7.0"
+  version    = ">= 0.8.0"
   depends_on = [module.confluent_platform]
 
   name      = "my-connector"
@@ -55,11 +55,11 @@ module "connector" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_create_timeout"></a> [create\_timeout](#input\_create\_timeout) | The create timeout for each Confluent Platform component. | `string` | `"5m"` | no |
-| <a name="input_delete_timeout"></a> [delete\_timeout](#input\_delete\_timeout) | The delete timeout for each Confluent Platform component. | `string` | `"5m"` | no |
+| <a name="input_create_timeout"></a> [create\_timeout](#input\_create\_timeout) | The create timeout for each Confluent Platform component. | `string` | `"10m"` | no |
+| <a name="input_delete_timeout"></a> [delete\_timeout](#input\_delete\_timeout) | The delete timeout for each Confluent Platform component. | `string` | `"10m"` | no |
 | <a name="input_name"></a> [name](#input\_name) | The Connector name. | `string` | n/a | yes |
 | <a name="input_namespace"></a> [namespace](#input\_namespace) | The namespace of the Confluent Platform. | `string` | `"confluent"` | no |
-| <a name="input_update_timeout"></a> [update\_timeout](#input\_update\_timeout) | The update timeout for each Confluent Platform component. | `string` | `"5m"` | no |
+| <a name="input_update_timeout"></a> [update\_timeout](#input\_update\_timeout) | The update timeout for each Confluent Platform component. | `string` | `"10m"` | no |
 | <a name="input_values"></a> [values](#input\_values) | The Connector override values. | `any` | n/a | yes |
 ## Outputs
 
