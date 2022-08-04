@@ -1,5 +1,5 @@
 variable "name" {
-  description = "The KafkaTopic name."
+  description = "The Schema name."
   type        = string
 }
 
@@ -10,9 +10,14 @@ variable "namespace" {
 }
 
 variable "values" {
-  description = "The KafkaTopic override values."
+  description = "The Schema override values."
   type        = any
   default     = {}
+}
+
+variable "data" {
+  description = "The Schema config data."
+  type        = any
 }
 
 variable "create_timeout" {

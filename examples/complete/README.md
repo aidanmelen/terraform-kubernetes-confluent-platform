@@ -22,7 +22,7 @@ kubectl apply -f ./crds/2.4.0
 ```hcl
 module "confluent_platform" {
   source  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.7.0"
+  version = ">= 0.8.0"
 
   namespace = var.namespace
 
@@ -32,24 +32,40 @@ module "confluent_platform" {
     chart_version    = "0.517.12"
   }
 
-  zookeeper = { "spec" = { "replicas" = "3" } } # override default value
-  kafka     = { "spec" = { "replicas" = "3" } } # override default value
+  # hcl value overrides
+  zookeeper = { "spec" = { "replicas" = "3" } }
 
-  create_connect        = true # create with default values
+  # yaml inline value overrides
+  kafka = yamldecode(<<-EOF
+    spec:
+      replicas: 3
+    EOF
+  )
+
+  # yaml file value overrides
+  connect = yamldecode(file("${path.module}/values/connect.yaml"))
+
   create_ksqldb         = false
   create_controlcenter  = var.create_controlcenter
-  create_schemaregistry = false
+  create_schemaregistry = true # create with default values
   create_kafkarestproxy = false
 
   kafka_topics = {
-    "my-topic" = {}
+    "pageviews" = {}
     "my-other-topic" = {
       "values" = { "spec" = { "configs" = { "cleanup.policy" = "compact" } } }
     }
   }
 
+  schemas = {
+    "pageviews-value" = {
+      "data" = file("${path.module}/schemas/pageviews_schema.avro")
+    }
+  }
+
   connectors = {
-    "my-connector" = {
+    "pageviews-source  = "aidanmelen/confluent-platform/kubernetes"
+  version = ">= 0.8.0"
       "values" = yamldecode(file("${path.module}/values/connector.yaml"))
     }
   }
@@ -79,6 +95,8 @@ module "confluent_platform" {
 | Name | Description |
 |------|-------------|
 | <a name="output_confluent_operator"></a> [confluent\_operator](#output\_confluent\_operator) | The Confluent Operator. |
+| <a name="output_connect_manifest"></a> [connect\_manifest](#output\_connect\_manifest) | The Connect manifest. |
+| <a name="output_connect_object_spec"></a> [connect\_object\_spec](#output\_connect\_object\_spec) | The Connect object spec. |
 | <a name="output_connector_manifests"></a> [connector\_manifests](#output\_connector\_manifests) | Map of attribute maps for all the Connector manifests created. |
 | <a name="output_connector_object_specs"></a> [connector\_object\_specs](#output\_connector\_object\_specs) | Map of attribute maps for all the Connector object specs created. |
 | <a name="output_kafka_manifest"></a> [kafka\_manifest](#output\_kafka\_manifest) | The Kafka manifest. |
@@ -86,6 +104,9 @@ module "confluent_platform" {
 | <a name="output_kafka_topic_manifests"></a> [kafka\_topic\_manifests](#output\_kafka\_topic\_manifests) | Map of attribute maps for all the KafkaTopic manifests created. |
 | <a name="output_kafka_topic_object_specs"></a> [kafka\_topic\_object\_specs](#output\_kafka\_topic\_object\_specs) | Map of attribute maps for all the KafkaTopic object specs created. |
 | <a name="output_namespace"></a> [namespace](#output\_namespace) | The namespace for the Confluent Platform. |
+| <a name="output_schema_config_map_data"></a> [schema\_config\_map\_data](#output\_schema\_config\_map\_data) | Map of attribute maps for all the Schema config data created. |
+| <a name="output_schema_manifests"></a> [schema\_manifests](#output\_schema\_manifests) | Map of attribute maps for all the Schema manifests created. |
+| <a name="output_schema_object_specs"></a> [schema\_object\_specs](#output\_schema\_object\_specs) | Map of attribute maps for all the Schema object specs created. |
 | <a name="output_zookeeper_manifest"></a> [zookeeper\_manifest](#output\_zookeeper\_manifest) | The Zookeeper manifest. |
 | <a name="output_zookeeper_object_spec"></a> [zookeeper\_object\_spec](#output\_zookeeper\_object\_spec) | The Zookeeper object spec. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

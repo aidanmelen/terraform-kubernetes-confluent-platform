@@ -1,8 +1,6 @@
-# connector
+# schema
 
-Deploy a Connector on Kafka Connect. This contrived example creates a MirrorMakerSource connector to mirror messages from `my-topic` to `self.my-topic`.
-
-`my-topic` messages are produced using the `kafka-producer-perf-test` cli tool running on a Kubernetes StatefulSet. Please see [producer_app_data.tf](./producer_app_data.tf) for more information.
+Deploy a Schema on the Schema Registry. This example produces Avro messages to the `pageviews` topic using the [kafka-connect-datagen](https://github.com/confluentinc/kafka-connect-datagen) connector.
 
 ## Assumptions
 
@@ -13,24 +11,34 @@ This example assumes you have a Kubernetes cluster running locally on Docker Des
 ## Example
 
 ```hcl
-module "connector" {
-  source     = "aidanmelen/confluent-platform/kubernetes//modules/connector"
-  version    = ">= 0.8.0"
-  depends_on = [module.confluent_platform]
+module "schema" {
+  source  = "aidanmelen/confluent-platform/kubernetes//modules/schema"
+  version = ">= 0.8.0"
 
-  name      = "my-connector"
+  name      = "pageviews-value"
   namespace = var.namespace
-  values = yamldecode(<<-EOF
-    spec:
-      class: "org.apache.kafka.connect.mirror.MirrorSourceConnector"
-      taskMax: 1
-      configs:
-        topics: "my-topic"
-        target.cluster.bootstrap.servers: "kafka:9092"
-        source.cluster.bootstrap.servers: "kafka:9092"
-        source.cluster.alias: "self"
+  data      = <<-EOF
+    {
+      "connect.name": "ksql.pageviews",
+      "fields": [
+        {
+          "name": "viewtime",
+          "type": "long"
+        },
+        {
+          "name": "userid",
+          "type": "string"
+        },
+        {
+          "name": "pageid",
+          "type": "string"
+        }
+      ],
+      "name": "pageviews",
+      "namespace": "ksql",
+      "type": "record"
+    }
   EOF
-  )
 }
 ```
 
@@ -46,17 +54,17 @@ module "connector" {
 | Name | Source | Version |
 |------|--------|---------|
 | <a name="module_confluent_platform"></a> [confluent\_platform](#module\_confluent\_platform) | ../../ | n/a |
-| <a name="module_connector"></a> [connector](#module\_connector) | ../../modules/connector | n/a |
+| <a name="module_schema"></a> [schema](#module\_schema) | ../../modules/schema | n/a |
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_create_controlcenter"></a> [create\_controlcenter](#input\_create\_controlcenter) | Controls if the ControlCenter component of the Confluent Platform should be created. | `bool` | `true` | no |
 | <a name="input_namespace"></a> [namespace](#input\_namespace) | The namespace to release the Confluent Operator and Confluent Platform into. | `string` | `"confluent"` | no |
-| <a name="input_producer_num_records"></a> [producer\_num\_records](#input\_producer\_num\_records) | The number of messages to produce to `my-topic`. | `number` | `1000` | no |
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| <a name="output_connector"></a> [connector](#output\_connector) | The Connector object spec. |
+| <a name="output_schema_config_map_data"></a> [schema\_config\_map\_data](#output\_schema\_config\_map\_data) | The Schema ConfigMap data. |
+| <a name="output_schema_object_spec"></a> [schema\_object\_spec](#output\_schema\_object\_spec) | The Schema object spec. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

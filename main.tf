@@ -34,8 +34,8 @@ module "confluent_platform_override_values" {
 }
 
 resource "kubernetes_manifest" "components" {
-  # Terraform will invoke the the Confluent Platform and the Confluent Operator
-  # will ensure that all the components are created/destroyed in the correct order.
+  # Terraform will invoke the Confluent Platform components and
+  # the Confluent Operator will manage the creation/deletion of the custom resources.
   for_each = {
     for name, manifest in module.confluent_platform_override_values.merged : name => manifest
     if var.create && local.create_confluent_platform[name]
@@ -87,11 +87,25 @@ module "kafka_topics" {
 }
 
 ################################################################################
+# Schemas
+################################################################################
+module "schemas" {
+  source     = "./modules/schema"
+  depends_on = [kubernetes_manifest.components]
+  for_each   = var.schemas
+
+  name      = each.key
+  namespace = lookup(each.value, "namespace", var.namespace)
+  values    = lookup(each.value, "values", {})
+  data      = lookup(each.value, "data", {})
+}
+
+################################################################################
 # Connectors
 ################################################################################
 module "connectors" {
   source     = "./modules/connector"
-  depends_on = [kubernetes_manifest.components]
+  depends_on = [kubernetes_manifest.components, module.kafka_topics, module.schemas]
   for_each   = var.connectors
 
   name      = each.key

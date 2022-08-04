@@ -3,12 +3,10 @@ content: |-
   ## Example
 
   ```hcl
-  {{ include "../../examples/kafka_topic/.main.tf.docs" }}
+  {{ include ".main.tf.docs" }}
   ```
 
   {{ .Requirements }}
-  {{ .Providers }}
   {{ .Modules }}
-  {{ .Resources }}
   {{ .Inputs }}
   {{ .Outputs }}

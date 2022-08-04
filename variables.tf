@@ -121,13 +121,19 @@ variable "kafkarestproxy" {
 }
 
 variable "kafka_topics" {
-  description = "A map of Kafka Topics to create. The key is the topic name and the value are the override values."
+  description = "A map of Kafka Topics to create. The key is the topic name. The value map is the input for the `kafka_topic` submodule."
+  type        = any
+  default     = {}
+}
+
+variable "schemas" {
+  description = "A map of Schemas to create. The key is the schema name. The value map is the input for the `schema` submodule."
   type        = any
   default     = {}
 }
 
 variable "connectors" {
-  description = "A map of Connectors to create. The key is the connector name and the value are the override values."
+  description = "A map of Connectors to create. The key is the connector name. The value map is the input for the `connector` submodule."
   type        = any
   default     = {}
 }

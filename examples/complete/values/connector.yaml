@@ -1,8 +1,12 @@
 spec:
-  class: "org.apache.kafka.connect.mirror.MirrorSourceConnector"
+  class: "io.confluent.kafka.connect.datagen.DatagenConnector"
   taskMax: 1
   configs:
-    topics: "my-topic"
-    target.cluster.bootstrap.servers: "kafka:9092"
-    source.cluster.bootstrap.servers: "kafka:9092"
-    source.cluster.alias: "self"
+    kafka.topic: "pageviews"
+    quickstart: "pageviews"
+    key.converter: "org.apache.kafka.connect.storage.StringConverter"
+    value.converter: "io.confluent.connect.avro.AvroConverter"
+    value.converter.schemas.enable: "true"
+    value.converter.schema.registry.url: "http://schemaregistry.confluent.svc.cluster.local:8081"
+    max.interval: "100"
+    iterations: "10000000"

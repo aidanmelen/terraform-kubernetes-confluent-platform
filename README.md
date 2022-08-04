@@ -37,7 +37,7 @@ Similar to the [values file for Helm](https://helm.sh/docs/chart_template_guide/
 ```hcl
 module "confluent_platform" {
   source  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.7.0"
+  version = ">= 0.8.0"
 
   namespace = var.namespace
 
@@ -47,24 +47,40 @@ module "confluent_platform" {
     chart_version    = "0.517.12"
   }
 
-  zookeeper = { "spec" = { "replicas" = "3" } } # override default value
-  kafka     = { "spec" = { "replicas" = "3" } } # override default value
+  # hcl value overrides
+  zookeeper = { "spec" = { "replicas" = "3" } }
 
-  create_connect        = true # create with default values
+  # yaml inline value overrides
+  kafka = yamldecode(<<-EOF
+    spec:
+      replicas: 3
+    EOF
+  )
+
+  # yaml file value overrides
+  connect = yamldecode(file("${path.module}/values/connect.yaml"))
+
   create_ksqldb         = false
   create_controlcenter  = var.create_controlcenter
-  create_schemaregistry = false
+  create_schemaregistry = true # create with default values
   create_kafkarestproxy = false
 
   kafka_topics = {
-    "my-topic" = {}
+    "pageviews" = {}
     "my-other-topic" = {
       "values" = { "spec" = { "configs" = { "cleanup.policy" = "compact" } } }
     }
   }
 
+  schemas = {
+    "pageviews-value" = {
+      "data" = file("${path.module}/schemas/pageviews_schema.avro")
+    }
+  }
+
   connectors = {
-    "my-connector" = {
+    "pageviews-source  = "aidanmelen/confluent-platform/kubernetes"
+  version = ">= 0.8.0"
       "values" = yamldecode(file("${path.module}/values/connector.yaml"))
     }
   }
@@ -111,6 +127,7 @@ test-confluent-platform             Test the confluent_platform example
 test-confluent-platform-singlenode  Test the confluent_platform_singlenode example
 test-complete                       Test the complete example
 test-kafka-topic                    Test the kafka_topic example
+test-schema                         Test the schema example
 test-connector                      Test the connector example
 clean                               Clean project
 ```
@@ -135,6 +152,7 @@ clean                               Clean project
 | <a name="module_confluent_platform_override_values"></a> [confluent\_platform\_override\_values](#module\_confluent\_platform\_override\_values) | Invicton-Labs/deepmerge/null | 0.1.5 |
 | <a name="module_connectors"></a> [connectors](#module\_connectors) | ./modules/connector | n/a |
 | <a name="module_kafka_topics"></a> [kafka\_topics](#module\_kafka\_topics) | ./modules/kafka_topic | n/a |
+| <a name="module_schemas"></a> [schemas](#module\_schemas) | ./modules/schema | n/a |
 ## Resources
 
 | Name | Type |
@@ -149,7 +167,7 @@ clean                               Clean project
 | <a name="input_confluent_operator_app_version"></a> [confluent\_operator\_app\_version](#input\_confluent\_operator\_app\_version) | The default Confluent Operator app version. This may be overriden by component override values. This version must be compatible with the `confluent_platform_version`. Please see confluent docs for more information: https://docs.confluent.io/platform/current/installation/versions-interoperability.html#confluent-operator | `string` | `"2.4.0"` | no |
 | <a name="input_confluent_platform_version"></a> [confluent\_platform\_version](#input\_confluent\_platform\_version) | The default Confluent Platform app version. This may be overriden by component override values. This version must be compatible with the `confluent_operator_app_version`. Please see confluent docs for more information: https://docs.confluent.io/platform/current/installation/versions-interoperability.html#confluent-operator | `string` | `"7.2.0"` | no |
 | <a name="input_connect"></a> [connect](#input\_connect) | The Connect override values. | `any` | `{}` | no |
-| <a name="input_connectors"></a> [connectors](#input\_connectors) | A map of Connectors to create. The key is the connector name and the value are the override values. | `any` | `{}` | no |
+| <a name="input_connectors"></a> [connectors](#input\_connectors) | A map of Connectors to create. The key is the connector name. The value map is the input for the `connector` submodule. | `any` | `{}` | no |
 | <a name="input_controlcenter"></a> [controlcenter](#input\_controlcenter) | The ControlCenter override values. | `any` | `{}` | no |
 | <a name="input_create"></a> [create](#input\_create) | Controls if the Confluent Platform and Operator resources should be created (affects all resources). | `bool` | `true` | no |
 | <a name="input_create_connect"></a> [create\_connect](#input\_create\_connect) | Controls if the Connect component of the Confluent Platform should be created. | `bool` | `true` | no |
@@ -162,11 +180,12 @@ clean                               Clean project
 | <a name="input_create_zookeeper"></a> [create\_zookeeper](#input\_create\_zookeeper) | Controls if the Zookeeper component of the Confluent Platform should be created. | `bool` | `true` | no |
 | <a name="input_delete_timeout"></a> [delete\_timeout](#input\_delete\_timeout) | The delete timeout for each Confluent Platform component. | `string` | `"10m"` | no |
 | <a name="input_kafka"></a> [kafka](#input\_kafka) | The Kafka override values. | `any` | `{}` | no |
-| <a name="input_kafka_topics"></a> [kafka\_topics](#input\_kafka\_topics) | A map of Kafka Topics to create. The key is the topic name and the value are the override values. | `any` | `{}` | no |
+| <a name="input_kafka_topics"></a> [kafka\_topics](#input\_kafka\_topics) | A map of Kafka Topics to create. The key is the topic name. The value map is the input for the `kafka_topic` submodule. | `any` | `{}` | no |
 | <a name="input_kafkarestproxy"></a> [kafkarestproxy](#input\_kafkarestproxy) | The KafkaRestProxy override values. | `any` | `{}` | no |
 | <a name="input_ksqldb"></a> [ksqldb](#input\_ksqldb) | The KsqlDB override values. | `any` | `{}` | no |
 | <a name="input_namespace"></a> [namespace](#input\_namespace) | The namespace to release Confluent Platform into. When `confluent_operator` is specified, this will also ensure the Confluent Operator is released into the same namespace. | `string` | `"confluent"` | no |
 | <a name="input_schemaregistry"></a> [schemaregistry](#input\_schemaregistry) | The SchemaRegistry override values. | `any` | `{}` | no |
+| <a name="input_schemas"></a> [schemas](#input\_schemas) | A map of Schemas to create. The key is the schema name. The value map is the input for the `schema` submodule. | `any` | `{}` | no |
 | <a name="input_update_timeout"></a> [update\_timeout](#input\_update\_timeout) | The update timeout for each Confluent Platform component. | `string` | `"1h"` | no |
 | <a name="input_zookeeper"></a> [zookeeper](#input\_zookeeper) | The Zookeeper override values. | `any` | `{}` | no |
 ## Outputs
@@ -191,8 +210,12 @@ clean                               Clean project
 | <a name="output_ksqldb_manifest"></a> [ksqldb\_manifest](#output\_ksqldb\_manifest) | The KsqlDB manifest. |
 | <a name="output_ksqldb_object"></a> [ksqldb\_object](#output\_ksqldb\_object) | The KsqlDB object. |
 | <a name="output_namespace"></a> [namespace](#output\_namespace) | The default namespace for the Confluent Platform. |
+| <a name="output_schema_config_map"></a> [schema\_config\_map](#output\_schema\_config\_map) | Map of attribute maps for all the Schema ConfigMap created. |
+| <a name="output_schema_manifests"></a> [schema\_manifests](#output\_schema\_manifests) | Map of attribute maps for all the Schema manifests created. |
+| <a name="output_schema_objects"></a> [schema\_objects](#output\_schema\_objects) | Map of attribute maps for all the Schema objects created. |
 | <a name="output_schemaregistry_manifest"></a> [schemaregistry\_manifest](#output\_schemaregistry\_manifest) | The SchemaRegistry manifest. |
 | <a name="output_schemaregistry_object"></a> [schemaregistry\_object](#output\_schemaregistry\_object) | The SchemaRegistry object. |
+| <a name="output_schemas"></a> [schemas](#output\_schemas) | Map of attribute maps for all Schema submodules created. |
 | <a name="output_zookeeper_manifest"></a> [zookeeper\_manifest](#output\_zookeeper\_manifest) | The Zookeeper manifest. |
 | <a name="output_zookeeper_object"></a> [zookeeper\_object](#output\_zookeeper\_object) | The Zookeeper object. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

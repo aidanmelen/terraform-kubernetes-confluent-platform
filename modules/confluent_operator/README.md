@@ -9,7 +9,7 @@ Deploy the Confluent Operator.
 ```hcl
 module "confluent_operator" {
   source  = "aidanmelen/confluent-platform/kubernetes//modules/confluent_operator"
-  version = ">= 0.7.0"
+  version = ">= 0.8.0"
 
   create_namespace = true
   namespace        = "confluent"
