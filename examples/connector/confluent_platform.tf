@@ -2,22 +2,6 @@ module "confluent_platform" {
   source    = "../../"
   namespace = var.namespace
 
-  # this is for demostration purposes only
-  # this connector is not used in this example
-  connect = yamldecode(<<EOF
-spec:
-  build:
-    type: onDemand
-    onDemand:
-      plugins:
-        locationType: confluentHub
-        confluentHub:
-          - name: debezium-connector-postgresql
-            owner: debezium
-            version: 1.9.3
-    EOF
-  )
-
   # disable componentes not needed for examples
   create_controlcenter  = var.create_controlcenter
   create_ksqldb         = false

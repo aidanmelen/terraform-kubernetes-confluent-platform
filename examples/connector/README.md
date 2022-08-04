@@ -18,15 +18,15 @@ module "connector" {
 
   name      = "my-connector"
   namespace = var.namespace
-  values = yamldecode(<<EOF
-spec:
-  class: "org.apache.kafka.connect.mirror.MirrorSourceConnector"
-  taskMax: 1
-  configs:
-    topics: "my-topic"
-    target.cluster.bootstrap.servers: "kafka:9092"
-    source.cluster.bootstrap.servers: "kafka:9092"
-    source.cluster.alias: "self"
+  values = yamldecode(<<-EOF
+    spec:
+      class: "org.apache.kafka.connect.mirror.MirrorSourceConnector"
+      taskMax: 1
+      configs:
+        topics: "my-topic"
+        target.cluster.bootstrap.servers: "kafka:9092"
+        source.cluster.bootstrap.servers: "kafka:9092"
+        source.cluster.alias: "self"
   EOF
   )
 }

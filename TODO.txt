@@ -1,13 +1,9 @@
 Implement the remaining submodules:
 - cluster_link
 - confluent_cluster_role_binding
-- connector
-- schema
 
 Create examples:
 
 - hybrid with AWS MSK
 - mirrormaker2 with Strimzi
 - [security/production-secure-deploy](https://github.com/confluentinc/confluent-kubernetes-examples/tree/master/security/production-secure-deploy)
-- [schemas](https://github.com/confluentinc/confluent-kubernetes-examples/tree/master/schemas)
-- [connectors](https://github.com/confluentinc/confluent-kubernetes-examples/tree/master/connector) https://github.com/confluentinc/confluent-kubernetes-examples/blob/master/hybrid/ccloud-connect-confluent-hub/kafka-connect.yaml#L2-L19

@@ -25,12 +25,14 @@ setup: apply-cfk-crds ## Setup project
 	cd modules/confluent_operator && terraform init
 	cd modules/kafka_topic && terraform init
 	cd modules/connector && terraform init
+	cd modules/schema && terraform init
 	cd examples/confluent_operator && terraform init
 	cd examples/confluent_platform && terraform init
 	cd examples/confluent_platform_singlenode && terraform init
 	cd examples/complete && terraform init
 	cd examples/kafka_topic && terraform init
 	cd examples/connector && terraform init
+	cd examples/schema && terraform init
 
 	# pre-commit
 	git init
@@ -96,23 +98,27 @@ clean: delete-cfk-crds ## Clean project
 	@rm -f modules/confluent_operator/.terraform.lock.hcl
 	@rm -f modules/kafka_topic/.terraform.lock.hcl
 	@rm -f modules/connector/.terraform.lock.hcl
+	@rm -f modules/schema/.terraform.lock.hcl
 	@rm -f examples/confluent_operator/.terraform.lock.hcl
 	@rm -f examples/confluent_platform/.terraform.lock.hcl
 	@rm -f examples/confluent_platform_singlenode/.terraform.lock.hcl
 	@rm -f examples/complete/.terraform.lock.hcl
 	@rm -rf examples/kafka_topic/.terraform.lock.hcl
 	@rm -rf examples/connector/.terraform.lock.hcl
+	@rm -rf examples/schema/.terraform.lock.hcl
 
 	@rm -rf .terraform
 	@rm -rf modules/confluent_operator/.terraform
 	@rm -rf modules/kafka_topic/.terraform
 	@rm -rf modules/connector/.terraform
+	@rm -rf modules/schema/.terraform
 	@rm -rf examples/confluent_operator/.terraform
 	@rm -rf examples/confluent_platform/.terraform
 	@rm -rf examples/confluent_platform_singlenode/.terraform
 	@rm -rf examples/complete/.terraform
 	@rm -rf examples/kafka_topic/.terraform
 	@rm -rf examples/connector/.terraform
+	@rm -rf examples/schema/.terraform
 
 	@rm -f go.mod
 	@rm -f go.sum
