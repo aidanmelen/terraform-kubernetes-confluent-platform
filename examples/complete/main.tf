@@ -9,8 +9,12 @@ module "confluent_platform" {
     chart_version    = "0.517.12"
   }
 
-  # hcl value overrides
-  zookeeper = { "spec" = { "replicas" = "3" } }
+  # value overrides
+  zookeeper = {
+    "spec" = {
+      "replicas" = "3"
+    }
+  }
 
   # yaml inline value overrides
   kafka = yamldecode(<<-EOF
