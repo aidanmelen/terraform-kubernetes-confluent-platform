@@ -1,6 +1,6 @@
 # schema
 
-Deploy a Schema on the Schema Registry. This example produces Avro messages to the `pageviews` topic using the [kafka-connect-datagen](https://github.com/confluentinc/kafka-connect-datagen) connector.
+Deploy an Avro Schema on the Schema Registry. This example produces Avro messages to the `pageviews` topic using the [kafka-connect-datagen](https://github.com/confluentinc/kafka-connect-datagen) connector.
 
 ## Assumptions
 

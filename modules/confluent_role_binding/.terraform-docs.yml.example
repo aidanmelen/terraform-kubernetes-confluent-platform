@@ -1,0 +1,14 @@
+content: |-
+  {{ .Header }}
+  ## Example
+
+  ```hcl
+  {{ include "../../examples/confluent_role_binding/.main.tf.docs" }}
+  ```
+
+  {{ .Requirements }}
+  {{ .Providers }}
+  {{ .Modules }}
+  {{ .Resources }}
+  {{ .Inputs }}
+  {{ .Outputs }}

@@ -17,7 +17,6 @@ module "confluent_platform" {
     EOF
   )
 
-  # disable componentes not needed for examples
   create_controlcenter  = var.create_controlcenter
   create_ksqldb         = false
   create_kafkarestproxy = false

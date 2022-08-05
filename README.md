@@ -41,52 +41,23 @@ module "confluent_platform" {
 
   namespace = var.namespace
 
+  # assumes the confluent operator was deployed in another terraform run
   confluent_operator = {
-    create_namespace = true
-    name             = "confluent-operator"
-    chart_version    = "0.517.12"
+    create = false
   }
 
-  # value overrides
-  zookeeper = {
-    "spec" = {
-      "replicas" = "3"
-    }
-  }
+  # uncomment to override the modules default local values
+  /*
+  zookeeper      = yamldecode(file("${path.module}/values/zookeeper.yaml"))
+  kafka          = yamldecode(file("${path.module}/values/kafka.yaml"))
+  connect        = yamldecode(file("${path.module}/values/connect.yaml"))
+  ksqldb         = yamldecode(file("${path.module}/values/ksqldb.yaml"))
+  controlcenter  = yamldecode(file("${path.module}/values/controlcenter.yaml"))
+  schemaregistry = yamldecode(file("${path.module}/values/schemaregistry.yaml"))
+  kafkarestproxy = yamldecode(file("${path.module}/values/kafkarestproxy.yaml"))
+  */
 
-  # yaml inline value overrides
-  kafka = yamldecode(<<-EOF
-    spec:
-      replicas: 3
-    EOF
-  )
-
-  # yaml file value overrides
-  connect = yamldecode(file("${path.module}/values/connect.yaml"))
-
-  create_ksqldb         = false
-  create_controlcenter  = var.create_controlcenter
-  create_schemaregistry = true # create with default values
-  create_kafkarestproxy = false
-
-  kafka_topics = {
-    "pageviews" = {}
-    "my-other-topic" = {
-      "values" = { "spec" = { "configs" = { "cleanup.policy" = "compact" } } }
-    }
-  }
-
-  schemas = {
-    "pageviews-value" = {
-      "data" = file("${path.module}/schemas/pageviews_schema.avro")
-    }
-  }
-
-  connectors = {
-    "pageviews-source" = {
-      "values" = yamldecode(file("${path.module}/values/connector.yaml"))
-    }
-  }
+  create_controlcenter = var.create_controlcenter
 }
 ```
 
@@ -132,6 +103,7 @@ test-complete                       Test the complete example
 test-kafka-topic                    Test the kafka_topic example
 test-schema                         Test the schema example
 test-connector                      Test the connector example
+test-confluent-role-binding         Test the confluent_role_binding example
 clean                               Clean project
 ```
 

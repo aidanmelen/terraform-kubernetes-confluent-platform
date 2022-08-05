@@ -33,6 +33,7 @@ setup: apply-cfk-crds ## Setup project
 	cd examples/kafka_topic && terraform init
 	cd examples/schema && terraform init
 	cd examples/connector && terraform init
+	cd examples/confluent_role_binding && terraform init
 
 	# pre-commit
 	git init
@@ -58,7 +59,7 @@ lint-all: docs ## Lint all files with pre-commit
 	pre-commit run --all-files
 	git add -A
 
-tests: test-confluent-operator test-confluent-platform test-confluent-platform-singlenode test-complete test-kafka-topic test-schema test-connector ## Tests with Terratest
+tests: test-confluent-operator test-confluent-platform test-confluent-platform-singlenode test-complete test-kafka-topic test-schema test-connector test-confluent-role-binding ## Tests with Terratest
 
 test-confluent-operator: ## Test the confluent_operator example
 	go test test/terraform_confluent_operator_test.go -timeout 5m -v |& tee test/terraform_confluent_operator_test.log
@@ -92,6 +93,9 @@ test-schema: ## Test the schema example
 test-connector: ## Test the connector example
 	go test test/terraform_connector_test.go -timeout 10m -v |& tee test/terraform_connector_test.log
 
+test-confluent-role-binding: ## Test the confluent_role_binding example
+	go test test/terraform_confluent_role_binding_test.go -timeout 10m -v |& tee test/terraform_confluent_role_binding_test.log
+
 delete-cfk-crds:
 	kubectl config set-cluster docker-desktop
 	kubectl delete -f ./crds/2.4.0
@@ -109,6 +113,7 @@ clean: delete-cfk-crds ## Clean project
 	@rm -rf examples/kafka_topic/.terraform.lock.hcl
 	@rm -rf examples/schema/.terraform.lock.hcl
 	@rm -rf examples/connector/.terraform.lock.hcl
+	@rm -rf examples/confluent_role_binding/.terraform.lock.hcl
 
 	@rm -rf .terraform
 	@rm -rf modules/confluent_operator/.terraform
@@ -122,6 +127,7 @@ clean: delete-cfk-crds ## Clean project
 	@rm -rf examples/kafka_topic/.terraform
 	@rm -rf examples/schema/.terraform
 	@rm -rf examples/connector/.terraform
+	@rm -rf examples/confluent_role_binding/.terraform
 
 	@rm -f go.mod
 	@rm -f go.sum

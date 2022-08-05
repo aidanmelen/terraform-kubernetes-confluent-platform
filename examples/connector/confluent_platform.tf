@@ -2,7 +2,6 @@ module "confluent_platform" {
   source    = "../../"
   namespace = var.namespace
 
-  # disable componentes not needed for examples
   create_controlcenter  = var.create_controlcenter
   create_ksqldb         = false
   create_schemaregistry = false
