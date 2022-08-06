@@ -21,6 +21,8 @@ resource "kubernetes_secret_v1" "kafka_client_config_secure" {
 }
 
 resource "kubernetes_stateful_set_v1" "producer" {
+  depends_on = [module.confluent_platform_tls_only]
+
   metadata {
     name      = "producer"
     namespace = kubernetes_namespace_v1.namespace.metadata[0].name
