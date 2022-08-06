@@ -18,7 +18,7 @@ Release the [Confluent Operator example](https://github.com/aidanmelen/terraform
 ```hcl
 module "confluent_platform_singlenode" {
   source  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.8.0"
+  version = ">= 0.9.0"
 
   namespace = var.namespace
 
@@ -32,7 +32,7 @@ module "confluent_platform_singlenode" {
       replicas: 1
       podTemplate:
         resource  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.8.0"
+  version = ">= 0.9.0"
 
           requests:
             cpu: 100m
@@ -61,7 +61,7 @@ module "confluent_platform_singlenode" {
           - "password.encoder.secret=secret"
       podTemplate:
         resource  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.8.0"
+  version = ">= 0.9.0"
 
           requests:
             cpu: 200m
@@ -85,7 +85,7 @@ module "confluent_platform_singlenode" {
           - "status.storage.replication.factor=1"
       podTemplate:
         resource  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.8.0"
+  version = ">= 0.9.0"
 
           requests:
             cpu: 100m
@@ -111,7 +111,7 @@ module "confluent_platform_singlenode" {
           url: http://schemaregistry.${var.namespace}.svc.cluster.local:8081
       podTemplate:
         resource  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.8.0"
+  version = ">= 0.9.0"
 
           requests:
             cpu: 100m
@@ -141,7 +141,7 @@ module "confluent_platform_singlenode" {
           - "confluent.controlcenter.internal.topics.replication=1"
       podTemplate:
         resource  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.8.0"
+  version = ">= 0.9.0"
 
           requests:
             cpu: 500m
@@ -172,7 +172,7 @@ module "confluent_platform_singlenode" {
       replicas: 1
       podTemplate:
         resource  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.8.0"
+  version = ">= 0.9.0"
 
           requests:
             cpu: 100m
@@ -192,7 +192,7 @@ module "confluent_platform_singlenode" {
           url: http://schemaregistry.${var.namespace}.svc.cluster.local:8081
       podTemplate:
         resource  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.8.0"
+  version = ">= 0.9.0"
 
           requests:
             cpu: 100m

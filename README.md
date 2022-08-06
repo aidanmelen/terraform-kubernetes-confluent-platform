@@ -37,7 +37,7 @@ Similar to the [values file for Helm](https://helm.sh/docs/chart_template_guide/
 ```hcl
 module "confluent_platform" {
   source  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.8.0"
+  version = ">= 0.9.0"
 
   namespace = var.namespace
 

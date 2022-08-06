@@ -15,7 +15,7 @@ This example assumes you have a Kubernetes cluster running locally on Docker Des
 ```hcl
 module "connector" {
   source     = "aidanmelen/confluent-platform/kubernetes//modules/connector"
-  version    = ">= 0.8.0"
+  version    = ">= 0.9.0"
   depends_on = [module.confluent_platform]
 
   name      = "my-connector"
