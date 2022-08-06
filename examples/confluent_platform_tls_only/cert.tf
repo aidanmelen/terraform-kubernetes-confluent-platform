@@ -10,19 +10,21 @@ resource "tls_private_key" "key" {
 }
 
 resource "tls_self_signed_cert" "ca" {
-  private_key_pem = tls_private_key.key.private_key_pem
+  private_key_pem       = tls_private_key.key.private_key_pem
+  is_ca_certificate     = true
+  validity_period_hours = 2400
 
   subject {
-    common_name  = "example.com"
-    organization = "Confluent"
+    country             = "US"
+    province            = "CA"
+    locality            = "MountainView"
+    organization        = "Confluent"
+    organizational_unit = "Operator"
+    common_name         = "TestCA"
   }
 
-  validity_period_hours = 12
-
   allowed_uses = [
-    "key_encipherment",
-    "digital_signature",
-    "server_auth",
+    "any_extended"
   ]
 }
 
@@ -33,8 +35,8 @@ resource "kubernetes_secret_v1" "ca_pair_sslcerts" {
   }
 
   data = {
-    "tls.crt" = tls_self_signed_cert.ca.cert_pem
-    "tls.key" = tls_private_key.key.private_key_pem
+    "tls.crt" = trimspace(tls_self_signed_cert.ca.cert_pem)
+    "tls.key" = trimspace(tls_private_key.key.private_key_pem)
   }
 
   type = "kubernetes.io/tls"
