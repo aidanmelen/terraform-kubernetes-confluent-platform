@@ -74,6 +74,32 @@ data "kubernetes_resource" "components" {
 }
 
 ################################################################################
+# Kafka Rest Classes
+################################################################################
+module "kafka_rest_classes" {
+  source     = "./modules/kafka_rest_class"
+  depends_on = [kubernetes_manifest.components]
+  for_each   = var.kafka_rest_classes
+
+  name      = each.key
+  namespace = lookup(each.value, "namespace", var.namespace)
+  values    = lookup(each.value, "values", {})
+}
+
+################################################################################
+# Confluent Cluster Role Bindings
+################################################################################
+module "confluent_role_bindings" {
+  source     = "./modules/confluent_role_binding"
+  depends_on = [kubernetes_manifest.components]
+  for_each   = var.confluent_role_bindings
+
+  name      = each.key
+  namespace = lookup(each.value, "namespace", var.namespace)
+  values    = lookup(each.value, "values", {})
+}
+
+################################################################################
 # Kafka Topics
 ################################################################################
 module "kafka_topics" {

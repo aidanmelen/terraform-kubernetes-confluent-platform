@@ -1,9 +1,3 @@
-resource "kubernetes_namespace_v1" "namespace" {
-  metadata {
-    name = var.namespace
-  }
-}
-
 resource "tls_private_key" "key" {
   algorithm = "RSA"
   rsa_bits  = 2048
@@ -29,9 +23,11 @@ resource "tls_self_signed_cert" "ca" {
 }
 
 resource "kubernetes_secret_v1" "ca_pair_sslcerts" {
+  depends_on = [module.confluent_platform.helm_release]
+
   metadata {
     name      = "ca-pair-sslcerts"
-    namespace = kubernetes_namespace_v1.namespace.metadata[0].name
+    namespace = var.namespace
   }
 
   data = {

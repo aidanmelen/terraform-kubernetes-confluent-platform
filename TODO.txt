@@ -1,6 +1,6 @@
 Implement the remaining submodules:
 - cluster_link
-- confluent_cluster_role_binding
+- confluent_role_binding
 
 Create examples:
 

@@ -2,14 +2,14 @@
 resource "kubernetes_secret_v1" "kafka_client_config_secure" {
   metadata {
     name      = "kafka-client-config-secure"
-    namespace = kubernetes_namespace_v1.namespace.metadata[0].name
+    namespace = module.confluent_platform.namespace
   }
 
   data = {
     # The auto-generated certs will create a truststore and mount it on all Confluent Platform component pods at `/mnt/sslcerts/truststore.jks`.
     # The default truststore password is` mystorepassword`.
     "kafka.properties" = <<-EOF
-      bootstrap.servers=kafka.${kubernetes_namespace_v1.namespace.metadata[0].name}.svc.cluster.local:9071
+      bootstrap.servers=kafka.${module.confluent_platform.namespace}.svc.cluster.local:9071
       security.protocol=SSL
       ssl.truststore.location=/mnt/sslcerts/truststore.jks
       ssl.truststore.password=mystorepassword
@@ -21,11 +21,11 @@ resource "kubernetes_secret_v1" "kafka_client_config_secure" {
 }
 
 resource "kubernetes_stateful_set_v1" "producer" {
-  depends_on = [module.confluent_platform_tls_only]
+  depends_on = [module.confluent_platform]
 
   metadata {
     name      = "producer"
-    namespace = kubernetes_namespace_v1.namespace.metadata[0].name
+    namespace = module.confluent_platform.namespace
   }
 
   spec {
@@ -58,10 +58,10 @@ resource "kubernetes_stateful_set_v1" "producer" {
             <<-EOF
             kafka-producer-perf-test \
               --topic my-topic \
-              --record-size 524288 \
-              --throughput 64 \
+              --record-size 1024 \
+              --throughput 1 \
               --producer.config /mnt/kafka.properties \
-              --num-records 230400
+              --num-records 100
             EOF
           ]
 
@@ -103,16 +103,5 @@ resource "kubernetes_stateful_set_v1" "producer" {
         }
       }
     }
-  }
-}
-
-resource "kubernetes_service_v1" "elastic" {
-  metadata {
-    name      = "elastic"
-    namespace = kubernetes_namespace_v1.namespace.metadata[0].name
-  }
-
-  spec {
-    cluster_ip = "None"
   }
 }

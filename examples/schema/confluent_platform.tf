@@ -39,7 +39,7 @@ module "confluent_platform" {
             key.converter: "org.apache.kafka.connect.storage.StringConverter"
             value.converter: "io.confluent.connect.avro.AvroConverter"
             value.converter.schemas.enable: "true"
-            value.converter.schema.registry.url: "http://schemaregistry.confluent.svc.cluster.local:8081"
+            value.converter.schema.registry.url: "http://schemaregistry.${var.namespace}.svc.cluster.local:8081"
             max.interval: "100"
             iterations: "10000000"
         EOF
