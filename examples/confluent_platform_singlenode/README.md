@@ -18,7 +18,7 @@ Release the [Confluent Operator example](https://github.com/aidanmelen/terraform
 ```hcl
 module "confluent_platform_singlenode" {
   source  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.8.0"
+  version = ">= 0.9.0"
 
   namespace = var.namespace
 
@@ -32,7 +32,7 @@ module "confluent_platform_singlenode" {
       replicas: 1
       podTemplate:
         resource  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.8.0"
+  version = ">= 0.9.0"
 
           requests:
             cpu: 100m
@@ -61,7 +61,7 @@ module "confluent_platform_singlenode" {
           - "password.encoder.secret=secret"
       podTemplate:
         resource  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.8.0"
+  version = ">= 0.9.0"
 
           requests:
             cpu: 200m
@@ -85,7 +85,7 @@ module "confluent_platform_singlenode" {
           - "status.storage.replication.factor=1"
       podTemplate:
         resource  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.8.0"
+  version = ">= 0.9.0"
 
           requests:
             cpu: 100m
@@ -108,10 +108,10 @@ module "confluent_platform_singlenode" {
       internalTopicReplicationFactor: 1
       dependencies:
         schemaRegistry:
-          url: http://schemaregistry.confluent.svc.cluster.local:8081
+          url: http://schemaregistry.${var.namespace}.svc.cluster.local:8081
       podTemplate:
         resource  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.8.0"
+  version = ">= 0.9.0"
 
           requests:
             cpu: 100m
@@ -139,13 +139,9 @@ module "confluent_platform_singlenode" {
           - "confluent.metrics.topic.replication=1"
           - "confluent.monitoring.interceptor.topic.replication=1"
           - "confluent.controlcenter.internal.topics.replication=1"
-      externalAccess:
-        type: loadBalancer
-        loadBalancer:
-          domain: minikube.domain
       podTemplate:
         resource  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.8.0"
+  version = ">= 0.9.0"
 
           requests:
             cpu: 500m
@@ -161,13 +157,13 @@ module "confluent_platform_singlenode" {
           runAsNonRoot: true
       dependencies:
         schemaRegistry:
-          url: http://schemaregistry.confluent.svc.cluster.local:8081
+          url: http://schemaregistry.${var.namespace}.svc.cluster.local:8081
         ksqldb:
         - name: ksql-dev
-          url: http://ksqldb.confluent.svc.cluster.local:8088
+          url: http://ksqldb.${var.namespace}.svc.cluster.local:8088
         connect:
         - name: connect-dev
-          url:  http://connect.confluent.svc.cluster.local:8083
+          url:  http://connect.${var.namespace}.svc.cluster.local:8083
     EOF
   )
 
@@ -176,7 +172,7 @@ module "confluent_platform_singlenode" {
       replicas: 1
       podTemplate:
         resource  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.8.0"
+  version = ">= 0.9.0"
 
           requests:
             cpu: 100m
@@ -193,10 +189,10 @@ module "confluent_platform_singlenode" {
       replicas: 1
       dependencies:
         schemaRegistry:
-          url: http://schemaregistry.confluent.svc.cluster.local:8081
+          url: http://schemaregistry.${var.namespace}.svc.cluster.local:8081
       podTemplate:
         resource  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.8.0"
+  version = ">= 0.9.0"
 
           requests:
             cpu: 100m

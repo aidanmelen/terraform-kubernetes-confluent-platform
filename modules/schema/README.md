@@ -9,7 +9,7 @@ Deploy a Schema on the Schema Registry.
 ```hcl
 module "schema" {
   source  = "aidanmelen/confluent-platform/kubernetes//modules/schema"
-  version = ">= 0.8.0"
+  version = ">= 0.9.0"
 
   name      = "pageviews-value"
   namespace = var.namespace

@@ -37,56 +37,27 @@ Similar to the [values file for Helm](https://helm.sh/docs/chart_template_guide/
 ```hcl
 module "confluent_platform" {
   source  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.8.0"
+  version = ">= 0.9.0"
 
   namespace = var.namespace
 
+  # assumes the confluent operator was deployed in another terraform run
   confluent_operator = {
-    create_namespace = true
-    name             = "confluent-operator"
-    chart_version    = "0.517.12"
+    create = false
   }
 
-  # value overrides
-  zookeeper = {
-    "spec" = {
-      "replicas" = "3"
-    }
-  }
+  # uncomment to override the modules default local values
+  /*
+  zookeeper      = yamldecode(file("${path.module}/values/zookeeper.yaml"))
+  kafka          = yamldecode(file("${path.module}/values/kafka.yaml"))
+  connect        = yamldecode(file("${path.module}/values/connect.yaml"))
+  ksqldb         = yamldecode(file("${path.module}/values/ksqldb.yaml"))
+  controlcenter  = yamldecode(file("${path.module}/values/controlcenter.yaml"))
+  schemaregistry = yamldecode(file("${path.module}/values/schemaregistry.yaml"))
+  kafkarestproxy = yamldecode(file("${path.module}/values/kafkarestproxy.yaml"))
+  */
 
-  # yaml inline value overrides
-  kafka = yamldecode(<<-EOF
-    spec:
-      replicas: 3
-    EOF
-  )
-
-  # yaml file value overrides
-  connect = yamldecode(file("${path.module}/values/connect.yaml"))
-
-  create_ksqldb         = false
-  create_controlcenter  = var.create_controlcenter
-  create_schemaregistry = true # create with default values
-  create_kafkarestproxy = false
-
-  kafka_topics = {
-    "pageviews" = {}
-    "my-other-topic" = {
-      "values" = { "spec" = { "configs" = { "cleanup.policy" = "compact" } } }
-    }
-  }
-
-  schemas = {
-    "pageviews-value" = {
-      "data" = file("${path.module}/schemas/pageviews_schema.avro")
-    }
-  }
-
-  connectors = {
-    "pageviews-source" = {
-      "values" = yamldecode(file("${path.module}/values/connector.yaml"))
-    }
-  }
+  create_controlcenter = var.create_controlcenter
 }
 ```
 
@@ -132,6 +103,7 @@ test-complete                       Test the complete example
 test-kafka-topic                    Test the kafka_topic example
 test-schema                         Test the schema example
 test-connector                      Test the connector example
+test-confluent-role-binding         Test the confluent_role_binding example
 clean                               Clean project
 ```
 
@@ -153,7 +125,9 @@ clean                               Clean project
 |------|--------|---------|
 | <a name="module_confluent_operator"></a> [confluent\_operator](#module\_confluent\_operator) | ./modules/confluent_operator | n/a |
 | <a name="module_confluent_platform_override_values"></a> [confluent\_platform\_override\_values](#module\_confluent\_platform\_override\_values) | Invicton-Labs/deepmerge/null | 0.1.5 |
+| <a name="module_confluent_role_bindings"></a> [confluent\_role\_bindings](#module\_confluent\_role\_bindings) | ./modules/confluent_role_binding | n/a |
 | <a name="module_connectors"></a> [connectors](#module\_connectors) | ./modules/connector | n/a |
+| <a name="module_kafka_rest_classes"></a> [kafka\_rest\_classes](#module\_kafka\_rest\_classes) | ./modules/kafka_rest_class | n/a |
 | <a name="module_kafka_topics"></a> [kafka\_topics](#module\_kafka\_topics) | ./modules/kafka_topic | n/a |
 | <a name="module_schemas"></a> [schemas](#module\_schemas) | ./modules/schema | n/a |
 ## Resources
@@ -169,6 +143,7 @@ clean                               Clean project
 | <a name="input_confluent_operator"></a> [confluent\_operator](#input\_confluent\_operator) | Controls if the Confluent Operator resources should be created. This is required when the Confluent Operator is not already running on the kubernetes cluster. | `any` | <pre>{<br>  "create": true<br>}</pre> | no |
 | <a name="input_confluent_operator_app_version"></a> [confluent\_operator\_app\_version](#input\_confluent\_operator\_app\_version) | The default Confluent Operator app version. This may be overriden by component override values. This version must be compatible with the `confluent_platform_version`. Please see confluent docs for more information: https://docs.confluent.io/platform/current/installation/versions-interoperability.html#confluent-operator | `string` | `"2.4.0"` | no |
 | <a name="input_confluent_platform_version"></a> [confluent\_platform\_version](#input\_confluent\_platform\_version) | The default Confluent Platform app version. This may be overriden by component override values. This version must be compatible with the `confluent_operator_app_version`. Please see confluent docs for more information: https://docs.confluent.io/platform/current/installation/versions-interoperability.html#confluent-operator | `string` | `"7.2.0"` | no |
+| <a name="input_confluent_role_bindings"></a> [confluent\_role\_bindings](#input\_confluent\_role\_bindings) | A map of Confluent Role Bindings to create. The key is the confluent role binding name. The value map is the input for the `confluent_role_binding` submodule. | `any` | `{}` | no |
 | <a name="input_connect"></a> [connect](#input\_connect) | The Connect override values. | `any` | `{}` | no |
 | <a name="input_connectors"></a> [connectors](#input\_connectors) | A map of Connectors to create. The key is the connector name. The value map is the input for the `connector` submodule. | `any` | `{}` | no |
 | <a name="input_controlcenter"></a> [controlcenter](#input\_controlcenter) | The ControlCenter override values. | `any` | `{}` | no |
@@ -183,6 +158,7 @@ clean                               Clean project
 | <a name="input_create_zookeeper"></a> [create\_zookeeper](#input\_create\_zookeeper) | Controls if the Zookeeper component of the Confluent Platform should be created. | `bool` | `true` | no |
 | <a name="input_delete_timeout"></a> [delete\_timeout](#input\_delete\_timeout) | The delete timeout for each Confluent Platform component. | `string` | `"10m"` | no |
 | <a name="input_kafka"></a> [kafka](#input\_kafka) | The Kafka override values. | `any` | `{}` | no |
+| <a name="input_kafka_rest_classes"></a> [kafka\_rest\_classes](#input\_kafka\_rest\_classes) | A map of Kafka Rest Classes to create. The key is the kafka rest class name. The value map is the input for the `kafka_rest_class` submodule. | `any` | `{}` | no |
 | <a name="input_kafka_topics"></a> [kafka\_topics](#input\_kafka\_topics) | A map of Kafka Topics to create. The key is the topic name. The value map is the input for the `kafka_topic` submodule. | `any` | `{}` | no |
 | <a name="input_kafkarestproxy"></a> [kafkarestproxy](#input\_kafkarestproxy) | The KafkaRestProxy override values. | `any` | `{}` | no |
 | <a name="input_ksqldb"></a> [ksqldb](#input\_ksqldb) | The KsqlDB override values. | `any` | `{}` | no |
@@ -196,6 +172,9 @@ clean                               Clean project
 | Name | Description |
 |------|-------------|
 | <a name="output_confluent_operator"></a> [confluent\_operator](#output\_confluent\_operator) | Map of attributes for the Confluent Operator. |
+| <a name="output_confluent_role_binding_manifests"></a> [confluent\_role\_binding\_manifests](#output\_confluent\_role\_binding\_manifests) | Map of attribute maps for all the ConfluentRoleBinding manifests created. |
+| <a name="output_confluent_role_binding_objects"></a> [confluent\_role\_binding\_objects](#output\_confluent\_role\_binding\_objects) | Map of attribute maps for all the ConfluentRoleBinding objects created. |
+| <a name="output_confluent_role_bindings"></a> [confluent\_role\_bindings](#output\_confluent\_role\_bindings) | Map of attribute maps for all ConfluentRoleBinding submodules created. |
 | <a name="output_connect_manifest"></a> [connect\_manifest](#output\_connect\_manifest) | The Connect manifest. |
 | <a name="output_connect_object"></a> [connect\_object](#output\_connect\_object) | The Connect object. |
 | <a name="output_connector_manifests"></a> [connector\_manifests](#output\_connector\_manifests) | Map of attribute maps for all the Connector manifests created. |
@@ -205,6 +184,9 @@ clean                               Clean project
 | <a name="output_controlcenter_object"></a> [controlcenter\_object](#output\_controlcenter\_object) | The ControlCenter object. |
 | <a name="output_kafka_manifest"></a> [kafka\_manifest](#output\_kafka\_manifest) | The Kafka manifest. |
 | <a name="output_kafka_object"></a> [kafka\_object](#output\_kafka\_object) | The Kafka object. |
+| <a name="output_kafka_rest_class_manifests"></a> [kafka\_rest\_class\_manifests](#output\_kafka\_rest\_class\_manifests) | Map of attribute maps for all the KafkaRestClass manifests created. |
+| <a name="output_kafka_rest_class_objects"></a> [kafka\_rest\_class\_objects](#output\_kafka\_rest\_class\_objects) | Map of attribute maps for all the KafkaRestClass objects created. |
+| <a name="output_kafka_rest_classes"></a> [kafka\_rest\_classes](#output\_kafka\_rest\_classes) | Map of attribute maps for all KafkaRestClass submodules created. |
 | <a name="output_kafka_topic_manifests"></a> [kafka\_topic\_manifests](#output\_kafka\_topic\_manifests) | Map of attribute maps for all the KafkaTopic manifests created. |
 | <a name="output_kafka_topic_objects"></a> [kafka\_topic\_objects](#output\_kafka\_topic\_objects) | Map of attribute maps for all the KafkaTopic objects created. |
 | <a name="output_kafka_topics"></a> [kafka\_topics](#output\_kafka\_topics) | Map of attribute maps for all KafkaTopic submodules created. |

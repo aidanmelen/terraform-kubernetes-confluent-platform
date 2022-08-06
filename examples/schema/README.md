@@ -1,6 +1,6 @@
 # schema
 
-Deploy a Schema on the Schema Registry. This example produces Avro messages to the `pageviews` topic using the [kafka-connect-datagen](https://github.com/confluentinc/kafka-connect-datagen) connector.
+Deploy an Avro Schema on the Schema Registry. This example produces Avro messages to the `pageviews` topic using the [kafka-connect-datagen](https://github.com/confluentinc/kafka-connect-datagen) connector.
 
 ## Assumptions
 
@@ -13,7 +13,7 @@ This example assumes you have a Kubernetes cluster running locally on Docker Des
 ```hcl
 module "schema" {
   source  = "aidanmelen/confluent-platform/kubernetes//modules/schema"
-  version = ">= 0.8.0"
+  version = ">= 0.9.0"
 
   name      = "pageviews-value"
   namespace = var.namespace

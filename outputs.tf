@@ -103,6 +103,42 @@ output "kafka_topic_objects" {
 }
 
 ################################################################################
+# Kafka Rest Class
+################################################################################
+output "kafka_rest_classes" {
+  description = "Map of attribute maps for all KafkaRestClass submodules created."
+  value       = module.kafka_rest_classes
+}
+
+output "kafka_rest_class_manifests" {
+  description = "Map of attribute maps for all the KafkaRestClass manifests created."
+  value       = { for name, kafka_rest_class in module.kafka_rest_classes : name => kafka_rest_class.manifest }
+}
+
+output "kafka_rest_class_objects" {
+  description = "Map of attribute maps for all the KafkaRestClass objects created."
+  value       = { for name, kafka_rest_class in module.kafka_rest_classes : name => kafka_rest_class.object }
+}
+
+################################################################################
+# Confluent Role Bindings
+################################################################################
+output "confluent_role_bindings" {
+  description = "Map of attribute maps for all ConfluentRoleBinding submodules created."
+  value       = module.confluent_role_bindings
+}
+
+output "confluent_role_binding_manifests" {
+  description = "Map of attribute maps for all the ConfluentRoleBinding manifests created."
+  value       = { for name, confluent_role_binding in module.confluent_role_bindings : name => confluent_role_binding.manifest }
+}
+
+output "confluent_role_binding_objects" {
+  description = "Map of attribute maps for all the ConfluentRoleBinding objects created."
+  value       = { for name, confluent_role_binding in module.confluent_role_bindings : name => confluent_role_binding.object }
+}
+
+################################################################################
 # Schema
 ################################################################################
 output "schemas" {

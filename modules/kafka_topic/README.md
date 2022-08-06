@@ -9,7 +9,7 @@ Deploy a KafkaTopic.
 ```hcl
 module "kafka_topic" {
   source     = "aidanmelen/confluent-platform/kubernetes//modules/kafka_topic"
-  version    = ">= 0.8.0"
+  version    = ">= 0.9.0"
   depends_on = [module.confluent_platform]
 
   name      = "my-topic"
@@ -18,7 +18,7 @@ module "kafka_topic" {
 
 module "other_kafka_topic" {
   source     = "aidanmelen/confluent-platform/kubernetes//modules/kafka_topic"
-  version    = ">= 0.8.0"
+  version    = ">= 0.9.0"
   depends_on = [module.confluent_platform]
 
   name      = "my-other-topic"

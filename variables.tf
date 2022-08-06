@@ -120,6 +120,18 @@ variable "kafkarestproxy" {
   default     = {}
 }
 
+variable "kafka_rest_classes" {
+  description = "A map of Kafka Rest Classes to create. The key is the kafka rest class name. The value map is the input for the `kafka_rest_class` submodule."
+  type        = any
+  default     = {}
+}
+
+variable "confluent_role_bindings" {
+  description = "A map of Confluent Role Bindings to create. The key is the confluent role binding name. The value map is the input for the `confluent_role_binding` submodule."
+  type        = any
+  default     = {}
+}
+
 variable "kafka_topics" {
   description = "A map of Kafka Topics to create. The key is the topic name. The value map is the input for the `kafka_topic` submodule."
   type        = any

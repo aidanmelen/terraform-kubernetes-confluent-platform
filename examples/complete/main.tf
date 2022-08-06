@@ -28,7 +28,7 @@ module "confluent_platform" {
 
   create_ksqldb         = false
   create_controlcenter  = var.create_controlcenter
-  create_schemaregistry = true # create with default values
+  create_schemaregistry = true # explictly create with default values
   create_kafkarestproxy = false
 
   kafka_topics = {
@@ -40,7 +40,7 @@ module "confluent_platform" {
 
   schemas = {
     "pageviews-value" = {
-      "data" = file("${path.module}/schemas/pageviews_schema.avro")
+      "data" = file("${path.module}/schemas/pageviews.avro")
     }
   }
 
