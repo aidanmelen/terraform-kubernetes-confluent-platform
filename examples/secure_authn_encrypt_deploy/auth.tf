@@ -5,7 +5,7 @@ resource "kubernetes_secret_v1" "credential" {
   depends_on = [module.confluent_platform.helm_release]
 
   metadata {
-    name      = "credentials"
+    name      = "credential"
     namespace = var.namespace
   }
 

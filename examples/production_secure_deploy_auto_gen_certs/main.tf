@@ -283,35 +283,35 @@ module "confluent_platform" {
   create_schemaregistry = false
   create_kafkarestproxy = false
 
-  # kafka_rest_classes = {
-  #   "default" = {
-  #     values = yamldecode(<<-EOF
-  #       spec:
-  #         kafkaRest:
-  #           authentication:
-  #             type: bearer
-  #             bearer:
-  #               secretRef: rest-credential
-  #       EOF
-  #     )
-  #   }
-  # }
+  kafka_rest_classes = {
+    "default" = {
+      values = yamldecode(<<-EOF
+        spec:
+          kafkaRest:
+            authentication:
+              type: bearer
+              bearer:
+                secretRef: rest-credential
+        EOF
+      )
+    }
+  }
 
-  # kafka_topics = {
-  #   "my-topic" = {
-  #     values = yamldecode(<<-EOF
-  #       spec:
-  #         replicas: 1
-  #         partitionCount: 1
-  #         kafkaRest:
-  #           authentication:
-  #             type: bearer
-  #             bearer:
-  #               secretRef: rest-credential
-  #         configs:
-  #           cleanup.policy: "delete"
-  #       EOF
-  #     )
-  #   }
-  # }
+  kafka_topics = {
+    "my-topic" = {
+      values = yamldecode(<<-EOF
+        spec:
+          replicas: 1
+          partitionCount: 1
+          kafkaRest:
+            authentication:
+              type: bearer
+              bearer:
+                secretRef: rest-credential
+          configs:
+            cleanup.policy: "delete"
+        EOF
+      )
+    }
+  }
 }

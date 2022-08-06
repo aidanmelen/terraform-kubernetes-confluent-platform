@@ -10,7 +10,9 @@ resource "kubernetes_secret_v1" "kafka_client_config_secure" {
     # The default truststore password is` mystorepassword`.
     "kafka.properties" = <<-EOF
       bootstrap.servers=kafka.${module.confluent_platform.namespace}.svc.cluster.local:9071
-      security.protocol=SSL
+      sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username=kafka_client password=kafka_client-secret;
+      sasl.mechanism=PLAIN
+      security.protocol=SASL_SSL
       ssl.truststore.location=/mnt/sslcerts/truststore.jks
       ssl.truststore.password=mystorepassword
     EOF
