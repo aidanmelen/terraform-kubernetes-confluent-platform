@@ -1,6 +1,6 @@
 # secure_authn_encrypt_deploy
 
-Deploy a secure Confluent Platform with SASL PLAIN authentication, no authorization, and inter-component TLS.
+Deploy a secure Confluent Platform with SASL PLAIN authentication, no authorization, and inter-component TLS. This Terraform's [confluent-kubernetes-examples/security/secure-authn-encrypt-deploy](https://github.com/confluentinc/confluent-kubernetes-examples/tree/master/security/secure-authn-encrypt-deploy)
 
 ## Assumptions
 

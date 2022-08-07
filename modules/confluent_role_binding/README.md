@@ -2,6 +2,102 @@
 
 Deploy a Confluent Role Binding.
 
+## Example
+
+Terraform the ControlCenter Test Admin Rolebindings from [
+confluent-kubernetes-examples/security/production-secure-deploy-auto-gen-certs](https://github.com/confluentinc/confluent-kubernetes-examples/blob/master/security/production-secure-deploy-auto-gen-certs/controlcenter-testadmin-rolebindings.yaml).
+
+```hcl
+module "testadmin_frb" {
+  source     = "aidanmelen/confluent-platform/kubernetes//modules/confluent_role_binding"
+  version    = ">= 0.9.0"
+  depends_on = [module.confluent_platform]
+
+  name      = "testadmin-rb"
+  namespace = var.namespace
+
+  # rolebinding `testadmin-rb` allows `testadmin` to see kafkaCluster
+  values = yamldecode(<<-EOF
+    spec:
+      principal:
+        type: user
+        name: testadmin
+      role: ClusterAdmin
+    EOF
+  )
+}
+
+module "testadmin_rb_sr" {
+  source     = "aidanmelen/confluent-platform/kubernetes//modules/confluent_role_binding"
+  version    = ">= 0.9.0"
+  depends_on = [module.confluent_platform]
+
+  name      = "testadmin-rb-sr"
+  namespace = var.namespace
+
+  # rolebinding `testadmin-rb-sr` allows `testadmin` to see schemaregistry information
+  # `schemaRegistryCllusterId` pattern: `id_<schemaregistry.name>_<namespace>`
+  values = yamldecode(<<-EOF
+    spec:
+      principal:
+        type: user
+        name: testadmin
+      clustersScopeByIds:
+        schemaRegistryClusterId: id_schemaregistry_confluent
+      role: SystemAdmin
+    EOF
+  )
+}
+
+module "testadmin_rb_connect" {
+  source     = "aidanmelen/confluent-platform/kubernetes//modules/confluent_role_binding"
+  version    = ">= 0.9.0"
+  depends_on = [module.confluent_platform]
+
+  name      = "testadmin-rb-connect"
+  namespace = var.namespace
+
+  # rolebinding `testadmin-rb-connect` allows `testadmin` to see connect cluster
+  # `connectClusterId` pattern: `<namespace>.<connect.name>`
+  values = yamldecode(<<-EOF
+    spec:
+      principal:
+        type: user
+        name: testadmin
+      clustersScopeByIds:
+        connectClusterId: confluent.connect
+      role: SystemAdmin
+    EOF
+  )
+}
+
+module "testadmin_rb_ksql" {
+  source     = "aidanmelen/confluent-platform/kubernetes//modules/confluent_role_binding"
+  version    = ">= 0.9.0"
+  depends_on = [module.confluent_platform]
+
+  name      = "testadmin-rb-ksql"
+  namespace = var.namespace
+
+  # rolebinding `testadmin-rb-ksql` allows `testadmin` to see ksqldb cluster
+  # `ksqlClusterId` pattern: `<namespace>.<ksqldb.name>`
+  values = yamldecode(<<-EOF
+    spec:
+      principal:
+        type: user
+        name: testadmin
+      clustersScopeByIds:
+        ksqlClusterId: confluent.ksqldb_
+      role: ResourceOwner
+      resourcePatterns:
+        - name: ksql-cluster
+            patternType: LITERAL
+            resourceType: KsqlCluster
+    EOF
+  )
+}
+```
+
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
