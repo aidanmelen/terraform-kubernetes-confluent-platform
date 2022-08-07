@@ -95,9 +95,6 @@ test-schema: ## Test the schema example
 test-connector: ## Test the connector example
 	go test test/terraform_connector_test.go -timeout 10m -v |& tee test/terraform_connector_test.log
 
-test-confluent-role-binding: ## Test the confluent_role_binding example
-	go test test/terraform_confluent_role_binding_test.go -timeout 10m -v |& tee test/terraform_confluent_role_binding_test.log
-
 delete-cfk-crds:
 	kubectl config set-cluster docker-desktop
 	kubectl delete -f ./crds/2.4.0

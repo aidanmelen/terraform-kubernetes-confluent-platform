@@ -12,5 +12,4 @@ test-complete                       Test the complete example
 test-kafka-topic                    Test the kafka_topic example
 test-schema                         Test the schema example
 test-connector                      Test the connector example
-test-confluent-role-binding         Test the confluent_role_binding example
 clean                               Clean project
