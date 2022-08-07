@@ -6,12 +6,6 @@
 
 A Terraform module for managing [Confluent for Kubernetes (CFK)](https://docs.confluent.io/operator/current/overview.html).
 
-## Limitations
-
-This Terraform module uses the [kubernetes_manifest](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/manifest) resource to deploy CFK custom resources. The following excerpt is from [Beta Support for CRDs in the Terraform Provider for Kubernetes](https://www.hashicorp.com/blog/beta-support-for-crds-in-the-terraform-provider-for-kubernetes):
-
-> Custom resource definitions must be applied before custom resources. As above, this is because the provider queries the Kubernetes API for the OpenAPI specification for the resource supplied in the manifest attribute. If the CRD doesn’t exist in the OpenAPI specification during plan time then Terraform can’t use it to create custom resources.
-
 ## Prerequisites
 
 Install the CFK CRDs:
@@ -25,14 +19,12 @@ Please see [The Confluent for Kubernetes Quickstart](https://docs.confluent.io/o
 
 ## Override CFK Manifest Values
 
-Similar to the [values file for Helm](https://helm.sh/docs/chart_template_guide/values_files/); the Confluent Platform variables will be [deep-merged](https://github.com/privx-de/terraform-deepmerge) with the default `local` values of the module. Please see the [Confluent Platform Single Node](./examples/confluent_platform_singlenode) example for more information.
+Similar to the [values file for Helm](https://helm.sh/docs/chart_template_guide/values_files/); The variables supplied to the Confluent Platform module will be [deep-merged](https://github.com/privx-de/terraform-deepmerge) with the default `local` values of the module.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 
 ## Example
-
-### Confluent Platform
 
 ```hcl
 module "confluent_platform" {
@@ -71,13 +63,17 @@ terraform init
 terraform apply
 ```
 
-### Troubleshooting
+## Troubleshooting
 
 ```
 Error: Failed to determine GroupVersionResource for manifest
 ```
 
-This happens when you attempt to apply the Confluent Platform Terraform without first creating the Confluent for Kubernetes CRDs. Please see [Prerequisites](#prerequisites) for more information.
+This Terraform module uses the [kubernetes_manifest](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/manifest) resource to deploy CFK custom resources. The following excerpt is from [Beta Support for CRDs in the Terraform Provider for Kubernetes](https://www.hashicorp.com/blog/beta-support-for-crds-in-the-terraform-provider-for-kubernetes):
+
+> Custom resource definitions must be applied before custom resources. As above, this is because the provider queries the Kubernetes API for the OpenAPI specification for the resource supplied in the manifest attribute. If the CRD doesn’t exist in the OpenAPI specification during plan time then Terraform can’t use it to create custom resources.
+
+Please see [Troubleshoot Confluent for Kubernetes](https://github.com/confluentinc/confluent-kubernetes-examples/tree/master/troubleshooting) for other troubleshooting needs.
 
 ## Tests
 

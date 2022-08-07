@@ -2,6 +2,50 @@
 
 Deploy a Kafka Rest Class.
 
+## Example
+
+without authentication:
+
+```hcl
+module "kafka_rest_class" {
+  source     = "aidanmelen/confluent-platform/kubernetes//modules/kafka_rest_class"
+  version    = ">= 0.9.0"
+  depends_on = [module.confluent_platform]
+
+  name      = "default"
+  namespace = var.namespace
+  values    = yamldecode(<<-EOF
+    spec:
+      kafkaClusterRef:
+        name: kafka
+        namespace: ${var.namespace}
+    EOF
+  )
+}
+```
+
+with authentication:
+
+```hcl
+module "kafka_rest_class" {
+  source     = "aidanmelen/confluent-platform/kubernetes//modules/kafka_rest_class"
+  version    = ">= 0.9.0"
+  depends_on = [module.confluent_platform]
+
+  name      = "default"
+  namespace = var.namespace
+  values    = yamldecode(<<-EOF
+    spec:
+      kafkaRest:
+        authentication:
+          type: bearer
+          bearer:
+            secretRef: rest-credential
+    EOF
+  )
+}
+```
+
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 

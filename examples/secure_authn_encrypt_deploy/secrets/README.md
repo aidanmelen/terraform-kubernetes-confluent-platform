@@ -1,0 +1,1 @@
+secrets sourced from [confluent-kubernetes-examples/security/secure-authn-encrypt-deploy](https://github.com/confluentinc/confluent-kubernetes-examples/tree/master/security/secure-authn-encrypt-deploy)
