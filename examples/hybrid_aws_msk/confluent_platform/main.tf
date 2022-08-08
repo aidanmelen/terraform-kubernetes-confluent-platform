@@ -6,11 +6,7 @@ module "confluent_platform" {
   create_zookeeper = false
   create_kafka     = false
 
-  create_connect        = false
-  create_ksqldb         = false
-  create_controlcenter  = var.create_controlcenter
-  create_schemaregistry = false
-  create_kafkarestproxy = false
+  create_controlcenter = var.create_controlcenter
 
   connect = yamldecode(<<-EOF
     spec:
