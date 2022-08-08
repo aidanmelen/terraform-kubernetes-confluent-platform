@@ -7,11 +7,23 @@ Deploy the AWS MSK cluster.
 ## Example
 
 ```hcl
+module "security_group" {
+  source  = "terraform-aws-modules/security-group/aws"
+  version = "~> 4.0"
+
+  name        = var.name
+  description = "Security group for ${var.name}"
+  vpc_id      = module.vpc.vpc_id
+
+  ingress_cidr_blocks = module.vpc.private_subnets_cidr_blocks
+  ingress_rules       = ["kafka-broker-tcp", "kafka-broker-tls-tcp"]
+}
+
 module "msk_cluster" {
   source  = "clowdhaus/msk-kafka-cluster/aws"
   version = "1.2.0"
 
-  name                   = var.aws_msk_cluster_name
+  name                   = var.name
   number_of_broker_nodes = 3
 
   # https://docs.confluent.io/platform/current/installation/versions-interoperability.html#cp-and-apache-ak-compatibility
@@ -22,7 +34,7 @@ module "msk_cluster" {
   broker_node_instance_type   = "kafka.t3.small"
   broker_node_security_groups = [module.security_group.security_group_id]
 
-  encryption_in_transit_client_broker = "TLS"
+  encryption_in_transit_client_broker = "TLS_PLAINTEXT"
   encryption_in_transit_in_cluster    = true
 
   cloudwatch_logs_enabled = true
@@ -35,6 +47,7 @@ module "msk_cluster" {
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.14.8 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 3.72 |
+| <a name="requirement_kubectl"></a> [kubectl](#requirement\_kubectl) | >= 1.0.0 |
 ## Modules
 
 | Name | Source | Version |
@@ -47,11 +60,11 @@ module "msk_cluster" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_aws_msk_cluster_name"></a> [aws\_msk\_cluster\_name](#input\_aws\_msk\_cluster\_name) | The AWS MSK cluster name. | `string` | `"my-msk-cluster"` | no |
 | <a name="input_aws_region"></a> [aws\_region](#input\_aws\_region) | The AWS region name. | `string` | `"us-west-2"` | no |
+| <a name="input_name"></a> [name](#input\_name) | The project name. | `string` | `"hybrid-aws-msk"` | no |
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| <a name="output_bootstrap_brokers_tls"></a> [bootstrap\_brokers\_tls](#output\_bootstrap\_brokers\_tls) | One or more DNS names (or IP addresses) and TLS port pairs. This attribute will have a value if `encryption_in_transit_client_broker` is set to `TLS_PLAINTEXT` or `TLS` |
+| <a name="output_bootstrap_brokers"></a> [bootstrap\_brokers](#output\_bootstrap\_brokers) | Comma separated list of one or more hostname:port pairs of kafka brokers suitable to bootstrap connectivity to the kafka cluster |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

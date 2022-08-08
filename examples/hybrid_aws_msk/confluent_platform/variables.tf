@@ -1,6 +1,13 @@
-variable "aws_msk_cluster_bootstrap_brokers_tls" {
-  description = "The AWS MSK cluster bootstrap brokers TLS."
+variable "aws_region" {
+  description = "The AWS region name."
   type        = string
+  default     = "us-west-2"
+}
+
+variable "name" {
+  description = "The project name."
+  type        = string
+  default     = "hybrid-aws-msk"
 }
 
 variable "namespace" {

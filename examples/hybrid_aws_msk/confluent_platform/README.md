@@ -1,6 +1,6 @@
 # confluent_platform
 
-Deploy the Confluent Platform components connected with an AWS MSK cluster.
+Deploy the Confluent Platform components connected with an AWS MSK cluster over PLAINTEXT. The Confluent Components are configured with TSL.
 
 ## Assumptions
 
@@ -46,6 +46,7 @@ module "confluent_platform" {
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.14.8 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 3.72 |
 | <a name="requirement_helm"></a> [helm](#requirement\_helm) | >= 2.0.0 |
 | <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | >= 2.12.1 |
 | <a name="requirement_tls"></a> [tls](#requirement\_tls) | >= 4.0.1 |
@@ -53,13 +54,14 @@ module "confluent_platform" {
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_confluent_platform_components"></a> [confluent\_platform\_components](#module\_confluent\_platform\_components) | ../../../ | n/a |
+| <a name="module_confluent_platform"></a> [confluent\_platform](#module\_confluent\_platform) | ../../../ | n/a |
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_aws_msk_cluster_bootstrap_brokers_tls"></a> [aws\_msk\_cluster\_bootstrap\_brokers\_tls](#input\_aws\_msk\_cluster\_bootstrap\_brokers\_tls) | The AWS MSK cluster bootstrap brokers TLS. | `string` | n/a | yes |
+| <a name="input_aws_region"></a> [aws\_region](#input\_aws\_region) | The AWS region name. | `string` | `"us-west-2"` | no |
 | <a name="input_create_controlcenter"></a> [create\_controlcenter](#input\_create\_controlcenter) | Controls if the ControlCenter component of the Confluent Platform should be created. | `bool` | `true` | no |
+| <a name="input_name"></a> [name](#input\_name) | The project name. | `string` | `"hybrid-aws-msk"` | no |
 | <a name="input_namespace"></a> [namespace](#input\_namespace) | The namespace to release the Confluent Operator and Confluent Platform into. | `string` | `"confluent"` | no |
 ## Outputs
 

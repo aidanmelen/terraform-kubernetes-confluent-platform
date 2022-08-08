@@ -11,10 +11,7 @@ resource "kubernetes_secret_v1" "kafka_client_config_secure" {
     "kafka.properties" = <<-EOF
       bootstrap.servers=${module.msk_cluster.bootstrap_brokers_tls}
       security.protocol=SSL
-      ssl.truststore.location=/mnt/sslcerts/truststore.jks
-      ssl.truststore.password=mystorepassword
     EOF
-
   }
 
   type = "Opaque"

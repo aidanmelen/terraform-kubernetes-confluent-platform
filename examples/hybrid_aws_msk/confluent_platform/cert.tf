@@ -23,7 +23,7 @@ resource "tls_self_signed_cert" "ca" {
 }
 
 resource "kubernetes_secret_v1" "ca_pair_sslcerts" {
-  depends_on = [module.confluent_platform_components.helm_release]
+  depends_on = [module.confluent_platform.helm_release]
 
   metadata {
     name      = "ca-pair-sslcerts"
