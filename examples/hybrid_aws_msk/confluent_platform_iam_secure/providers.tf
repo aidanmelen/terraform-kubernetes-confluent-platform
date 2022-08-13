@@ -17,11 +17,10 @@ terraform {
       version = ">= 2.12.1"
     }
 
-    # used in crds_only.tf.example
-    # kubectl = {
-    #   source  = "gavinbunney/kubectl"
-    #   version = ">= 1.0.0"
-    # }
+    tls = {
+      source  = "hashicorp/tls"
+      version = ">= 4.0.1"
+    }
   }
 }
 
@@ -51,3 +50,5 @@ provider "helm" {
     token                  = data.aws_eks_cluster_auth.eks.token
   }
 }
+
+provider "tls" {}

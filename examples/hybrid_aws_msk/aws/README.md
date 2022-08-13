@@ -17,11 +17,25 @@ module "security_group" {
 
   ingress_cidr_blocks = module.vpc.private_subnets_cidr_blocks
   ingress_rules       = ["kafka-broker-tcp", "kafka-broker-tls-tcp"]
+
+  # https://github.com/terraform-aws-modules/terraform-aws-security-group/pull/248
+  ingress_with_cidr_blocks = [
+    {
+      from_port   = 9098
+      to_port     = 9098
+      protocol    = "tcp"
+      description = "kafka-broker-iam-tcp"
+      cidr_blocks = module.vpc.private_subnets_cidr_blocks
+    }
+  ]
 }
 
 module "msk_cluster" {
-  source  = "clowdhaus/msk-kafka-cluster/aws"
-  version = "1.2.0"
+  source = "github.com/aidanmelen/terraform-aws-msk-kafka-cluster@v1.3.0"
+
+  # https://github.com/clowdhaus/terraform-aws-msk-kafka-cluster/pull/4
+  # source  = "clowdhaus/msk-kafka-cluster/aws"
+  # version = "1.3.0"
 
   name                   = var.name
   number_of_broker_nodes = 3
@@ -37,6 +51,10 @@ module "msk_cluster" {
   encryption_in_transit_client_broker = "TLS_PLAINTEXT"
   encryption_in_transit_in_cluster    = true
 
+  client_unauthenticated_access_enabled = true
+  client_authentication_iam             = true
+  client_authentication_sasl_scram      = false
+
   cloudwatch_logs_enabled = true
 }
 ```
@@ -47,13 +65,15 @@ module "msk_cluster" {
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.14.8 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 3.72 |
-| <a name="requirement_kubectl"></a> [kubectl](#requirement\_kubectl) | >= 1.0.0 |
+| <a name="requirement_helm"></a> [helm](#requirement\_helm) | >= 2.0.0 |
+| <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | >= 2.12.1 |
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
+| <a name="module_confluent_operator"></a> [confluent\_operator](#module\_confluent\_operator) | ../../../modules/confluent_operator | n/a |
 | <a name="module_eks"></a> [eks](#module\_eks) | terraform-aws-modules/eks/aws | >= 18.0.0 |
-| <a name="module_msk_cluster"></a> [msk\_cluster](#module\_msk\_cluster) | clowdhaus/msk-kafka-cluster/aws | 1.2.0 |
+| <a name="module_msk_cluster"></a> [msk\_cluster](#module\_msk\_cluster) | github.com/aidanmelen/terraform-aws-msk-kafka-cluster@v1.3.0 | n/a |
 | <a name="module_security_group"></a> [security\_group](#module\_security\_group) | terraform-aws-modules/security-group/aws | ~> 4.0 |
 | <a name="module_vpc"></a> [vpc](#module\_vpc) | terraform-aws-modules/vpc/aws | ~> 3.0 |
 ## Inputs
