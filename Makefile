@@ -39,7 +39,7 @@ setup: apply-cfk-crds ## Setup project
 	cd examples/hybrid_aws_msk/aws && terraform init
 	cd examples/hybrid_aws_msk/confluent_platform && terraform init
 	cd examples/hybrid_aws_msk/confluent_platform_tls_only && terraform init
-	cd examples/hybrid_aws_msk/confluent_platform_iam_secure && terraform init
+	cd examples/hybrid_aws_msk/confluent_platform_sasl_iam_secure && terraform init
 
 	# pre-commit
 	git init
@@ -121,7 +121,7 @@ clean: delete-cfk-crds ## Clean project
 	@rm -f examples/hybrid_aws_msk/aws.terraform.lock.hcl
 	@rm -f examples/hybrid_aws_msk/confluent_platform.terraform.lock.hcl
 	@rm -f examples/hybrid_aws_msk/confluent_platform_tls_only.terraform.lock.hcl
-	@rm -f examples/hybrid_aws_msk/confluent_platform_iam_secure.terraform.lock.hcl
+	@rm -f examples/hybrid_aws_msk/confluent_platform_sasl_iam_secure.terraform.lock.hcl
 
 	@rm -rf .terraform
 	@rm -rf modules/confluent_operator/.terraform
@@ -141,7 +141,7 @@ clean: delete-cfk-crds ## Clean project
 	@rm -rf examples/hybrid_aws_msk/aws.terraform
 	@rm -rf examples/hybrid_aws_msk/confluent_platform.terraform
 	@rm -rf examples/hybrid_aws_msk/confluent_platform_tls_only.terraform
-	@rm -rf examples/hybrid_aws_msk/confluent_platform_iam_secure.terraform
+	@rm -rf examples/hybrid_aws_msk/confluent_platform_sasl_iam_secure.terraform
 
 	@rm -f go.mod
 	@rm -f go.sum

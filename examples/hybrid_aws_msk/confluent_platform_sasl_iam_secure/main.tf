@@ -27,6 +27,9 @@ module "confluent_platform" {
   create_schemaregistry = false
   create_kafkarestproxy = false
 
+  # Configuring a Kafka client to use AWS IAM
+  # https://github.com/aws/aws-msk-iam-auth#configuring-a-kafka-client-to-use-aws-iam
+
   connect = yamldecode(<<-EOF
     spec:
       image:

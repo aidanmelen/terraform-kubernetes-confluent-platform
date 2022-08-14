@@ -19,7 +19,7 @@ aws eks update-kubeconfig --name hybrid-aws-msk
 ## Example
 
 ```hcl
-module "security_group" {
+module "msk_cluster_security_group" {
   source  = "terraform-aws-modules/security-group/aws"
   version = "~> 4.0"
 
@@ -36,14 +36,14 @@ module "security_group" {
       from_port   = 9098
       to_port     = 9098
       protocol    = "tcp"
-      description = "kafka-broker-iam-tcp"
-      cidr_blocks = module.vpc.private_subnets_cidr_blocks
+      description = "kafka-broker-sasl-iam-tcp"
+      cidr_blocks = join(",", module.vpc.private_subnets_cidr_blocks)
     }
   ]
 }
 
 module "msk_cluster" {
-  source = "github.com/aidanmelen/terraform-aws-msk-kafka-cluster@v1.3.0"
+  source = "github.com/aidanmelen/terraform-aws-msk-kafka-cluster?ref=v1.3.0"
 
   # https://github.com/clowdhaus/terraform-aws-msk-kafka-cluster/pull/4
   # source  = "clowdhaus/msk-kafka-cluster/aws"
@@ -58,13 +58,13 @@ module "msk_cluster" {
   broker_node_client_subnets  = module.vpc.private_subnets
   broker_node_ebs_volume_size = 20
   broker_node_instance_type   = "kafka.t3.small"
-  broker_node_security_groups = [module.security_group.security_group_id]
+  broker_node_security_groups = [module.msk_cluster_security_group.security_group_id]
 
   encryption_in_transit_client_broker = "TLS_PLAINTEXT"
   encryption_in_transit_in_cluster    = true
 
   client_unauthenticated_access_enabled = true
-  client_authentication_iam             = true
+  client_authentication_sasl_iam        = true
   client_authentication_sasl_scram      = false
 
   cloudwatch_logs_enabled = true
@@ -85,8 +85,9 @@ module "msk_cluster" {
 |------|--------|---------|
 | <a name="module_confluent_operator"></a> [confluent\_operator](#module\_confluent\_operator) | ../../../modules/confluent_operator | n/a |
 | <a name="module_eks"></a> [eks](#module\_eks) | terraform-aws-modules/eks/aws | >= 18.0.0 |
-| <a name="module_msk_cluster"></a> [msk\_cluster](#module\_msk\_cluster) | github.com/aidanmelen/terraform-aws-msk-kafka-cluster@v1.3.0 | n/a |
-| <a name="module_security_group"></a> [security\_group](#module\_security\_group) | terraform-aws-modules/security-group/aws | ~> 4.0 |
+| <a name="module_iam_eks_confluent_platform_role"></a> [iam\_eks\_confluent\_platform\_role](#module\_iam\_eks\_confluent\_platform\_role) | terraform-aws-modules/iam/aws//modules/iam-eks-role | 5.3.0 |
+| <a name="module_msk_cluster"></a> [msk\_cluster](#module\_msk\_cluster) | github.com/aidanmelen/terraform-aws-msk-kafka-cluster | v1.3.0 |
+| <a name="module_msk_cluster_security_group"></a> [msk\_cluster\_security\_group](#module\_msk\_cluster\_security\_group) | terraform-aws-modules/security-group/aws | ~> 4.0 |
 | <a name="module_vpc"></a> [vpc](#module\_vpc) | terraform-aws-modules/vpc/aws | ~> 3.0 |
 ## Inputs
 
@@ -94,9 +95,12 @@ module "msk_cluster" {
 |------|-------------|------|---------|:--------:|
 | <a name="input_aws_region"></a> [aws\_region](#input\_aws\_region) | The AWS region name. | `string` | `"us-west-2"` | no |
 | <a name="input_name"></a> [name](#input\_name) | The project name. | `string` | `"hybrid-aws-msk"` | no |
+| <a name="input_namespace"></a> [namespace](#input\_namespace) | The namespace to release the Confluent Operator into. | `string` | `"confluent"` | no |
 ## Outputs
 
 | Name | Description |
 |------|-------------|
 | <a name="output_bootstrap_brokers"></a> [bootstrap\_brokers](#output\_bootstrap\_brokers) | Comma separated list of one or more hostname:port pairs of kafka brokers suitable to bootstrap connectivity to the kafka cluster |
+| <a name="output_bootstrap_brokers_sasl_iam"></a> [bootstrap\_brokers\_sasl\_iam](#output\_bootstrap\_brokers\_sasl\_iam) | One or more DNS names (or IP addresses) and SASL IAM port pairs |
+| <a name="output_bootstrap_brokers_tls"></a> [bootstrap\_brokers\_tls](#output\_bootstrap\_brokers\_tls) | One or more DNS names (or IP addresses) and TLS port pairs |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
