@@ -27,12 +27,54 @@ resource "aws_iam_role" "aws_msk_full_access" {
   assume_role_policy = data.aws_iam_policy_document.trust.json
 }
 
-resource "aws_iam_role_policy_attachment" "attachment" {
-  role       = aws_iam_role.aws_msk_full_access.arn
-  policy_arn = "arn:aws:iam::aws:policy/AmazonMSKFullAccess"
+# https://docs.aws.amazon.com/msk/latest/developerguide/security_iam_id-based-policy-examples.html
+resource "aws_iam_policy" "aws_msk_cluster_full_access" {
+  name        = "msk-cluster-full-access"
+  path        = "/"
+  description = "MSK Cluster full access."
+
+  policy = <<-EOF
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Effect": "Allow",
+                "Action": [
+                    "kafka-cluster:Connect",
+                    "kafka-cluster:AlterCluster",
+                    "kafka-cluster:DescribeCluster"
+                ],
+                "Resource": [
+                    ${module.msk_cluster.arn}
+                ]
+            },
+            {
+                "Effect": "Allow",
+                "Action": [
+                    "kafka-cluster:*Topic*",
+                    "kafka-cluster:WriteData",
+                    "kafka-cluster:ReadData"
+                ],
+                "Resource": [
+                    "${replace(replace(module.msk_cluster.arn, "cluster", "topic"), substr(module.msk_cluster.arn, -39, 39, "*"))}"
+                ]
+            },
+            {
+                "Effect": "Allow",
+                "Action": [
+                    "kafka-cluster:AlterGroup",
+                    "kafka-cluster:DescribeGroup"
+                ],
+                "Resource": [
+                    "${replace(replace(module.msk_cluster.arn, "cluster", "group"), substr(module.msk_cluster.arn, -39, 39, "*"))}"
+                ]
+            }
+        ]
+    }
+  EOF
 }
 
-resource "aws_iam_role_policy_attachment" "aws_msk_full_access" {
+resource "aws_iam_role_policy_attachment" "attachment" {
   role       = aws_iam_role.aws_msk_full_access.arn
-  policy_arn = "arn:aws:iam::aws:policy/AmazonMSKFullAccess"
+  policy_arn = aws_iam_policy.aws_msk_cluster_full_access.arn
 }

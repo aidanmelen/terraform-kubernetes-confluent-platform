@@ -10,5 +10,5 @@ output "bootstrap_brokers_tls" {
 
 output "bootstrap_brokers_sasl_iam" {
   description = "One or more DNS names (or IP addresses) and SASL IAM port pairs"
-  value       = module.msk_cluster.bootstrap_brokers_iam
+  value       = module.msk_cluster.bootstrap_brokers_sasl_iam
 }
