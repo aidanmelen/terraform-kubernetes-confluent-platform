@@ -25,7 +25,7 @@ module "confluent_platform" {
   create_controlcenter  = var.create_controlcenter
   create_ksqldb         = false
   create_schemaregistry = false
-  kafkarestproxy        = false
+  create_kafkarestproxy = false
 
   connect = yamldecode(<<-EOF
     spec:
@@ -40,9 +40,6 @@ module "confluent_platform" {
           - "sasl.jaas.config=software.amazon.msk.auth.iam.IAMLoginModule required;"
           - "sasl.client.callback.handler.class=software.amazon.msk.auth.iam.IAMClientCallbackHandler"
       podTemplate:
-        # envVars:
-        #   - name: CLASSPATH
-        #     value: /usr/share/java/aws-msk-iam-auth-1.1.4-all.jar
         serviceAccountName: ${kubernetes_service_account_v1.confluent_platform.metadata[0].name}
       dependencies:
         kafka:
