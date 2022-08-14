@@ -7,7 +7,7 @@ data "aws_eks_cluster_auth" "eks" {
 }
 
 data "aws_iam_role" "aws_msk_full_access" {
-  name = "aws_msk-full-access"
+  name = "confluent-platform"
 }
 
 data "aws_msk_cluster" "msk" {
