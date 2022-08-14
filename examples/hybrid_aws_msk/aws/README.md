@@ -2,6 +2,10 @@
 
 Create a new VPC and deploy an MSK and EKS cluster into it.
 
+## Assumptions
+
+This example assumes that you have valid AWS credentials set for the default profile.
+
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Example

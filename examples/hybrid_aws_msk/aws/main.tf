@@ -1,4 +1,4 @@
-module "security_group" {
+module "msk_cluster_security_group" {
   source  = "terraform-aws-modules/security-group/aws"
   version = "~> 4.0"
 
@@ -16,7 +16,7 @@ module "security_group" {
       to_port     = 9098
       protocol    = "tcp"
       description = "kafka-broker-iam-tcp"
-      cidr_blocks = module.vpc.private_subnets_cidr_blocks
+      cidr_blocks = join(",", module.vpc.private_subnets_cidr_blocks)
     }
   ]
 }
@@ -43,7 +43,7 @@ module "msk_cluster" {
   encryption_in_transit_in_cluster    = true
 
   client_unauthenticated_access_enabled = true
-  client_authentication_iam             = true
+  client_authentication_sasl_iam        = true
   client_authentication_sasl_scram      = false
 
   cloudwatch_logs_enabled = true
