@@ -56,7 +56,7 @@ resource "aws_iam_policy" "aws_msk_cluster_full_access" {
                     "kafka-cluster:ReadData"
                 ],
                 "Resource": [
-                    "${replace(replace(module.msk_cluster.arn, "cluster", "topic"), substr(module.msk_cluster.arn, -39, 39, "*"))}"
+                    "${replace(replace(module.msk_cluster.arn, "cluster", "topic"), substr(module.msk_cluster.arn, -39, 39), "*")}"
                 ]
             },
             {
@@ -66,7 +66,7 @@ resource "aws_iam_policy" "aws_msk_cluster_full_access" {
                     "kafka-cluster:DescribeGroup"
                 ],
                 "Resource": [
-                    "${replace(replace(module.msk_cluster.arn, "cluster", "group"), substr(module.msk_cluster.arn, -39, 39, "*"))}"
+                    "${replace(replace(module.msk_cluster.arn, "cluster", "group"), substr(module.msk_cluster.arn, -39, 39), "*")}"
                 ]
             }
         ]
