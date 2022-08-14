@@ -1,6 +1,6 @@
-resource "kubernetes_service_account_v1" "aws_msk_full_access" {
+resource "kubernetes_service_account_v1" "confluent_platform" {
   metadata {
-    name      = "aws-msk-full-access"
+    name      = "confluent-platform"
     namespace = module.confluent_platform.namespace
     annotations = {
       "eks.amazonaws.com/role-arn" = data.aws_iam_role.aws_msk_full_access.arn
@@ -44,7 +44,7 @@ module "confluent_platform" {
         #   - name: CLASSPATH
         #     value: /usr/share/java/aws-msk-iam-auth-1.1.4-all.jar
         securityContext:
-          serviceAccountName: ${kubernetes_service_account_v1.aws_msk_full_access.metadata[0].name}
+          serviceAccountName: ${kubernetes_service_account_v1.confluent_platform.metadata[0].name}
       dependencies:
         kafka:
           bootstrapEndpoint: ${data.aws_msk_cluster.msk.bootstrap_brokers_sasl_iam}

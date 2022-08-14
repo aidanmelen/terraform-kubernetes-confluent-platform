@@ -2,32 +2,6 @@
 # https://docs.aws.amazon.com/msk/latest/developerguide/security-iam-awsmanpol.html
 data "aws_caller_identity" "current" {}
 
-data "aws_iam_policy_document" "trust" {
-  version = "2012-10-17"
-
-  statement {
-    effect = "Allow"
-
-    principals {
-      type        = "Federated"
-      identifiers = [module.eks.oidc_provider_arn]
-    }
-
-    actions = ["sts:AssumeRoleWithIdentity"]
-
-    condition {
-      test     = "StringEquals"
-      variable = "${module.eks.oidc_provider}:aud"
-      values   = ["sts.amazonaws.com"]
-    }
-  }
-}
-
-resource "aws_iam_role" "aws_msk_full_access" {
-  name               = "aws_msk-full-access"
-  assume_role_policy = data.aws_iam_policy_document.trust.json
-}
-
 # https://docs.aws.amazon.com/msk/latest/developerguide/security_iam_id-based-policy-examples.html
 resource "aws_iam_policy" "aws_msk_cluster_full_access" {
   name        = "msk-cluster-full-access"
@@ -75,7 +49,17 @@ resource "aws_iam_policy" "aws_msk_cluster_full_access" {
   EOF
 }
 
-resource "aws_iam_role_policy_attachment" "attachment" {
-  role       = aws_iam_role.aws_msk_full_access.arn
-  policy_arn = aws_iam_policy.aws_msk_cluster_full_access.arn
+module "iam_eks_confluent_platform_role" {
+  source  = "terraform-aws-modules/iam/aws"
+  version = "5.3.0"
+
+  role_name = "confluent-platform"
+
+  cluster_service_accounts = {
+    module.eks.cluster_id = ["${module.confluent_operator.namespace}:confluent-platform"]
+  }
+
+  role_policy_arns = {
+    aws_msk_cluster_full_access = aws_iam_policy.aws_msk_cluster_full_access.arn
+  }
 }
