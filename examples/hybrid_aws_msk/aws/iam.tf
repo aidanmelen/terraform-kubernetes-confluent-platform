@@ -34,43 +34,43 @@ resource "aws_iam_policy" "aws_msk_cluster_full_access" {
   description = "MSK Cluster full access."
 
   policy = <<-EOF
-    {
-        "Version": "2012-10-17",
-        "Statement": [
-            {
-                "Effect": "Allow",
-                "Action": [
-                    "kafka-cluster:Connect",
-                    "kafka-cluster:AlterCluster",
-                    "kafka-cluster:DescribeCluster"
-                ],
-                "Resource": [
-                    ${module.msk_cluster.arn}
-                ]
-            },
-            {
-                "Effect": "Allow",
-                "Action": [
-                    "kafka-cluster:*Topic*",
-                    "kafka-cluster:WriteData",
-                    "kafka-cluster:ReadData"
-                ],
-                "Resource": [
-                    "${replace(replace(module.msk_cluster.arn, "cluster", "topic"), substr(module.msk_cluster.arn, -39, 39), "*")}"
-                ]
-            },
-            {
-                "Effect": "Allow",
-                "Action": [
-                    "kafka-cluster:AlterGroup",
-                    "kafka-cluster:DescribeGroup"
-                ],
-                "Resource": [
-                    "${replace(replace(module.msk_cluster.arn, "cluster", "group"), substr(module.msk_cluster.arn, -39, 39), "*")}"
-                ]
-            }
-        ]
-    }
+  {
+      "Version": "2012-10-17",
+      "Statement": [
+          {
+              "Effect": "Allow",
+              "Action": [
+                  "kafka-cluster:Connect",
+                  "kafka-cluster:AlterCluster",
+                  "kafka-cluster:DescribeCluster"
+              ],
+              "Resource": [
+                  ${module.msk_cluster.arn}
+              ]
+          },
+          {
+              "Effect": "Allow",
+              "Action": [
+                  "kafka-cluster:*Topic*",
+                  "kafka-cluster:WriteData",
+                  "kafka-cluster:ReadData"
+              ],
+              "Resource": [
+                  "${replace(replace(module.msk_cluster.arn, "cluster", "topic"), substr(module.msk_cluster.arn, -38, 38), "*")}"
+              ]
+          },
+          {
+              "Effect": "Allow",
+              "Action": [
+                  "kafka-cluster:AlterGroup",
+                  "kafka-cluster:DescribeGroup"
+              ],
+              "Resource": [
+                  "${replace(replace(module.msk_cluster.arn, "cluster", "group"), substr(module.msk_cluster.arn, -38, 38), "*")}"
+              ]
+          }
+      ]
+  }
   EOF
 }
 
