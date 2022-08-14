@@ -15,7 +15,7 @@ module "msk_cluster_security_group" {
       from_port   = 9098
       to_port     = 9098
       protocol    = "tcp"
-      description = "kafka-broker-iam-tcp"
+      description = "kafka-broker-sasl-iam-tcp"
       cidr_blocks = join(",", module.vpc.private_subnets_cidr_blocks)
     }
   ]
@@ -37,7 +37,7 @@ module "msk_cluster" {
   broker_node_client_subnets  = module.vpc.private_subnets
   broker_node_ebs_volume_size = 20
   broker_node_instance_type   = "kafka.t3.small"
-  broker_node_security_groups = [module.security_group.security_group_id]
+  broker_node_security_groups = [module.msk_cluster_security_group.security_group_id]
 
   encryption_in_transit_client_broker = "TLS_PLAINTEXT"
   encryption_in_transit_in_cluster    = true
