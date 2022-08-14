@@ -17,7 +17,7 @@ data "aws_iam_policy_document" "trust" {
 
     condition {
       test     = "StringEquals"
-      variable = "${module.eks.oidc_provider_arn}:aud"
+      variable = "${module.eks.oidc_provider}:aud"
       values   = ["sts.amazonaws.com"]
     }
   }
