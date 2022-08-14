@@ -9,3 +9,9 @@ variable "name" {
   type        = string
   default     = "hybrid-aws-msk"
 }
+
+variable "namespace" {
+  description = "The namespace to release the Confluent Operator into."
+  type        = string
+  default     = "confluent"
+}
