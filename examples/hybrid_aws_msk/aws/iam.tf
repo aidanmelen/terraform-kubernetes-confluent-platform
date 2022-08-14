@@ -47,7 +47,7 @@ resource "aws_iam_policy" "aws_msk_cluster_full_access" {
 }
 
 module "iam_eks_confluent_platform_role" {
-  source  = "terraform-aws-modules/iam/aws"
+  source  = "terraform-aws-modules/iam/aws//modules/iam-eks-role"
   version = "5.3.0"
 
   role_name = "confluent-platform"
