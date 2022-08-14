@@ -9,3 +9,15 @@ variable "create_controlcenter" {
   type        = bool
   default     = true
 }
+
+variable "datagen_source_connector_max_interval" {
+  description = "Max interval between messages (ms)"
+  type        = number
+  default     = 500
+}
+
+variable "datagen_source_connector_iterations" {
+  description = "Number of messages to send from each task, or -1 for unlimited"
+  type        = number
+  default     = -1
+}

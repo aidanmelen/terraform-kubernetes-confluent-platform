@@ -8,5 +8,5 @@ spec:
     value.converter: "io.confluent.connect.avro.AvroConverter"
     value.converter.schemas.enable: "true"
     value.converter.schema.registry.url: "http://schemaregistry.confluent.svc.cluster.local:8081"
-    max.interval: "100"
-    iterations: "10000000"
+    max.interval: "${datagen_source_connector_max_interval}"
+    iterations: "${datagen_source_connector_iterations}"

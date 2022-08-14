@@ -20,6 +20,8 @@ module "confluent_platform" {
       configOverrides:
         server:
           - "security.protocol=SSL"
+          - "producer.security.protocol=SSL"
+          - "consumer.security.protocol=SSL"
       dependencies:
         kafka:
           bootstrapEndpoint: ${data.aws_msk_cluster.msk.bootstrap_brokers_tls}
@@ -50,6 +52,7 @@ module "confluent_platform" {
       dependencies:
         kafka:
           bootstrapEndpoint: ${data.aws_msk_cluster.msk.bootstrap_brokers_tls}
+          ignoreTrustStoreConfig: true
         schemaRegistry:
           url: https://schemaregistry.${var.namespace}.svc.cluster.local:8081
           tls:
@@ -77,6 +80,7 @@ module "confluent_platform" {
       dependencies:
         kafka:
           bootstrapEndpoint: ${data.aws_msk_cluster.msk.bootstrap_brokers_tls}
+          ignoreTrustStoreConfig: true
     EOF
   )
 
