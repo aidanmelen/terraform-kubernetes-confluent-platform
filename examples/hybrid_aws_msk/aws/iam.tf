@@ -1,7 +1,4 @@
-# https://docs.aws.amazon.com/msk/latest/developerguide/security_iam_id-based-policy-examples.html
 # https://docs.aws.amazon.com/msk/latest/developerguide/security-iam-awsmanpol.html
-data "aws_caller_identity" "current" {}
-
 # https://docs.aws.amazon.com/msk/latest/developerguide/security_iam_id-based-policy-examples.html
 resource "aws_iam_policy" "aws_msk_cluster_full_access" {
   name        = "msk-cluster-full-access"
