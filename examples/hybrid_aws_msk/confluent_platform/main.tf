@@ -17,7 +17,7 @@ module "confluent_platform" {
     spec:
       dependencies:
         kafka:
-          bootstrapEndpoint: ${data.aws_msk_cluster.msk.bootstrap_brokers[0]}
+          bootstrapEndpoint: ${data.aws_msk_cluster.msk.bootstrap_brokers}
     EOF
   )
 
@@ -25,7 +25,7 @@ module "confluent_platform" {
     spec:
       dependencies:
         kafka:
-          bootstrapEndpoint: ${data.aws_msk_cluster.msk.bootstrap_brokers[0]}
+          bootstrapEndpoint: ${data.aws_msk_cluster.msk.bootstrap_brokers}
     EOF
   )
 
@@ -33,21 +33,15 @@ module "confluent_platform" {
     spec:
       dependencies:
         kafka:
-          bootstrapEndpoint: ${data.aws_msk_cluster.msk.bootstrap_brokers[0]}
+          bootstrapEndpoint: ${data.aws_msk_cluster.msk.bootstrap_brokers}
         schemaRegistry:
           url: http://schemaregistry.${var.namespace}.svc.cluster.local:8081
-          tls:
-            enabled: true
         ksqldb:
         - name: ksql-dev
           url: http://ksqldb.${var.namespace}.svc.cluster.local:8088
-          tls:
-            enabled: true
         connect:
         - name: connect-dev
           url:  http://connect.${var.namespace}.svc.cluster.local:8083
-          tls:
-            enabled: true
     EOF
   )
 
@@ -55,7 +49,7 @@ module "confluent_platform" {
     spec:
       dependencies:
         kafka:
-          bootstrapEndpoint: ${data.aws_msk_cluster.msk.bootstrap_brokers[0]}
+          bootstrapEndpoint: ${data.aws_msk_cluster.msk.bootstrap_brokers}
     EOF
   )
 
@@ -63,11 +57,9 @@ module "confluent_platform" {
     spec:
       dependencies:
         kafka:
-          bootstrapEndpoint: ${data.aws_msk_cluster.msk.bootstrap_brokers[0]}
+          bootstrapEndpoint: ${data.aws_msk_cluster.msk.bootstrap_brokers}
         schemaRegistry:
           url: http://schemaregistry.${var.namespace}.svc.cluster.local:8081
-          tls:
-            enabled: true
     EOF
   )
 }

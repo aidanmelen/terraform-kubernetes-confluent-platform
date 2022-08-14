@@ -53,7 +53,7 @@ module "iam_eks_confluent_platform_role" {
   role_name = "confluent-platform"
 
   cluster_service_accounts = {
-    module.eks.cluster_id = ["${module.confluent_operator.namespace}:confluent-platform"]
+    "${module.eks.cluster_id}" = ["${module.confluent_operator.namespace}:confluent-platform"]
   }
 
   role_policy_arns = {

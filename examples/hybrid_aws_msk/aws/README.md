@@ -6,6 +6,14 @@ Create a new VPC and deploy an MSK and EKS cluster into it.
 
 This example assumes that you have valid AWS credentials set for the default profile.
 
+## EKS Connect
+
+Add the EKS cluster context to the kube config file with the following command:
+
+```bash
+aws eks update-kubeconfig --name hybrid-aws-msk
+```
+
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Example
