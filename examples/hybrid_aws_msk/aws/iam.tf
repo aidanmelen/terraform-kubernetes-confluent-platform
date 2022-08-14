@@ -46,7 +46,7 @@ resource "aws_iam_policy" "aws_msk_cluster_full_access" {
                   "kafka-cluster:DescribeCluster"
               ],
               "Resource": [
-                  ${module.msk_cluster.arn}
+                  "${module.msk_cluster.arn}"
               ]
           },
           {
