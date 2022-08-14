@@ -50,8 +50,8 @@ module "confluent_platform" {
         templatefile(
           "${path.module}/values/connector.yaml",
           {
-            "datagen_source_connector_max_interval": var.datagen_source_connector_max_interval,
-            "datagen_source_connector_iterations": var.datagen_source_connector_iterations
+            "datagen_source_connector_max_interval" : var.datagen_source_connector_max_interval,
+            "datagen_source_connector_iterations" : var.datagen_source_connector_iterations
           }
         )
       )

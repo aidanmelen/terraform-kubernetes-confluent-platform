@@ -25,6 +25,9 @@ module "confluent_platform" {
       dependencies:
         kafka:
           bootstrapEndpoint: ${data.aws_msk_cluster.msk.bootstrap_brokers_tls}
+          tls:
+            enabled: true
+            ignoreTrustStoreConfig: true
     EOF
   )
 
@@ -39,6 +42,9 @@ module "confluent_platform" {
       dependencies:
         kafka:
           bootstrapEndpoint: ${data.aws_msk_cluster.msk.bootstrap_brokers_tls}
+          tls:
+            enabled: true
+            ignoreTrustStoreConfig: true
     EOF
   )
 
@@ -52,7 +58,9 @@ module "confluent_platform" {
       dependencies:
         kafka:
           bootstrapEndpoint: ${data.aws_msk_cluster.msk.bootstrap_brokers_tls}
-          ignoreTrustStoreConfig: true
+          tls:
+            enabled: true
+            ignoreTrustStoreConfig: true
         schemaRegistry:
           url: https://schemaregistry.${var.namespace}.svc.cluster.local:8081
           tls:
@@ -80,7 +88,9 @@ module "confluent_platform" {
       dependencies:
         kafka:
           bootstrapEndpoint: ${data.aws_msk_cluster.msk.bootstrap_brokers_tls}
-          ignoreTrustStoreConfig: true
+          tls:
+            enabled: true
+            ignoreTrustStoreConfig: true
     EOF
   )
 
@@ -94,6 +104,9 @@ module "confluent_platform" {
       dependencies:
         kafka:
           bootstrapEndpoint: ${data.aws_msk_cluster.msk.bootstrap_brokers_tls}
+          tls:
+            enabled: true
+            ignoreTrustStoreConfig: true
         schemaRegistry:
           url: https://schemaregistry.${var.namespace}.svc.cluster.local:8081
           tls:

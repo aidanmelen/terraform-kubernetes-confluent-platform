@@ -22,7 +22,7 @@ module "security_group" {
 }
 
 module "msk_cluster" {
-  source = "github.com/aidanmelen/terraform-aws-msk-kafka-cluster@v1.3.0"
+  source = "github.com/aidanmelen/terraform-aws-msk-kafka-cluster?ref=v1.3.0"
 
   # https://github.com/clowdhaus/terraform-aws-msk-kafka-cluster/pull/4
   # source  = "clowdhaus/msk-kafka-cluster/aws"

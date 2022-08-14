@@ -69,7 +69,15 @@ module "confluent_platform" {
 
   connectors = {
     "pageviews-source" = {
-      "values" = yamldecode(file("${path.module}/values/connector.yaml"))
+      "values" = yamldecode(
+        templatefile(
+          "${path.module}/values/connector.yaml",
+          {
+            "datagen_source_connector_max_interval" : var.datagen_source_connector_max_interval,
+            "datagen_source_connector_iterations" : var.datagen_source_connector_iterations
+          }
+        )
+      )
     }
   }
 }
@@ -92,6 +100,8 @@ module "confluent_platform" {
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_create_controlcenter"></a> [create\_controlcenter](#input\_create\_controlcenter) | Controls if the ControlCenter component of the Confluent Platform should be created. | `bool` | `true` | no |
+| <a name="input_datagen_source_connector_iterations"></a> [datagen\_source\_connector\_iterations](#input\_datagen\_source\_connector\_iterations) | Number of messages to send from each task, or -1 for unlimited | `number` | `-1` | no |
+| <a name="input_datagen_source_connector_max_interval"></a> [datagen\_source\_connector\_max\_interval](#input\_datagen\_source\_connector\_max\_interval) | Max interval between messages (ms) | `number` | `500` | no |
 | <a name="input_namespace"></a> [namespace](#input\_namespace) | The namespace to release the Confluent Operator and Confluent Platform into. | `string` | `"confluent"` | no |
 ## Outputs
 

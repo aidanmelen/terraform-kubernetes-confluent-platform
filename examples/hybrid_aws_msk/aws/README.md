@@ -1,6 +1,6 @@
 # aws_msk
 
-Deploy the AWS MSK cluster.
+Create a new VPC and deploy an MSK and EKS cluster into it.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
