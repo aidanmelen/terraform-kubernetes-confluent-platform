@@ -46,7 +46,15 @@ module "confluent_platform" {
 
   connectors = {
     "pageviews-source" = {
-      "values" = yamldecode(file("${path.module}/values/connector.yaml"))
+      "values" = yamldecode(
+        templatefile(
+          "${path.module}/values/connector.yaml",
+          {
+            "datagen_source_connector_max_interval" : var.datagen_source_connector_max_interval,
+            "datagen_source_connector_iterations" : var.datagen_source_connector_iterations
+          }
+        )
+      )
     }
   }
 }

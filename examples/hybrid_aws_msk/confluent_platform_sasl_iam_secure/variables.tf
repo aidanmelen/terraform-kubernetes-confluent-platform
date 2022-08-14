@@ -19,5 +19,5 @@ variable "namespace" {
 variable "create_controlcenter" {
   description = "Controls if the ControlCenter component of the Confluent Platform should be created."
   type        = bool
-  default     = true
+  default     = false
 }

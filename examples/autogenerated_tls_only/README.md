@@ -6,6 +6,8 @@ Deploy the Confluent Platform with with full TLS network encryption. This Terraf
 
 This example assumes you have a Kubernetes cluster running locally on Docker Desktop. Please see [Docker's official documentation](https://docs.docker.com/desktop/kubernetes/) for more information.
 
+Keep in mind that you computer may not be able to handle the compute overhead added when enabling TLS. You may need to run this example on a Kubernetes server with more CPU and memory.
+
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Example

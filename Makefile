@@ -38,6 +38,8 @@ setup: apply-cfk-crds ## Setup project
 	cd examples/connector && terraform init
 	cd examples/hybrid_aws_msk/aws && terraform init
 	cd examples/hybrid_aws_msk/confluent_platform && terraform init
+	cd examples/hybrid_aws_msk/confluent_platform_tls_only && terraform init
+	cd examples/hybrid_aws_msk/confluent_platform_sasl_iam_secure && terraform init
 
 	# pre-commit
 	git init
@@ -75,27 +77,26 @@ test-clean:
 	cd examples/confluent_operator && terraform destroy --auto-approve
 
 _test-confluent-platform:
-	# This test can take longer because controlcenter takes a while to become healthy
-	go test test/terraform_confluent_platform_test.go -timeout 10m -v |& tee test/terraform_confluent_platform_test.log
+	go test test/terraform_confluent_platform_test.go -timeout 30m -v |& tee test/terraform_confluent_platform_test.log
 
 _test-confluent-platform-singlenode:
-	go test test/terraform_confluent_platform_singlenode_test.go -timeout 10m -v |& tee test/terraform_confluent_platform_singlenode_test.log
+	go test test/terraform_confluent_platform_singlenode_test.go -timeout 30m -v |& tee test/terraform_confluent_platform_singlenode_test.log
 
 test-confluent-platform: test-setup _test-confluent-platform test-clean ## Test the confluent_platform example
 
 test-confluent-platform-singlenode: test-setup _test-confluent-platform-singlenode test-clean ## Test the confluent_platform_singlenode example
 
 test-complete: ## Test the complete example
-	go test test/terraform_complete_test.go -timeout 10m -v |& tee test/terraform_complete_test.log
+	go test test/terraform_complete_test.go -timeout 30m -v |& tee test/terraform_complete_test.log
 
 test-kafka-topic: ## Test the kafka_topic example
-	go test test/terraform_kafka_topic_test.go -timeout 10m -v |& tee test/terraform_kafka_topic_test.log
+	go test test/terraform_kafka_topic_test.go -timeout 30m -v |& tee test/terraform_kafka_topic_test.log
 
 test-schema: ## Test the schema example
-	go test test/terraform_schema_test.go -timeout 10m -v |& tee test/terraform_schema_test.log
+	go test test/terraform_schema_test.go -timeout 30m -v |& tee test/terraform_schema_test.log
 
 test-connector: ## Test the connector example
-	go test test/terraform_connector_test.go -timeout 10m -v |& tee test/terraform_connector_test.log
+	go test test/terraform_connector_test.go -timeout 30m -v |& tee test/terraform_connector_test.log
 
 delete-cfk-crds:
 	kubectl config set-cluster docker-desktop
@@ -119,6 +120,8 @@ clean: delete-cfk-crds ## Clean project
 	@rm -f examples/connector/.terraform.lock.hcl
 	@rm -f examples/hybrid_aws_msk/aws.terraform.lock.hcl
 	@rm -f examples/hybrid_aws_msk/confluent_platform.terraform.lock.hcl
+	@rm -f examples/hybrid_aws_msk/confluent_platform_tls_only.terraform.lock.hcl
+	@rm -f examples/hybrid_aws_msk/confluent_platform_sasl_iam_secure.terraform.lock.hcl
 
 	@rm -rf .terraform
 	@rm -rf modules/confluent_operator/.terraform
@@ -137,6 +140,8 @@ clean: delete-cfk-crds ## Clean project
 	@rm -rf examples/connector/.terraform
 	@rm -rf examples/hybrid_aws_msk/aws.terraform
 	@rm -rf examples/hybrid_aws_msk/confluent_platform.terraform
+	@rm -rf examples/hybrid_aws_msk/confluent_platform_tls_only.terraform
+	@rm -rf examples/hybrid_aws_msk/confluent_platform_sasl_iam_secure.terraform
 
 	@rm -f go.mod
 	@rm -f go.sum
