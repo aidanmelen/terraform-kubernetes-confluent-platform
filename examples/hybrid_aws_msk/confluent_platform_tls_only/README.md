@@ -41,6 +41,10 @@ module "confluent_platform" {
           tls:
             enabled: true
             ignoreTrustStoreConfig: true
+        schemaRegistry:
+          url: https://schemaregistry.${var.namespace}.svc.cluster.local:8081
+          tls:
+            enabled: true
     EOF
   )
 
@@ -58,6 +62,10 @@ module "confluent_platform" {
           tls:
             enabled: true
             ignoreTrustStoreConfig: true
+        schemaRegistry:
+          url: https://schemaregistry.${var.namespace}.svc.cluster.local:8081
+          tls:
+            enabled: true
     EOF
   )
 

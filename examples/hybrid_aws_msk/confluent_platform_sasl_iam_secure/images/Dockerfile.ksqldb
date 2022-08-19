@@ -1,5 +1,4 @@
 # https://github.com/aws/aws-msk-iam-auth
 ARG TAG=7.2.0
 FROM confluentinc/cp-ksqldb-server:${TAG}
-ENV CLASSPATH=/usr/share/java/aws-msk-iam-auth-1.1.4-all.jar
-RUN curl -sSL -o /usr/share/java/aws-msk-iam-auth-1.1.4-all.jar "https://github.com/aws/aws-msk-iam-auth/releases/download/v1.1.4/aws-msk-iam-auth-1.1.4-all.jar"
+RUN curl -sSL -o /usr/share/java/ksqldb-server/aws-msk-iam-auth-1.1.4-all.jar "https://github.com/aws/aws-msk-iam-auth/releases/download/v1.1.4/aws-msk-iam-auth-1.1.4-all.jar"
