@@ -15,9 +15,3 @@ variable "namespace" {
   type        = string
   default     = "confluent"
 }
-
-variable "create_controlcenter" {
-  description = "Controls if the ControlCenter component of the Confluent Platform should be created."
-  type        = bool
-  default     = false
-}
