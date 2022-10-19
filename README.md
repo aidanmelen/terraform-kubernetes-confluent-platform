@@ -99,6 +99,7 @@ test-complete                       Test the complete example
 test-kafka-topic                    Test the kafka_topic example
 test-schema                         Test the schema example
 test-connector                      Test the connector example
+release                             Tag remote triggering Terraform Registry release
 clean                               Clean project
 ```
 

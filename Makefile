@@ -1,5 +1,5 @@
-NAME = terraform-kubernetes-confluent
-
+NAME := terraform-kubernetes-confluent
+VERSION := 0.9.3
 SHELL := /bin/bash
 
 .PHONY: help all
@@ -101,6 +101,10 @@ test-connector: ## Test the connector example
 delete-cfk-crds:
 	kubectl config set-cluster docker-desktop
 	kubectl delete -f ./crds/2.4.0
+
+release: ## Tag remote triggering Terraform Registry release
+	git tag v${VERSION}
+	git push --tag
 
 clean: delete-cfk-crds ## Clean project
 	@rm -f .terraform.lock.hcl

@@ -1,5 +1,12 @@
 # https://github.com/aws/aws-msk-iam-auth
 ARG TAG=7.2.0
 FROM confluentinc/cp-server-connect:${TAG}
+
+# https://docs.confluent.io/platform/current/installation/docker/development.html#extend-cp-images
+# RUN confluent-hub install --no-prompt hpgrahsl/kafka-connect-mongodb:1.1.0 \
+#  && confluent-hub install --no-prompt microsoft/kafka-connect-iothub:0.6 \
+#  && confluent-hub install --no-prompt wepay/kafka-connect-bigquery:1.1.0
+
+# this must be run after confluent-hub cmds
 ENV CLASSPATH=/usr/share/java/aws-msk-iam-auth-1.1.4-all.jar
 RUN curl -sSL -o /usr/share/java/aws-msk-iam-auth-1.1.4-all.jar "https://github.com/aws/aws-msk-iam-auth/releases/download/v1.1.4/aws-msk-iam-auth-1.1.4-all.jar"

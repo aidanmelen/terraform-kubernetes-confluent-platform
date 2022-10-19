@@ -28,7 +28,7 @@ resource "aws_iam_policy" "aws_msk_cluster_full_access" {
                   "kafka-cluster:ReadData"
               ],
               "Resource": [
-                  "arn:aws:kafka:${var.aws_region}:${data.aws_caller_identity.current.account_id}:topic/${var.name}/*"
+                  "${replace(module.msk_cluster.arn, ":cluster/", ":topic/")}/*"
               ]
           },
           {
@@ -38,7 +38,7 @@ resource "aws_iam_policy" "aws_msk_cluster_full_access" {
                   "kafka-cluster:DescribeGroup"
               ],
               "Resource": [
-                  "arn:aws:kafka:${var.aws_region}:${data.aws_caller_identity.current.account_id}:group/${var.name}/*"
+                  "${replace(module.msk_cluster.arn, ":cluster/", ":group/")}/*"
               ]
           }
       ]
