@@ -21,8 +21,8 @@ kubectl apply -f ./crds/2.4.0
 
 ```hcl
 module "confluent_platform" {
-  source  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.9.0"
+  source  = "aidanmelen/confluent/kubernetes"
+  version = ">= 0.9.3"
 
   namespace = var.namespace
 

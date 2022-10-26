@@ -14,9 +14,7 @@ Keep in mind that you computer may not be able to handle the compute overhead ad
 
 ```hcl
 module "confluent_platform" {
-  source  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.9.0"
-
+  source    = "../../"
   namespace = var.namespace
 
   zookeeper = yamldecode(<<-EOF

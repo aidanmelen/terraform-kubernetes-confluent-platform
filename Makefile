@@ -1,4 +1,6 @@
-NAME := terraform-kubernetes-confluent
+NAME := confluent
+HOSTNAME := aidanmelen
+PROVIDER := kubernetes
 VERSION := 0.9.3
 SHELL := /bin/bash
 
@@ -53,7 +55,9 @@ setup: apply-cfk-crds ## Setup project
 	go mod tidy -go=1.16 && go mod tidy -go=1.17
 
 docs:
-	./bin/render-docs.sh
+	./bin/render-docs.sh $(NAME) $(HOSTNAME) $(PROVIDER) $(VERSION)
+	./bin/render-terratest-docs.sh $(VERSION)
+	./bin/render-makefile-docs.sh
 
 lint: docs ## Lint with pre-commit
 	git add -A

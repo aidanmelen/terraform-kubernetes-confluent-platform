@@ -8,12 +8,7 @@ A Terraform module for managing [Confluent for Kubernetes (CFK)](https://docs.co
 
 ## Prerequisites
 
-Install the CFK CRDs:
-
-```bash
-kubectl config set-cluster docker-desktop
-kubectl apply -f ./crds/2.4.0
-```
+It is recommended that you at least install Custom Resource Definitions (CRDs) on the Kubernetes cluster before applying the Terraform.
 
 Please see [The Confluent for Kubernetes Quickstart](https://docs.confluent.io/operator/current/co-quickstart.html#co-long-quickstart) for more information.
 
@@ -28,9 +23,7 @@ Similar to the [values file for Helm](https://helm.sh/docs/chart_template_guide/
 
 ```hcl
 module "confluent_platform" {
-  source  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.9.0"
-
+  source    = "../../"
   namespace = var.namespace
 
   # assumes the confluent operator was deployed in another terraform run
@@ -77,10 +70,23 @@ Please see [Troubleshoot Confluent for Kubernetes](https://github.com/confluenti
 
 ## Tests
 
-Run Terratest using the [Makefile](./Makefile) targets:
+Run Terratest using the [Makefile](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/Makefile) targets:
 
 1. `make setup`
 2. `make tests`
+
+### Results
+
+```
+Terratest Suite (Module v0.9.3) (Terraform v1.2.6)
+--- PASS: TestTerraformCompleteExample (175.48s)
+--- PASS: TestTerraformConfluentOperatorExample (22.24s)
+--- PASS: TestTerraformConfluentPlatformExample (236.10s)
+--- PASS: TestTerraformConfluentPlatformSinglenodeExample (232.32s)
+--- PASS: TestTerraformConnectorExample (222.19s)
+--- PASS: TestTerraformKafkaTopicsExample (168.37s)
+--- PASS: TestTerraformSchemaExample (336.87s)
+```
 
 ## Makefile Targets
 

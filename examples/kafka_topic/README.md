@@ -12,8 +12,7 @@ This example assumes you have a Kubernetes cluster running locally on Docker Des
 
 ```hcl
 module "kafka_topic" {
-  source     = "aidanmelen/confluent-platform/kubernetes//modules/kafka_topic"
-  version    = ">= 0.9.0"
+  source     = "../../modules/kafka_topic"
   depends_on = [module.confluent_platform]
 
   name      = "my-topic"
@@ -21,8 +20,7 @@ module "kafka_topic" {
 }
 
 module "other_kafka_topic" {
-  source     = "aidanmelen/confluent-platform/kubernetes//modules/kafka_topic"
-  version    = ">= 0.9.0"
+  source     = "../../modules/kafka_topic"
   depends_on = [module.confluent_platform]
 
   name      = "my-other-topic"

@@ -12,9 +12,7 @@ This example assumes you have a Kubernetes cluster running locally on Docker Des
 
 ```hcl
 module "schema" {
-  source  = "aidanmelen/confluent-platform/kubernetes//modules/schema"
-  version = ">= 0.9.0"
-
+  source    = "../../modules/schema"
   name      = "pageviews-value"
   namespace = var.namespace
   data      = <<-EOF

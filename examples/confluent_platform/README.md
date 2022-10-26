@@ -16,9 +16,7 @@ Release the [Confluent Operator example](https://github.com/aidanmelen/terraform
 
 ```hcl
 module "confluent_platform" {
-  source  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.9.0"
-
+  source    = "../../"
   namespace = var.namespace
 
   # assumes the confluent operator was deployed in another terraform run

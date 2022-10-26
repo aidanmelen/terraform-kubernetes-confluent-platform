@@ -1,0 +1,8 @@
+Terratest Suite (Module v0.9.3) (Terraform v1.2.6)
+--- PASS: TestTerraformCompleteExample (175.48s)
+--- PASS: TestTerraformConfluentOperatorExample (22.24s)
+--- PASS: TestTerraformConfluentPlatformExample (236.10s)
+--- PASS: TestTerraformConfluentPlatformSinglenodeExample (232.32s)
+--- PASS: TestTerraformConnectorExample (222.19s)
+--- PASS: TestTerraformKafkaTopicsExample (168.37s)
+--- PASS: TestTerraformSchemaExample (336.87s)

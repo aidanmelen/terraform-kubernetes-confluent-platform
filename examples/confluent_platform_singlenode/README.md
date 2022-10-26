@@ -17,9 +17,7 @@ Release the [Confluent Operator example](https://github.com/aidanmelen/terraform
 
 ```hcl
 module "confluent_platform_singlenode" {
-  source  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.9.0"
-
+  source    = "../../"
   namespace = var.namespace
 
   # assumes the confluent operator was deployed in another terraform run
@@ -31,9 +29,7 @@ module "confluent_platform_singlenode" {
     spec:
       replicas: 1
       podTemplate:
-        resource  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.9.0"
-
+        resources:
           requests:
             cpu: 100m
             memory: 256Mi
@@ -60,9 +56,7 @@ module "confluent_platform_singlenode" {
           - "confluent.cluster.link.enable=true"
           - "password.encoder.secret=secret"
       podTemplate:
-        resource  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.9.0"
-
+        resources:
           requests:
             cpu: 200m
             memory: 512Mi
@@ -84,9 +78,7 @@ module "confluent_platform_singlenode" {
           - "offset.storage.replication.factor=1"
           - "status.storage.replication.factor=1"
       podTemplate:
-        resource  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.9.0"
-
+        resources:
           requests:
             cpu: 100m
             memory: 256Mi
@@ -110,9 +102,7 @@ module "confluent_platform_singlenode" {
         schemaRegistry:
           url: http://schemaregistry.${var.namespace}.svc.cluster.local:8081
       podTemplate:
-        resource  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.9.0"
-
+        resources:
           requests:
             cpu: 100m
             memory: 256Mi
@@ -140,9 +130,7 @@ module "confluent_platform_singlenode" {
           - "confluent.monitoring.interceptor.topic.replication=1"
           - "confluent.controlcenter.internal.topics.replication=1"
       podTemplate:
-        resource  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.9.0"
-
+        resources:
           requests:
             cpu: 500m
             memory: 512Mi
@@ -171,9 +159,7 @@ module "confluent_platform_singlenode" {
     spec:
       replicas: 1
       podTemplate:
-        resource  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.9.0"
-
+        resources:
           requests:
             cpu: 100m
             memory: 256Mi
@@ -191,9 +177,7 @@ module "confluent_platform_singlenode" {
         schemaRegistry:
           url: http://schemaregistry.${var.namespace}.svc.cluster.local:8081
       podTemplate:
-        resource  = "aidanmelen/confluent-platform/kubernetes"
-  version = ">= 0.9.0"
-
+        resources:
           requests:
             cpu: 100m
             memory: 256Mi

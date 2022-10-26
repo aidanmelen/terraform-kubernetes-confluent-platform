@@ -29,17 +29,23 @@ content: |-
 
   Please see [Troubleshoot Confluent for Kubernetes](https://github.com/confluentinc/confluent-kubernetes-examples/tree/master/troubleshooting) for other troubleshooting needs.
 
-  ## Tests
+   ## Tests
 
-  Run Terratest using the [Makefile](./Makefile) targets:
+  Run Terratest using the [Makefile](https://github.com/aidanmelen/terraform-aws-security-group-v2/tree/main/Makefile) targets:
 
   1. `make setup`
   2. `make tests`
 
+  ### Results
+
+  ```
+  {{ include "test/.terratest.docs" }}
+  ```
+
   ## Makefile Targets
 
   ```
-  {{ include ".make.docs" }}
+  {{ include ".makefile.docs" }}
   ```
 
   {{ .Requirements }}
