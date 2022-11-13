@@ -1,7 +1,7 @@
 NAME := confluent
 HOSTNAME := aidanmelen
 PROVIDER := kubernetes
-VERSION := 0.9.3
+VERSION := 0.9.4
 SHELL := /bin/bash
 
 .PHONY: help all

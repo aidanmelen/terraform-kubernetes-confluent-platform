@@ -1,6 +1,6 @@
 module "confluent_platform" {
   source  = "aidanmelen/confluent/kubernetes"
-  version = ">= 0.9.3"
+  version = ">= 0.9.4"
 
   namespace = var.namespace
 

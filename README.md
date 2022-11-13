@@ -78,7 +78,7 @@ Run Terratest using the [Makefile](https://github.com/aidanmelen/terraform-aws-s
 ### Results
 
 ```
-Terratest Suite (Module v0.9.3) (Terraform v1.2.6)
+Terratest Suite (Module v0.9.4) (Terraform v1.2.6)
 --- PASS: TestTerraformCompleteExample (175.48s)
 --- PASS: TestTerraformConfluentOperatorExample (22.24s)
 --- PASS: TestTerraformConfluentPlatformExample (236.10s)
