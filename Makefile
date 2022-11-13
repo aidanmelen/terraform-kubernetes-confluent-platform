@@ -1,7 +1,7 @@
-NAME := confluent
+NAME := confluent-platform
 HOSTNAME := aidanmelen
 PROVIDER := kubernetes
-VERSION := 0.9.4
+VERSION := 0.9.5
 SHELL := /bin/bash
 
 .PHONY: help all

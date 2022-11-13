@@ -12,7 +12,9 @@ This example assumes you have a Kubernetes cluster running locally on Docker Des
 
 ```hcl
 module "confluent_platform" {
-  source    = "../../"
+  source  = "aidanmelen/confluent-platform/kubernetes"
+  version = ">= 0.9.5"
+
   namespace = var.namespace
 
   zookeeper = yamldecode(<<-EOF

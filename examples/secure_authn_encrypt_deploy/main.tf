@@ -1,5 +1,6 @@
 module "confluent_platform" {
-  source    = "../../"
+  source = "../../"
+
   namespace = var.namespace
 
   zookeeper = yamldecode(<<-EOF

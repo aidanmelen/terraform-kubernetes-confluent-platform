@@ -34,7 +34,7 @@ module "confluent_platform" {
   create_zookeeper = false
   create_kafka     = false
 
-  # Confluent Platform components working with AWS MSK and SASL/IAM
+  # Confluent Platform components with AWS MSK and SASL/IAM
   create_connect        = true
   create_schemaregistry = true
   create_ksqldb         = true

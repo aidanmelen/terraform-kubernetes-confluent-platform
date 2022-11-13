@@ -1,5 +1,7 @@
 module "confluent_platform" {
-  source    = "../../"
+  source  = "aidanmelen/confluent-platform/kubernetes"
+  version = ">= 0.9.5"
+
   namespace = var.namespace
 
   zookeeper = yamldecode(<<-EOF

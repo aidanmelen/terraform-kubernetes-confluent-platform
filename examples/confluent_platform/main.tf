@@ -1,5 +1,6 @@
 module "confluent_platform" {
-  source    = "../../"
+  source = "../../"
+
   namespace = var.namespace
 
   # assumes the confluent operator was deployed in another terraform run

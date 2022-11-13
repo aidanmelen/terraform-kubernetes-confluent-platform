@@ -1,4 +1,4 @@
-Terratest Suite (Module v0.9.4) (Terraform v1.2.6)
+Terratest Suite (Module v0.9.5) (Terraform v1.2.6)
 --- PASS: TestTerraformCompleteExample (175.48s)
 --- PASS: TestTerraformConfluentOperatorExample (22.24s)
 --- PASS: TestTerraformConfluentPlatformExample (236.10s)

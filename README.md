@@ -23,7 +23,9 @@ Similar to the [values file for Helm](https://helm.sh/docs/chart_template_guide/
 
 ```hcl
 module "confluent_platform" {
-  source    = "../../"
+  source  = "aidanmelen/confluent-platform/kubernetes"
+  version = ">= 0.9.5"
+
   namespace = var.namespace
 
   # assumes the confluent operator was deployed in another terraform run
@@ -78,7 +80,7 @@ Run Terratest using the [Makefile](https://github.com/aidanmelen/terraform-aws-s
 ### Results
 
 ```
-Terratest Suite (Module v0.9.4) (Terraform v1.2.6)
+Terratest Suite (Module v0.9.5) (Terraform v1.2.6)
 --- PASS: TestTerraformCompleteExample (175.48s)
 --- PASS: TestTerraformConfluentOperatorExample (22.24s)
 --- PASS: TestTerraformConfluentPlatformExample (236.10s)
